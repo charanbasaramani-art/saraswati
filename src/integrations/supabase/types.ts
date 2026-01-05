@@ -14,16 +14,206 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      jobs: {
+        Row: {
+          company: string
+          created_at: string
+          created_by: string | null
+          description: string
+          domain: string
+          experience_level: string
+          id: string
+          is_active: boolean
+          job_type: string
+          location: string
+          requirements: string[]
+          salary_range: string | null
+          skills_required: string[]
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          created_by?: string | null
+          description: string
+          domain: string
+          experience_level?: string
+          id?: string
+          is_active?: boolean
+          job_type?: string
+          location: string
+          requirements?: string[]
+          salary_range?: string | null
+          skills_required?: string[]
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          domain?: string
+          experience_level?: string
+          id?: string
+          is_active?: boolean
+          job_type?: string
+          location?: string
+          requirements?: string[]
+          salary_range?: string | null
+          skills_required?: string[]
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      resume_analyses: {
+        Row: {
+          ats_score: number | null
+          created_at: string
+          id: string
+          improvement_suggestions: Json | null
+          job_matches: Json | null
+          keyword_optimization: Json | null
+          overall_score: number
+          resume_id: string
+          skill_analysis: Json | null
+          user_id: string
+        }
+        Insert: {
+          ats_score?: number | null
+          created_at?: string
+          id?: string
+          improvement_suggestions?: Json | null
+          job_matches?: Json | null
+          keyword_optimization?: Json | null
+          overall_score?: number
+          resume_id: string
+          skill_analysis?: Json | null
+          user_id: string
+        }
+        Update: {
+          ats_score?: number | null
+          created_at?: string
+          id?: string
+          improvement_suggestions?: Json | null
+          job_matches?: Json | null
+          keyword_optimization?: Json | null
+          overall_score?: number
+          resume_id?: string
+          skill_analysis?: Json | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "resume_analyses_resume_id_fkey"
+            columns: ["resume_id"]
+            isOneToOne: false
+            referencedRelation: "resumes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      resumes: {
+        Row: {
+          created_at: string
+          file_name: string
+          file_type: string
+          file_url: string
+          id: string
+          parsed_data: Json | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          file_name: string
+          file_type: string
+          file_url: string
+          id?: string
+          parsed_data?: Json | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          file_name?: string
+          file_type?: string
+          file_url?: string
+          id?: string
+          parsed_data?: Json | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +340,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
