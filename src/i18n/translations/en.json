@@ -1,0 +1,143 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "back": "Back",
+    "next": "Next",
+    "search": "Search",
+    "filter": "Filter",
+    "download": "Download",
+    "upload": "Upload",
+    "close": "Close",
+    "showAnswer": "Show Answer",
+    "hideAnswer": "Hide Answer",
+    "showTip": "Show Tip",
+    "hideTip": "Hide Tip"
+  },
+  "nav": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "jobs": "Jobs",
+    "about": "About",
+    "login": "Login",
+    "logout": "Logout",
+    "interview": "Interview Prep",
+    "improvements": "Improvements"
+  },
+  "landing": {
+    "title": "AI-Powered Resume Analyzer",
+    "subtitle": "Get instant feedback on your resume with AI-powered analysis",
+    "cta": "Get Started",
+    "features": {
+      "analysis": "Smart Analysis",
+      "analysisDesc": "AI-powered resume scoring and feedback",
+      "jobs": "Job Matching",
+      "jobsDesc": "Find jobs that match your skills",
+      "interview": "Interview Prep",
+      "interviewDesc": "Practice with AI-generated questions"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "uploadResume": "Upload Resume",
+    "uploadDesc": "Upload your resume for AI analysis",
+    "dragDrop": "Drag & drop your resume here, or click to browse",
+    "supportedFormats": "Supported formats: PDF, DOCX (Max 5MB)",
+    "analyzing": "Analyzing your resume...",
+    "stats": {
+      "resumes": "Resumes Uploaded",
+      "analyses": "Analyses Done",
+      "latestScore": "Latest Score",
+      "jobMatches": "Job Matches"
+    },
+    "recentActivity": "Recent Activity",
+    "latestAnalysis": "Latest Analysis Preview"
+  },
+  "interview": {
+    "title": "Interview Question Generator",
+    "subtitle": "Practice with AI-generated questions based on your resume",
+    "generate": "Generate Questions",
+    "generating": "Generating questions...",
+    "noResume": "Please upload a resume first to generate personalized questions",
+    "categories": {
+      "all": "All Questions",
+      "technical": "Technical",
+      "hr": "HR",
+      "behavioral": "Behavioral"
+    },
+    "difficulty": {
+      "all": "All Levels",
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "question": "Question",
+    "answer": "Answer",
+    "tip": "Pro Tip"
+  },
+  "improvements": {
+    "title": "Resume Improvement Suggestions",
+    "subtitle": "AI-powered recommendations to enhance your resume",
+    "analyze": "Analyze Resume",
+    "analyzing": "Analyzing your resume...",
+    "noResume": "Please upload a resume first",
+    "weakSections": "Weak Sections",
+    "bulletPoints": "Bullet Point Improvements",
+    "grammarIssues": "Grammar & Formatting",
+    "recommendations": "Recommendations",
+    "before": "Before",
+    "after": "After",
+    "severity": {
+      "high": "High Priority",
+      "medium": "Medium Priority",
+      "low": "Low Priority"
+    },
+    "overallScore": "Overall Score",
+    "summary": "Summary"
+  },
+  "chatbot": {
+    "title": "ResumeAI Assistant",
+    "placeholder": "Type your message...",
+    "welcome": "Hello! I'm your ResumeAI assistant. How can I help you today?",
+    "prompts": {
+      "upload": "How do I upload my resume?",
+      "score": "Explain my resume score",
+      "skills": "What skills should I add?",
+      "jobs": "Find matching jobs"
+    }
+  },
+  "jobs": {
+    "title": "Job Recommendations",
+    "subtitle": "Jobs matching your skills and experience",
+    "noJobs": "No jobs found matching your criteria",
+    "apply": "Apply Now",
+    "viewDetails": "View Details",
+    "filters": {
+      "location": "Location",
+      "type": "Job Type",
+      "experience": "Experience Level"
+    }
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "forgotPassword": "Forgot Password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "language": {
+    "select": "Select Language",
+    "en": "English",
+    "hi": "हिंदी",
+    "te": "తెలుగు"
+  }
+}
