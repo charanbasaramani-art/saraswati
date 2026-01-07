@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
+import { ChatBot } from '../chatbot/ChatBot';
 
 interface LayoutProps {
   children: ReactNode;
@@ -20,6 +21,9 @@ export function Layout({ children, showFooter = true }: LayoutProps) {
         {children}
       </main>
       {showFooter && <Footer />}
+      
+      {/* AI Chatbot */}
+      <ChatBot />
     </div>
   );
 }
