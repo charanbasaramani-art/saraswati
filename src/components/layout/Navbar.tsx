@@ -4,6 +4,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { LanguageSelector } from '@/components/LanguageSelector';
 
 export function Navbar() {
   const { user, isAdmin, signOut, isLoading } = useAuth();
@@ -66,11 +67,13 @@ export function Navbar() {
             </>
           )}
 
+          <LanguageSelector />
           <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-2">
+          <LanguageSelector />
           <ThemeToggle />
           <button
             className="p-2"
