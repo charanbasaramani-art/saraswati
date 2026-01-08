@@ -7,17 +7,18 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
-import { 
-  Upload, 
-  FileText, 
-  Brain, 
-  Briefcase, 
+import { useTranslation } from 'react-i18next';
+import {
+  Upload,
+  FileText,
+  Brain,
+  Briefcase,
   TrendingUp,
   Clock,
   CheckCircle2,
   AlertCircle,
   Loader2,
-  ArrowRight
+  ArrowRight,
 } from 'lucide-react';
 import { ResumeUpload } from '@/components/dashboard/ResumeUpload';
 
@@ -37,6 +38,7 @@ interface Analysis {
 }
 
 export default function Dashboard() {
+  const { t } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
   const navigate = useNavigate();
   const [resumes, setResumes] = useState<Resume[]>([]);
@@ -96,9 +98,9 @@ export default function Dashboard() {
     <Layout showFooter={false}>
       <div className="container py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">Dashboard</h1>
+          <h1 className="text-3xl font-bold text-foreground">{t('nav.dashboard')}</h1>
           <p className="text-muted-foreground mt-1">
-            Welcome back! Upload your resume to get AI-powered analysis.
+            {t('dashboard.uploadDesc')}
           </p>
         </div>
 
@@ -112,7 +114,7 @@ export default function Dashboard() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-foreground">{resumes.length}</p>
-                  <p className="text-sm text-muted-foreground">Resumes Uploaded</p>
+                  <p className="text-sm text-muted-foreground">{t('dashboard.stats.resumes')}</p>
                 </div>
               </div>
             </CardContent>
@@ -126,7 +128,7 @@ export default function Dashboard() {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-foreground">{analyses.length}</p>
-                  <p className="text-sm text-muted-foreground">Analyses Done</p>
+                  <p className="text-sm text-muted-foreground">{t('dashboard.stats.analyses')}</p>
                 </div>
               </div>
             </CardContent>
@@ -142,7 +144,7 @@ export default function Dashboard() {
                   <p className="text-2xl font-bold text-foreground">
                     {latestAnalysis?.overall_score || '--'}
                   </p>
-                  <p className="text-sm text-muted-foreground">Latest Score</p>
+                  <p className="text-sm text-muted-foreground">{t('dashboard.stats.latestScore')}</p>
                 </div>
               </div>
             </CardContent>
@@ -158,7 +160,7 @@ export default function Dashboard() {
                   <Link to="/jobs" className="text-2xl font-bold text-foreground hover:text-primary">
                     View
                   </Link>
-                  <p className="text-sm text-muted-foreground">Job Matches</p>
+                  <p className="text-sm text-muted-foreground">{t('dashboard.stats.jobMatches')}</p>
                 </div>
               </div>
             </CardContent>
@@ -174,9 +176,9 @@ export default function Dashboard() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Clock className="h-5 w-5 text-primary" />
-                Recent Activity
+                {t('dashboard.recentActivity')}
               </CardTitle>
-              <CardDescription>Your latest resumes and analyses</CardDescription>
+              <CardDescription>{t('dashboard.latestAnalysis')}</CardDescription>
             </CardHeader>
             <CardContent>
               {isLoading ? (

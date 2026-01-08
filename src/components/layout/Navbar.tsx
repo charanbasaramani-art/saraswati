@@ -5,8 +5,10 @@ import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X } from 'luc
 import { useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { LanguageSelector } from '@/components/LanguageSelector';
+import { useTranslation } from 'react-i18next';
 
 export function Navbar() {
+  const { t } = useTranslation();
   const { user, isAdmin, signOut, isLoading } = useAuth();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -29,10 +31,10 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-            About
+            {t('nav.about')}
           </Link>
           <Link to="/jobs" className="text-muted-foreground hover:text-foreground transition-colors">
-            Jobs
+            {t('nav.jobs')}
           </Link>
           
           {!isLoading && (
@@ -41,7 +43,7 @@ export function Navbar() {
                 <>
                   <Link to="/dashboard" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                     <LayoutDashboard className="h-4 w-4" />
-                    Dashboard
+                    {t('nav.dashboard')}
                   </Link>
                   {isAdmin && (
                     <Link to="/admin" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
@@ -51,16 +53,16 @@ export function Navbar() {
                   )}
                   <Button variant="outline" onClick={handleSignOut} className="flex items-center gap-2 glass theme-transition">
                     <LogOut className="h-4 w-4" />
-                    Sign Out
+                    {t('nav.logout')}
                   </Button>
                 </>
               ) : (
                 <>
                   <Link to="/auth">
-                    <Button variant="outline" className="glass theme-transition">Sign In</Button>
+                    <Button variant="outline" className="glass theme-transition">{t('nav.login')}</Button>
                   </Link>
                   <Link to="/auth?mode=signup">
-                    <Button className="btn-glow">Get Started</Button>
+                    <Button className="btn-glow">{t('landing.cta')}</Button>
                   </Link>
                 </>
               )}
@@ -88,15 +90,15 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden border-t border-border glass p-4 space-y-4 theme-transition">
           <Link to="/about" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
-            About
+            {t('nav.about')}
           </Link>
           <Link to="/jobs" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
-            Jobs
+            {t('nav.jobs')}
           </Link>
           {!isLoading && user ? (
             <>
               <Link to="/dashboard" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
-                Dashboard
+                {t('nav.dashboard')}
               </Link>
               {isAdmin && (
                 <Link to="/admin" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
@@ -104,16 +106,16 @@ export function Navbar() {
                 </Link>
               )}
               <Button variant="outline" onClick={handleSignOut} className="w-full glass">
-                Sign Out
+                {t('nav.logout')}
               </Button>
             </>
           ) : (
             <div className="flex flex-col gap-2">
               <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full glass">Sign In</Button>
+                <Button variant="outline" className="w-full glass">{t('nav.login')}</Button>
               </Link>
               <Link to="/auth?mode=signup" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="w-full btn-glow">Get Started</Button>
+                <Button className="w-full btn-glow">{t('landing.cta')}</Button>
               </Link>
             </div>
           )}
