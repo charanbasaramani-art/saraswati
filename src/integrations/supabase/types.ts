@@ -14,6 +14,59 @@ export type Database = {
   }
   public: {
     Tables: {
+      ats_results: {
+        Row: {
+          ats_score: number
+          company: string
+          created_at: string
+          formatting_score: number
+          id: string
+          keyword_relevance_score: number
+          missing_keywords: Json | null
+          optimization_suggestions: Json | null
+          passed: boolean
+          resume_id: string | null
+          skill_matching_score: number
+          user_id: string
+        }
+        Insert: {
+          ats_score?: number
+          company: string
+          created_at?: string
+          formatting_score?: number
+          id?: string
+          keyword_relevance_score?: number
+          missing_keywords?: Json | null
+          optimization_suggestions?: Json | null
+          passed?: boolean
+          resume_id?: string | null
+          skill_matching_score?: number
+          user_id: string
+        }
+        Update: {
+          ats_score?: number
+          company?: string
+          created_at?: string
+          formatting_score?: number
+          id?: string
+          keyword_relevance_score?: number
+          missing_keywords?: Json | null
+          optimization_suggestions?: Json | null
+          passed?: boolean
+          resume_id?: string | null
+          skill_matching_score?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ats_results_resume_id_fkey"
+            columns: ["resume_id"]
+            isOneToOne: false
+            referencedRelation: "resumes"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       jobs: {
         Row: {
           company: string
@@ -177,6 +230,62 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      soft_skill_analyses: {
+        Row: {
+          adaptability_score: number
+          communication_score: number
+          confidence_score: number
+          created_at: string
+          hiring_suitability: string | null
+          id: string
+          leadership_score: number
+          personality_insights: Json | null
+          problem_solving_score: number
+          recommendations: Json | null
+          resume_id: string | null
+          teamwork_score: number
+          user_id: string
+        }
+        Insert: {
+          adaptability_score?: number
+          communication_score?: number
+          confidence_score?: number
+          created_at?: string
+          hiring_suitability?: string | null
+          id?: string
+          leadership_score?: number
+          personality_insights?: Json | null
+          problem_solving_score?: number
+          recommendations?: Json | null
+          resume_id?: string | null
+          teamwork_score?: number
+          user_id: string
+        }
+        Update: {
+          adaptability_score?: number
+          communication_score?: number
+          confidence_score?: number
+          created_at?: string
+          hiring_suitability?: string | null
+          id?: string
+          leadership_score?: number
+          personality_insights?: Json | null
+          problem_solving_score?: number
+          recommendations?: Json | null
+          resume_id?: string | null
+          teamwork_score?: number
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "soft_skill_analyses_resume_id_fkey"
+            columns: ["resume_id"]
+            isOneToOne: false
+            referencedRelation: "resumes"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
