@@ -46,18 +46,46 @@ serve(async (req) => {
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
+    // Fetch actual resume content from database if not provided
+    let actualResumeContent = resumeContent;
+    if (resumeId && (!resumeContent || resumeContent === 'Resume content not available')) {
+      console.log('Fetching resume content from database for ATS...');
+      const { data: resumeData } = await supabase
+        .from('resumes')
+        .select('parsed_data, file_name')
+        .eq('id', resumeId)
+        .single();
+      
+      if (resumeData?.parsed_data) {
+        actualResumeContent = typeof resumeData.parsed_data === 'string' 
+          ? resumeData.parsed_data 
+          : JSON.stringify(resumeData.parsed_data, null, 2);
+        console.log('Resume content retrieved for ATS simulation');
+      }
+    }
+
+    // Return error if no resume content
+    if (!actualResumeContent || actualResumeContent === 'Resume content not available') {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Resume content not available. Please ensure your resume has been properly uploaded and parsed.' 
+        }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
     const companyProfile = companyProfiles[company] || companyProfiles['Google'];
 
-    const prompt = `You are an ATS (Applicant Tracking System) simulator for ${company}. Analyze this resume against the company's typical requirements.
+    const prompt = `You are a highly accurate ATS (Applicant Tracking System) simulator for ${company}. Analyze this resume THOROUGHLY against the company's specific requirements.
 
-Resume Content:
-${resumeContent}
+RESUME CONTENT:
+${actualResumeContent}
 
-${jobDescription ? `Job Description: ${jobDescription}` : ''}
+${jobDescription ? `JOB DESCRIPTION: ${jobDescription}` : ''}
 
-Company Profile for ${company}:
-- Key Keywords: ${companyProfile.keywords.join(', ')}
-- Priorities: ${companyProfile.priorities.join(', ')}
+COMPANY PROFILE FOR ${company.toUpperCase()}:
+- Required Keywords: ${companyProfile.keywords.join(', ')}
+- Hiring Priorities: ${companyProfile.priorities.join(', ')}
 - Formatting expectations: ${companyProfile.formatting.join(', ')}
 
 Provide ATS analysis in this exact JSON format:

@@ -31,7 +31,52 @@
     "login": "लॉगिन",
     "logout": "लॉगआउट",
     "interview": "साक्षात्कार तैयारी",
-    "improvements": "सुधार"
+    "improvements": "सुधार",
+    "softSkills": "सॉफ्ट स्किल्स",
+    "atsSimulator": "ATS सिम्युलेटर",
+    "recruiter": "भर्तीकर्ता"
+  },
+  "softSkills": {
+    "title": "सॉफ्ट स्किल विश्लेषक",
+    "subtitle": "AI-संचालित सॉफ्ट स्किल्स और व्यक्तित्व विश्लेषण",
+    "analyze": "स्किल्स का विश्लेषण करें",
+    "analyzing": "विश्लेषण हो रहा है...",
+    "overallScore": "समग्र स्कोर",
+    "hiringSuitability": "नियुक्ति उपयुक्तता",
+    "personalityInsights": "व्यक्तित्व अंतर्दृष्टि",
+    "primaryTraits": "प्राथमिक गुण",
+    "workStyle": "कार्य शैली",
+    "communicationStyle": "संवाद शैली",
+    "strengths": "ताकत",
+    "areasForGrowth": "विकास के क्षेत्र",
+    "recommendations": "सिफारिशें",
+    "skillsRadar": "स्किल्स रडार",
+    "scoreBreakdown": "स्कोर विवरण",
+    "previousAnalyses": "पिछले विश्लेषण"
+  },
+  "ats": {
+    "title": "ATS संगतता सिम्युलेटर",
+    "subtitle": "देखें कि आपका रिज्यूमे कंपनी ATS सिस्टम के खिलाफ कैसा प्रदर्शन करता है",
+    "simulate": "ATS सिमुलेशन चलाएं",
+    "simulating": "सिमुलेट हो रहा है...",
+    "passed": "पास",
+    "failed": "फेल",
+    "atsScore": "ATS स्कोर",
+    "keywordRelevance": "कीवर्ड प्रासंगिकता",
+    "formatting": "फॉर्मेटिंग",
+    "skillMatching": "स्किल मिलान",
+    "missingKeywords": "गायब कीवर्ड",
+    "optimizationSuggestions": "अनुकूलन सुझाव",
+    "previousSimulations": "पिछले सिमुलेशन"
+  },
+  "recruiter": {
+    "title": "भर्तीकर्ता डैशबोर्ड",
+    "subtitle": "उम्मीदवारों का प्रबंधन करें और शीर्ष प्रतिभा खोजें",
+    "candidates": "उम्मीदवार",
+    "analytics": "एनालिटिक्स",
+    "shortlisted": "शॉर्टलिस्टेड",
+    "interviewed": "साक्षात्कार किया गया",
+    "hired": "नियुक्त"
   },
   "landing": {
     "title": "AI-संचालित रिज्यूमे विश्लेषक",

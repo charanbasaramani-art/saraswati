@@ -114,7 +114,17 @@ export default function SoftSkillAnalyzer() {
     setIsAnalyzing(true);
     try {
       const resume = resumes.find(r => r.id === selectedResume);
-      const resumeContent = resume?.parsed_data ? JSON.stringify(resume.parsed_data) : 'Resume content not available';
+      
+      // Check if resume has parsed data
+      if (!resume?.parsed_data) {
+        toast.error('Resume not yet analyzed. Please wait for the resume to be processed first.');
+        setIsAnalyzing(false);
+        return;
+      }
+      
+      const resumeContent = typeof resume.parsed_data === 'string' 
+        ? resume.parsed_data 
+        : JSON.stringify(resume.parsed_data, null, 2);
 
       const { data, error } = await supabase.functions.invoke('analyze-soft-skills', {
         body: {
@@ -126,13 +136,18 @@ export default function SoftSkillAnalyzer() {
       });
 
       if (error) throw error;
+      
+      if (data.error) {
+        toast.error(data.error);
+        return;
+      }
 
       setAnalysis(data.analysis);
       fetchPreviousAnalyses();
       toast.success('Soft skill analysis complete!');
     } catch (error) {
       console.error('Analysis error:', error);
-      toast.error('Failed to analyze soft skills');
+      toast.error('Failed to analyze soft skills. Please try again.');
     } finally {
       setIsAnalyzing(false);
     }

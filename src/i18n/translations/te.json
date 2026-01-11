@@ -31,7 +31,52 @@
     "login": "లాగిన్",
     "logout": "లాగౌట్",
     "interview": "ఇంటర్వ్యూ తయారీ",
-    "improvements": "మెరుగుదలలు"
+    "improvements": "మెరుగుదలలు",
+    "softSkills": "సాఫ్ట్ స్కిల్స్",
+    "atsSimulator": "ATS సిమ్యులేటర్",
+    "recruiter": "రిక్రూటర్"
+  },
+  "softSkills": {
+    "title": "సాఫ్ట్ స్కిల్ విశ్లేషకుడు",
+    "subtitle": "AI-ఆధారిత సాఫ్ట్ స్కిల్స్ మరియు వ్యక్తిత్వ విశ్లేషణ",
+    "analyze": "స్కిల్స్ విశ్లేషించండి",
+    "analyzing": "విశ్లేషిస్తోంది...",
+    "overallScore": "మొత్తం స్కోరు",
+    "hiringSuitability": "నియామక అనుకూలత",
+    "personalityInsights": "వ్యక్తిత్వ అంతర్దృష్టులు",
+    "primaryTraits": "ప్రాథమిక లక్షణాలు",
+    "workStyle": "పని శైలి",
+    "communicationStyle": "కమ్యూనికేషన్ శైలి",
+    "strengths": "బలాలు",
+    "areasForGrowth": "వృద్ధి ప్రాంతాలు",
+    "recommendations": "సిఫార్సులు",
+    "skillsRadar": "స్కిల్స్ రాడార్",
+    "scoreBreakdown": "స్కోరు వివరణ",
+    "previousAnalyses": "మునుపటి విశ్లేషణలు"
+  },
+  "ats": {
+    "title": "ATS అనుకూలత సిమ్యులేటర్",
+    "subtitle": "మీ రెజ్యూమే కంపెనీ ATS సిస్టమ్స్‌తో ఎలా పనిచేస్తుందో చూడండి",
+    "simulate": "ATS సిమ్యులేషన్ అమలు చేయండి",
+    "simulating": "సిమ్యులేట్ అవుతోంది...",
+    "passed": "పాస్",
+    "failed": "ఫెయిల్",
+    "atsScore": "ATS స్కోరు",
+    "keywordRelevance": "కీవర్డ్ ప్రాసంగికత",
+    "formatting": "ఫార్మాటింగ్",
+    "skillMatching": "స్కిల్ మ్యాచింగ్",
+    "missingKeywords": "లేని కీవర్డ్‌లు",
+    "optimizationSuggestions": "ఆప్టిమైజేషన్ సూచనలు",
+    "previousSimulations": "మునుపటి సిమ్యులేషన్‌లు"
+  },
+  "recruiter": {
+    "title": "రిక్రూటర్ డాష్‌బోర్డ్",
+    "subtitle": "అభ్యర్థులను నిర్వహించండి మరియు టాప్ టాలెంట్ కనుగొనండి",
+    "candidates": "అభ్యర్థులు",
+    "analytics": "అనలిటిక్స్",
+    "shortlisted": "షార్ట్‌లిస్ట్",
+    "interviewed": "ఇంటర్వ్యూ చేసారు",
+    "hired": "నియమించబడింది"
   },
   "landing": {
     "title": "AI-ఆధారిత రెజ్యూమే విశ్లేషకుడు",

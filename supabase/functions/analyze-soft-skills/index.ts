@@ -23,13 +23,40 @@ serve(async (req) => {
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    const prompt = `Analyze the following resume content and conversation history to assess soft skills and personality traits.
+    // Fetch actual resume content from database if not provided
+    let actualResumeContent = resumeContent;
+    if (resumeId && (!resumeContent || resumeContent === 'Resume content not available')) {
+      console.log('Fetching resume content from database...');
+      const { data: resumeData } = await supabase
+        .from('resumes')
+        .select('parsed_data, file_name')
+        .eq('id', resumeId)
+        .single();
+      
+      if (resumeData?.parsed_data) {
+        actualResumeContent = typeof resumeData.parsed_data === 'string' 
+          ? resumeData.parsed_data 
+          : JSON.stringify(resumeData.parsed_data, null, 2);
+        console.log('Resume content retrieved successfully');
+      }
+    }
 
-Resume Content:
-${resumeContent || 'No resume content provided'}
+    // If still no content, return an error asking user to upload proper resume
+    if (!actualResumeContent || actualResumeContent === 'Resume content not available') {
+      return new Response(
+        JSON.stringify({ 
+          error: 'Resume content not available. Please ensure your resume has been properly uploaded and parsed.' 
+        }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
 
-Conversation History:
-${conversationHistory || 'No conversation history'}
+    const prompt = `You are an expert HR professional and personality assessor. Analyze the following resume content THOROUGHLY to assess soft skills and personality traits.
+
+RESUME CONTENT:
+${actualResumeContent}
+
+${conversationHistory ? `CONVERSATION HISTORY:\n${conversationHistory}` : ''}
 
 Provide a detailed analysis in the following JSON format:
 {
