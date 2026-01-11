@@ -31,7 +31,10 @@
     "login": "Login",
     "logout": "Logout",
     "interview": "Interview Prep",
-    "improvements": "Improvements"
+    "improvements": "Improvements",
+    "softSkills": "Soft Skills",
+    "atsSimulator": "ATS Check",
+    "recruiter": "Recruiter"
   },
   "landing": {
     "title": "AI-Powered Resume Analyzer",
@@ -253,5 +256,62 @@
     "en": "English",
     "hi": "हिंदी",
     "te": "తెలుగు"
+  },
+  "softSkills": {
+    "title": "Soft Skill Analyzer",
+    "subtitle": "AI-powered personality and soft skill assessment from your resume",
+    "analyze": "Analyze Soft Skills",
+    "analyzing": "Analyzing your soft skills...",
+    "noResume": "Please upload a resume first to analyze your soft skills",
+    "overallScore": "Overall Score",
+    "hiringSuitability": "Hiring Suitability",
+    "skillBreakdown": "Skill Breakdown",
+    "personalityInsights": "Personality Insights",
+    "recommendations": "Recommendations",
+    "skills": {
+      "communication": "Communication",
+      "teamwork": "Teamwork",
+      "leadership": "Leadership",
+      "problemSolving": "Problem Solving",
+      "adaptability": "Adaptability",
+      "confidence": "Confidence"
+    }
+  },
+  "ats": {
+    "title": "ATS Simulator",
+    "subtitle": "Test how your resume performs against Applicant Tracking Systems",
+    "simulate": "Simulate ATS Scan",
+    "simulating": "Running ATS simulation...",
+    "noResume": "Please upload a resume first to run ATS simulation",
+    "selectCompany": "Select Company ATS",
+    "companies": {
+      "google": "Google",
+      "microsoft": "Microsoft",
+      "amazon": "Amazon",
+      "meta": "Meta",
+      "apple": "Apple",
+      "generic": "Generic ATS"
+    },
+    "passed": "Passed",
+    "failed": "Needs Improvement",
+    "overallScore": "Overall ATS Score",
+    "scoreBreakdown": "Score Breakdown",
+    "keywordRelevance": "Keyword Relevance",
+    "skillMatching": "Skill Matching",
+    "formatting": "Formatting",
+    "missingKeywords": "Missing Keywords",
+    "suggestions": "Optimization Suggestions"
+  },
+  "recruiter": {
+    "title": "Recruiter Dashboard",
+    "subtitle": "Review candidate resumes and soft skill assessments",
+    "candidates": "Candidates",
+    "filters": "Filters",
+    "sortBy": "Sort By",
+    "viewResume": "View Resume",
+    "viewAnalysis": "View Analysis",
+    "softSkillScore": "Soft Skill Score",
+    "atsScore": "ATS Score",
+    "hiringSuitability": "Hiring Suitability"
   }
 }

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
-import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X } from 'lucide-react';
+import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { LanguageSelector } from '@/components/LanguageSelector';
@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 
 export function Navbar() {
   const { t } = useTranslation();
-  const { user, isAdmin, signOut, isLoading } = useAuth();
+  const { user, isAdmin, isRecruiter, signOut, isLoading } = useAuth();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -45,6 +45,20 @@ export function Navbar() {
                     <LayoutDashboard className="h-4 w-4" />
                     {t('nav.dashboard')}
                   </Link>
+                  <Link to="/soft-skills" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                    <Brain className="h-4 w-4" />
+                    {t('nav.softSkills')}
+                  </Link>
+                  <Link to="/ats-simulator" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                    <Target className="h-4 w-4" />
+                    {t('nav.atsSimulator')}
+                  </Link>
+                  {isRecruiter && (
+                    <Link to="/recruiter" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                      <Users className="h-4 w-4" />
+                      {t('nav.recruiter')}
+                    </Link>
+                  )}
                   {isAdmin && (
                     <Link to="/admin" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                       <User className="h-4 w-4" />
@@ -100,6 +114,17 @@ export function Navbar() {
               <Link to="/dashboard" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
                 {t('nav.dashboard')}
               </Link>
+              <Link to="/soft-skills" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+                {t('nav.softSkills')}
+              </Link>
+              <Link to="/ats-simulator" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+                {t('nav.atsSimulator')}
+              </Link>
+              {isRecruiter && (
+                <Link to="/recruiter" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+                  {t('nav.recruiter')}
+                </Link>
+              )}
               {isAdmin && (
                 <Link to="/admin" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
                   Admin
