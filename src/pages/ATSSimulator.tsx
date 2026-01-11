@@ -104,7 +104,17 @@ export default function ATSSimulator() {
     setIsSimulating(true);
     try {
       const resume = resumes.find(r => r.id === selectedResume);
-      const resumeContent = resume?.parsed_data ? JSON.stringify(resume.parsed_data) : 'Resume content not available';
+      
+      // Check if resume has parsed data
+      if (!resume?.parsed_data) {
+        toast.error('Resume not yet analyzed. Please wait for the resume to be processed first.');
+        setIsSimulating(false);
+        return;
+      }
+      
+      const resumeContent = typeof resume.parsed_data === 'string' 
+        ? resume.parsed_data 
+        : JSON.stringify(resume.parsed_data, null, 2);
 
       const { data, error } = await supabase.functions.invoke('ats-simulator', {
         body: {
@@ -116,13 +126,18 @@ export default function ATSSimulator() {
       });
 
       if (error) throw error;
+      
+      if (data.error) {
+        toast.error(data.error);
+        return;
+      }
 
       setResult(data.analysis);
       fetchPreviousResults();
       toast.success(`ATS simulation for ${selectedCompany} complete!`);
     } catch (error) {
       console.error('ATS simulation error:', error);
-      toast.error('Failed to simulate ATS');
+      toast.error('Failed to simulate ATS. Please try again.');
     } finally {
       setIsSimulating(false);
     }
