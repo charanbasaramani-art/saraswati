@@ -36,16 +36,16 @@ interface Resume {
 }
 
 const companies = [
-  { id: 'Google', name: 'Google', logo: '🔍', color: 'from-blue-500 to-green-500' },
-  { id: 'Amazon', name: 'Amazon', logo: '📦', color: 'from-orange-500 to-yellow-500' },
-  { id: 'Microsoft', name: 'Microsoft', logo: '🪟', color: 'from-blue-600 to-cyan-500' },
-  { id: 'Meta', name: 'Meta', logo: '👁️', color: 'from-blue-500 to-indigo-600' },
-  { id: 'Apple', name: 'Apple', logo: '🍎', color: 'from-gray-600 to-gray-400' },
-  { id: 'Infosys', name: 'Infosys', logo: '💼', color: 'from-blue-600 to-blue-400' },
-  { id: 'TCS', name: 'TCS', logo: '🏢', color: 'from-purple-600 to-pink-500' },
-  { id: 'Wipro', name: 'Wipro', logo: '🌐', color: 'from-green-600 to-teal-500' },
-  { id: 'Accenture', name: 'Accenture', logo: '⚡', color: 'from-purple-500 to-violet-600' },
-  { id: 'IBM', name: 'IBM', logo: '💻', color: 'from-blue-700 to-blue-500' },
+  { id: 'Google', name: 'Google', logo: 'https://www.google.com/favicon.ico', color: 'bg-white' },
+  { id: 'Amazon', name: 'Amazon', logo: 'https://www.amazon.com/favicon.ico', color: 'bg-white' },
+  { id: 'Microsoft', name: 'Microsoft', logo: 'https://www.microsoft.com/favicon.ico', color: 'bg-white' },
+  { id: 'Meta', name: 'Meta', logo: 'https://static.xx.fbcdn.net/rsrc.php/yb/r/hLRJ1GG_y0J.ico', color: 'bg-white' },
+  { id: 'Apple', name: 'Apple', logo: 'https://www.apple.com/favicon.ico', color: 'bg-white' },
+  { id: 'Infosys', name: 'Infosys', logo: 'https://www.infosys.com/favicon.ico', color: 'bg-white' },
+  { id: 'TCS', name: 'TCS', logo: 'https://www.tcs.com/favicon.ico', color: 'bg-white' },
+  { id: 'Wipro', name: 'Wipro', logo: 'https://www.wipro.com/favicon.ico', color: 'bg-white' },
+  { id: 'Accenture', name: 'Accenture', logo: 'https://www.accenture.com/favicon.ico', color: 'bg-white' },
+  { id: 'IBM', name: 'IBM', logo: 'https://www.ibm.com/favicon.ico', color: 'bg-white' },
 ];
 
 export default function ATSSimulator() {
@@ -196,8 +196,8 @@ export default function ATSSimulator() {
                   : 'border-border bg-card hover:border-primary/50'
               }`}
             >
-              <div className={`text-4xl mb-2 h-12 w-12 rounded-lg bg-gradient-to-br ${company.color} flex items-center justify-center`}>
-                {company.logo}
+              <div className={`mb-2 h-12 w-12 rounded-lg ${company.color} flex items-center justify-center p-2`}>
+                <img src={company.logo} alt={company.name} className="h-8 w-8 object-contain" />
               </div>
               <p className="font-semibold">{company.name}</p>
             </button>
@@ -403,8 +403,8 @@ export default function ATSSimulator() {
                 </p>
                 <div className="flex gap-4">
                   {companies.map((company) => (
-                    <div key={company.id} className={`text-2xl h-10 w-10 rounded-lg bg-gradient-to-br ${company.color} flex items-center justify-center`}>
-                      {company.logo}
+                    <div key={company.id} className={`h-10 w-10 rounded-lg ${company.color} flex items-center justify-center p-1.5`}>
+                      <img src={company.logo} alt={company.name} className="h-6 w-6 object-contain" />
                     </div>
                   ))}
                 </div>
