@@ -17,6 +17,21 @@ const companyProfiles: Record<string, { keywords: string[]; priorities: string[]
     priorities: ['leadership principles alignment', 'results driven', 'customer focus'],
     formatting: ['STAR format achievements', 'metrics-driven results', 'action verbs']
   },
+  'Microsoft': {
+    keywords: ['azure', 'c#', '.net', 'typescript', 'cloud computing', 'ai', 'machine learning', 'sql server', 'devops', 'agile', 'collaboration', 'growth mindset'],
+    priorities: ['growth mindset', 'technical excellence', 'collaboration', 'customer empathy'],
+    formatting: ['clear structure', 'impact statements', 'technical depth']
+  },
+  'Meta': {
+    keywords: ['react', 'javascript', 'mobile', 'ios', 'android', 'machine learning', 'data', 'infrastructure', 'scale', 'social', 'impact', 'move fast'],
+    priorities: ['move fast', 'bold decisions', 'focus on impact', 'openness'],
+    formatting: ['concise achievements', 'quantified impact', 'project links']
+  },
+  'Apple': {
+    keywords: ['ios', 'swift', 'objective-c', 'macos', 'hardware', 'design', 'user experience', 'performance', 'security', 'innovation', 'attention to detail'],
+    priorities: ['attention to detail', 'user experience focus', 'innovation', 'quality'],
+    formatting: ['elegant presentation', 'detailed projects', 'design thinking']
+  },
   'Infosys': {
     keywords: ['agile', 'scrum', 'java', 'spring', 'sql', 'oracle', 'sap', 'consulting', 'client management', 'delivery', 'testing', 'documentation'],
     priorities: ['project delivery', 'client communication', 'technical skills'],
@@ -26,6 +41,21 @@ const companyProfiles: Record<string, { keywords: string[]; priorities: string[]
     keywords: ['tcs', 'digital', 'transformation', 'java', 'python', 'sql', 'agile', 'devops', 'cloud', 'automation', 'testing', 'mainframe'],
     priorities: ['learning ability', 'adaptability', 'team collaboration'],
     formatting: ['clear sections', 'education details', 'training certifications']
+  },
+  'Wipro': {
+    keywords: ['digital transformation', 'cloud', 'analytics', 'java', 'python', 'automation', 'agile', 'consulting', 'client delivery', 'innovation'],
+    priorities: ['client focus', 'innovation', 'quality delivery', 'collaboration'],
+    formatting: ['structured resume', 'project achievements', 'certifications']
+  },
+  'Accenture': {
+    keywords: ['consulting', 'strategy', 'digital', 'cloud', 'analytics', 'ai', 'change management', 'project management', 'agile', 'client relationship'],
+    priorities: ['client value', 'innovation', 'stewardship', 'best people'],
+    formatting: ['consulting format', 'impact metrics', 'industry expertise']
+  },
+  'IBM': {
+    keywords: ['cloud', 'ai', 'watson', 'hybrid cloud', 'enterprise', 'security', 'blockchain', 'data science', 'automation', 'mainframe', 'consulting'],
+    priorities: ['innovation', 'trust', 'dedication', 'enterprise solutions'],
+    formatting: ['technical depth', 'certifications', 'enterprise experience']
   }
 };
 
