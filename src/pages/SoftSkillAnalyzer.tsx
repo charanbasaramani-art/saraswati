@@ -210,10 +210,10 @@ export default function SoftSkillAnalyzer() {
           <div>
             <h1 className="text-3xl font-bold flex items-center gap-2">
               <Brain className="h-8 w-8 text-primary" />
-              Soft Skill & Personality Analyzer
+              {t('softSkills.title')}
             </h1>
             <p className="text-muted-foreground mt-1">
-              AI-powered analysis of your soft skills and personality traits
+              {t('softSkills.subtitle')}
             </p>
           </div>
           
@@ -241,12 +241,12 @@ export default function SoftSkillAnalyzer() {
               {isAnalyzing ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Analyzing...
+                  {t('softSkills.analyzing')}
                 </>
               ) : (
                 <>
                   <Sparkles className="mr-2 h-4 w-4" />
-                  Analyze Skills
+                  {t('softSkills.analyze')}
                 </>
               )}
             </Button>

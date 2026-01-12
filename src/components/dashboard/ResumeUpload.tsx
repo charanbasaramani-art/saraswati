@@ -7,6 +7,7 @@ import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Upload, FileText, Loader2, CheckCircle2, AlertCircle, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { extractResumeText } from '@/lib/extractResumeText';
 
 interface ResumeUploadProps {
   onUploadComplete: () => void;
@@ -85,30 +86,35 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
         setUploadProgress((prev) => Math.min(prev + 10, 90));
       }, 200);
 
-      // Upload to storage
+      // Upload to storage + extract text in parallel
       const fileExt = file.name.split('.').pop();
       const fileName = `${user.id}/${Date.now()}.${fileExt}`;
-      
-      const { error: uploadError } = await supabase.storage
+
+      const uploadPromise = supabase.storage
         .from('resumes')
         .upload(fileName, file);
+
+      const extractPromise = extractResumeText(file);
+
+      const [{ error: uploadError }, extractedText] = await Promise.all([
+        uploadPromise,
+        extractPromise,
+      ]);
 
       clearInterval(progressInterval);
       setUploadProgress(100);
 
       if (uploadError) throw uploadError;
 
-      // Store file path (not public URL since bucket is private)
-      // Signed URLs will be generated on-demand when viewing resumes
-
-      // Create resume record with file path
+      // Create resume record with file path + extracted text
       const { data: resumeData, error: dbError } = await supabase
         .from('resumes')
         .insert({
           user_id: user.id,
           file_name: file.name,
-          file_url: fileName, // Store path, not URL - signed URLs generated when needed
+          file_url: fileName, // Store path; bucket is private
           file_type: file.type,
+          parsed_data: extractedText || null,
         })
         .select()
         .single();

@@ -79,10 +79,18 @@ Deno.serve(async (req) => {
     // Call Lovable AI for resume analysis
     const lovableApiKey = Deno.env.get('LOVABLE_API_KEY');
     
-    const analysisPrompt = `You are an expert resume analyzer and career advisor. Analyze the following resume information and provide a detailed assessment.
+    const parsed = resume.parsed_data;
+    const resumeText =
+      typeof parsed === 'string'
+        ? parsed
+        : JSON.stringify(parsed || {}, null, 2);
+
+    const analysisPrompt = `You are an expert resume analyzer and career advisor. Analyze the following resume content and provide a detailed assessment.
 
 Resume File: ${resume.file_name}
-Resume Data: ${JSON.stringify(resume.parsed_data || {})}
+
+RESUME CONTENT:
+${resumeText}
 
 Available Jobs for Matching:
 ${JSON.stringify(jobs || [], null, 2)}
@@ -142,7 +150,6 @@ Respond ONLY with valid JSON, no additional text.`;
             content: analysisPrompt,
           },
         ],
-        temperature: 0.3,
       }),
     });
 
