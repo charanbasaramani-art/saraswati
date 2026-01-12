@@ -38,8 +38,14 @@ interface Resume {
 const companies = [
   { id: 'Google', name: 'Google', logo: '🔍', color: 'from-blue-500 to-green-500' },
   { id: 'Amazon', name: 'Amazon', logo: '📦', color: 'from-orange-500 to-yellow-500' },
+  { id: 'Microsoft', name: 'Microsoft', logo: '🪟', color: 'from-blue-600 to-cyan-500' },
+  { id: 'Meta', name: 'Meta', logo: '👁️', color: 'from-blue-500 to-indigo-600' },
+  { id: 'Apple', name: 'Apple', logo: '🍎', color: 'from-gray-600 to-gray-400' },
   { id: 'Infosys', name: 'Infosys', logo: '💼', color: 'from-blue-600 to-blue-400' },
   { id: 'TCS', name: 'TCS', logo: '🏢', color: 'from-purple-600 to-pink-500' },
+  { id: 'Wipro', name: 'Wipro', logo: '🌐', color: 'from-green-600 to-teal-500' },
+  { id: 'Accenture', name: 'Accenture', logo: '⚡', color: 'from-purple-500 to-violet-600' },
+  { id: 'IBM', name: 'IBM', logo: '💻', color: 'from-blue-700 to-blue-500' },
 ];
 
 export default function ATSSimulator() {
@@ -179,7 +185,7 @@ export default function ATSSimulator() {
         </div>
 
         {/* Company Selection */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {companies.map((company) => (
             <button
               key={company.id}
