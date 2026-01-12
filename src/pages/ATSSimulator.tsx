@@ -170,10 +170,10 @@ export default function ATSSimulator() {
           <div>
             <h1 className="text-3xl font-bold flex items-center gap-2">
               <FileCheck className="h-8 w-8 text-primary" />
-              ATS Compatibility Simulator
+              {t('ats.title')}
             </h1>
             <p className="text-muted-foreground mt-1">
-              See how your resume performs against real company ATS systems
+              {t('ats.subtitle')}
             </p>
           </div>
         </div>
@@ -224,12 +224,12 @@ export default function ATSSimulator() {
             {isSimulating ? (
               <>
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Simulating {selectedCompany} ATS...
+                {t('ats.simulating')}
               </>
             ) : (
               <>
                 <Zap className="mr-2 h-5 w-5" />
-                Run ATS Simulation
+                {t('ats.simulate')}
               </>
             )}
           </Button>
