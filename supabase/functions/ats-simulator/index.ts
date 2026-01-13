@@ -66,6 +66,46 @@ const companyProfiles: Record<string, { keywords: string[]; priorities: string[]
     keywords: ['oracle database', 'sql', 'plsql', 'java', 'cloud infrastructure', 'erp', 'hcm', 'middleware', 'data management', 'enterprise', 'performance tuning'],
     priorities: ['database expertise', 'enterprise solutions', 'technical excellence', 'innovation'],
     formatting: ['technical depth', 'certifications', 'enterprise experience', 'project details']
+  },
+  'HeteroLabs': {
+    keywords: ['pharmaceutical', 'research', 'development', 'quality assurance', 'gmp', 'fda', 'clinical trials', 'drug formulation', 'analytical chemistry', 'regulatory affairs', 'manufacturing'],
+    priorities: ['quality focus', 'regulatory compliance', 'research aptitude', 'safety standards'],
+    formatting: ['technical expertise', 'certifications', 'research publications', 'project experience']
+  },
+  '247AI': {
+    keywords: ['artificial intelligence', 'machine learning', 'nlp', 'customer service', 'automation', 'chatbots', 'python', 'deep learning', 'analytics', 'cloud', 'conversational ai'],
+    priorities: ['ai expertise', 'customer experience', 'innovation', 'problem solving'],
+    formatting: ['technical skills', 'ai projects', 'quantified impact', 'certifications']
+  },
+  'Acmegrade': {
+    keywords: ['education technology', 'learning management', 'content development', 'assessment', 'analytics', 'web development', 'mobile apps', 'ui/ux', 'agile', 'student engagement'],
+    priorities: ['education passion', 'technology skills', 'creativity', 'user focus'],
+    formatting: ['project portfolio', 'technical skills', 'education background', 'achievements']
+  },
+  'WNS': {
+    keywords: ['business process management', 'analytics', 'automation', 'finance', 'accounting', 'customer service', 'data management', 'rpa', 'transformation', 'consulting'],
+    priorities: ['process excellence', 'analytical skills', 'client focus', 'continuous improvement'],
+    formatting: ['structured format', 'metrics-driven results', 'certifications', 'domain expertise']
+  },
+  'Deloitte': {
+    keywords: ['consulting', 'advisory', 'audit', 'tax', 'strategy', 'analytics', 'digital transformation', 'risk management', 'financial services', 'technology consulting'],
+    priorities: ['analytical thinking', 'client service', 'leadership', 'professional excellence'],
+    formatting: ['consulting format', 'quantified achievements', 'certifications', 'industry experience']
+  },
+  'Capgemini': {
+    keywords: ['digital transformation', 'cloud', 'ai', 'consulting', 'technology services', 'agile', 'devops', 'data analytics', 'enterprise solutions', 'innovation'],
+    priorities: ['client value', 'innovation', 'collaboration', 'technical excellence'],
+    formatting: ['structured resume', 'project achievements', 'certifications', 'global experience']
+  },
+  'HCL': {
+    keywords: ['it services', 'engineering', 'digital', 'cloud', 'cybersecurity', 'iot', 'automation', 'agile', 'devops', 'product engineering'],
+    priorities: ['technical skills', 'innovation', 'client delivery', 'quality focus'],
+    formatting: ['technical depth', 'project experience', 'certifications', 'achievements']
+  },
+  'TechMahindra': {
+    keywords: ['digital transformation', 'telecom', 'network', '5g', 'cloud', 'ai', 'automation', 'consulting', 'enterprise solutions', 'agile'],
+    priorities: ['innovation', 'client focus', 'technical excellence', 'domain expertise'],
+    formatting: ['structured format', 'project achievements', 'certifications', 'industry experience']
   }
 };
 

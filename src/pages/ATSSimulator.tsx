@@ -36,18 +36,26 @@ interface Resume {
 }
 
 const companies = [
-  { id: 'Google', name: 'Google', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg', color: 'bg-white' },
-  { id: 'Amazon', name: 'Amazon', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazon.svg', color: 'bg-white' },
-  { id: 'Microsoft', name: 'Microsoft', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoft.svg', color: 'bg-white' },
-  { id: 'Meta', name: 'Meta', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/meta.svg', color: 'bg-white' },
-  { id: 'Apple', name: 'Apple', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apple.svg', color: 'bg-white' },
-  { id: 'Infosys', name: 'Infosys', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/infosys.svg', color: 'bg-white' },
-  { id: 'TCS', name: 'TCS', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tata.svg', color: 'bg-white' },
-  { id: 'Wipro', name: 'Wipro', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/wipro.svg', color: 'bg-white' },
-  { id: 'Accenture', name: 'Accenture', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/accenture.svg', color: 'bg-white' },
-  { id: 'IBM', name: 'IBM', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/ibm.svg', color: 'bg-white' },
-  { id: 'Cognizant', name: 'Cognizant', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cognizant.svg', color: 'bg-white' },
-  { id: 'Oracle', name: 'Oracle', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/oracle.svg', color: 'bg-white' },
+  { id: 'Google', name: 'Google', initials: 'G', color: 'from-blue-500 to-green-500' },
+  { id: 'Amazon', name: 'Amazon', initials: 'A', color: 'from-orange-500 to-yellow-500' },
+  { id: 'Microsoft', name: 'Microsoft', initials: 'MS', color: 'from-blue-600 to-cyan-500' },
+  { id: 'Meta', name: 'Meta', initials: 'M', color: 'from-blue-500 to-indigo-600' },
+  { id: 'Apple', name: 'Apple', initials: 'AP', color: 'from-gray-700 to-gray-500' },
+  { id: 'Infosys', name: 'Infosys', initials: 'IN', color: 'from-blue-600 to-blue-400' },
+  { id: 'TCS', name: 'TCS', initials: 'TCS', color: 'from-purple-600 to-pink-500' },
+  { id: 'Wipro', name: 'Wipro', initials: 'W', color: 'from-green-600 to-teal-500' },
+  { id: 'Accenture', name: 'Accenture', initials: 'AC', color: 'from-purple-500 to-violet-600' },
+  { id: 'IBM', name: 'IBM', initials: 'IBM', color: 'from-blue-700 to-blue-500' },
+  { id: 'Cognizant', name: 'Cognizant', initials: 'CG', color: 'from-blue-500 to-cyan-400' },
+  { id: 'Oracle', name: 'Oracle', initials: 'OR', color: 'from-red-600 to-red-400' },
+  { id: 'HeteroLabs', name: 'Hetero Labs', initials: 'HL', color: 'from-green-500 to-emerald-400' },
+  { id: '247AI', name: '24/7 AI', initials: '24', color: 'from-indigo-600 to-purple-500' },
+  { id: 'Acmegrade', name: 'Acmegrade', initials: 'AG', color: 'from-teal-500 to-cyan-400' },
+  { id: 'WNS', name: 'WNS Global', initials: 'WNS', color: 'from-blue-800 to-blue-600' },
+  { id: 'Deloitte', name: 'Deloitte', initials: 'DL', color: 'from-green-700 to-green-500' },
+  { id: 'Capgemini', name: 'Capgemini', initials: 'CG', color: 'from-blue-700 to-indigo-500' },
+  { id: 'HCL', name: 'HCL Tech', initials: 'HCL', color: 'from-blue-500 to-sky-400' },
+  { id: 'TechMahindra', name: 'Tech Mahindra', initials: 'TM', color: 'from-red-600 to-pink-500' },
 ];
 
 export default function ATSSimulator() {
@@ -198,8 +206,8 @@ export default function ATSSimulator() {
                   : 'border-border bg-card hover:border-primary/50'
               }`}
             >
-              <div className={`mb-2 h-12 w-12 rounded-lg ${company.color} flex items-center justify-center p-2`}>
-                <img src={company.logo} alt={company.name} className="h-8 w-8 object-contain" />
+              <div className={`mb-2 h-12 w-12 rounded-lg bg-gradient-to-br ${company.color} flex items-center justify-center text-white font-bold text-sm`}>
+                {company.initials}
               </div>
               <p className="font-semibold">{company.name}</p>
             </button>
@@ -405,8 +413,8 @@ export default function ATSSimulator() {
                 </p>
                 <div className="flex gap-4">
                   {companies.map((company) => (
-                    <div key={company.id} className={`h-10 w-10 rounded-lg ${company.color} flex items-center justify-center p-1.5`}>
-                      <img src={company.logo} alt={company.name} className="h-6 w-6 object-contain" />
+                    <div key={company.id} className={`h-10 w-10 rounded-lg bg-gradient-to-br ${company.color} flex items-center justify-center text-white font-bold text-xs`}>
+                      {company.initials}
                     </div>
                   ))}
                 </div>
