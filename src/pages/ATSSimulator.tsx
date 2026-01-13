@@ -36,16 +36,18 @@ interface Resume {
 }
 
 const companies = [
-  { id: 'Google', name: 'Google', logo: 'https://www.google.com/favicon.ico', color: 'bg-white' },
-  { id: 'Amazon', name: 'Amazon', logo: 'https://www.amazon.com/favicon.ico', color: 'bg-white' },
-  { id: 'Microsoft', name: 'Microsoft', logo: 'https://www.microsoft.com/favicon.ico', color: 'bg-white' },
-  { id: 'Meta', name: 'Meta', logo: 'https://static.xx.fbcdn.net/rsrc.php/yb/r/hLRJ1GG_y0J.ico', color: 'bg-white' },
-  { id: 'Apple', name: 'Apple', logo: 'https://www.apple.com/favicon.ico', color: 'bg-white' },
-  { id: 'Infosys', name: 'Infosys', logo: 'https://www.infosys.com/favicon.ico', color: 'bg-white' },
-  { id: 'TCS', name: 'TCS', logo: 'https://www.tcs.com/favicon.ico', color: 'bg-white' },
-  { id: 'Wipro', name: 'Wipro', logo: 'https://www.wipro.com/favicon.ico', color: 'bg-white' },
-  { id: 'Accenture', name: 'Accenture', logo: 'https://www.accenture.com/favicon.ico', color: 'bg-white' },
-  { id: 'IBM', name: 'IBM', logo: 'https://www.ibm.com/favicon.ico', color: 'bg-white' },
+  { id: 'Google', name: 'Google', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/google.svg', color: 'bg-white' },
+  { id: 'Amazon', name: 'Amazon', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/amazon.svg', color: 'bg-white' },
+  { id: 'Microsoft', name: 'Microsoft', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/microsoft.svg', color: 'bg-white' },
+  { id: 'Meta', name: 'Meta', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/meta.svg', color: 'bg-white' },
+  { id: 'Apple', name: 'Apple', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/apple.svg', color: 'bg-white' },
+  { id: 'Infosys', name: 'Infosys', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/infosys.svg', color: 'bg-white' },
+  { id: 'TCS', name: 'TCS', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/tata.svg', color: 'bg-white' },
+  { id: 'Wipro', name: 'Wipro', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/wipro.svg', color: 'bg-white' },
+  { id: 'Accenture', name: 'Accenture', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/accenture.svg', color: 'bg-white' },
+  { id: 'IBM', name: 'IBM', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/ibm.svg', color: 'bg-white' },
+  { id: 'Cognizant', name: 'Cognizant', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/cognizant.svg', color: 'bg-white' },
+  { id: 'Oracle', name: 'Oracle', logo: 'https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/oracle.svg', color: 'bg-white' },
 ];
 
 export default function ATSSimulator() {

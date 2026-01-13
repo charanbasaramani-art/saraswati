@@ -56,6 +56,16 @@ const companyProfiles: Record<string, { keywords: string[]; priorities: string[]
     keywords: ['cloud', 'ai', 'watson', 'hybrid cloud', 'enterprise', 'security', 'blockchain', 'data science', 'automation', 'mainframe', 'consulting'],
     priorities: ['innovation', 'trust', 'dedication', 'enterprise solutions'],
     formatting: ['technical depth', 'certifications', 'enterprise experience']
+  },
+  'Cognizant': {
+    keywords: ['digital transformation', 'cloud', 'data analytics', 'ai', 'java', 'python', '.net', 'agile', 'devops', 'consulting', 'automation', 'client delivery'],
+    priorities: ['client success', 'digital innovation', 'quality delivery', 'collaboration'],
+    formatting: ['structured resume', 'project metrics', 'certifications', 'client experience']
+  },
+  'Oracle': {
+    keywords: ['oracle database', 'sql', 'plsql', 'java', 'cloud infrastructure', 'erp', 'hcm', 'middleware', 'data management', 'enterprise', 'performance tuning'],
+    priorities: ['database expertise', 'enterprise solutions', 'technical excellence', 'innovation'],
+    formatting: ['technical depth', 'certifications', 'enterprise experience', 'project details']
   }
 };
 
