@@ -36,26 +36,26 @@ interface Resume {
 }
 
 const companies = [
-  { id: 'Google', name: 'Google', initials: 'G', color: 'from-blue-500 to-green-500' },
-  { id: 'Amazon', name: 'Amazon', initials: 'A', color: 'from-orange-500 to-yellow-500' },
-  { id: 'Microsoft', name: 'Microsoft', initials: 'MS', color: 'from-blue-600 to-cyan-500' },
-  { id: 'Meta', name: 'Meta', initials: 'M', color: 'from-blue-500 to-indigo-600' },
-  { id: 'Apple', name: 'Apple', initials: 'AP', color: 'from-gray-700 to-gray-500' },
-  { id: 'Infosys', name: 'Infosys', initials: 'IN', color: 'from-blue-600 to-blue-400' },
-  { id: 'TCS', name: 'TCS', initials: 'TCS', color: 'from-purple-600 to-pink-500' },
-  { id: 'Wipro', name: 'Wipro', initials: 'W', color: 'from-green-600 to-teal-500' },
-  { id: 'Accenture', name: 'Accenture', initials: 'AC', color: 'from-purple-500 to-violet-600' },
-  { id: 'IBM', name: 'IBM', initials: 'IBM', color: 'from-blue-700 to-blue-500' },
-  { id: 'Cognizant', name: 'Cognizant', initials: 'CG', color: 'from-blue-500 to-cyan-400' },
-  { id: 'Oracle', name: 'Oracle', initials: 'OR', color: 'from-red-600 to-red-400' },
-  { id: 'HeteroLabs', name: 'Hetero Labs', initials: 'HL', color: 'from-green-500 to-emerald-400' },
-  { id: '247AI', name: '24/7 AI', initials: '24', color: 'from-indigo-600 to-purple-500' },
-  { id: 'Acmegrade', name: 'Acmegrade', initials: 'AG', color: 'from-teal-500 to-cyan-400' },
-  { id: 'WNS', name: 'WNS Global', initials: 'WNS', color: 'from-blue-800 to-blue-600' },
-  { id: 'Deloitte', name: 'Deloitte', initials: 'DL', color: 'from-green-700 to-green-500' },
-  { id: 'Capgemini', name: 'Capgemini', initials: 'CG', color: 'from-blue-700 to-indigo-500' },
-  { id: 'HCL', name: 'HCL Tech', initials: 'HCL', color: 'from-blue-500 to-sky-400' },
-  { id: 'TechMahindra', name: 'Tech Mahindra', initials: 'TM', color: 'from-red-600 to-pink-500' },
+  { id: 'Google', name: 'Google', logo: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png', initials: 'G', color: 'from-blue-500 to-green-500' },
+  { id: 'Amazon', name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/320px-Amazon_logo.svg.png', initials: 'A', color: 'from-orange-500 to-yellow-500' },
+  { id: 'Microsoft', name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/200px-Microsoft_logo.svg.png', initials: 'MS', color: 'from-blue-600 to-cyan-500' },
+  { id: 'Meta', name: 'Meta', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/200px-Meta_Platforms_Inc._logo.svg.png', initials: 'M', color: 'from-blue-500 to-indigo-600' },
+  { id: 'Apple', name: 'Apple', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/100px-Apple_logo_black.svg.png', initials: 'AP', color: 'from-gray-700 to-gray-500' },
+  { id: 'Infosys', name: 'Infosys', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Infosys_logo.svg/200px-Infosys_logo.svg.png', initials: 'IN', color: 'from-blue-600 to-blue-400' },
+  { id: 'TCS', name: 'TCS', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Tata_Consultancy_Services_Logo.svg/200px-Tata_Consultancy_Services_Logo.svg.png', initials: 'TCS', color: 'from-purple-600 to-pink-500' },
+  { id: 'Wipro', name: 'Wipro', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Wipro_Primary_Logo_Color_RGB.svg/200px-Wipro_Primary_Logo_Color_RGB.svg.png', initials: 'W', color: 'from-green-600 to-teal-500' },
+  { id: 'Accenture', name: 'Accenture', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Accenture.svg/200px-Accenture.svg.png', initials: 'AC', color: 'from-purple-500 to-violet-600' },
+  { id: 'IBM', name: 'IBM', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/200px-IBM_logo.svg.png', initials: 'IBM', color: 'from-blue-700 to-blue-500' },
+  { id: 'Cognizant', name: 'Cognizant', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Cognizant%27s_logo.svg/200px-Cognizant%27s_logo.svg.png', initials: 'CG', color: 'from-blue-500 to-cyan-400' },
+  { id: 'Oracle', name: 'Oracle', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/200px-Oracle_logo.svg.png', initials: 'OR', color: 'from-red-600 to-red-400' },
+  { id: 'HeteroLabs', name: 'Hetero Labs', logo: '', initials: 'HL', color: 'from-green-500 to-emerald-400' },
+  { id: '247AI', name: '24/7 AI', logo: '', initials: '24', color: 'from-indigo-600 to-purple-500' },
+  { id: 'Acmegrade', name: 'Acmegrade', logo: '', initials: 'AG', color: 'from-teal-500 to-cyan-400' },
+  { id: 'WNS', name: 'WNS Global', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/WNS_Global_Services_Logo.svg/200px-WNS_Global_Services_Logo.svg.png', initials: 'WNS', color: 'from-blue-800 to-blue-600' },
+  { id: 'Deloitte', name: 'Deloitte', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Deloitte.svg/200px-Deloitte.svg.png', initials: 'DL', color: 'from-green-700 to-green-500' },
+  { id: 'Capgemini', name: 'Capgemini', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Capgemini_201x_logo.svg/200px-Capgemini_201x_logo.svg.png', initials: 'CG', color: 'from-blue-700 to-indigo-500' },
+  { id: 'HCL', name: 'HCL Tech', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/HCL_Technologies_logo.svg/200px-HCL_Technologies_logo.svg.png', initials: 'HCL', color: 'from-blue-500 to-sky-400' },
+  { id: 'TechMahindra', name: 'Tech Mahindra', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Tech_Mahindra_Logo.svg/200px-Tech_Mahindra_Logo.svg.png', initials: 'TM', color: 'from-red-600 to-pink-500' },
 ];
 
 export default function ATSSimulator() {
@@ -206,8 +206,11 @@ export default function ATSSimulator() {
                   : 'border-border bg-card hover:border-primary/50'
               }`}
             >
-              <div className={`mb-2 h-12 w-12 rounded-lg bg-gradient-to-br ${company.color} flex items-center justify-center text-white font-bold text-sm`}>
-                {company.initials}
+              <div className={`mb-2 h-12 w-12 rounded-lg ${company.logo ? 'bg-white' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1.5`}>
+                {company.logo ? (
+                  <img src={company.logo} alt={company.name} className="h-full w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                ) : null}
+                <span className={`${company.logo ? 'hidden' : ''} text-white font-bold text-sm`}>{company.initials}</span>
               </div>
               <p className="font-semibold">{company.name}</p>
             </button>
@@ -413,8 +416,12 @@ export default function ATSSimulator() {
                 </p>
                 <div className="flex gap-4">
                   {companies.map((company) => (
-                    <div key={company.id} className={`h-10 w-10 rounded-lg bg-gradient-to-br ${company.color} flex items-center justify-center text-white font-bold text-xs`}>
-                      {company.initials}
+                    <div key={company.id} className={`h-10 w-10 rounded-lg ${company.logo ? 'bg-white' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1`}>
+                      {company.logo ? (
+                        <img src={company.logo} alt={company.name} className="h-full w-full object-contain" />
+                      ) : (
+                        <span className="text-white font-bold text-xs">{company.initials}</span>
+                      )}
                     </div>
                   ))}
                 </div>
