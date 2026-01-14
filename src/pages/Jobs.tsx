@@ -15,7 +15,12 @@ import {
   Clock,
   Filter,
   Loader2,
-  ExternalLink
+  ExternalLink,
+  Sparkles,
+  TrendingUp,
+  Users,
+  DollarSign,
+  X
 } from 'lucide-react';
 
 interface Job {
@@ -86,49 +91,145 @@ export default function Jobs() {
     setFilteredJobs(filtered);
   };
 
+  const clearFilters = () => {
+    setSearchQuery('');
+    setSelectedDomain('all');
+    setSelectedLocation('all');
+    setSelectedExperience('all');
+  };
+
+  const hasActiveFilters = searchQuery || selectedDomain !== 'all' || selectedLocation !== 'all' || selectedExperience !== 'all';
+
   const domains = [...new Set(jobs.map((job) => job.domain))];
   const locations = [...new Set(jobs.map((job) => job.location.split(',')[0].trim()))];
 
   const getExperienceBadgeColor = (level: string) => {
     switch (level) {
-      case 'entry': return 'bg-green-100 text-green-800';
-      case 'mid': return 'bg-blue-100 text-blue-800';
-      case 'senior': return 'bg-purple-100 text-purple-800';
+      case 'entry': return 'bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30';
+      case 'mid': return 'bg-blue-500/20 text-blue-600 dark:text-blue-400 border-blue-500/30';
+      case 'senior': return 'bg-purple-500/20 text-purple-600 dark:text-purple-400 border-purple-500/30';
+      default: return 'bg-muted text-muted-foreground';
+    }
+  };
+
+  const getJobTypeBadgeColor = (type: string) => {
+    switch (type.toLowerCase()) {
+      case 'full-time': return 'bg-primary/20 text-primary border-primary/30';
+      case 'part-time': return 'bg-amber-500/20 text-amber-600 dark:text-amber-400 border-amber-500/30';
+      case 'remote': return 'bg-cyan-500/20 text-cyan-600 dark:text-cyan-400 border-cyan-500/30';
       default: return 'bg-muted text-muted-foreground';
     }
   };
 
   return (
     <Layout>
+      {/* Hero Header */}
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0 gradient-bg" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="gradient-orb gradient-orb-1" />
+          <div className="gradient-orb gradient-orb-2" />
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="max-w-3xl animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
+              <Briefcase className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium">Career Opportunities</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+              {t('jobs.title')}
+            </h1>
+            <p className="text-xl text-muted-foreground">{t('jobs.subtitle')}</p>
+          </div>
+        </div>
+      </section>
+
       <div className="container py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">{t('jobs.title')}</h1>
-          <p className="text-muted-foreground mt-1">{t('jobs.subtitle')}</p>
+        {/* Stats Bar */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 -mt-8 relative z-20">
+          <Card className="glass-card">
+            <CardContent className="py-4 flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Briefcase className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-foreground">{jobs.length}</p>
+                <p className="text-xs text-muted-foreground">Active Jobs</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="glass-card">
+            <CardContent className="py-4 flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-green-500/10 flex items-center justify-center">
+                <TrendingUp className="h-5 w-5 text-green-500" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-foreground">{domains.length}</p>
+                <p className="text-xs text-muted-foreground">Domains</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="glass-card">
+            <CardContent className="py-4 flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+                <MapPin className="h-5 w-5 text-blue-500" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-foreground">{locations.length}</p>
+                <p className="text-xs text-muted-foreground">Locations</p>
+              </div>
+            </CardContent>
+          </Card>
+          <Card className="glass-card">
+            <CardContent className="py-4 flex items-center gap-3">
+              <div className="h-10 w-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+                <Users className="h-5 w-5 text-purple-500" />
+              </div>
+              <div>
+                <p className="text-2xl font-bold text-foreground">{new Set(jobs.map(j => j.company)).size}</p>
+                <p className="text-xs text-muted-foreground">Companies</p>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
-        <Card className="border-border mb-8">
+        {/* Filters */}
+        <Card className="glass-card mb-8">
           <CardContent className="pt-6">
             <div className="grid gap-4 md:grid-cols-5">
               <div className="md:col-span-2 relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <Input placeholder={t('jobs.searchPlaceholder')} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="pl-10" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input 
+                  placeholder={t('jobs.searchPlaceholder')} 
+                  value={searchQuery} 
+                  onChange={(e) => setSearchQuery(e.target.value)} 
+                  className="pl-12 h-12 bg-muted/50 border-border/50"
+                />
               </div>
               <Select value={selectedDomain} onValueChange={setSelectedDomain}>
-                <SelectTrigger><SelectValue placeholder="Domain" /></SelectTrigger>
+                <SelectTrigger className="h-12 bg-muted/50 border-border/50">
+                  <SelectValue placeholder="Domain" />
+                </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">{t('jobs.allDomains')}</SelectItem>
                   {domains.map((domain) => (<SelectItem key={domain} value={domain}>{domain}</SelectItem>))}
                 </SelectContent>
               </Select>
               <Select value={selectedLocation} onValueChange={setSelectedLocation}>
-                <SelectTrigger><SelectValue placeholder={t('jobs.filters.location')} /></SelectTrigger>
+                <SelectTrigger className="h-12 bg-muted/50 border-border/50">
+                  <SelectValue placeholder={t('jobs.filters.location')} />
+                </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">{t('jobs.allLocations')}</SelectItem>
                   {locations.map((location) => (<SelectItem key={location} value={location}>{location}</SelectItem>))}
                 </SelectContent>
               </Select>
               <Select value={selectedExperience} onValueChange={setSelectedExperience}>
-                <SelectTrigger><SelectValue placeholder={t('jobs.filters.experience')} /></SelectTrigger>
+                <SelectTrigger className="h-12 bg-muted/50 border-border/50">
+                  <SelectValue placeholder={t('jobs.filters.experience')} />
+                </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">{t('jobs.allLevels')}</SelectItem>
                   <SelectItem value="entry">{t('jobs.entryLevel')}</SelectItem>
@@ -140,51 +241,132 @@ export default function Jobs() {
           </CardContent>
         </Card>
 
-        <div className="flex items-center justify-between mb-6">
-          <p className="text-muted-foreground">{t('common.showing')} <span className="font-medium text-foreground">{filteredJobs.length}</span> {t('nav.jobs').toLowerCase()}</p>
-          <Button variant="outline" size="sm" onClick={() => { setSearchQuery(''); setSelectedDomain('all'); setSelectedLocation('all'); setSelectedExperience('all'); }}>
-            <Filter className="mr-2 h-4 w-4" />{t('common.clearFilters')}
-          </Button>
+        {/* Results Header */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div className="flex items-center gap-3">
+            <p className="text-muted-foreground">
+              {t('common.showing')} <span className="font-semibold text-foreground">{filteredJobs.length}</span> {t('nav.jobs').toLowerCase()}
+            </p>
+            {hasActiveFilters && (
+              <Badge variant="secondary" className="gap-1">
+                <Filter className="h-3 w-3" />
+                Filtered
+              </Badge>
+            )}
+          </div>
+          
+          {hasActiveFilters && (
+            <Button variant="outline" size="sm" onClick={clearFilters} className="gap-2">
+              <X className="h-4 w-4" />
+              {t('common.clearFilters')}
+            </Button>
+          )}
         </div>
 
+        {/* Job Listings */}
         {isLoading ? (
-          <div className="flex items-center justify-center py-16"><Loader2 className="h-8 w-8 animate-spin text-primary" /></div>
+          <div className="flex flex-col items-center justify-center py-20">
+            <Loader2 className="h-12 w-12 animate-spin text-primary mb-4" />
+            <p className="text-muted-foreground">Loading opportunities...</p>
+          </div>
         ) : filteredJobs.length === 0 ? (
-          <Card className="border-border">
-            <CardContent className="py-16 text-center">
-              <Briefcase className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
-              <h3 className="text-xl font-semibold text-foreground mb-2">{t('jobs.noJobs')}</h3>
-              <p className="text-muted-foreground">{jobs.length === 0 ? t('jobs.noJobsEmpty') : t('jobs.noJobsFilter')}</p>
+          <Card className="glass-card">
+            <CardContent className="py-20 text-center">
+              <div className="h-20 w-20 rounded-2xl bg-muted/50 flex items-center justify-center mx-auto mb-6">
+                <Briefcase className="h-10 w-10 text-muted-foreground" />
+              </div>
+              <h3 className="text-2xl font-bold text-foreground mb-2">{t('jobs.noJobs')}</h3>
+              <p className="text-muted-foreground max-w-md mx-auto">
+                {jobs.length === 0 ? t('jobs.noJobsEmpty') : t('jobs.noJobsFilter')}
+              </p>
+              {hasActiveFilters && (
+                <Button onClick={clearFilters} className="mt-6">
+                  Clear Filters
+                </Button>
+              )}
             </CardContent>
           </Card>
         ) : (
-          <div className="grid gap-6">
-            {filteredJobs.map((job) => (
-              <Card key={job.id} className="border-border hover:shadow-md transition-shadow">
-                <CardContent className="pt-6">
-                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-xl font-semibold text-foreground">{job.title}</h3>
-                        <Badge className={getExperienceBadgeColor(job.experience_level)}>
-                          {job.experience_level.charAt(0).toUpperCase() + job.experience_level.slice(1)} {t('jobs.level')}
-                        </Badge>
-                      </div>
-                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
-                        <span className="flex items-center gap-1"><Building2 className="h-4 w-4" />{job.company}</span>
-                        <span className="flex items-center gap-1"><MapPin className="h-4 w-4" />{job.location}</span>
-                        <span className="flex items-center gap-1"><Briefcase className="h-4 w-4" />{job.job_type}</span>
-                        {job.salary_range && <span className="flex items-center gap-1 text-primary font-medium">{job.salary_range}</span>}
-                      </div>
-                      <p className="text-muted-foreground mb-4 line-clamp-2">{job.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {job.skills_required.slice(0, 5).map((skill, index) => (<Badge key={index} variant="secondary">{skill}</Badge>))}
-                        {job.skills_required.length > 5 && <Badge variant="outline">+{job.skills_required.length - 5} {t('jobs.moreSkills')}</Badge>}
+          <div className="grid gap-4">
+            {filteredJobs.map((job, index) => (
+              <Card 
+                key={job.id} 
+                className="glass-card hover-lift group animate-fade-in"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <CardContent className="p-6">
+                  <div className="flex flex-col lg:flex-row lg:items-start gap-6">
+                    {/* Company Logo Placeholder */}
+                    <div className="flex-shrink-0">
+                      <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Building2 className="h-7 w-7 text-primary" />
                       </div>
                     </div>
-                    <div className="flex flex-col gap-2 lg:items-end">
-                      <Button>{t('jobs.apply')}<ExternalLink className="ml-2 h-4 w-4" /></Button>
-                      <span className="text-xs text-muted-foreground flex items-center gap-1"><Clock className="h-3 w-3" />{new Date(job.created_at).toLocaleDateString()}</span>
+                    
+                    {/* Job Details */}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-start justify-between gap-3 mb-3">
+                        <div>
+                          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                            {job.title}
+                          </h3>
+                          <p className="text-primary font-medium">{job.company}</p>
+                        </div>
+                        <div className="flex gap-2">
+                          <Badge className={getExperienceBadgeColor(job.experience_level)}>
+                            {job.experience_level.charAt(0).toUpperCase() + job.experience_level.slice(1)} {t('jobs.level')}
+                          </Badge>
+                          <Badge className={getJobTypeBadgeColor(job.job_type)}>
+                            {job.job_type}
+                          </Badge>
+                        </div>
+                      </div>
+                      
+                      <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
+                        <span className="flex items-center gap-1.5">
+                          <MapPin className="h-4 w-4" />
+                          {job.location}
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                          <Sparkles className="h-4 w-4" />
+                          {job.domain}
+                        </span>
+                        {job.salary_range && (
+                          <span className="flex items-center gap-1.5 text-green-600 dark:text-green-400 font-medium">
+                            <DollarSign className="h-4 w-4" />
+                            {job.salary_range}
+                          </span>
+                        )}
+                      </div>
+                      
+                      <p className="text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+                        {job.description}
+                      </p>
+                      
+                      <div className="flex flex-wrap gap-2">
+                        {job.skills_required.slice(0, 5).map((skill, index) => (
+                          <Badge key={index} variant="secondary" className="bg-muted/80">
+                            {skill}
+                          </Badge>
+                        ))}
+                        {job.skills_required.length > 5 && (
+                          <Badge variant="outline">
+                            +{job.skills_required.length - 5} {t('jobs.moreSkills')}
+                          </Badge>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {/* Actions */}
+                    <div className="flex flex-col gap-3 lg:items-end flex-shrink-0">
+                      <Button className="btn-glow gap-2">
+                        {t('jobs.apply')}
+                        <ExternalLink className="h-4 w-4" />
+                      </Button>
+                      <span className="text-xs text-muted-foreground flex items-center gap-1.5">
+                        <Clock className="h-3.5 w-3.5" />
+                        {new Date(job.created_at).toLocaleDateString()}
+                      </span>
                     </div>
                   </div>
                 </CardContent>

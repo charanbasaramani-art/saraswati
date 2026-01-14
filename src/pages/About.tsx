@@ -1,63 +1,114 @@
 import { Layout } from '@/components/layout/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
-import { Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield } from 'lucide-react';
+import { Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket, Heart, Zap, Globe } from 'lucide-react';
 
 export default function About() {
   const { t } = useTranslation();
 
   const technologies = [
-    { icon: Code2, name: t('about.tech.react'), description: t('about.tech.reactDesc') },
-    { icon: Database, name: t('about.tech.backend'), description: t('about.tech.backendDesc') },
-    { icon: Brain, name: t('about.tech.ai'), description: t('about.tech.aiDesc') },
-    { icon: Shield, name: t('about.tech.auth'), description: t('about.tech.authDesc') },
+    { icon: Code2, name: t('about.tech.react'), description: t('about.tech.reactDesc'), color: 'from-blue-500 to-cyan-500' },
+    { icon: Database, name: t('about.tech.backend'), description: t('about.tech.backendDesc'), color: 'from-green-500 to-emerald-500' },
+    { icon: Brain, name: t('about.tech.ai'), description: t('about.tech.aiDesc'), color: 'from-purple-500 to-pink-500' },
+    { icon: Shield, name: t('about.tech.auth'), description: t('about.tech.authDesc'), color: 'from-orange-500 to-red-500' },
   ];
 
   const features = [
-    { title: t('about.features.parsing'), description: t('about.features.parsingDesc') },
-    { title: t('about.features.analysis'), description: t('about.features.analysisDesc') },
-    { title: t('about.features.ats'), description: t('about.features.atsDesc') },
-    { title: t('about.features.jobs'), description: t('about.features.jobsDesc') },
-    { title: t('about.features.admin'), description: t('about.features.adminDesc') },
-    { title: t('about.features.responsive'), description: t('about.features.responsiveDesc') },
+    { title: t('about.features.parsing'), description: t('about.features.parsingDesc'), icon: Sparkles },
+    { title: t('about.features.analysis'), description: t('about.features.analysisDesc'), icon: Brain },
+    { title: t('about.features.ats'), description: t('about.features.atsDesc'), icon: Target },
+    { title: t('about.features.jobs'), description: t('about.features.jobsDesc'), icon: Rocket },
+    { title: t('about.features.admin'), description: t('about.features.adminDesc'), icon: Shield },
+    { title: t('about.features.responsive'), description: t('about.features.responsiveDesc'), icon: Globe },
+  ];
+
+  const stats = [
+    { value: '10K+', label: 'Resumes Analyzed', icon: Sparkles },
+    { value: '95%', label: 'Success Rate', icon: Target },
+    { value: '50+', label: 'Companies', icon: Users },
+    { value: '24/7', label: 'AI Support', icon: Zap },
   ];
 
   return (
     <Layout>
-      <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
-        <div className="container">
-          <div className="mx-auto max-w-3xl text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-              {t('about.title')} <span className="text-primary">ResumeAI</span>
+      {/* Hero Section with Gradient */}
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 gradient-bg" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="gradient-orb gradient-orb-1" />
+          <div className="gradient-orb gradient-orb-2" />
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-4xl text-center animate-fade-in">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
+              <Heart className="h-4 w-4 text-primary animate-pulse" />
+              <span className="text-sm font-medium">{t('common.welcome')}</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-6">
+              {t('about.title')} <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">ResumeAI</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground">{t('about.subtitle')}</p>
+            
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              {t('about.subtitle')}
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="py-16">
+      {/* Stats Section */}
+      <section className="py-12 -mt-12 relative z-20">
         <div className="container">
-          <div className="grid gap-12 lg:grid-cols-2 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-foreground mb-6">{t('about.projectOverview')}</h2>
-              <div className="space-y-4 text-muted-foreground">
-                <p>{t('about.projectDesc1')}</p>
-                <p>{t('about.projectDesc2')}</p>
-                <p>{t('about.projectDesc3')}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {stats.map((stat, index) => (
+              <Card key={index} className="glass-card text-center hover-lift">
+                <CardContent className="pt-6 pb-4">
+                  <stat.icon className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <p className="text-3xl font-bold bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">{stat.value}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Project Overview */}
+      <section className="py-20">
+        <div className="container">
+          <div className="grid gap-16 lg:grid-cols-2 items-center">
+            <div className="animate-fade-in">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+                <Rocket className="h-4 w-4" />
+                {t('about.projectOverview')}
+              </div>
+              
+              <h2 className="text-4xl font-bold text-foreground mb-6 leading-tight">
+                Transform Your Career with <span className="text-primary">AI-Powered</span> Resume Analysis
+              </h2>
+              
+              <div className="space-y-4 text-muted-foreground text-lg">
+                <p className="leading-relaxed">{t('about.projectDesc1')}</p>
+                <p className="leading-relaxed">{t('about.projectDesc2')}</p>
+                <p className="leading-relaxed">{t('about.projectDesc3')}</p>
               </div>
             </div>
+            
             <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: GraduationCap, label: t('about.forStudents'), value: t('about.forStudentsDesc') },
-                { icon: Brain, label: t('about.aiPowered'), value: t('about.aiPoweredDesc') },
-                { icon: Target, label: t('about.atsOptimized'), value: t('about.atsOptimizedDesc') },
-                { icon: Users, label: t('about.userFriendly'), value: t('about.userFriendlyDesc') },
+                { icon: GraduationCap, label: t('about.forStudents'), value: t('about.forStudentsDesc'), gradient: 'from-blue-500/20 to-cyan-500/20' },
+                { icon: Brain, label: t('about.aiPowered'), value: t('about.aiPoweredDesc'), gradient: 'from-purple-500/20 to-pink-500/20' },
+                { icon: Target, label: t('about.atsOptimized'), value: t('about.atsOptimizedDesc'), gradient: 'from-green-500/20 to-emerald-500/20' },
+                { icon: Users, label: t('about.userFriendly'), value: t('about.userFriendlyDesc'), gradient: 'from-orange-500/20 to-red-500/20' },
               ].map((item, index) => (
-                <Card key={index} className="border-border">
+                <Card key={index} className={`glass-card hover-lift bg-gradient-to-br ${item.gradient} border-0`}>
                   <CardContent className="pt-6">
-                    <item.icon className="h-8 w-8 text-primary mb-3" />
-                    <h3 className="font-semibold text-foreground">{item.label}</h3>
-                    <p className="text-sm text-muted-foreground">{item.value}</p>
+                    <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                      <item.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="font-bold text-foreground text-lg mb-2">{item.label}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.value}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -66,20 +117,32 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-16 bg-card/50">
-        <div className="container">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-12">{t('about.keyFeatures')}</h2>
+      {/* Key Features */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-muted/30 to-background" />
+        <div className="container relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <Sparkles className="h-4 w-4" />
+              Features
+            </div>
+            <h2 className="text-4xl font-bold text-foreground mb-4">{t('about.keyFeatures')}</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Powerful features designed to give you the competitive edge in your job search
+            </p>
+          </div>
+          
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
-              <Card key={index} className="border-border">
+              <Card key={index} className="glass-card hover-lift group">
                 <CardHeader>
-                  <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center mb-2">
-                    <Sparkles className="h-5 w-5 text-primary" />
+                  <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <feature.icon className="h-7 w-7 text-primary" />
                   </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  <CardTitle className="text-xl">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground text-sm">{feature.description}</p>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -87,18 +150,31 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-16">
+      {/* Tech Stack */}
+      <section className="py-20">
         <div className="container">
-          <h2 className="text-3xl font-bold text-foreground text-center mb-12">{t('about.techStack')}</h2>
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <Code2 className="h-4 w-4" />
+              Technology
+            </div>
+            <h2 className="text-4xl font-bold text-foreground mb-4">{t('about.techStack')}</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Built with cutting-edge technologies for the best performance
+            </p>
+          </div>
+          
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {technologies.map((tech, index) => (
-              <Card key={index} className="border-border text-center">
-                <CardContent className="pt-6">
-                  <div className="mx-auto h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <tech.icon className="h-7 w-7 text-primary" />
+              <Card key={index} className="glass-card hover-lift text-center group">
+                <CardContent className="pt-8 pb-6">
+                  <div className={`mx-auto h-20 w-20 rounded-2xl bg-gradient-to-br ${tech.color} p-0.5 mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="h-full w-full rounded-2xl bg-card flex items-center justify-center">
+                      <tech.icon className="h-9 w-9 text-primary" />
+                    </div>
                   </div>
-                  <h3 className="font-semibold text-foreground">{tech.name}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{tech.description}</p>
+                  <h3 className="font-bold text-foreground text-lg mb-2">{tech.name}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{tech.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -106,12 +182,22 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-16 bg-primary">
-        <div className="container">
-          <div className="mx-auto max-w-2xl text-center">
-            <GraduationCap className="h-12 w-12 text-primary-foreground mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-primary-foreground mb-4">{t('about.academic.title')}</h2>
-            <p className="text-primary-foreground/80">{t('about.academic.description')}</p>
+      {/* Academic Section */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent-foreground opacity-90" />
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="gradient-orb gradient-orb-1 opacity-20" />
+          <div className="gradient-orb gradient-orb-3 opacity-20" />
+        </div>
+        
+        <div className="container relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <div className="inline-flex items-center justify-center h-20 w-20 rounded-2xl bg-primary-foreground/20 mb-8">
+              <GraduationCap className="h-10 w-10 text-primary-foreground" />
+            </div>
+            
+            <h2 className="text-4xl font-bold text-primary-foreground mb-6">{t('about.academic.title')}</h2>
+            <p className="text-xl text-primary-foreground/80 leading-relaxed">{t('about.academic.description')}</p>
           </div>
         </div>
       </section>
