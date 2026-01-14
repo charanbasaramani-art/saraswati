@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Globe } from 'lucide-react';
+import { Globe, Check } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,9 +9,9 @@ import {
 import { Button } from '@/components/ui/button';
 
 const languages = [
-  { code: 'en', name: 'English', nativeName: 'English' },
-  { code: 'hi', name: 'Hindi', nativeName: 'हिंदी' },
-  { code: 'te', name: 'Telugu', nativeName: 'తెలుగు' },
+  { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸' },
+  { code: 'hi', name: 'Hindi', nativeName: 'हिंदी', flag: '🇮🇳' },
+  { code: 'te', name: 'Telugu', nativeName: 'తెలుగు', flag: '🇮🇳' },
 ];
 
 export function LanguageSelector() {
@@ -31,29 +31,42 @@ export function LanguageSelector() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          size="icon"
-          className="glass hover:bg-accent/10 theme-transition"
+          size="sm"
+          className="gap-2 glass hover:bg-accent/10 theme-transition px-3"
           aria-label={t('language.select')}
         >
-          <Globe className="h-5 w-5" />
+          <span className="text-lg">{currentLanguage.flag}</span>
+          <Globe className="h-4 w-4" />
+          <span className="hidden sm:inline text-sm font-medium">{currentLanguage.code.toUpperCase()}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="glass-card min-w-[150px]">
+      <DropdownMenuContent align="end" className="glass-card min-w-[200px] p-2">
+        <div className="px-2 py-1.5 text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">
+          Select Language
+        </div>
         {languages.map((language) => (
           <DropdownMenuItem
             key={language.code}
             onClick={() => handleLanguageChange(language.code)}
-            className={`cursor-pointer theme-transition ${
+            className={`cursor-pointer rounded-lg px-3 py-3 theme-transition flex items-center justify-between ${
               currentLanguage.code === language.code
                 ? 'bg-primary/10 text-primary'
                 : 'hover:bg-accent/10'
             }`}
           >
-            <span className="font-medium">{language.nativeName}</span>
-            {language.code !== 'en' && (
-              <span className="ml-2 text-muted-foreground text-sm">
-                ({language.name})
-              </span>
+            <div className="flex items-center gap-3">
+              <span className="text-xl">{language.flag}</span>
+              <div>
+                <span className="font-medium block">{language.nativeName}</span>
+                {language.code !== 'en' && (
+                  <span className="text-xs text-muted-foreground">
+                    {language.name}
+                  </span>
+                )}
+              </div>
+            </div>
+            {currentLanguage.code === language.code && (
+              <Check className="h-4 w-4 text-primary" />
             )}
           </DropdownMenuItem>
         ))}
