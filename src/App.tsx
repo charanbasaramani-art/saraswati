@@ -17,6 +17,8 @@ import ResumeImprovements from "./pages/ResumeImprovements";
 import SoftSkillAnalyzer from "./pages/SoftSkillAnalyzer";
 import ATSSimulator from "./pages/ATSSimulator";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
+import MockInterview from "./pages/MockInterview";
+import HiringPredictor from "./pages/HiringPredictor";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +44,8 @@ const App = () => (
               <Route path="/soft-skills" element={<SoftSkillAnalyzer />} />
               <Route path="/ats-simulator" element={<ATSSimulator />} />
               <Route path="/recruiter" element={<RecruiterDashboard />} />
+              <Route path="/mock-interview" element={<MockInterview />} />
+              <Route path="/hiring-predictor" element={<HiringPredictor />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
