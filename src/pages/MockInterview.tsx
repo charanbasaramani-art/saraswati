@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -95,6 +95,7 @@ export default function MockInterview() {
   // Voice state
   const [useVoiceInput, setUseVoiceInput] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const handleSubmitAnswerRef = useRef<() => void>(() => {});
   
   const { isListening, isSpeaking, isSupported, startListening, stopListening, speak, stopSpeaking } = useVoice({
     onResult: (transcript) => {
@@ -128,7 +129,7 @@ export default function MockInterview() {
         setTimeRemaining(prev => prev - 1);
       }, 1000);
     } else if (timeRemaining === 0 && isTimerRunning) {
-      handleSubmitAnswer();
+      handleSubmitAnswerRef.current();
     }
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -216,7 +217,7 @@ export default function MockInterview() {
     }
   };
 
-  const handleSubmitAnswer = () => {
+  const handleSubmitAnswer = useCallback(() => {
     if (!currentAnswer.trim()) {
       toast({
         title: t('mockInterview.pleaseProvideAnswer'),
@@ -246,7 +247,10 @@ export default function MockInterview() {
     } else {
       completeInterview([...responses, response]);
     }
-  };
+  }, [currentAnswer, questions, currentQuestionIndex, timeRemaining, useVoiceInput, isSupported, speak, responses, t, toast]);
+
+  // Update ref for timer effect
+  handleSubmitAnswerRef.current = handleSubmitAnswer;
 
   const completeInterview = async (allResponses: InterviewResponse[]) => {
     setIsTimerRunning(false);

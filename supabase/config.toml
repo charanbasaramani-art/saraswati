@@ -11,3 +11,12 @@ verify_jwt = false
 
 [functions.improve-resume]
 verify_jwt = false
+
+[functions.mock-interview]
+verify_jwt = false
+
+[functions.ats-simulator]
+verify_jwt = false
+
+[functions.analyze-soft-skills]
+verify_jwt = false

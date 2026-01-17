@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
-import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users } from 'lucide-react';
+import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users, Video, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { LanguageSelector } from '@/components/LanguageSelector';
@@ -52,6 +52,14 @@ export function Navbar() {
                   <Link to="/ats-simulator" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
                     <Target className="h-4 w-4" />
                     {t('nav.atsSimulator')}
+                  </Link>
+                  <Link to="/mock-interview" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                    <Video className="h-4 w-4" />
+                    {t('nav.mockInterview')}
+                  </Link>
+                  <Link to="/hiring-predictor" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                    <TrendingUp className="h-4 w-4" />
+                    {t('nav.hiringPredictor')}
                   </Link>
                   {isRecruiter && (
                     <Link to="/recruiter" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
@@ -119,6 +127,12 @@ export function Navbar() {
               </Link>
               <Link to="/ats-simulator" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
                 {t('nav.atsSimulator')}
+              </Link>
+              <Link to="/mock-interview" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+                {t('nav.mockInterview')}
+              </Link>
+              <Link to="/hiring-predictor" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+                {t('nav.hiringPredictor')}
               </Link>
               {isRecruiter && (
                 <Link to="/recruiter" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>

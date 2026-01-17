@@ -34,7 +34,9 @@
     "improvements": "Improvements",
     "softSkills": "Soft Skills",
     "atsSimulator": "ATS Check",
-    "recruiter": "Recruiter"
+    "recruiter": "Recruiter",
+    "mockInterview": "Mock Interview",
+    "hiringPredictor": "Hiring Predictor"
   },
   "landing": {
     "title": "AI-Powered Resume Analyzer",
@@ -313,5 +315,96 @@
     "softSkillScore": "Soft Skill Score",
     "atsScore": "ATS Score",
     "hiringSuitability": "Hiring Suitability"
+  },
+  "mockInterview": {
+    "title": "AI Mock Interview",
+    "subtitle": "Practice with an AI interviewer and get real-time feedback",
+    "configure": "Configure Interview",
+    "configureDesc": "Set up your mock interview preferences",
+    "interviewType": "Interview Type",
+    "skillLevel": "Skill Level",
+    "jobRole": "Job Role",
+    "jobRolePlaceholder": "e.g., Software Developer, Product Manager",
+    "types": {
+      "hr": "HR Interview",
+      "technical": "Technical Interview",
+      "behavioral": "Behavioral Interview"
+    },
+    "levels": {
+      "entry": "Entry Level",
+      "mid": "Mid Level",
+      "senior": "Senior Level"
+    },
+    "preparing": "Preparing Interview...",
+    "startInterview": "Start Interview",
+    "features": {
+      "title": "Interview Features",
+      "voice": "Voice & Text Input",
+      "voiceDesc": "Answer using voice or typing",
+      "ai": "AI-Powered Questions",
+      "aiDesc": "Dynamic questions based on your profile",
+      "feedback": "Real-time Feedback",
+      "feedbackDesc": "Get instant analysis of your responses"
+    },
+    "room": {
+      "question": "Question",
+      "of": "of",
+      "timeRemaining": "Time Remaining",
+      "yourAnswer": "Your Answer",
+      "answerPlaceholder": "Type your answer here or use voice input...",
+      "submit": "Submit Answer",
+      "next": "Next Question",
+      "voiceInput": "Voice Input",
+      "textInput": "Text Input"
+    },
+    "pleaseProvideAnswer": "Please provide an answer",
+    "feedback": {
+      "title": "Interview Feedback",
+      "overallScore": "Overall Score",
+      "communication": "Communication",
+      "confidence": "Confidence",
+      "relevance": "Relevance",
+      "clarity": "Clarity",
+      "strengths": "Strengths",
+      "weakAreas": "Areas for Improvement",
+      "recommendations": "Recommendations",
+      "questionBreakdown": "Question-by-Question Breakdown",
+      "tryAgain": "Try Another Interview"
+    }
+  },
+  "hiringPredictor": {
+    "title": "Hiring Probability Predictor",
+    "subtitle": "AI-powered prediction of your hiring chances",
+    "calculate": "Calculate Probability",
+    "calculating": "Analyzing your profile...",
+    "noData": "Please complete resume analysis, soft skills assessment, and ATS simulation first",
+    "probability": "Hiring Probability",
+    "factors": {
+      "title": "Success Factors",
+      "resumeStrength": "Resume Strength",
+      "skillMatch": "Skill Match",
+      "atsScore": "ATS Compatibility",
+      "softSkills": "Soft Skills",
+      "interviewReady": "Interview Readiness"
+    },
+    "insights": {
+      "title": "AI Insights",
+      "increasing": "Factors Increasing Your Chances",
+      "decreasing": "Factors Reducing Your Chances"
+    },
+    "recommendations": {
+      "title": "Improvement Recommendations",
+      "priority": "Priority",
+      "high": "High",
+      "medium": "Medium",
+      "low": "Low"
+    },
+    "levels": {
+      "low": "Low Probability",
+      "medium": "Medium Probability",
+      "high": "High Probability",
+      "veryHigh": "Very High Probability"
+    },
+    "recalculate": "Recalculate After Updates"
   }
 }
