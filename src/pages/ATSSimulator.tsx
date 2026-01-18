@@ -206,11 +206,27 @@ export default function ATSSimulator() {
                   : 'border-border bg-card hover:border-primary/50'
               }`}
             >
-              <div className={`mb-2 h-12 w-12 rounded-lg ${company.logo ? 'bg-white' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1.5`}>
+              <div
+                className={`mb-2 h-12 w-12 rounded-lg ${company.logo ? 'bg-muted' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1.5`}
+              >
                 {company.logo ? (
-                  <img src={company.logo} alt={company.name} className="h-full w-full object-contain" onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling?.classList.remove('hidden'); }} />
+                  <img
+                    src={company.logo}
+                    alt={company.name}
+                    loading="lazy"
+                    className="h-full w-full object-contain"
+                    onError={(e) => {
+                      // Hide broken image and reveal initials fallback.
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement?.classList.remove('bg-muted');
+                      e.currentTarget.parentElement?.classList.add(`bg-gradient-to-br`, ...company.color.split(' '));
+                      e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                    }}
+                  />
                 ) : null}
-                <span className={`${company.logo ? 'hidden' : ''} text-white font-bold text-sm`}>{company.initials}</span>
+                <span className={`${company.logo ? 'hidden' : ''} text-foreground font-bold text-sm`}>
+                  {company.initials}
+                </span>
               </div>
               <p className="font-semibold">{company.name}</p>
             </button>
