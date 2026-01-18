@@ -182,10 +182,10 @@ export default function ATSSimulator() {
     <Layout>
       <div className="container py-8 space-y-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 animate-fade-in">
           <div>
             <h1 className="text-3xl font-bold flex items-center gap-2">
-              <FileCheck className="h-8 w-8 text-primary" />
+              <FileCheck className="h-8 w-8 text-primary animate-pulse" />
               {t('ats.title')}
             </h1>
             <p className="text-muted-foreground mt-1">
@@ -196,27 +196,27 @@ export default function ATSSimulator() {
 
         {/* Company Selection */}
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {companies.map((company) => (
+          {companies.map((company, index) => (
             <button
               key={company.id}
               onClick={() => setSelectedCompany(company.id)}
-              className={`p-6 rounded-xl border-2 transition-all hover:scale-105 ${
+              className={`p-6 rounded-xl border-2 transition-all duration-300 hover:scale-105 hover:shadow-lg animate-fade-in ${
                 selectedCompany === company.id
-                  ? 'border-primary bg-primary/10'
-                  : 'border-border bg-card hover:border-primary/50'
+                  ? 'border-primary bg-primary/10 shadow-md ring-2 ring-primary/20'
+                  : 'border-border bg-card hover:border-primary/50 hover:bg-accent/5'
               }`}
+              style={{ animationDelay: `${index * 50}ms` }}
             >
               <div
-                className={`mb-2 h-12 w-12 rounded-lg ${company.logo ? 'bg-muted' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1.5`}
+                className={`mb-2 h-12 w-12 rounded-lg ${company.logo ? 'bg-muted' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1.5 transition-transform duration-300 group-hover:scale-110`}
               >
                 {company.logo ? (
                   <img
                     src={company.logo}
                     alt={company.name}
                     loading="lazy"
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-contain transition-transform duration-300 hover:scale-110"
                     onError={(e) => {
-                      // Hide broken image and reveal initials fallback.
                       e.currentTarget.style.display = 'none';
                       e.currentTarget.parentElement?.classList.remove('bg-muted');
                       e.currentTarget.parentElement?.classList.add(`bg-gradient-to-br`, ...company.color.split(' '));
@@ -228,17 +228,17 @@ export default function ATSSimulator() {
                   {company.initials}
                 </span>
               </div>
-              <p className="font-semibold">{company.name}</p>
+              <p className="font-semibold transition-colors duration-200">{company.name}</p>
             </button>
           ))}
         </div>
 
         {/* Controls */}
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4 animate-fade-in" style={{ animationDelay: '200ms' }}>
           <select
             value={selectedResume || ''}
             onChange={(e) => setSelectedResume(e.target.value)}
-            className="px-4 py-2 rounded-lg border bg-background flex-1 min-w-[200px]"
+            className="px-4 py-2 rounded-lg border bg-background flex-1 min-w-[200px] transition-all duration-200 focus:ring-2 focus:ring-primary/30 focus:border-primary"
           >
             {resumes.length === 0 ? (
               <option value="">No resumes uploaded</option>
@@ -254,7 +254,7 @@ export default function ATSSimulator() {
             onClick={simulateATS} 
             disabled={isSimulating || !selectedResume}
             size="lg"
-            className="btn-glow"
+            className="btn-glow transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
           >
             {isSimulating ? (
               <>
@@ -263,7 +263,7 @@ export default function ATSSimulator() {
               </>
             ) : (
               <>
-                <Zap className="mr-2 h-5 w-5" />
+                <Zap className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12" />
                 {t('ats.simulate')}
               </>
             )}
@@ -272,12 +272,12 @@ export default function ATSSimulator() {
 
         {/* Results */}
         {result && (
-          <div className="grid gap-6 lg:grid-cols-3">
+          <div className="grid gap-6 lg:grid-cols-3 animate-fade-in">
             {/* Main Score Card */}
-            <Card className="glass-card">
+            <Card className="glass-card animate-scale-in transition-all duration-300 hover:shadow-xl">
               <CardHeader className="text-center">
                 <CardTitle className="flex items-center justify-center gap-2">
-                  <Building2 className="h-5 w-5 text-primary" />
+                  <Building2 className="h-5 w-5 text-primary animate-pulse" />
                   {selectedCompany} ATS Result
                 </CardTitle>
               </CardHeader>
@@ -302,22 +302,27 @@ export default function ATSSimulator() {
                         fill="none"
                         strokeDasharray={`${(result.ats_score / 100) * 440} 440`}
                         strokeLinecap="round"
+                        className="transition-all duration-1000 ease-out"
+                        style={{ 
+                          animation: 'score-fill 1.5s ease-out forwards',
+                        }}
                       />
                     </svg>
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center">
-                        <span className="text-4xl font-bold">{result.ats_score}%</span>
+                        <span className="text-4xl font-bold animate-fade-in">{result.ats_score}%</span>
                       </div>
                     </div>
                   </div>
                 </div>
                 
                 <Badge 
-                  className={`text-lg px-6 py-2 ${
+                  className={`text-lg px-6 py-2 animate-scale-in transition-all duration-300 hover:scale-105 ${
                     result.passed 
                       ? 'bg-green-500/20 text-green-600 dark:text-green-400' 
                       : 'bg-red-500/20 text-red-600 dark:text-red-400'
                   }`}
+                  style={{ animationDelay: '300ms' }}
                 >
                   {result.passed ? (
                     <><CheckCircle className="mr-2 h-5 w-5" /> PASSED</>
@@ -326,7 +331,7 @@ export default function ATSSimulator() {
                   )}
                 </Badge>
                 
-                <p className="text-sm text-muted-foreground text-center">
+                <p className="text-sm text-muted-foreground text-center animate-fade-in" style={{ animationDelay: '400ms' }}>
                   {result.passed 
                     ? 'Your resume meets the ATS requirements for this company!' 
                     : 'Your resume needs optimization to pass this company\'s ATS.'}
@@ -335,7 +340,7 @@ export default function ATSSimulator() {
             </Card>
 
             {/* Score Breakdown */}
-            <Card className="glass-card">
+            <Card className="glass-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '100ms' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Target className="h-5 w-5 text-primary" />
@@ -343,34 +348,34 @@ export default function ATSSimulator() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div>
+                <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
                   <div className="flex justify-between mb-2">
                     <span className="text-sm">Keyword Relevance</span>
                     <span className="text-sm font-medium">{result.keyword_relevance_score}%</span>
                   </div>
-                  <Progress value={result.keyword_relevance_score} className="h-3" />
+                  <Progress value={result.keyword_relevance_score} className="h-3 transition-all duration-500" />
                 </div>
                 
-                <div>
+                <div className="animate-fade-in" style={{ animationDelay: '300ms' }}>
                   <div className="flex justify-between mb-2">
                     <span className="text-sm">Formatting</span>
                     <span className="text-sm font-medium">{result.formatting_score}%</span>
                   </div>
-                  <Progress value={result.formatting_score} className="h-3" />
+                  <Progress value={result.formatting_score} className="h-3 transition-all duration-500" />
                 </div>
                 
-                <div>
+                <div className="animate-fade-in" style={{ animationDelay: '400ms' }}>
                   <div className="flex justify-between mb-2">
                     <span className="text-sm">Skill Matching</span>
                     <span className="text-sm font-medium">{result.skill_matching_score}%</span>
                   </div>
-                  <Progress value={result.skill_matching_score} className="h-3" />
+                  <Progress value={result.skill_matching_score} className="h-3 transition-all duration-500" />
                 </div>
               </CardContent>
             </Card>
 
             {/* Missing Keywords */}
-            <Card className="glass-card">
+            <Card className="glass-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '200ms' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Search className="h-5 w-5 text-primary" />
@@ -381,7 +386,12 @@ export default function ATSSimulator() {
               <CardContent>
                 <div className="flex flex-wrap gap-2">
                   {result.missing_keywords?.slice(0, 10).map((keyword, i) => (
-                    <Badge key={i} variant="outline" className="bg-destructive/10 border-destructive/30 text-destructive">
+                    <Badge 
+                      key={i} 
+                      variant="outline" 
+                      className="bg-destructive/10 border-destructive/30 text-destructive animate-scale-in transition-all duration-200 hover:scale-105 cursor-default"
+                      style={{ animationDelay: `${300 + i * 50}ms` }}
+                    >
                       {keyword}
                     </Badge>
                   ))}
@@ -390,7 +400,7 @@ export default function ATSSimulator() {
             </Card>
 
             {/* Optimization Suggestions */}
-            <Card className="glass-card lg:col-span-3">
+            <Card className="glass-card lg:col-span-3 animate-fade-in" style={{ animationDelay: '300ms' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5 text-primary" />
@@ -403,11 +413,12 @@ export default function ATSSimulator() {
                   {result.optimization_suggestions?.map((suggestion, i) => (
                     <div
                       key={i}
-                      className={`p-4 rounded-lg border ${getPriorityColor(suggestion.priority)}`}
+                      className={`p-4 rounded-lg border animate-fade-in transition-all duration-300 hover:scale-[1.02] hover:shadow-md ${getPriorityColor(suggestion.priority)}`}
+                      style={{ animationDelay: `${400 + i * 100}ms` }}
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <Badge variant="outline">{suggestion.category}</Badge>
-                        <Badge className={getPriorityColor(suggestion.priority)}>
+                        <Badge variant="outline" className="transition-colors">{suggestion.category}</Badge>
+                        <Badge className={`${getPriorityColor(suggestion.priority)} transition-colors`}>
                           {suggestion.priority}
                         </Badge>
                       </div>
@@ -422,21 +433,26 @@ export default function ATSSimulator() {
 
         {/* Previous Results / Empty State */}
         {!result && (
-          <div className="grid gap-6 lg:grid-cols-3">
-            <Card className="lg:col-span-2 glass-card">
+          <div className="grid gap-6 lg:grid-cols-3 animate-fade-in">
+            <Card className="lg:col-span-2 glass-card animate-scale-in transition-all duration-300 hover:shadow-xl">
               <CardContent className="flex flex-col items-center justify-center py-16">
-                <FileCheck className="h-16 w-16 text-muted-foreground mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Simulate ATS Screening</h3>
-                <p className="text-muted-foreground text-center max-w-md mb-6">
+                <FileCheck className="h-16 w-16 text-muted-foreground mb-4 animate-pulse" />
+                <h3 className="text-xl font-semibold mb-2 animate-fade-in" style={{ animationDelay: '100ms' }}>Simulate ATS Screening</h3>
+                <p className="text-muted-foreground text-center max-w-md mb-6 animate-fade-in" style={{ animationDelay: '200ms' }}>
                   Select a company and your resume to see how your resume performs against their Applicant Tracking System.
                 </p>
-                <div className="flex gap-4">
-                  {companies.map((company) => (
-                    <div key={company.id} className={`h-10 w-10 rounded-lg ${company.logo ? 'bg-white' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1`}>
+                <div className="flex gap-4 animate-fade-in" style={{ animationDelay: '300ms' }}>
+                  {companies.slice(0, 5).map((company, index) => (
+                    <div 
+                      key={company.id} 
+                      className={`h-10 w-10 rounded-lg ${company.logo ? 'bg-muted' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1 transition-transform duration-300 hover:scale-110 cursor-pointer`}
+                      style={{ animationDelay: `${400 + index * 100}ms` }}
+                      onClick={() => setSelectedCompany(company.id)}
+                    >
                       {company.logo ? (
                         <img src={company.logo} alt={company.name} className="h-full w-full object-contain" />
                       ) : (
-                        <span className="text-white font-bold text-xs">{company.initials}</span>
+                        <span className="text-foreground font-bold text-xs">{company.initials}</span>
                       )}
                     </div>
                   ))}
@@ -444,14 +460,14 @@ export default function ATSSimulator() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card">
+            <Card className="glass-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '100ms' }}>
               <CardHeader>
                 <CardTitle className="text-lg">Previous Simulations</CardTitle>
               </CardHeader>
               <CardContent>
                 {previousResults.length > 0 ? (
                   <div className="space-y-3">
-                    {previousResults.slice(0, 5).map((prev) => (
+                    {previousResults.slice(0, 5).map((prev, index) => (
                       <button
                         key={prev.id}
                         onClick={() => {
@@ -462,11 +478,12 @@ export default function ATSSimulator() {
                           });
                           setSelectedCompany(prev.company);
                         }}
-                        className="w-full p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-left"
+                        className="w-full p-3 rounded-lg bg-muted/50 hover:bg-muted transition-all duration-200 text-left hover:scale-[1.02] hover:shadow-md animate-fade-in"
+                        style={{ animationDelay: `${200 + index * 100}ms` }}
                       >
                         <div className="flex items-center justify-between mb-2">
                           <span className="font-medium">{prev.company}</span>
-                          <Badge className={prev.passed ? 'bg-green-500/20 text-green-600' : 'bg-red-500/20 text-red-600'}>
+                          <Badge className={`transition-colors ${prev.passed ? 'bg-green-500/20 text-green-600' : 'bg-red-500/20 text-red-600'}`}>
                             {prev.passed ? 'Passed' : 'Failed'}
                           </Badge>
                         </div>
@@ -478,7 +495,7 @@ export default function ATSSimulator() {
                     ))}
                   </div>
                 ) : (
-                  <p className="text-sm text-muted-foreground text-center py-4">
+                  <p className="text-sm text-muted-foreground text-center py-4 animate-fade-in">
                     No previous simulations yet
                   </p>
                 )}
