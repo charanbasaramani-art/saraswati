@@ -167,8 +167,12 @@ export default function InterviewPrep() {
     <Layout>
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+        <div className="text-center mb-8 animate-fade-in-up">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-4 animate-fade-in-down">
+            <Sparkles className="h-4 w-4 text-primary animate-pulse" />
+            <span className="text-sm font-medium">AI Interview Coach</span>
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-4 gradient-text-animate">
             {t('interview.title')}
           </h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
@@ -177,12 +181,12 @@ export default function InterviewPrep() {
         </div>
 
         {/* Generate Button */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <Button
             size="lg"
             onClick={generateQuestions}
             disabled={loading || !hasResume}
-            className="btn-glow gap-2"
+            className="btn-glow gap-2 hover-scale animate-pulse-glow"
           >
             {loading ? (
               <>
@@ -199,11 +203,11 @@ export default function InterviewPrep() {
         </div>
 
         {!hasResume && (
-          <Card className="glass-card max-w-md mx-auto mb-8">
+          <Card className="glass-card max-w-md mx-auto mb-8 animate-fade-in-up">
             <CardContent className="pt-6 text-center">
-              <FileQuestion className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+              <FileQuestion className="h-12 w-12 mx-auto mb-4 text-muted-foreground animate-bounce" />
               <p className="text-muted-foreground">{t('interview.noResume')}</p>
-              <Button className="mt-4" onClick={() => navigate('/dashboard')}>
+              <Button className="mt-4 hover-scale" onClick={() => navigate('/dashboard')}>
                 {t('common.upload')} Resume
               </Button>
             </CardContent>
@@ -235,11 +239,11 @@ export default function InterviewPrep() {
 
         {/* Questions Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredQuestions.map((question) => (
-            <Card key={question.id} className="glass-card hover-lift">
+          {filteredQuestions.map((question, index) => (
+            <Card key={question.id} className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: `${index * 0.1}s` }}>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between mb-2">
-                  <Badge variant="outline" className="flex items-center gap-1 capitalize">
+                  <Badge variant="outline" className="flex items-center gap-1 capitalize group-hover:bg-primary/10 transition-colors">
                     {getCategoryIcon(question.category)}
                     {t(`interview.categories.${question.category}`)}
                   </Badge>
@@ -247,7 +251,7 @@ export default function InterviewPrep() {
                     {t(`interview.difficulty.${question.difficulty}`)}
                   </Badge>
                 </div>
-                <CardTitle className="text-lg leading-snug">
+                <CardTitle className="text-lg leading-snug group-hover:text-primary transition-colors">
                   {question.question}
                 </CardTitle>
               </CardHeader>

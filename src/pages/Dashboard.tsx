@@ -115,9 +115,9 @@ export default function Dashboard() {
         <div className="absolute inset-0 gradient-bg opacity-50" />
         <div className="container relative z-10">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="animate-fade-in">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-sm font-medium mb-3">
-                <Sparkles className="h-4 w-4 text-primary" />
+            <div className="animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-sm font-medium mb-3 animate-fade-in-down">
+                <Sparkles className="h-4 w-4 text-primary animate-pulse" />
                 Welcome back!
               </div>
               <h1 className="text-3xl md:text-4xl font-bold text-foreground">{t('nav.dashboard')}</h1>
@@ -125,13 +125,14 @@ export default function Dashboard() {
             </div>
             
             {/* Quick Actions */}
-            <div className="flex gap-2">
+            <div className="flex gap-2 animate-fade-in-right">
               {quickActions.map((action, index) => (
                 <Link key={index} to={action.href}>
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    className="gap-2 glass hover:bg-primary/10 border-border/50"
+                    className="gap-2 glass hover:bg-primary/10 border-border/50 hover-scale transition-all duration-300"
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     <action.icon className="h-4 w-4" />
                     <span className="hidden sm:inline">{action.label}</span>
@@ -146,42 +147,42 @@ export default function Dashboard() {
       <div className="container py-6">
         {/* Stats Cards */}
         <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-8">
-          <Card className="glass-card hover-lift">
+          <Card className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: '0.1s' }}>
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <FileText className="h-7 w-7 text-primary" />
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-foreground">{resumes.length}</p>
+                  <p className="text-3xl font-bold text-foreground number-animate">{resumes.length}</p>
                   <p className="text-sm text-muted-foreground">{t('dashboard.stats.resumes')}</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="glass-card hover-lift">
+          <Card className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: '0.2s' }}>
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Brain className="h-7 w-7 text-purple-500" />
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-foreground">{analyses.length}</p>
+                  <p className="text-3xl font-bold text-foreground number-animate">{analyses.length}</p>
                   <p className="text-sm text-muted-foreground">{t('dashboard.stats.analyses')}</p>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="glass-card hover-lift">
+          <Card className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: '0.3s' }}>
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center">
+                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <TrendingUp className="h-7 w-7 text-green-500" />
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-foreground">
+                  <p className="text-3xl font-bold text-foreground number-animate">
                     {latestAnalysis?.overall_score || '--'}
                     {latestAnalysis && <span className="text-lg text-muted-foreground">%</span>}
                   </p>
@@ -191,10 +192,10 @@ export default function Dashboard() {
             </CardContent>
           </Card>
 
-          <Card className="glass-card hover-lift">
+          <Card className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: '0.4s' }}>
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
+                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <Briefcase className="h-7 w-7 text-blue-500" />
                 </div>
                 <div>
