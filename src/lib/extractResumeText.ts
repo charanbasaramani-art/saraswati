@@ -1,5 +1,14 @@
 import mammoth from "mammoth";
 
+// Sanitize text to remove null bytes and invalid Unicode characters that Postgres can't handle
+function sanitizeText(text: string): string {
+  // Remove null bytes (\u0000) and other control characters that break Postgres
+  return text
+    .replace(/\u0000/g, '') // Remove null bytes
+    .replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, '') // Remove other control chars except \t, \n, \r
+    .trim();
+}
+
 export async function extractResumeText(file: File): Promise<string> {
   try {
     const arrayBuffer = await file.arrayBuffer();
@@ -17,7 +26,7 @@ export async function extractResumeText(file: File): Promise<string> {
         .join(" ");
       
       if (extractedText.length > 100) {
-        return extractedText.trim();
+        return sanitizeText(extractedText);
       }
       
       // Fallback: return filename info
@@ -26,7 +35,7 @@ export async function extractResumeText(file: File): Promise<string> {
 
     // DOCX - mammoth works well
     const result = await mammoth.extractRawText({ arrayBuffer });
-    return (result.value || "").trim();
+    return sanitizeText(result.value || "");
   } catch (e) {
     console.error("extractResumeText failed", e);
     return "";
