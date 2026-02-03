@@ -141,17 +141,18 @@ export default function Settings() {
     setIsUploadingAvatar(true);
     try {
       const fileExt = file.name.split('.').pop();
-      const fileName = `${user.id}-${Date.now()}.${fileExt}`;
-      const filePath = `avatars/${fileName}`;
+      const fileName = `${Date.now()}.${fileExt}`;
+      // Path structure: {user_id}/{filename} to match RLS policy
+      const filePath = `${user.id}/${fileName}`;
 
       const { error: uploadError } = await supabase.storage
-        .from('resumes')
+        .from('avatars')
         .upload(filePath, file, { upsert: true });
 
       if (uploadError) throw uploadError;
 
       const { data: { publicUrl } } = supabase.storage
-        .from('resumes')
+        .from('avatars')
         .getPublicUrl(filePath);
 
       const { error: updateError } = await supabase
