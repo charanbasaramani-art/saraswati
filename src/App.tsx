@@ -19,6 +19,7 @@ import ATSSimulator from "./pages/ATSSimulator";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
 import MockInterview from "./pages/MockInterview";
 import HiringPredictor from "./pages/HiringPredictor";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +47,7 @@ const App = () => (
               <Route path="/recruiter" element={<RecruiterDashboard />} />
               <Route path="/mock-interview" element={<MockInterview />} />
               <Route path="/hiring-predictor" element={<HiringPredictor />} />
+              <Route path="/settings" element={<Settings />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
-import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users, Video, TrendingUp } from 'lucide-react';
+import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users, Video, TrendingUp, Settings } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { LanguageSelector } from '@/components/LanguageSelector';
@@ -73,6 +73,10 @@ export function Navbar() {
                       Admin
                     </Link>
                   )}
+                  <Link to="/settings" className="text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+                    <Settings className="h-4 w-4" />
+                    {t('nav.settings')}
+                  </Link>
                   <Button variant="outline" onClick={handleSignOut} className="flex items-center gap-2 glass theme-transition">
                     <LogOut className="h-4 w-4" />
                     {t('nav.logout')}
@@ -144,6 +148,9 @@ export function Navbar() {
                   Admin
                 </Link>
               )}
+              <Link to="/settings" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
+                {t('nav.settings')}
+              </Link>
               <Button variant="outline" onClick={handleSignOut} className="w-full glass">
                 {t('nav.logout')}
               </Button>
