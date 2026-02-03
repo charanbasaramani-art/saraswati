@@ -36,7 +36,8 @@
     "atsSimulator": "ATS Check",
     "recruiter": "Recruiter",
     "mockInterview": "Mock Interview",
-    "hiringPredictor": "Hiring Predictor"
+    "hiringPredictor": "Hiring Predictor",
+    "settings": "Settings"
   },
   "landing": {
     "title": "AI-Powered Resume Analyzer",
