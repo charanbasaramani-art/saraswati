@@ -153,153 +153,245 @@ All colors MUST be HSL.
     --shadow-2xl: 0 24px 48px 0px hsl(0 0% 0% / 0.45);
   }
 
-  /* VIBGYOR Rainbow Theme */
+  /* VIBGYOR Rainbow Theme - Premium Edition */
   .vibgyor {
-    --background: 270 30% 8%;
-    --foreground: 0 0% 98%;
+    --background: 260 40% 5%;
+    --foreground: 0 0% 100%;
 
-    --card: 270 25% 12%;
-    --card-foreground: 0 0% 98%;
+    --card: 260 35% 10%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 270 25% 14%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 260 35% 12%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 280 100% 70%;
-    --primary-foreground: 280 100% 10%;
+    --primary: 320 100% 65%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 100% 50%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 180 100% 45%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 270 20% 20%;
-    --muted-foreground: 270 10% 70%;
+    --muted: 260 30% 18%;
+    --muted-foreground: 260 15% 75%;
 
-    --accent: 60 100% 50%;
-    --accent-foreground: 60 100% 10%;
+    --accent: 45 100% 55%;
+    --accent-foreground: 45 100% 10%;
 
-    --destructive: 0 100% 60%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 100% 55%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 280 50% 30%;
-    --input: 280 50% 25%;
-    --ring: 280 100% 70%;
+    --border: 280 60% 35%;
+    --input: 280 40% 22%;
+    --ring: 320 100% 65%;
 
     /* Glassmorphism tokens - vibgyor */
-    --glass-background: 270 30% 15% / 0.6;
-    --glass-border: 280 100% 50% / 0.3;
-    --glass-blur: 20px;
-    --glass-shadow: 0 8px 32px 0 hsl(280 100% 50% / 0.2);
+    --glass-background: 260 40% 12% / 0.7;
+    --glass-border: 320 100% 60% / 0.4;
+    --glass-blur: 24px;
+    --glass-shadow: 0 8px 40px 0 hsl(320 100% 50% / 0.3);
 
     /* Gradient backgrounds - vibgyor rainbow */
-    --gradient-start: 0 100% 60%;
-    --gradient-end: 270 100% 60%;
-    --gradient-accent: 180 100% 50%;
+    --gradient-start: 320 100% 50%;
+    --gradient-end: 180 100% 50%;
+    --gradient-accent: 45 100% 55%;
 
-    --sidebar-background: 270 25% 10%;
-    --sidebar-foreground: 0 0% 98%;
-    --sidebar-primary: 280 100% 70%;
-    --sidebar-primary-foreground: 280 100% 10%;
-    --sidebar-accent: 60 100% 50%;
-    --sidebar-accent-foreground: 60 100% 10%;
-    --sidebar-border: 280 50% 30%;
-    --sidebar-ring: 280 100% 70%;
+    --sidebar-background: 260 35% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 320 100% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 100% 55%;
+    --sidebar-accent-foreground: 45 100% 10%;
+    --sidebar-border: 280 60% 35%;
+    --sidebar-ring: 320 100% 65%;
 
-    /* Rainbow chart colors */
-    --chart-1: 0 100% 60%;
-    --chart-2: 30 100% 55%;
-    --chart-3: 60 100% 50%;
-    --chart-4: 120 100% 40%;
-    --chart-5: 200 100% 50%;
-    --chart-6: 270 100% 60%;
+    /* Rainbow chart colors - VIBGYOR */
+    --chart-1: 0 100% 65%;
+    --chart-2: 30 100% 58%;
+    --chart-3: 55 100% 55%;
+    --chart-4: 130 80% 45%;
+    --chart-5: 210 100% 55%;
+    --chart-6: 280 100% 65%;
 
-    --sidebar: 270 25% 10%;
+    --sidebar: 260 35% 8%;
 
-    --shadow-2xs: 0 1px 3px 0px hsl(280 100% 50% / 0.1);
-    --shadow-xs: 0 1px 3px 0px hsl(280 100% 50% / 0.15);
-    --shadow-sm: 0 2px 6px 0px hsl(280 100% 50% / 0.2);
-    --shadow: 0 4px 12px 0px hsl(280 100% 50% / 0.25);
-    --shadow-md: 0 6px 16px 0px hsl(280 100% 50% / 0.3);
-    --shadow-lg: 0 12px 24px 0px hsl(280 100% 50% / 0.35);
-    --shadow-xl: 0 20px 40px 0px hsl(280 100% 50% / 0.4);
-    --shadow-2xl: 0 24px 48px 0px hsl(280 100% 50% / 0.45);
+    --shadow-2xs: 0 1px 4px 0px hsl(320 100% 50% / 0.15);
+    --shadow-xs: 0 2px 6px 0px hsl(280 100% 50% / 0.2);
+    --shadow-sm: 0 4px 10px 0px hsl(320 100% 50% / 0.25);
+    --shadow: 0 6px 16px 0px hsl(280 100% 50% / 0.3);
+    --shadow-md: 0 10px 24px 0px hsl(320 100% 50% / 0.35);
+    --shadow-lg: 0 16px 36px 0px hsl(280 100% 50% / 0.4);
+    --shadow-xl: 0 24px 50px 0px hsl(320 100% 50% / 0.45);
+    --shadow-2xl: 0 32px 64px 0px hsl(280 100% 50% / 0.5);
   }
 
-  /* Rainbow animated gradient for vibgyor theme */
+  /* Stunning rainbow background effect */
+  .vibgyor::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(ellipse at 0% 0%, hsl(0 100% 50% / 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 0%, hsl(45 100% 50% / 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 100% 100%, hsl(180 100% 50% / 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 0% 100%, hsl(280 100% 50% / 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, hsl(320 100% 50% / 0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+    animation: aurora-shift 15s ease-in-out infinite;
+  }
+
+  @keyframes aurora-shift {
+    0%, 100% {
+      opacity: 1;
+      filter: hue-rotate(0deg);
+    }
+    25% {
+      filter: hue-rotate(30deg);
+    }
+    50% {
+      opacity: 0.8;
+      filter: hue-rotate(60deg);
+    }
+    75% {
+      filter: hue-rotate(30deg);
+    }
+  }
+
+  /* Rainbow animated gradient orbs */
   .vibgyor .gradient-orb-1 {
-    background: linear-gradient(135deg, 
-      hsl(0 100% 60% / 0.4), 
-      hsl(60 100% 50% / 0.4)
+    background: conic-gradient(
+      from 0deg,
+      hsl(0 100% 60% / 0.6),
+      hsl(45 100% 55% / 0.5),
+      hsl(120 100% 50% / 0.5),
+      hsl(200 100% 55% / 0.5),
+      hsl(280 100% 60% / 0.6),
+      hsl(320 100% 60% / 0.6),
+      hsl(0 100% 60% / 0.6)
     );
-    animation: rainbow-float 6s ease-in-out infinite;
+    width: 500px;
+    height: 500px;
+    filter: blur(100px);
+    animation: rainbow-orbit 12s linear infinite;
   }
 
   .vibgyor .gradient-orb-2 {
-    background: linear-gradient(135deg, 
-      hsl(120 100% 40% / 0.3), 
-      hsl(200 100% 50% / 0.3)
+    background: conic-gradient(
+      from 180deg,
+      hsl(180 100% 50% / 0.5),
+      hsl(220 100% 55% / 0.5),
+      hsl(280 100% 60% / 0.6),
+      hsl(320 100% 65% / 0.5),
+      hsl(0 100% 60% / 0.5),
+      hsl(45 100% 55% / 0.5),
+      hsl(180 100% 50% / 0.5)
     );
-    animation: rainbow-float 8s ease-in-out infinite reverse;
+    width: 400px;
+    height: 400px;
+    filter: blur(90px);
+    animation: rainbow-orbit 15s linear infinite reverse;
   }
 
   .vibgyor .gradient-orb-3 {
-    background: linear-gradient(135deg, 
-      hsl(270 100% 60% / 0.3), 
-      hsl(280 100% 70% / 0.3)
+    background: conic-gradient(
+      from 90deg,
+      hsl(320 100% 65% / 0.5),
+      hsl(0 100% 60% / 0.4),
+      hsl(45 100% 55% / 0.5),
+      hsl(90 100% 50% / 0.4),
+      hsl(180 100% 50% / 0.5),
+      hsl(250 100% 60% / 0.5),
+      hsl(320 100% 65% / 0.5)
     );
-    animation: rainbow-float 7s ease-in-out infinite;
+    width: 350px;
+    height: 350px;
+    filter: blur(80px);
+    animation: rainbow-pulse 8s ease-in-out infinite;
   }
 
-  @keyframes rainbow-float {
-    0%, 100% {
-      transform: translate(0, 0) scale(1) rotate(0deg);
-      filter: hue-rotate(0deg) blur(80px);
+  @keyframes rainbow-orbit {
+    0% {
+      transform: translate(0, 0) rotate(0deg) scale(1);
     }
     25% {
-      filter: hue-rotate(90deg) blur(80px);
+      transform: translate(50px, -30px) rotate(90deg) scale(1.1);
     }
     50% {
-      transform: translate(30px, -30px) scale(1.1) rotate(180deg);
-      filter: hue-rotate(180deg) blur(80px);
+      transform: translate(0, -50px) rotate(180deg) scale(1);
     }
     75% {
-      filter: hue-rotate(270deg) blur(80px);
+      transform: translate(-50px, -30px) rotate(270deg) scale(1.1);
+    }
+    100% {
+      transform: translate(0, 0) rotate(360deg) scale(1);
     }
   }
 
-  /* Rainbow gradient text for vibgyor theme */
+  @keyframes rainbow-pulse {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.6;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.3);
+      opacity: 0.8;
+    }
+  }
+
+  /* Stunning rainbow gradient text */
   .vibgyor .gradient-text {
     background: linear-gradient(
-      90deg,
-      hsl(0 100% 60%),
-      hsl(30 100% 55%),
-      hsl(60 100% 50%),
-      hsl(120 100% 40%),
-      hsl(200 100% 50%),
-      hsl(270 100% 60%),
-      hsl(0 100% 60%)
+      135deg,
+      hsl(0 100% 65%) 0%,
+      hsl(30 100% 60%) 14%,
+      hsl(55 100% 55%) 28%,
+      hsl(120 80% 50%) 42%,
+      hsl(200 100% 55%) 56%,
+      hsl(260 100% 65%) 70%,
+      hsl(320 100% 65%) 84%,
+      hsl(0 100% 65%) 100%
     );
-    background-size: 200% auto;
+    background-size: 300% 300%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: rainbow-shimmer 3s linear infinite;
+    animation: rainbow-flow 4s ease infinite;
+    text-shadow: 0 0 30px hsl(320 100% 60% / 0.3);
   }
 
-  @keyframes rainbow-shimmer {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
+  @keyframes rainbow-flow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
-  /* Rainbow button glow for vibgyor */
+  /* Premium rainbow button */
   .vibgyor .btn-glow {
     background: linear-gradient(
-      90deg,
-      hsl(0 100% 60%),
-      hsl(60 100% 50%),
-      hsl(200 100% 50%),
-      hsl(280 100% 70%)
+      135deg,
+      hsl(320 100% 60%),
+      hsl(280 100% 60%),
+      hsl(200 100% 55%),
+      hsl(320 100% 60%)
     );
-    background-size: 300% 100%;
-    animation: rainbow-button 4s ease infinite;
+    background-size: 200% 200%;
+    animation: rainbow-button 3s ease infinite;
+    box-shadow: 
+      0 4px 15px hsl(320 100% 50% / 0.4),
+      0 0 30px hsl(280 100% 50% / 0.2),
+      inset 0 1px 0 hsl(0 0% 100% / 0.2);
+    border: 1px solid hsl(0 0% 100% / 0.2);
+    text-shadow: 0 1px 2px hsl(0 0% 0% / 0.3);
+  }
+
+  .vibgyor .btn-glow:hover {
+    box-shadow: 
+      0 6px 25px hsl(320 100% 50% / 0.5),
+      0 0 50px hsl(280 100% 50% / 0.3),
+      inset 0 1px 0 hsl(0 0% 100% / 0.3);
+    transform: translateY(-2px);
   }
 
   @keyframes rainbow-button {
@@ -308,25 +400,162 @@ All colors MUST be HSL.
     100% { background-position: 0% 50%; }
   }
 
-  /* Rainbow border animation */
+  /* Spectacular rainbow border card */
   .vibgyor .glass-card {
-    border: 2px solid transparent;
-    background: 
-      linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
-      linear-gradient(90deg, 
-        hsl(0 100% 60%), 
-        hsl(60 100% 50%), 
-        hsl(200 100% 50%), 
-        hsl(280 100% 70%),
-        hsl(0 100% 60%)
-      ) border-box;
-    background-size: 100% 100%, 400% 100%;
-    animation: rainbow-border 8s linear infinite;
+    position: relative;
+    border: none;
+    background: hsl(var(--card));
+    overflow: hidden;
   }
 
-  @keyframes rainbow-border {
-    0% { background-position: 0 0, 0% 50%; }
-    100% { background-position: 0 0, 400% 50%; }
+  .vibgyor .glass-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: conic-gradient(
+      from 0deg,
+      hsl(0 100% 60%),
+      hsl(45 100% 55%),
+      hsl(90 100% 50%),
+      hsl(180 100% 50%),
+      hsl(240 100% 60%),
+      hsl(300 100% 60%),
+      hsl(360 100% 60%)
+    );
+    z-index: -1;
+    border-radius: inherit;
+    animation: rainbow-spin 6s linear infinite;
+  }
+
+  .vibgyor .glass-card::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: hsl(var(--card));
+    z-index: -1;
+    border-radius: calc(var(--radius) - 2px);
+  }
+
+  @keyframes rainbow-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Rainbow glow on hover for cards */
+  .vibgyor .glass-card:hover::before {
+    animation: rainbow-spin 3s linear infinite;
+    filter: brightness(1.2);
+  }
+
+  /* Rainbow navbar effect */
+  .vibgyor .glass-navbar {
+    background: hsl(260 40% 8% / 0.9);
+    border-bottom: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .vibgyor .glass-navbar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      hsl(0 100% 60%),
+      hsl(45 100% 55%),
+      hsl(90 100% 50%),
+      hsl(180 100% 50%),
+      hsl(240 100% 60%),
+      hsl(320 100% 60%),
+      hsl(0 100% 60%)
+    );
+    background-size: 200% 100%;
+    animation: rainbow-slide 4s linear infinite;
+  }
+
+  @keyframes rainbow-slide {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 200% 0%; }
+  }
+
+  /* Rainbow input focus effect */
+  .vibgyor input:focus,
+  .vibgyor textarea:focus {
+    border-color: transparent;
+    box-shadow: 
+      0 0 0 2px hsl(var(--background)),
+      0 0 0 4px hsl(320 100% 60%),
+      0 0 20px hsl(320 100% 50% / 0.3);
+  }
+
+  /* Rainbow scrollbar */
+  .vibgyor ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .vibgyor ::-webkit-scrollbar-track {
+    background: hsl(260 40% 8%);
+  }
+
+  .vibgyor ::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+      180deg,
+      hsl(0 100% 60%),
+      hsl(45 100% 55%),
+      hsl(180 100% 50%),
+      hsl(280 100% 60%)
+    );
+    border-radius: 4px;
+  }
+
+  /* Rainbow selection */
+  .vibgyor ::selection {
+    background: hsl(320 100% 50% / 0.4);
+    color: hsl(0 0% 100%);
+  }
+
+  /* Pulse glow effect for vibgyor */
+  .vibgyor .animate-pulse-glow {
+    animation: rainbow-pulse-glow 2s ease-in-out infinite;
+  }
+
+  @keyframes rainbow-pulse-glow {
+    0%, 100% {
+      box-shadow: 
+        0 0 5px hsl(0 100% 60% / 0.5),
+        0 0 10px hsl(320 100% 60% / 0.3);
+    }
+    25% {
+      box-shadow: 
+        0 0 5px hsl(90 100% 50% / 0.5),
+        0 0 15px hsl(45 100% 55% / 0.3);
+    }
+    50% {
+      box-shadow: 
+        0 0 5px hsl(180 100% 50% / 0.5),
+        0 0 20px hsl(200 100% 55% / 0.3);
+    }
+    75% {
+      box-shadow: 
+        0 0 5px hsl(280 100% 60% / 0.5),
+        0 0 15px hsl(260 100% 60% / 0.3);
+    }
+  }
+
+  /* Floating particles effect hint */
+  .vibgyor .hover-lift:hover {
+    box-shadow: 
+      0 10px 30px hsl(320 100% 50% / 0.3),
+      0 0 40px hsl(280 100% 50% / 0.2);
   }
 }
 
