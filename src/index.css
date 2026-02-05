@@ -152,6 +152,182 @@ All colors MUST be HSL.
     --shadow-xl: 0 20px 40px 0px hsl(0 0% 0% / 0.4);
     --shadow-2xl: 0 24px 48px 0px hsl(0 0% 0% / 0.45);
   }
+
+  /* VIBGYOR Rainbow Theme */
+  .vibgyor {
+    --background: 270 30% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 270 25% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 270 25% 14%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 280 100% 70%;
+    --primary-foreground: 280 100% 10%;
+
+    --secondary: 200 100% 50%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 270 20% 20%;
+    --muted-foreground: 270 10% 70%;
+
+    --accent: 60 100% 50%;
+    --accent-foreground: 60 100% 10%;
+
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 280 50% 30%;
+    --input: 280 50% 25%;
+    --ring: 280 100% 70%;
+
+    /* Glassmorphism tokens - vibgyor */
+    --glass-background: 270 30% 15% / 0.6;
+    --glass-border: 280 100% 50% / 0.3;
+    --glass-blur: 20px;
+    --glass-shadow: 0 8px 32px 0 hsl(280 100% 50% / 0.2);
+
+    /* Gradient backgrounds - vibgyor rainbow */
+    --gradient-start: 0 100% 60%;
+    --gradient-end: 270 100% 60%;
+    --gradient-accent: 180 100% 50%;
+
+    --sidebar-background: 270 25% 10%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 280 100% 70%;
+    --sidebar-primary-foreground: 280 100% 10%;
+    --sidebar-accent: 60 100% 50%;
+    --sidebar-accent-foreground: 60 100% 10%;
+    --sidebar-border: 280 50% 30%;
+    --sidebar-ring: 280 100% 70%;
+
+    /* Rainbow chart colors */
+    --chart-1: 0 100% 60%;
+    --chart-2: 30 100% 55%;
+    --chart-3: 60 100% 50%;
+    --chart-4: 120 100% 40%;
+    --chart-5: 200 100% 50%;
+    --chart-6: 270 100% 60%;
+
+    --sidebar: 270 25% 10%;
+
+    --shadow-2xs: 0 1px 3px 0px hsl(280 100% 50% / 0.1);
+    --shadow-xs: 0 1px 3px 0px hsl(280 100% 50% / 0.15);
+    --shadow-sm: 0 2px 6px 0px hsl(280 100% 50% / 0.2);
+    --shadow: 0 4px 12px 0px hsl(280 100% 50% / 0.25);
+    --shadow-md: 0 6px 16px 0px hsl(280 100% 50% / 0.3);
+    --shadow-lg: 0 12px 24px 0px hsl(280 100% 50% / 0.35);
+    --shadow-xl: 0 20px 40px 0px hsl(280 100% 50% / 0.4);
+    --shadow-2xl: 0 24px 48px 0px hsl(280 100% 50% / 0.45);
+  }
+
+  /* Rainbow animated gradient for vibgyor theme */
+  .vibgyor .gradient-orb-1 {
+    background: linear-gradient(135deg, 
+      hsl(0 100% 60% / 0.4), 
+      hsl(60 100% 50% / 0.4)
+    );
+    animation: rainbow-float 6s ease-in-out infinite;
+  }
+
+  .vibgyor .gradient-orb-2 {
+    background: linear-gradient(135deg, 
+      hsl(120 100% 40% / 0.3), 
+      hsl(200 100% 50% / 0.3)
+    );
+    animation: rainbow-float 8s ease-in-out infinite reverse;
+  }
+
+  .vibgyor .gradient-orb-3 {
+    background: linear-gradient(135deg, 
+      hsl(270 100% 60% / 0.3), 
+      hsl(280 100% 70% / 0.3)
+    );
+    animation: rainbow-float 7s ease-in-out infinite;
+  }
+
+  @keyframes rainbow-float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+      filter: hue-rotate(0deg) blur(80px);
+    }
+    25% {
+      filter: hue-rotate(90deg) blur(80px);
+    }
+    50% {
+      transform: translate(30px, -30px) scale(1.1) rotate(180deg);
+      filter: hue-rotate(180deg) blur(80px);
+    }
+    75% {
+      filter: hue-rotate(270deg) blur(80px);
+    }
+  }
+
+  /* Rainbow gradient text for vibgyor theme */
+  .vibgyor .gradient-text {
+    background: linear-gradient(
+      90deg,
+      hsl(0 100% 60%),
+      hsl(30 100% 55%),
+      hsl(60 100% 50%),
+      hsl(120 100% 40%),
+      hsl(200 100% 50%),
+      hsl(270 100% 60%),
+      hsl(0 100% 60%)
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-shimmer 3s linear infinite;
+  }
+
+  @keyframes rainbow-shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  /* Rainbow button glow for vibgyor */
+  .vibgyor .btn-glow {
+    background: linear-gradient(
+      90deg,
+      hsl(0 100% 60%),
+      hsl(60 100% 50%),
+      hsl(200 100% 50%),
+      hsl(280 100% 70%)
+    );
+    background-size: 300% 100%;
+    animation: rainbow-button 4s ease infinite;
+  }
+
+  @keyframes rainbow-button {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Rainbow border animation */
+  .vibgyor .glass-card {
+    border: 2px solid transparent;
+    background: 
+      linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+      linear-gradient(90deg, 
+        hsl(0 100% 60%), 
+        hsl(60 100% 50%), 
+        hsl(200 100% 50%), 
+        hsl(280 100% 70%),
+        hsl(0 100% 60%)
+      ) border-box;
+    background-size: 100% 100%, 400% 100%;
+    animation: rainbow-border 8s linear infinite;
+  }
+
+  @keyframes rainbow-border {
+    0% { background-position: 0 0, 0% 50%; }
+    100% { background-position: 0 0, 400% 50%; }
+  }
 }
 
 @layer base {

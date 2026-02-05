@@ -25,6 +25,7 @@ import {
   Moon,
   Sun,
   Monitor,
+  Rainbow,
   Languages,
   Save,
   Eye,
@@ -404,31 +405,35 @@ export default function Settings() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {[
                     { value: 'light', label: 'Light', icon: Sun, description: 'Light background with dark text' },
                     { value: 'dark', label: 'Dark', icon: Moon, description: 'Dark background with light text' },
+                    { value: 'vibgyor', label: 'Rainbow', icon: Rainbow, description: 'Vibrant VIBGYOR colors' },
                     { value: 'system', label: 'System', icon: Monitor, description: 'Follow system preferences' },
                   ].map((themeOption) => (
                     <button
                       key={themeOption.value}
-                      onClick={() => setTheme(themeOption.value as 'light' | 'dark' | 'system')}
+                      onClick={() => setTheme(themeOption.value as 'light' | 'dark' | 'system' | 'vibgyor')}
                       className={`relative p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
                         theme === themeOption.value
                           ? 'border-primary bg-primary/10'
                           : 'border-border hover:border-primary/50 glass'
-                      }`}
+                      } ${themeOption.value === 'vibgyor' ? 'overflow-hidden' : ''}`}
                     >
+                      {themeOption.value === 'vibgyor' && (
+                        <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-destructive via-accent via-primary to-chart-2 animate-pulse" />
+                      )}
                       {theme === themeOption.value && (
-                        <div className="absolute top-2 right-2 h-5 w-5 bg-primary rounded-full flex items-center justify-center animate-bounce-in">
+                        <div className="absolute top-2 right-2 h-5 w-5 bg-primary rounded-full flex items-center justify-center animate-bounce-in z-10">
                           <Check className="h-3 w-3 text-primary-foreground" />
                         </div>
                       )}
-                      <themeOption.icon className={`h-8 w-8 mb-2 ${
+                      <themeOption.icon className={`h-8 w-8 mb-2 relative z-10 ${
                         theme === themeOption.value ? 'text-primary' : 'text-muted-foreground'
-                      }`} />
-                      <h4 className="font-medium">{themeOption.label}</h4>
-                      <p className="text-xs text-muted-foreground mt-1">
+                      } ${themeOption.value === 'vibgyor' ? 'animate-pulse' : ''}`} />
+                      <h4 className="font-medium relative z-10">{themeOption.label}</h4>
+                      <p className="text-xs text-muted-foreground mt-1 relative z-10">
                         {themeOption.description}
                       </p>
                     </button>
