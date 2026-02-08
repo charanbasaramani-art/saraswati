@@ -153,77 +153,77 @@ All colors MUST be HSL.
     --shadow-2xl: 0 24px 48px 0px hsl(0 0% 0% / 0.45);
   }
 
-  /* VIBGYOR Rainbow Theme - Premium Edition */
+  /* VIBGYOR Rainbow Theme - Enterprise Premium */
   .vibgyor {
-    --background: 260 40% 5%;
-    --foreground: 0 0% 100%;
+    --background: 250 25% 7%;
+    --foreground: 220 20% 95%;
 
-    --card: 260 35% 10%;
-    --card-foreground: 0 0% 100%;
+    --card: 250 20% 11%;
+    --card-foreground: 220 20% 95%;
 
-    --popover: 260 35% 12%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 250 20% 13%;
+    --popover-foreground: 220 20% 95%;
 
-    --primary: 320 100% 65%;
+    --primary: 270 75% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 180 100% 45%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 220 30% 16%;
+    --secondary-foreground: 220 20% 90%;
 
-    --muted: 260 30% 18%;
-    --muted-foreground: 260 15% 75%;
+    --muted: 240 15% 18%;
+    --muted-foreground: 240 10% 65%;
 
-    --accent: 45 100% 55%;
-    --accent-foreground: 45 100% 10%;
+    --accent: 200 80% 55%;
+    --accent-foreground: 200 90% 90%;
 
-    --destructive: 0 100% 55%;
+    --destructive: 0 72% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 280 60% 35%;
-    --input: 280 40% 22%;
-    --ring: 320 100% 65%;
+    --border: 260 20% 20%;
+    --input: 260 15% 18%;
+    --ring: 270 75% 65%;
 
     /* Glassmorphism tokens - vibgyor */
-    --glass-background: 260 40% 12% / 0.7;
-    --glass-border: 320 100% 60% / 0.4;
-    --glass-blur: 24px;
-    --glass-shadow: 0 8px 40px 0 hsl(320 100% 50% / 0.3);
+    --glass-background: 250 25% 12% / 0.75;
+    --glass-border: 270 40% 40% / 0.25;
+    --glass-blur: 20px;
+    --glass-shadow: 0 8px 32px 0 hsl(260 50% 10% / 0.4);
 
-    /* Gradient backgrounds - vibgyor rainbow */
-    --gradient-start: 320 100% 50%;
-    --gradient-end: 180 100% 50%;
-    --gradient-accent: 45 100% 55%;
+    /* Gradient backgrounds */
+    --gradient-start: 270 60% 15%;
+    --gradient-end: 220 50% 12%;
+    --gradient-accent: 270 75% 65%;
 
-    --sidebar-background: 260 35% 8%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 320 100% 65%;
+    --sidebar-background: 250 25% 9%;
+    --sidebar-foreground: 220 20% 95%;
+    --sidebar-primary: 270 75% 65%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 45 100% 55%;
-    --sidebar-accent-foreground: 45 100% 10%;
-    --sidebar-border: 280 60% 35%;
-    --sidebar-ring: 320 100% 65%;
+    --sidebar-accent: 200 80% 55%;
+    --sidebar-accent-foreground: 200 90% 90%;
+    --sidebar-border: 260 20% 20%;
+    --sidebar-ring: 270 75% 65%;
 
-    /* Rainbow chart colors - VIBGYOR */
-    --chart-1: 0 100% 65%;
-    --chart-2: 30 100% 58%;
-    --chart-3: 55 100% 55%;
-    --chart-4: 130 80% 45%;
-    --chart-5: 210 100% 55%;
-    --chart-6: 280 100% 65%;
+    /* Rainbow spectrum chart colors */
+    --chart-1: 350 80% 62%;
+    --chart-2: 30 90% 58%;
+    --chart-3: 55 85% 52%;
+    --chart-4: 160 70% 48%;
+    --chart-5: 220 80% 60%;
+    --chart-6: 280 75% 62%;
 
-    --sidebar: 260 35% 8%;
+    --sidebar: 250 25% 9%;
 
-    --shadow-2xs: 0 1px 4px 0px hsl(320 100% 50% / 0.15);
-    --shadow-xs: 0 2px 6px 0px hsl(280 100% 50% / 0.2);
-    --shadow-sm: 0 4px 10px 0px hsl(320 100% 50% / 0.25);
-    --shadow: 0 6px 16px 0px hsl(280 100% 50% / 0.3);
-    --shadow-md: 0 10px 24px 0px hsl(320 100% 50% / 0.35);
-    --shadow-lg: 0 16px 36px 0px hsl(280 100% 50% / 0.4);
-    --shadow-xl: 0 24px 50px 0px hsl(320 100% 50% / 0.45);
-    --shadow-2xl: 0 32px 64px 0px hsl(280 100% 50% / 0.5);
+    --shadow-2xs: 0 1px 3px 0px hsl(260 50% 5% / 0.2);
+    --shadow-xs: 0 2px 4px 0px hsl(260 50% 5% / 0.25);
+    --shadow-sm: 0 3px 8px 0px hsl(260 50% 5% / 0.3);
+    --shadow: 0 4px 12px 0px hsl(260 50% 5% / 0.35);
+    --shadow-md: 0 8px 20px 0px hsl(260 50% 5% / 0.4);
+    --shadow-lg: 0 14px 32px 0px hsl(260 50% 5% / 0.45);
+    --shadow-xl: 0 22px 48px 0px hsl(260 50% 5% / 0.5);
+    --shadow-2xl: 0 30px 60px 0px hsl(260 50% 5% / 0.55);
   }
 
-  /* Stunning rainbow background effect */
+  /* Subtle ambient aurora background */
   .vibgyor::before {
     content: '';
     position: fixed;
@@ -231,233 +231,156 @@ All colors MUST be HSL.
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(ellipse at 0% 0%, hsl(0 100% 50% / 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 100% 0%, hsl(45 100% 50% / 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse at 100% 100%, hsl(180 100% 50% / 0.12) 0%, transparent 50%),
-      radial-gradient(ellipse at 0% 100%, hsl(280 100% 50% / 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, hsl(320 100% 50% / 0.08) 0%, transparent 60%);
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, hsl(350 70% 50% / 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 85% 15%, hsl(30 80% 55% / 0.06) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 60% at 70% 80%, hsl(200 80% 50% / 0.07) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 20% 85%, hsl(270 70% 55% / 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 40% at 50% 50%, hsl(160 60% 45% / 0.04) 0%, transparent 50%);
     pointer-events: none;
     z-index: 0;
-    animation: aurora-shift 15s ease-in-out infinite;
+    animation: vibgyor-ambient 20s ease-in-out infinite;
   }
 
-  @keyframes aurora-shift {
-    0%, 100% {
-      opacity: 1;
-      filter: hue-rotate(0deg);
-    }
-    25% {
-      filter: hue-rotate(30deg);
-    }
-    50% {
-      opacity: 0.8;
-      filter: hue-rotate(60deg);
-    }
-    75% {
-      filter: hue-rotate(30deg);
-    }
+  @keyframes vibgyor-ambient {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
   }
 
-  /* Rainbow animated gradient orbs */
+  /* Refined gradient orbs for vibgyor */
   .vibgyor .gradient-orb-1 {
-    background: conic-gradient(
-      from 0deg,
-      hsl(0 100% 60% / 0.6),
-      hsl(45 100% 55% / 0.5),
-      hsl(120 100% 50% / 0.5),
-      hsl(200 100% 55% / 0.5),
-      hsl(280 100% 60% / 0.6),
-      hsl(320 100% 60% / 0.6),
-      hsl(0 100% 60% / 0.6)
-    );
+    background: radial-gradient(circle, hsl(270 70% 55% / 0.25) 0%, transparent 70%);
     width: 500px;
     height: 500px;
     filter: blur(100px);
-    animation: rainbow-orbit 12s linear infinite;
+    animation: vibgyor-drift-1 18s ease-in-out infinite;
   }
 
   .vibgyor .gradient-orb-2 {
-    background: conic-gradient(
-      from 180deg,
-      hsl(180 100% 50% / 0.5),
-      hsl(220 100% 55% / 0.5),
-      hsl(280 100% 60% / 0.6),
-      hsl(320 100% 65% / 0.5),
-      hsl(0 100% 60% / 0.5),
-      hsl(45 100% 55% / 0.5),
-      hsl(180 100% 50% / 0.5)
-    );
+    background: radial-gradient(circle, hsl(200 75% 50% / 0.2) 0%, transparent 70%);
     width: 400px;
     height: 400px;
     filter: blur(90px);
-    animation: rainbow-orbit 15s linear infinite reverse;
+    animation: vibgyor-drift-2 22s ease-in-out infinite;
   }
 
   .vibgyor .gradient-orb-3 {
-    background: conic-gradient(
-      from 90deg,
-      hsl(320 100% 65% / 0.5),
-      hsl(0 100% 60% / 0.4),
-      hsl(45 100% 55% / 0.5),
-      hsl(90 100% 50% / 0.4),
-      hsl(180 100% 50% / 0.5),
-      hsl(250 100% 60% / 0.5),
-      hsl(320 100% 65% / 0.5)
-    );
+    background: radial-gradient(circle, hsl(350 65% 55% / 0.15) 0%, transparent 70%);
     width: 350px;
     height: 350px;
     filter: blur(80px);
-    animation: rainbow-pulse 8s ease-in-out infinite;
+    animation: vibgyor-drift-3 16s ease-in-out infinite;
   }
 
-  @keyframes rainbow-orbit {
-    0% {
-      transform: translate(0, 0) rotate(0deg) scale(1);
-    }
-    25% {
-      transform: translate(50px, -30px) rotate(90deg) scale(1.1);
-    }
-    50% {
-      transform: translate(0, -50px) rotate(180deg) scale(1);
-    }
-    75% {
-      transform: translate(-50px, -30px) rotate(270deg) scale(1.1);
-    }
-    100% {
-      transform: translate(0, 0) rotate(360deg) scale(1);
-    }
+  @keyframes vibgyor-drift-1 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(30px, -20px); }
+    66% { transform: translate(-20px, 15px); }
   }
 
-  @keyframes rainbow-pulse {
-    0%, 100% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.6;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1.3);
-      opacity: 0.8;
-    }
+  @keyframes vibgyor-drift-2 {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(-25px, 15px); }
+    66% { transform: translate(20px, -25px); }
   }
 
-  /* Stunning rainbow gradient text */
+  @keyframes vibgyor-drift-3 {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.15); }
+  }
+
+  /* Elegant gradient text */
   .vibgyor .gradient-text {
     background: linear-gradient(
       135deg,
-      hsl(0 100% 65%) 0%,
-      hsl(30 100% 60%) 14%,
-      hsl(55 100% 55%) 28%,
-      hsl(120 80% 50%) 42%,
-      hsl(200 100% 55%) 56%,
-      hsl(260 100% 65%) 70%,
-      hsl(320 100% 65%) 84%,
-      hsl(0 100% 65%) 100%
+      hsl(350 75% 65%) 0%,
+      hsl(30 85% 60%) 20%,
+      hsl(55 80% 55%) 35%,
+      hsl(160 65% 50%) 50%,
+      hsl(210 80% 60%) 65%,
+      hsl(270 75% 65%) 80%,
+      hsl(320 70% 62%) 100%
     );
-    background-size: 300% 300%;
+    background-size: 200% 200%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: rainbow-flow 4s ease infinite;
-    text-shadow: 0 0 30px hsl(320 100% 60% / 0.3);
+    animation: vibgyor-text-flow 6s ease infinite;
   }
 
-  @keyframes rainbow-flow {
+  @keyframes vibgyor-text-flow {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
 
-  /* Premium rainbow button */
+  /* Premium button with subtle spectrum */
   .vibgyor .btn-glow {
-    background: linear-gradient(
-      135deg,
-      hsl(320 100% 60%),
-      hsl(280 100% 60%),
-      hsl(200 100% 55%),
-      hsl(320 100% 60%)
-    );
+    background: linear-gradient(135deg, hsl(270 75% 58%), hsl(220 75% 55%), hsl(270 75% 58%));
     background-size: 200% 200%;
-    animation: rainbow-button 3s ease infinite;
-    box-shadow: 
-      0 4px 15px hsl(320 100% 50% / 0.4),
-      0 0 30px hsl(280 100% 50% / 0.2),
-      inset 0 1px 0 hsl(0 0% 100% / 0.2);
-    border: 1px solid hsl(0 0% 100% / 0.2);
-    text-shadow: 0 1px 2px hsl(0 0% 0% / 0.3);
+    animation: vibgyor-btn 4s ease infinite;
+    box-shadow: 0 4px 20px hsl(270 60% 40% / 0.35), 0 0 0 1px hsl(270 50% 50% / 0.15);
+    border: 1px solid hsl(0 0% 100% / 0.1);
   }
 
   .vibgyor .btn-glow:hover {
-    box-shadow: 
-      0 6px 25px hsl(320 100% 50% / 0.5),
-      0 0 50px hsl(280 100% 50% / 0.3),
-      inset 0 1px 0 hsl(0 0% 100% / 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 6px 28px hsl(270 60% 40% / 0.5), 0 0 0 1px hsl(270 50% 50% / 0.25);
+    transform: translateY(-1px);
   }
 
-  @keyframes rainbow-button {
+  @keyframes vibgyor-btn {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
   }
 
-  /* Spectacular rainbow border card */
+  /* Enterprise glass card with thin spectrum border */
   .vibgyor .glass-card {
     position: relative;
-    border: none;
-    background: hsl(var(--card));
+    border: 1px solid hsl(270 30% 30% / 0.4);
+    background: hsl(var(--card) / 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .vibgyor .glass-card::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: conic-gradient(
-      from 0deg,
-      hsl(0 100% 60%),
-      hsl(45 100% 55%),
-      hsl(90 100% 50%),
-      hsl(180 100% 50%),
-      hsl(240 100% 60%),
-      hsl(300 100% 60%),
-      hsl(360 100% 60%)
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(350 70% 60% / 0.5) 15%,
+      hsl(45 80% 55% / 0.5) 30%,
+      hsl(160 65% 50% / 0.5) 50%,
+      hsl(210 75% 58% / 0.5) 70%,
+      hsl(270 70% 60% / 0.5) 85%,
+      transparent 100%
     );
-    z-index: -1;
-    border-radius: inherit;
-    animation: rainbow-spin 6s linear infinite;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
   }
 
-  .vibgyor .glass-card::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
-    background: hsl(var(--card));
-    z-index: -1;
-    border-radius: calc(var(--radius) - 2px);
+  .vibgyor .glass-card:hover {
+    border-color: hsl(270 40% 40% / 0.5);
+    box-shadow: 0 8px 32px hsl(270 50% 20% / 0.3), 0 0 0 1px hsl(270 40% 45% / 0.15);
   }
 
-  @keyframes rainbow-spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  /* Rainbow glow on hover for cards */
   .vibgyor .glass-card:hover::before {
-    animation: rainbow-spin 3s linear infinite;
-    filter: brightness(1.2);
+    opacity: 1;
   }
 
-  /* Rainbow navbar effect */
+  /* Sleek navbar with spectrum accent line */
   .vibgyor .glass-navbar {
-    background: hsl(260 40% 8% / 0.9);
-    border-bottom: 2px solid transparent;
-    background-clip: padding-box;
+    background: hsl(250 25% 9% / 0.92);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: none;
     position: relative;
   }
 
@@ -467,95 +390,68 @@ All colors MUST be HSL.
     bottom: 0;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(
       90deg,
-      hsl(0 100% 60%),
-      hsl(45 100% 55%),
-      hsl(90 100% 50%),
-      hsl(180 100% 50%),
-      hsl(240 100% 60%),
-      hsl(320 100% 60%),
-      hsl(0 100% 60%)
+      transparent 0%,
+      hsl(350 65% 58% / 0.4) 10%,
+      hsl(30 75% 55% / 0.35) 22%,
+      hsl(55 75% 52% / 0.35) 34%,
+      hsl(160 60% 48% / 0.35) 46%,
+      hsl(210 70% 55% / 0.4) 58%,
+      hsl(270 65% 58% / 0.4) 72%,
+      hsl(320 60% 55% / 0.35) 86%,
+      transparent 100%
     );
-    background-size: 200% 100%;
-    animation: rainbow-slide 4s linear infinite;
   }
 
-  @keyframes rainbow-slide {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 200% 0%; }
-  }
-
-  /* Rainbow input focus effect */
+  /* Refined input focus */
   .vibgyor input:focus,
   .vibgyor textarea:focus {
-    border-color: transparent;
-    box-shadow: 
-      0 0 0 2px hsl(var(--background)),
-      0 0 0 4px hsl(320 100% 60%),
-      0 0 20px hsl(320 100% 50% / 0.3);
+    border-color: hsl(270 60% 55% / 0.5);
+    box-shadow: 0 0 0 3px hsl(270 60% 55% / 0.15), 0 0 12px hsl(270 50% 50% / 0.1);
   }
 
-  /* Rainbow scrollbar */
+  /* Minimal scrollbar */
   .vibgyor ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   .vibgyor ::-webkit-scrollbar-track {
-    background: hsl(260 40% 8%);
+    background: hsl(250 25% 9%);
   }
 
   .vibgyor ::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-      180deg,
-      hsl(0 100% 60%),
-      hsl(45 100% 55%),
-      hsl(180 100% 50%),
-      hsl(280 100% 60%)
-    );
-    border-radius: 4px;
+    background: linear-gradient(180deg, hsl(270 50% 45%), hsl(220 50% 45%));
+    border-radius: 3px;
   }
 
-  /* Rainbow selection */
+  .vibgyor ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, hsl(270 55% 55%), hsl(220 55% 55%));
+  }
+
+  /* Selection */
   .vibgyor ::selection {
-    background: hsl(320 100% 50% / 0.4);
+    background: hsl(270 60% 50% / 0.35);
     color: hsl(0 0% 100%);
   }
 
-  /* Pulse glow effect for vibgyor */
+  /* Subtle hover glow for vibgyor */
   .vibgyor .animate-pulse-glow {
-    animation: rainbow-pulse-glow 2s ease-in-out infinite;
+    animation: vibgyor-pulse-glow 3s ease-in-out infinite;
   }
 
-  @keyframes rainbow-pulse-glow {
+  @keyframes vibgyor-pulse-glow {
     0%, 100% {
-      box-shadow: 
-        0 0 5px hsl(0 100% 60% / 0.5),
-        0 0 10px hsl(320 100% 60% / 0.3);
-    }
-    25% {
-      box-shadow: 
-        0 0 5px hsl(90 100% 50% / 0.5),
-        0 0 15px hsl(45 100% 55% / 0.3);
+      box-shadow: 0 0 8px hsl(270 60% 50% / 0.2);
     }
     50% {
-      box-shadow: 
-        0 0 5px hsl(180 100% 50% / 0.5),
-        0 0 20px hsl(200 100% 55% / 0.3);
-    }
-    75% {
-      box-shadow: 
-        0 0 5px hsl(280 100% 60% / 0.5),
-        0 0 15px hsl(260 100% 60% / 0.3);
+      box-shadow: 0 0 16px hsl(270 60% 50% / 0.35), 0 0 4px hsl(220 60% 50% / 0.15);
     }
   }
 
-  /* Floating particles effect hint */
   .vibgyor .hover-lift:hover {
-    box-shadow: 
-      0 10px 30px hsl(320 100% 50% / 0.3),
-      0 0 40px hsl(280 100% 50% / 0.2);
+    box-shadow: 0 8px 24px hsl(270 50% 25% / 0.35);
   }
 }
 
