@@ -860,4 +860,24 @@ All colors MUST be HSL.
     display: inline-block;
     animation: countUp 0.5s ease-out forwards;
   }
+
+  /* Glitter burst animation for theme transitions */
+  @keyframes glitter-burst {
+    0% {
+      opacity: 0;
+      transform: scale(0) translate(0, 0);
+    }
+    20% {
+      opacity: 1;
+      transform: scale(1.2) translate(calc(var(--tx) * 0.3), calc(var(--ty) * 0.3));
+    }
+    60% {
+      opacity: 0.8;
+      transform: scale(1) translate(var(--tx), var(--ty));
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0) translate(calc(var(--tx) * 1.5), calc(var(--ty) * 1.5));
+    }
+  }
 }
