@@ -52,7 +52,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} ResumeAI. BCA Final Year Project. All rights reserved.</p>
+          <p>© 2007 ResumeAI. a CHARAN'S vision</p>
         </div>
       </div>
     </footer>
