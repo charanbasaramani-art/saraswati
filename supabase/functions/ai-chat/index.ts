@@ -2,22 +2,8 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 };
-
-interface ChatMessage {
-  role: 'user' | 'assistant';
-  content: string;
-}
-
-interface ChatRequest {
-  messages: ChatMessage[];
-  context: {
-    hasResume: boolean;
-    resumeScore?: number;
-    userName?: string;
-  };
-}
 
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
@@ -25,9 +11,14 @@ serve(async (req) => {
   }
 
   try {
-    const { messages, context }: ChatRequest = await req.json();
+    const { messages, context } = await req.json();
 
-    const systemPrompt = `You are ResumeAI Assistant, a helpful and professional AI assistant for the ResumeAI platform - an AI-powered resume analysis tool.
+    const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
+    if (!LOVABLE_API_KEY) {
+      throw new Error('LOVABLE_API_KEY is not configured');
+    }
+
+    const systemPrompt = `You are R-ATLAS, an intelligent and professional AI assistant for the ResumeAI platform — an AI-powered resume analysis tool.
 
 Your role is to:
 - Help users understand how to upload and analyze their resumes
@@ -35,82 +26,66 @@ Your role is to:
 - Provide guidance on skill gaps and improvements
 - Give job recommendation guidance
 - Help with platform navigation
+- Answer general questions helpfully and conversationally, like ChatGPT
 
 Context about the current user:
-- Has uploaded resume: ${context.hasResume ? 'Yes' : 'No'}
-${context.resumeScore ? `- Latest resume score: ${context.resumeScore}/100` : ''}
-${context.userName ? `- User name: ${context.userName}` : ''}
+- Has uploaded resume: ${context?.hasResume ? 'Yes' : 'No'}
+${context?.resumeScore ? `- Latest resume score: ${context.resumeScore}/100` : ''}
+${context?.userName ? `- User name: ${context.userName}` : ''}
 
 Guidelines:
-- Be concise but helpful (2-3 sentences typically)
-- Use a professional, friendly tone
-- If user hasn't uploaded a resume yet, guide them to do so
-- Provide actionable advice
+- Be conversational, helpful, and friendly
+- Use markdown formatting for better readability (bold, lists, code blocks, etc.)
+- Provide detailed, actionable advice
 - Don't make up specific scores or data you don't have
-- For navigation questions, reference: Dashboard, Jobs, Analysis Results pages`;
+- For navigation questions, reference: Dashboard, Jobs, Analysis Results pages
+- You can discuss any topic, but your specialty is resume analysis and career guidance`;
 
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
+    const response = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
+        'Authorization': `Bearer ${LOVABLE_API_KEY}`,
         'Content-Type': 'application/json',
-        'x-api-key': Deno.env.get('ANTHROPIC_API_KEY') || '',
-        'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-3-haiku-20240307',
-        max_tokens: 500,
-        system: systemPrompt,
-        messages: messages.map(m => ({
-          role: m.role,
-          content: m.content,
-        })),
+        model: 'google/gemini-3-flash-preview',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          ...messages,
+        ],
+        stream: true,
       }),
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Anthropic API error:', errorText);
-      
-      // Fallback to rule-based responses
-      const lastMessage = messages[messages.length - 1]?.content.toLowerCase() || '';
-      let fallbackResponse = "I'm here to help! You can ask me about uploading resumes, understanding your scores, or finding job recommendations.";
-      
-      if (lastMessage.includes('upload') || lastMessage.includes('resume')) {
-        fallbackResponse = context.hasResume 
-          ? "Great! I see you've uploaded a resume. You can view your analysis results in the Dashboard or upload a new one to get updated insights."
-          : "To upload your resume, go to the Dashboard and use the Resume Upload section. We support PDF and DOCX formats. Once uploaded, our AI will analyze it automatically!";
-      } else if (lastMessage.includes('score') || lastMessage.includes('analysis')) {
-        fallbackResponse = context.resumeScore 
-          ? `Your resume scored ${context.resumeScore}/100. This score reflects content quality, formatting, and keyword optimization. Check the Analysis Results page for detailed insights!`
-          : "Once you upload a resume, you'll receive a comprehensive score covering content quality, ATS compatibility, and skill alignment. Upload now to get started!";
-      } else if (lastMessage.includes('job') || lastMessage.includes('recommend')) {
-        fallbackResponse = "Visit the Jobs page to see positions matching your skills. Our AI matches your resume keywords with job requirements for personalized recommendations!";
-      } else if (lastMessage.includes('skill') || lastMessage.includes('gap') || lastMessage.includes('improve')) {
-        fallbackResponse = "Your Analysis Results page shows skill gaps based on your target roles. Focus on adding relevant keywords and quantifiable achievements to improve your score!";
-      } else if (lastMessage.includes('help') || lastMessage.includes('how')) {
-        fallbackResponse = "I can help with: 1) Uploading resumes, 2) Understanding scores, 3) Finding skill gaps, 4) Job recommendations, 5) Platform navigation. What would you like to know?";
+      if (response.status === 429) {
+        return new Response(JSON.stringify({ error: 'Rate limit exceeded. Please try again in a moment.' }), {
+          status: 429,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
       }
-
-      return new Response(
-        JSON.stringify({ message: fallbackResponse }),
-        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-      );
+      if (response.status === 402) {
+        return new Response(JSON.stringify({ error: 'AI credits exhausted. Please add funds.' }), {
+          status: 402,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        });
+      }
+      const errorText = await response.text();
+      console.error('AI gateway error:', response.status, errorText);
+      return new Response(JSON.stringify({ error: 'AI service error' }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
     }
 
-    const data = await response.json();
-    const assistantMessage = data.content[0]?.text || "I'm sorry, I couldn't process that. How can I help you?";
-
-    return new Response(
-      JSON.stringify({ message: assistantMessage }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-    );
+    return new Response(response.body, {
+      headers: { ...corsHeaders, 'Content-Type': 'text/event-stream' },
+    });
   } catch (error) {
     console.error('Error in ai-chat function:', error);
     return new Response(
-      JSON.stringify({ 
-        message: "I'm here to help! You can ask me about uploading resumes, understanding your scores, or finding job recommendations." 
-      }),
-      { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }),
+      { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   }
 });
