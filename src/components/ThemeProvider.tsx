@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { GlitterEffect } from "./GlitterEffect";
 
-type Theme = "dark" | "light" | "system" | "vibgyor";
+type Theme = "dark" | "light" | "system";
 
 type ThemeProviderProps = {
   children: React.ReactNode;
@@ -28,14 +27,17 @@ export function ThemeProvider({
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme
+    () => {
+      const stored = localStorage.getItem(storageKey) as string;
+      if (stored === "vibgyor") return "dark" as Theme;
+      return (stored as Theme) || defaultTheme;
+    }
   );
-  const [glitterTrigger, setGlitterTrigger] = useState(0);
 
   useEffect(() => {
     const root = window.document.documentElement;
 
-    root.classList.remove("light", "dark", "vibgyor");
+    root.classList.remove("light", "dark");
 
     if (theme === "system") {
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
@@ -54,7 +56,6 @@ export function ThemeProvider({
     theme,
     setTheme: (newTheme: Theme) => {
       localStorage.setItem(storageKey, newTheme);
-      setGlitterTrigger((prev) => prev + 1);
       setTheme(newTheme);
     },
   };
@@ -62,7 +63,6 @@ export function ThemeProvider({
   return (
     <ThemeProviderContext.Provider {...props} value={value}>
       {children}
-      <GlitterEffect trigger={glitterTrigger} />
     </ThemeProviderContext.Provider>
   );
 }
