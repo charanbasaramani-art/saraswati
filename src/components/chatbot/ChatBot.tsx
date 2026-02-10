@@ -5,7 +5,6 @@ import { ChatMessage } from './ChatMessage';
 import { ChatInput } from './ChatInput';
 import { QuickPrompts } from './QuickPrompts';
 import { useVoice } from '@/hooks/useVoice';
-import { supabase } from '@/integrations/supabase/client';
 import { cn } from '@/lib/utils';
 
 interface Message {
@@ -20,6 +19,8 @@ interface ChatBotProps {
   userName?: string;
 }
 
+const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/ai-chat`;
+
 export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -27,12 +28,13 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
   const [voiceEnabled, setVoiceEnabled] = useState(false);
   const [showPulse, setShowPulse] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  
-  const { 
-    isListening, 
-    isSupported, 
+  const abortRef = useRef<AbortController | null>(null);
+
+  const {
+    isListening,
+    isSupported,
     isSpeaking,
-    startListening, 
+    startListening,
     stopListening,
     speak,
     stopSpeaking,
@@ -45,26 +47,23 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
     },
   });
 
-  // Auto-scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Welcome message
   useEffect(() => {
     if (isOpen && messages.length === 0) {
       const welcomeMessage: Message = {
         id: 'welcome',
         role: 'assistant',
         content: hasResume
-          ? `Hi${userName ? ` ${userName}` : ''}! 👋 I see you've uploaded your resume${resumeScore ? ` and scored ${resumeScore}/100` : ''}. How can I help you improve it or find matching jobs?`
-          : `Hi${userName ? ` ${userName}` : ''}! 👋 Welcome to ResumeAI! I'm here to help you analyze your resume, find skill gaps, and discover job opportunities. Would you like to upload your resume to get started?`,
+          ? `Hi${userName ? ` ${userName}` : ''}! 👋 I see you've uploaded your resume${resumeScore ? ` and scored **${resumeScore}/100**` : ''}. How can I help you improve it or find matching jobs?`
+          : `Hi${userName ? ` ${userName}` : ''}! 👋 Welcome to **ResumeAI**! I'm **R-ATLAS**, your AI assistant. I can help you analyze your resume, find skill gaps, and discover job opportunities. Would you like to upload your resume to get started?`,
       };
       setMessages([welcomeMessage]);
     }
   }, [isOpen, hasResume, resumeScore, userName, messages.length]);
 
-  // Hide pulse after opening
   useEffect(() => {
     if (isOpen) setShowPulse(false);
   }, [isOpen]);
@@ -75,46 +74,138 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
       role: 'user',
       content,
     };
-    
+
     setMessages((prev) => [...prev, userMessage]);
     setIsLoading(true);
 
+    // Abort any previous stream
+    abortRef.current?.abort();
+    const controller = new AbortController();
+    abortRef.current = controller;
+
+    let assistantSoFar = '';
+    const assistantId = (Date.now() + 1).toString();
+
     try {
-      const { data, error } = await supabase.functions.invoke('ai-chat', {
-        body: {
-          messages: [...messages, userMessage].map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
-          context: {
-            hasResume,
-            resumeScore,
-            userName,
-          },
+      const allMessages = [...messages, userMessage].map((m) => ({
+        role: m.role,
+        content: m.content,
+      }));
+
+      const resp = await fetch(CHAT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
+        body: JSON.stringify({
+          messages: allMessages,
+          context: { hasResume, resumeScore, userName },
+        }),
+        signal: controller.signal,
       });
 
-      if (error) throw error;
-
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: data.message,
-      };
-      
-      setMessages((prev) => [...prev, assistantMessage]);
-      
-      if (voiceEnabled) {
-        speak(data.message);
+      if (!resp.ok) {
+        const errData = await resp.json().catch(() => ({}));
+        throw new Error(errData.error || `Request failed (${resp.status})`);
       }
-    } catch (error) {
+
+      if (!resp.body) throw new Error('No response body');
+
+      const reader = resp.body.getReader();
+      const decoder = new TextDecoder();
+      let textBuffer = '';
+      let streamDone = false;
+
+      while (!streamDone) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        textBuffer += decoder.decode(value, { stream: true });
+
+        let newlineIndex: number;
+        while ((newlineIndex = textBuffer.indexOf('\n')) !== -1) {
+          let line = textBuffer.slice(0, newlineIndex);
+          textBuffer = textBuffer.slice(newlineIndex + 1);
+
+          if (line.endsWith('\r')) line = line.slice(0, -1);
+          if (line.startsWith(':') || line.trim() === '') continue;
+          if (!line.startsWith('data: ')) continue;
+
+          const jsonStr = line.slice(6).trim();
+          if (jsonStr === '[DONE]') {
+            streamDone = true;
+            break;
+          }
+
+          try {
+            const parsed = JSON.parse(jsonStr);
+            const delta = parsed.choices?.[0]?.delta?.content as string | undefined;
+            if (delta) {
+              assistantSoFar += delta;
+              setMessages((prev) => {
+                const last = prev[prev.length - 1];
+                if (last?.id === assistantId) {
+                  return prev.map((m) =>
+                    m.id === assistantId ? { ...m, content: assistantSoFar } : m
+                  );
+                }
+                return [...prev, { id: assistantId, role: 'assistant', content: assistantSoFar }];
+              });
+            }
+          } catch {
+            textBuffer = line + '\n' + textBuffer;
+            break;
+          }
+        }
+      }
+
+      // Flush remaining buffer
+      if (textBuffer.trim()) {
+        for (let raw of textBuffer.split('\n')) {
+          if (!raw) continue;
+          if (raw.endsWith('\r')) raw = raw.slice(0, -1);
+          if (raw.startsWith(':') || raw.trim() === '') continue;
+          if (!raw.startsWith('data: ')) continue;
+          const jsonStr = raw.slice(6).trim();
+          if (jsonStr === '[DONE]') continue;
+          try {
+            const parsed = JSON.parse(jsonStr);
+            const delta = parsed.choices?.[0]?.delta?.content as string | undefined;
+            if (delta) {
+              assistantSoFar += delta;
+              setMessages((prev) =>
+                prev.map((m) =>
+                  m.id === assistantId ? { ...m, content: assistantSoFar } : m
+                )
+              );
+            }
+          } catch { /* ignore */ }
+        }
+      }
+
+      // Ensure assistant message exists even if empty
+      if (!assistantSoFar) {
+        setMessages((prev) => [
+          ...prev,
+          { id: assistantId, role: 'assistant', content: "I'm sorry, I couldn't generate a response. Please try again." },
+        ]);
+      }
+
+      if (voiceEnabled && assistantSoFar) {
+        speak(assistantSoFar);
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error && error.name === 'AbortError') return;
       console.error('Chat error:', error);
-      const errorMessage: Message = {
-        id: (Date.now() + 1).toString(),
-        role: 'assistant',
-        content: "I'm sorry, I'm having trouble connecting. Please try again in a moment.",
-      };
-      setMessages((prev) => [...prev, errorMessage]);
+      const errorMsg = error instanceof Error ? error.message : 'Connection error';
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: assistantId,
+          role: 'assistant',
+          content: `Sorry, something went wrong: ${errorMsg}. Please try again.`,
+        },
+      ]);
     } finally {
       setIsLoading(false);
     }
@@ -122,7 +213,6 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
 
   return (
     <>
-      {/* Floating Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
@@ -147,21 +237,19 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
         )}
       </Button>
 
-      {/* Chat Window */}
       <div className={cn(
         "fixed bottom-24 right-6 w-[380px] max-w-[calc(100vw-48px)] z-50",
         "transition-all duration-300 ease-out transform origin-bottom-right",
         isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 pointer-events-none"
       )}>
         <div className="glass-card rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px] max-h-[70vh]">
-          {/* Header */}
           <div className="p-4 border-b border-border/50 bg-primary/5">
             <div className="flex items-center gap-3">
               <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center">
                 <Sparkles className="h-5 w-5 text-primary" />
               </div>
               <div>
-                <h3 className="font-semibold text-foreground">ResumeAI Assistant</h3>
+                <h3 className="font-semibold text-foreground">R-ATLAS</h3>
                 <p className="text-xs text-muted-foreground">
                   {isLoading ? 'Thinking...' : 'Online • Ready to help'}
                 </p>
@@ -169,12 +257,10 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
             </div>
           </div>
 
-          {/* Quick Prompts */}
           {messages.length <= 1 && (
             <QuickPrompts onSelect={handleSendMessage} hasResume={hasResume} />
           )}
 
-          {/* Messages */}
           <div className="flex-1 overflow-y-auto p-3 space-y-3">
             {messages.map((message) => (
               <ChatMessage
@@ -183,13 +269,12 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
                 content={message.content}
               />
             ))}
-            {isLoading && (
+            {isLoading && !messages.some(m => m.role === 'assistant' && m.id === (Date.now() + 1).toString()) && messages[messages.length - 1]?.role === 'user' && (
               <ChatMessage role="assistant" content="" isLoading />
             )}
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Input */}
           <ChatInput
             onSend={handleSendMessage}
             isLoading={isLoading}

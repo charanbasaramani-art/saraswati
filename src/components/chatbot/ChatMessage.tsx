@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import { Bot, User } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 
 interface ChatMessageProps {
   role: 'user' | 'assistant';
@@ -23,7 +24,7 @@ export function ChatMessage({ role, content, isLoading }: ChatMessageProps) {
       </div>
       <div className="flex-1 min-w-0">
         <p className="text-xs font-medium text-muted-foreground mb-1">
-          {isBot ? 'ResumeAI Assistant' : 'You'}
+          {isBot ? 'R-ATLAS' : 'You'}
         </p>
         {isLoading ? (
           <div className="flex items-center gap-1">
@@ -32,9 +33,9 @@ export function ChatMessage({ role, content, isLoading }: ChatMessageProps) {
             <span className="inline-block w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
           </div>
         ) : (
-          <p className="text-sm text-foreground whitespace-pre-wrap break-words">
-            {content}
-          </p>
+          <div className="text-sm text-foreground prose prose-sm dark:prose-invert max-w-none break-words [&>p]:mb-2 [&>ul]:mb-2 [&>ol]:mb-2 [&>h1]:text-base [&>h2]:text-sm [&>h3]:text-sm">
+            <ReactMarkdown>{content}</ReactMarkdown>
+          </div>
         )}
       </div>
     </div>
