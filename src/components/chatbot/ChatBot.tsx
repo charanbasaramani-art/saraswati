@@ -4,7 +4,6 @@ import { MessageCircle, X, Sparkles } from 'lucide-react';
 import { ChatMessage } from './ChatMessage';
 import { ChatInput } from './ChatInput';
 import { QuickPrompts } from './QuickPrompts';
-import { useVoice } from '@/hooks/useVoice';
 import { cn } from '@/lib/utils';
 
 interface Message {
@@ -25,27 +24,9 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [voiceEnabled, setVoiceEnabled] = useState(false);
   const [showPulse, setShowPulse] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
-
-  const {
-    isListening,
-    isSupported,
-    isSpeaking,
-    startListening,
-    stopListening,
-    speak,
-    stopSpeaking,
-  } = useVoice({
-    onResult: (transcript) => {
-      handleSendMessage(transcript);
-    },
-    onError: (error) => {
-      console.error('Voice error:', error);
-    },
-  });
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -191,9 +172,6 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
         ]);
       }
 
-      if (voiceEnabled && assistantSoFar) {
-        speak(assistantSoFar);
-      }
     } catch (error: unknown) {
       if (error instanceof Error && error.name === 'AbortError') return;
       console.error('Chat error:', error);
@@ -209,7 +187,7 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
     } finally {
       setIsLoading(false);
     }
-  }, [messages, hasResume, resumeScore, userName, voiceEnabled, speak]);
+  }, [messages, hasResume, resumeScore, userName]);
 
   return (
     <>
@@ -278,14 +256,6 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
           <ChatInput
             onSend={handleSendMessage}
             isLoading={isLoading}
-            isListening={isListening}
-            isSpeaking={isSpeaking}
-            isVoiceSupported={isSupported}
-            onStartListening={startListening}
-            onStopListening={stopListening}
-            onStopSpeaking={stopSpeaking}
-            voiceEnabled={voiceEnabled}
-            onToggleVoice={() => setVoiceEnabled(!voiceEnabled)}
           />
         </div>
       </div>
