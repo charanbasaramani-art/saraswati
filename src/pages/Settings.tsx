@@ -409,21 +409,17 @@ export default function Settings() {
                   {[
                     { value: 'light', label: 'Light', icon: Sun, description: 'Light background with dark text' },
                     { value: 'dark', label: 'Dark', icon: Moon, description: 'Dark background with light text' },
-                    { value: 'vibgyor', label: 'Rainbow', icon: Rainbow, description: 'Vibrant VIBGYOR colors' },
                     { value: 'system', label: 'System', icon: Monitor, description: 'Follow system preferences' },
                   ].map((themeOption) => (
                     <button
                       key={themeOption.value}
-                      onClick={() => setTheme(themeOption.value as 'light' | 'dark' | 'system' | 'vibgyor')}
+                      onClick={() => setTheme(themeOption.value as 'light' | 'dark' | 'system')}
                       className={`relative p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
                         theme === themeOption.value
                           ? 'border-primary bg-primary/10'
                           : 'border-border hover:border-primary/50 glass'
-                      } ${themeOption.value === 'vibgyor' ? 'overflow-hidden' : ''}`}
+                      }`}
                     >
-                      {themeOption.value === 'vibgyor' && (
-                        <div className="absolute inset-0 opacity-20 bg-gradient-to-r from-destructive via-accent via-primary to-chart-2 animate-pulse" />
-                      )}
                       {theme === themeOption.value && (
                         <div className="absolute top-2 right-2 h-5 w-5 bg-primary rounded-full flex items-center justify-center animate-bounce-in z-10">
                           <Check className="h-3 w-3 text-primary-foreground" />
