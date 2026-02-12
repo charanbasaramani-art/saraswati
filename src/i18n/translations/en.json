@@ -21,7 +21,37 @@
     "hideTip": "Hide Tip",
     "clearFilters": "Clear Filters",
     "showing": "Showing",
-    "noResults": "No results found"
+    "noResults": "No results found",
+    "welcome": "Welcome",
+    "active": "Active",
+    "filtered": "Filtered",
+    "resume": "Resume",
+    "processing": "Processing",
+    "uploadAndAnalyze": "Upload & Analyze",
+    "uploading": "Uploading...",
+    "analyzing": "Analyzing...",
+    "analyzingWithAI": "AI is analyzing your resume...",
+    "uploadSuccessful": "Upload Successful",
+    "uploadSuccessfulDesc": "Resume uploaded. Analysis will be available shortly.",
+    "analysisComplete": "Analysis Complete",
+    "analysisCompleteDesc": "Your resume has been analyzed successfully!",
+    "dragAndDrop": "Drag and drop your resume here",
+    "clickToBrowse": "or click to browse files",
+    "supportedFormatsLong": "Supported formats: PDF, DOCX (Max 10MB)",
+    "pleaseUploadPdfDocx": "Please upload a PDF or DOCX file",
+    "fileTooLarge": "File size must be less than 10MB",
+    "welcomeBack": "Welcome back!",
+    "loadingDashboard": "Loading your dashboard...",
+    "loadingResumes": "Loading your resumes...",
+    "noResumesYet": "No resumes uploaded yet",
+    "uploadFirstResume": "Upload your first resume to get started",
+    "latestAnalysis": "Latest Analysis",
+    "latestAnalysisDesc": "Your most recent resume analysis results",
+    "viewFullAnalysis": "View Full Analysis",
+    "overallScore": "Overall Score",
+    "skillsDetected": "Skills Detected",
+    "analysisDate": "Analysis Date",
+    "outOf100": "out of 100"
   },
   "nav": {
     "home": "Home",
@@ -112,7 +142,13 @@
       "jobMatches": "Job Matches"
     },
     "recentActivity": "Recent Activity",
-    "latestAnalysis": "Latest Analysis Preview"
+    "latestAnalysis": "Latest Analysis Preview",
+    "quickActions": {
+      "atsCheck": "ATS Check",
+      "softSkills": "Soft Skills",
+      "findJobs": "Find Jobs",
+      "improve": "Improve"
+    }
   },
   "interview": {
     "title": "Interview Question Generator",
@@ -134,7 +170,9 @@
     },
     "question": "Question",
     "answer": "Answer",
-    "tip": "Pro Tip"
+    "tip": "Pro Tip",
+    "badge": "AI Interview Coach",
+    "clickGenerate": "Click \"Generate Questions\" to get started"
   },
   "improvements": {
     "title": "Resume Improvement Suggestions",
@@ -154,17 +192,36 @@
       "low": "Low Priority"
     },
     "overallScore": "Overall Score",
-    "summary": "Summary"
+    "summary": "Summary",
+    "noGrammarIssues": "No grammar issues detected!",
+    "clickAnalyze": "Click \"Analyze Resume\" to get improvement suggestions"
   },
   "chatbot": {
-    "title": "ResumeAI Assistant",
-    "placeholder": "Type your message...",
+    "title": "R-ATLAS",
+    "placeholder": "Ask me anything...",
     "welcome": "Hello! I'm your ResumeAI assistant. How can I help you today?",
+    "thinking": "Thinking...",
+    "online": "Online • Ready to help",
+    "errorGenerate": "I'm sorry, I couldn't generate a response. Please try again.",
+    "errorConnection": "Sorry, something went wrong. Please try again.",
+    "quickQuestions": "Quick questions:",
     "prompts": {
       "upload": "How do I upload my resume?",
       "score": "Explain my resume score",
       "skills": "What skills should I add?",
-      "jobs": "Find matching jobs"
+      "jobs": "Find matching jobs",
+      "howToUpload": "How to upload?",
+      "howScoring": "How scoring works",
+      "browseJobs": "Browse jobs",
+      "explainScore": "Explain my resume score",
+      "showJobMatches": "Show job matches",
+      "whatSkills": "What skills to add?",
+      "uploadPrompt": "How do I upload my resume for analysis?",
+      "scoringPrompt": "How does the resume scoring system work?",
+      "jobsPrompt": "How can I find job recommendations?",
+      "explainScorePrompt": "Can you explain what my resume score means and how to improve it?",
+      "jobMatchPrompt": "What jobs match my skills based on my resume?",
+      "skillsPrompt": "What skills are missing from my resume that I should add?"
     }
   },
   "jobs": {
@@ -188,7 +245,13 @@
       "location": "Location",
       "type": "Job Type",
       "experience": "Experience Level"
-    }
+    },
+    "careerOpportunities": "Career Opportunities",
+    "activeJobs": "Active Jobs",
+    "domains": "Domains",
+    "locations": "Locations",
+    "companies": "Companies",
+    "loadingOpportunities": "Loading opportunities..."
   },
   "auth": {
     "login": "Login",
@@ -206,7 +269,19 @@
     "signInAccess": "Sign in to access your dashboard",
     "creatingAccount": "Creating Account...",
     "signingIn": "Signing In...",
-    "termsNotice": "By continuing, you agree to our Terms of Service and Privacy Policy."
+    "termsNotice": "By continuing, you agree to our Terms of Service and Privacy Policy.",
+    "heroTitle": "Transform Your Resume with AI-Powered Intelligence",
+    "heroSubtitle": "Join thousands of job seekers who have improved their resumes and landed their dream jobs.",
+    "features": {
+      "aiAnalysis": "AI Analysis",
+      "aiAnalysisDesc": "Get instant feedback",
+      "atsOptimized": "ATS Optimized",
+      "atsOptimizedDesc": "Pass screening systems",
+      "smartInsights": "Smart Insights",
+      "smartInsightsDesc": "Personalized suggestions",
+      "fastResults": "Fast Results",
+      "fastResultsDesc": "Analyze in seconds"
+    }
   },
   "about": {
     "title": "About",
@@ -252,7 +327,18 @@
     "academic": {
       "title": "BCA Final Year Project",
       "description": "This project demonstrates the practical application of web development, database management, and artificial intelligence concepts learned during the Bachelor of Computer Applications program."
-    }
+    },
+    "heroHeading": "Transform Your Career with",
+    "heroHighlight": "AI-Powered",
+    "heroSuffix": "Resume Analysis",
+    "featuresLabel": "Features",
+    "featuresSubtitle": "Powerful features designed to give you the competitive edge in your job search",
+    "technologyLabel": "Technology",
+    "techSubtitle": "Built with cutting-edge technologies for the best performance",
+    "statsResumesAnalyzed": "Resumes Analyzed",
+    "statsSuccessRate": "Success Rate",
+    "statsCompanies": "Companies",
+    "statsAISupport": "AI Support"
   },
   "language": {
     "select": "Select Language",
@@ -278,7 +364,22 @@
       "problemSolving": "Problem Solving",
       "adaptability": "Adaptability",
       "confidence": "Confidence"
-    }
+    },
+    "badge": "AI-Powered Analysis",
+    "selectResume": "Select Resume",
+    "noResumesUploaded": "No resumes uploaded",
+    "overallSoftSkillsScore": "Overall Soft Skills Score",
+    "skillsRadar": "Skills Radar",
+    "skillsRadarDesc": "Visual representation of your soft skills",
+    "primaryTraits": "Primary Traits",
+    "workStyle": "Work Style",
+    "communicationStyle": "Communication Style",
+    "scoreBreakdown": "Score Breakdown",
+    "previousAnalyses": "Previous Analyses",
+    "strengths": "Strengths",
+    "areasForGrowth": "Areas for Growth",
+    "currentLevel": "Current Level",
+    "suggestion": "Suggestion"
   },
   "ats": {
     "title": "ATS Simulator",
@@ -295,15 +396,26 @@
       "apple": "Apple",
       "generic": "Generic ATS"
     },
-    "passed": "Passed",
-    "failed": "Needs Improvement",
+    "passed": "PASSED",
+    "failed": "FAILED",
     "overallScore": "Overall ATS Score",
     "scoreBreakdown": "Score Breakdown",
     "keywordRelevance": "Keyword Relevance",
     "skillMatching": "Skill Matching",
     "formatting": "Formatting",
     "missingKeywords": "Missing Keywords",
-    "suggestions": "Optimization Suggestions"
+    "missingKeywordsDesc": "Add these keywords to improve your score",
+    "suggestions": "Optimization Suggestions",
+    "atsResult": "ATS Result",
+    "passedMessage": "Your resume meets the ATS requirements for this company!",
+    "failedMessage": "Your resume needs optimization to pass this company's ATS.",
+    "selectResume": "Please select a resume first",
+    "notAnalyzed": "Resume not yet analyzed. Please wait for the resume to be processed first.",
+    "simulationComplete": "ATS simulation complete!",
+    "simulationFailed": "Failed to simulate ATS. Please try again.",
+    "noResumesUploaded": "No resumes uploaded",
+    "previousSimulations": "Previous Simulations",
+    "optimizationSuggestions": "Optimization Suggestions"
   },
   "recruiter": {
     "title": "Recruiter Dashboard",
@@ -315,7 +427,30 @@
     "viewAnalysis": "View Analysis",
     "softSkillScore": "Soft Skill Score",
     "atsScore": "ATS Score",
-    "hiringSuitability": "Hiring Suitability"
+    "hiringSuitability": "Hiring Suitability",
+    "manageAndEvaluate": "Manage and evaluate candidate profiles",
+    "compareCandidates": "Compare Candidates",
+    "comparing": "Comparing",
+    "totalCandidates": "Total Candidates",
+    "averageScore": "Average Score",
+    "atsPassRate": "ATS Pass Rate",
+    "activeJobs": "Active Jobs",
+    "analytics": "Analytics",
+    "compare": "Compare",
+    "searchCandidates": "Search candidates...",
+    "scoreHighToLow": "Score (High to Low)",
+    "dateNewest": "Date (Newest)",
+    "nameAZ": "Name (A-Z)",
+    "candidate": "Candidate",
+    "resumeScore": "Resume Score",
+    "softSkills": "Soft Skills",
+    "atsStatus": "ATS Status",
+    "uploaded": "Uploaded",
+    "actions": "Actions",
+    "notAnalyzed": "Not analyzed",
+    "accessDenied": "Access denied. Recruiter role required.",
+    "failedToLoad": "Failed to load candidate data",
+    "maxCompare": "Maximum 3 candidates can be compared"
   },
   "mockInterview": {
     "title": "AI Mock Interview",
@@ -386,7 +521,15 @@
       "skillMatch": "Skill Match",
       "atsScore": "ATS Compatibility",
       "softSkills": "Soft Skills",
-      "interviewReady": "Interview Readiness"
+      "interviewReady": "Interview Readiness",
+      "strongResume": "Strong resume score indicates well-structured content",
+      "weakResume": "Resume score could be improved with better content",
+      "goodAts": "Good ATS compatibility increases visibility",
+      "poorAts": "ATS score needs improvement for better visibility",
+      "goodSoftSkills": "Strong soft skills profile enhances candidacy",
+      "improveSoftSkills": "Soft skills need development",
+      "skillsMatch": "Skills match well with market demands",
+      "strongInterview": "Interview readiness is strong"
     },
     "insights": {
       "title": "AI Insights",
@@ -398,14 +541,193 @@
       "priority": "Priority",
       "high": "High",
       "medium": "Medium",
-      "low": "Low"
+      "low": "Low",
+      "addSkills": "Add more in-demand skills to your resume",
+      "practiceInterview": "Practice more mock interviews to improve performance",
+      "improveResume": "Enhance resume content with quantifiable achievements",
+      "optimizeAts": "Optimize resume keywords for ATS systems"
     },
     "levels": {
       "low": "Low Probability",
       "medium": "Medium Probability",
       "high": "High Probability",
-      "veryHigh": "Very High Probability"
+      "veryHigh": "Very High Probability",
+      "excellent": "Excellent",
+      "moderate": "Moderate",
+      "veryLow": "Very Low"
     },
-    "recalculate": "Recalculate After Updates"
+    "recalculate": "Recalculate",
+    "readyToPredict": "Ready to Predict Your Chances",
+    "description": "Our AI analyzes your resume, ATS scores, soft skills, and interview performance to predict your hiring probability.",
+    "noDataTitle": "Limited Data Available",
+    "noDataDesc": "For more accurate predictions, complete resume analysis, ATS simulation, and soft skills assessment.",
+    "errorCalculating": "Failed to calculate prediction. Please try again.",
+    "yourProbability": "Your Hiring Probability",
+    "probabilityDesc": "Based on comprehensive analysis of your profile",
+    "categories": {
+      "resume": "Resume",
+      "skills": "Skills",
+      "ats": "ATS",
+      "softSkills": "Soft Skills",
+      "interview": "Interview"
+    },
+    "basedOn": {
+      "resume": "Resume Analysis",
+      "resumeDesc": "Score based on content quality",
+      "ats": "ATS Compatibility",
+      "atsDesc": "How well your resume passes ATS",
+      "skills": "Skills Assessment",
+      "skillsDesc": "Soft skills and technical match"
+    },
+    "weight": "Weight",
+    "contribution": "Contribution",
+    "scoreContribution": "Score Contribution",
+    "probabilityBreakdown": "Probability Breakdown"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Manage your account settings and preferences",
+    "tabs": {
+      "profile": "Profile",
+      "security": "Security",
+      "appearance": "Appearance",
+      "language": "Language",
+      "notifications": "Notifications",
+      "privacy": "Privacy"
+    },
+    "profile": {
+      "title": "Profile Information",
+      "subtitle": "Update your profile information and avatar",
+      "clickAvatar": "Click on the avatar to upload a new photo",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "email": "Email",
+      "emailCannotChange": "Email cannot be changed",
+      "saveChanges": "Save Changes",
+      "saving": "Saving...",
+      "updated": "Profile updated",
+      "updatedDesc": "Your profile has been updated successfully.",
+      "error": "Error",
+      "failedUpdate": "Failed to update profile"
+    },
+    "security": {
+      "title": "Change Password",
+      "subtitle": "Update your password to keep your account secure",
+      "currentPassword": "Current Password",
+      "currentPasswordPlaceholder": "Enter current password",
+      "newPassword": "New Password",
+      "newPasswordPlaceholder": "Enter new password",
+      "confirmPassword": "Confirm New Password",
+      "confirmPasswordPlaceholder": "Confirm new password",
+      "updatePassword": "Update Password",
+      "updating": "Updating...",
+      "updated": "Password updated",
+      "updatedDesc": "Your password has been updated successfully.",
+      "mismatch": "New passwords do not match",
+      "tooShort": "Password must be at least 6 characters"
+    },
+    "appearance": {
+      "title": "Theme",
+      "subtitle": "Choose your preferred theme for the application",
+      "light": "Light",
+      "lightDesc": "Light background with dark text",
+      "dark": "Dark",
+      "darkDesc": "Dark background with light text",
+      "system": "System",
+      "systemDesc": "Follow system preferences"
+    },
+    "language": {
+      "title": "Language",
+      "subtitle": "Select your preferred language for the interface",
+      "changed": "Language changed",
+      "changedDesc": "Language has been changed to"
+    },
+    "notifications": {
+      "title": "Notification Preferences",
+      "subtitle": "Choose what notifications you want to receive",
+      "email": "Email Notifications",
+      "emailDesc": "Receive email notifications about your account activity",
+      "push": "Push Notifications",
+      "pushDesc": "Receive push notifications in your browser",
+      "marketing": "Marketing Emails",
+      "marketingDesc": "Receive emails about new features and updates"
+    },
+    "privacy": {
+      "title": "Privacy & Data",
+      "subtitle": "Manage your privacy settings and data",
+      "dataStorage": "Data Storage",
+      "dataStorageDesc": "Your data is securely stored and encrypted. We never share your personal information with third parties.",
+      "resumeData": "Resume Data",
+      "resumeDataDesc": "Your uploaded resumes are stored securely and used only for analysis purposes.",
+      "deleteAccount": "Delete Account",
+      "deleteAccountDesc": "Permanently delete your account and all associated data. This action cannot be undone.",
+      "deleteButton": "Delete My Account"
+    },
+    "avatar": {
+      "updated": "Avatar updated",
+      "updatedDesc": "Your profile picture has been updated.",
+      "uploading": "Uploading..."
+    }
+  },
+  "footer": {
+    "description": "AI-powered resume analysis and job recommendations for students and job seekers.",
+    "platform": "Platform",
+    "resources": "Resources",
+    "connect": "Connect",
+    "resumeTips": "Resume Tips",
+    "careerGuide": "Career Guide",
+    "interviewPrep": "Interview Prep"
+  },
+  "analysis": {
+    "title": "Resume Analysis Results",
+    "subtitle": "Detailed AI analysis of your resume",
+    "notFound": "Analysis Not Found",
+    "notFoundDesc": "The analysis you're looking for doesn't exist or you don't have access to it.",
+    "backToDashboard": "Back to Dashboard",
+    "overallScore": "Overall Score",
+    "atsCompatibility": "ATS Compatibility",
+    "atsFriendly": "ATS friendly",
+    "skillsDetected": "Skills Detected",
+    "skillsFound": "Skills Found",
+    "suggestedToAdd": "suggested to add",
+    "skillsAnalysis": "Skills Analysis",
+    "skillsIdentified": "Skills identified in your resume",
+    "detectedSkills": "Detected Skills",
+    "noSkillsDetected": "No skills detected",
+    "suggestedSkills": "Suggested Skills to Add",
+    "noSuggestions": "No suggestions",
+    "improvementSuggestions": "Improvement Suggestions",
+    "improvementDesc": "AI-powered recommendations to improve your resume",
+    "noImprovements": "No improvement suggestions available",
+    "atsKeyword": "ATS Keyword Optimization",
+    "atsKeywordDesc": "Keywords for better ATS compatibility",
+    "keywordsFound": "Keywords Found",
+    "noKeywordsFound": "No keywords found",
+    "recommendedKeywords": "Recommended Keywords",
+    "noRecommendations": "No recommendations",
+    "jobMatches": "Job Matches",
+    "jobMatchesDesc": "Jobs matching your profile",
+    "viewAllJobs": "View All Jobs",
+    "match": "Match",
+    "noJobMatches": "No job matches found",
+    "browseAllJobs": "Browse all jobs",
+    "uploadNewResume": "Upload New Resume",
+    "viewJobRecommendations": "View Job Recommendations"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Oops! Page not found",
+    "backHome": "Return to Home"
+  },
+  "admin": {
+    "title": "Admin Dashboard",
+    "subtitle": "Manage jobs, view resumes, and track analytics",
+    "totalJobs": "Total Jobs",
+    "resumesUploaded": "Resumes Uploaded",
+    "avgResumeScore": "Avg Resume Score",
+    "systemStatus": "System Status",
+    "jobs": "Jobs",
+    "resumes": "Resumes",
+    "analytics": "Analytics"
   }
 }

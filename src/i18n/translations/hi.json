@@ -21,7 +21,37 @@
     "hideTip": "सुझाव छुपाएं",
     "clearFilters": "फ़िल्टर साफ़ करें",
     "showing": "दिखा रहा है",
-    "noResults": "कोई परिणाम नहीं मिला"
+    "noResults": "कोई परिणाम नहीं मिला",
+    "welcome": "स्वागत है",
+    "active": "सक्रिय",
+    "filtered": "फ़िल्टर किया गया",
+    "resume": "रिज्यूमे",
+    "processing": "प्रोसेसिंग",
+    "uploadAndAnalyze": "अपलोड और विश्लेषण करें",
+    "uploading": "अपलोड हो रहा है...",
+    "analyzing": "विश्लेषण हो रहा है...",
+    "analyzingWithAI": "AI आपके रिज्यूमे का विश्लेषण कर रहा है...",
+    "uploadSuccessful": "अपलोड सफल",
+    "uploadSuccessfulDesc": "रिज्यूमे अपलोड हो गया। विश्लेषण जल्द उपलब्ध होगा।",
+    "analysisComplete": "विश्लेषण पूर्ण",
+    "analysisCompleteDesc": "आपके रिज्यूमे का सफलतापूर्वक विश्लेषण किया गया!",
+    "dragAndDrop": "अपना रिज्यूमे यहां खींचें और छोड़ें",
+    "clickToBrowse": "या फ़ाइलें ब्राउज़ करने के लिए क्लिक करें",
+    "supportedFormatsLong": "समर्थित प्रारूप: PDF, DOCX (अधिकतम 10MB)",
+    "pleaseUploadPdfDocx": "कृपया PDF या DOCX फ़ाइल अपलोड करें",
+    "fileTooLarge": "फ़ाइल का आकार 10MB से कम होना चाहिए",
+    "welcomeBack": "वापस स्वागत है!",
+    "loadingDashboard": "आपका डैशबोर्ड लोड हो रहा है...",
+    "loadingResumes": "आपके रिज्यूमे लोड हो रहे हैं...",
+    "noResumesYet": "अभी तक कोई रिज्यूमे अपलोड नहीं किया",
+    "uploadFirstResume": "शुरू करने के लिए अपना पहला रिज्यूमे अपलोड करें",
+    "latestAnalysis": "नवीनतम विश्लेषण",
+    "latestAnalysisDesc": "आपके सबसे हालिया रिज्यूमे विश्लेषण परिणाम",
+    "viewFullAnalysis": "पूर्ण विश्लेषण देखें",
+    "overallScore": "समग्र स्कोर",
+    "skillsDetected": "पहचाने गए कौशल",
+    "analysisDate": "विश्लेषण तिथि",
+    "outOf100": "100 में से"
   },
   "nav": {
     "home": "होम",
@@ -38,48 +68,6 @@
     "mockInterview": "मॉक इंटरव्यू",
     "hiringPredictor": "हायरिंग प्रेडिक्टर",
     "settings": "सेटिंग्स"
-  },
-  "softSkills": {
-    "title": "सॉफ्ट स्किल विश्लेषक",
-    "subtitle": "AI-संचालित सॉफ्ट स्किल्स और व्यक्तित्व विश्लेषण",
-    "analyze": "स्किल्स का विश्लेषण करें",
-    "analyzing": "विश्लेषण हो रहा है...",
-    "overallScore": "समग्र स्कोर",
-    "hiringSuitability": "नियुक्ति उपयुक्तता",
-    "personalityInsights": "व्यक्तित्व अंतर्दृष्टि",
-    "primaryTraits": "प्राथमिक गुण",
-    "workStyle": "कार्य शैली",
-    "communicationStyle": "संवाद शैली",
-    "strengths": "ताकत",
-    "areasForGrowth": "विकास के क्षेत्र",
-    "recommendations": "सिफारिशें",
-    "skillsRadar": "स्किल्स रडार",
-    "scoreBreakdown": "स्कोर विवरण",
-    "previousAnalyses": "पिछले विश्लेषण"
-  },
-  "ats": {
-    "title": "ATS संगतता सिम्युलेटर",
-    "subtitle": "देखें कि आपका रिज्यूमे कंपनी ATS सिस्टम के खिलाफ कैसा प्रदर्शन करता है",
-    "simulate": "ATS सिमुलेशन चलाएं",
-    "simulating": "सिमुलेट हो रहा है...",
-    "passed": "पास",
-    "failed": "फेल",
-    "atsScore": "ATS स्कोर",
-    "keywordRelevance": "कीवर्ड प्रासंगिकता",
-    "formatting": "फॉर्मेटिंग",
-    "skillMatching": "स्किल मिलान",
-    "missingKeywords": "गायब कीवर्ड",
-    "optimizationSuggestions": "अनुकूलन सुझाव",
-    "previousSimulations": "पिछले सिमुलेशन"
-  },
-  "recruiter": {
-    "title": "भर्तीकर्ता डैशबोर्ड",
-    "subtitle": "उम्मीदवारों का प्रबंधन करें और शीर्ष प्रतिभा खोजें",
-    "candidates": "उम्मीदवार",
-    "analytics": "एनालिटिक्स",
-    "shortlisted": "शॉर्टलिस्टेड",
-    "interviewed": "साक्षात्कार किया गया",
-    "hired": "नियुक्त"
   },
   "landing": {
     "title": "AI-संचालित रिज्यूमे विश्लेषक",
@@ -154,7 +142,13 @@
       "jobMatches": "नौकरी मिलान"
     },
     "recentActivity": "हाल की गतिविधि",
-    "latestAnalysis": "नवीनतम विश्लेषण पूर्वावलोकन"
+    "latestAnalysis": "नवीनतम विश्लेषण पूर्वावलोकन",
+    "quickActions": {
+      "atsCheck": "ATS जांच",
+      "softSkills": "सॉफ्ट स्किल्स",
+      "findJobs": "नौकरी खोजें",
+      "improve": "सुधारें"
+    }
   },
   "interview": {
     "title": "साक्षात्कार प्रश्न जनरेटर",
@@ -176,7 +170,9 @@
     },
     "question": "प्रश्न",
     "answer": "उत्तर",
-    "tip": "प्रो टिप"
+    "tip": "प्रो टिप",
+    "badge": "AI साक्षात्कार कोच",
+    "clickGenerate": "शुरू करने के लिए \"प्रश्न उत्पन्न करें\" पर क्लिक करें"
   },
   "improvements": {
     "title": "रिज्यूमे सुधार सुझाव",
@@ -196,17 +192,36 @@
       "low": "कम प्राथमिकता"
     },
     "overallScore": "समग्र स्कोर",
-    "summary": "सारांश"
+    "summary": "सारांश",
+    "noGrammarIssues": "कोई व्याकरण समस्या नहीं मिली!",
+    "clickAnalyze": "सुधार सुझाव प्राप्त करने के लिए \"रिज्यूमे का विश्लेषण करें\" पर क्लिक करें"
   },
   "chatbot": {
-    "title": "ResumeAI सहायक",
-    "placeholder": "अपना संदेश टाइप करें...",
+    "title": "R-ATLAS",
+    "placeholder": "मुझसे कुछ भी पूछें...",
     "welcome": "नमस्ते! मैं आपका ResumeAI सहायक हूं। मैं आज आपकी कैसे मदद कर सकता हूं?",
+    "thinking": "सोच रहा हूं...",
+    "online": "ऑनलाइन • मदद के लिए तैयार",
+    "errorGenerate": "क्षमा करें, मैं उत्तर उत्पन्न नहीं कर सका। कृपया पुनः प्रयास करें।",
+    "errorConnection": "क्षमा करें, कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
+    "quickQuestions": "त्वरित प्रश्न:",
     "prompts": {
       "upload": "मैं अपना रिज्यूमे कैसे अपलोड करूं?",
       "score": "मेरा रिज्यूमे स्कोर समझाएं",
       "skills": "मुझे कौन से कौशल जोड़ने चाहिए?",
-      "jobs": "मिलती-जुलती नौकरियां खोजें"
+      "jobs": "मिलती-जुलती नौकरियां खोजें",
+      "howToUpload": "कैसे अपलोड करें?",
+      "howScoring": "स्कोरिंग कैसे काम करती है",
+      "browseJobs": "नौकरियां ब्राउज़ करें",
+      "explainScore": "मेरा स्कोर समझाएं",
+      "showJobMatches": "नौकरी मिलान दिखाएं",
+      "whatSkills": "कौन से कौशल जोड़ें?",
+      "uploadPrompt": "मैं अपना रिज्यूमे विश्लेषण के लिए कैसे अपलोड करूं?",
+      "scoringPrompt": "रिज्यूमे स्कोरिंग सिस्टम कैसे काम करता है?",
+      "jobsPrompt": "मैं नौकरी की सिफारिशें कैसे पा सकता हूं?",
+      "explainScorePrompt": "क्या आप बता सकते हैं कि मेरे रिज्यूमे स्कोर का क्या मतलब है?",
+      "jobMatchPrompt": "मेरे कौशल के आधार पर कौन सी नौकरियां मेल खाती हैं?",
+      "skillsPrompt": "मेरे रिज्यूमे में कौन से कौशल गायब हैं?"
     }
   },
   "jobs": {
@@ -230,7 +245,13 @@
       "location": "स्थान",
       "type": "नौकरी प्रकार",
       "experience": "अनुभव स्तर"
-    }
+    },
+    "careerOpportunities": "करियर के अवसर",
+    "activeJobs": "सक्रिय नौकरियां",
+    "domains": "डोमेन",
+    "locations": "स्थान",
+    "companies": "कंपनियां",
+    "loadingOpportunities": "अवसर लोड हो रहे हैं..."
   },
   "auth": {
     "login": "लॉगिन",
@@ -248,7 +269,19 @@
     "signInAccess": "अपने डैशबोर्ड तक पहुंचने के लिए साइन इन करें",
     "creatingAccount": "खाता बना रहे हैं...",
     "signingIn": "साइन इन हो रहा है...",
-    "termsNotice": "जारी रखकर, आप हमारी सेवा की शर्तों और गोपनीयता नीति से सहमत हैं।"
+    "termsNotice": "जारी रखकर, आप हमारी सेवा की शर्तों और गोपनीयता नीति से सहमत हैं।",
+    "heroTitle": "AI-संचालित बुद्धिमत्ता के साथ अपने रिज्यूमे को बदलें",
+    "heroSubtitle": "उन हजारों नौकरी खोजकर्ताओं से जुड़ें जिन्होंने अपने रिज्यूमे में सुधार किया है।",
+    "features": {
+      "aiAnalysis": "AI विश्लेषण",
+      "aiAnalysisDesc": "तुरंत फीडबैक प्राप्त करें",
+      "atsOptimized": "ATS अनुकूलित",
+      "atsOptimizedDesc": "स्क्रीनिंग सिस्टम पास करें",
+      "smartInsights": "स्मार्ट अंतर्दृष्टि",
+      "smartInsightsDesc": "व्यक्तिगत सुझाव",
+      "fastResults": "तेज परिणाम",
+      "fastResultsDesc": "सेकंडों में विश्लेषण"
+    }
   },
   "about": {
     "title": "हमारे बारे में",
@@ -274,11 +307,11 @@
       "ats": "ATS अनुकूलन",
       "atsDesc": "आपके रिज्यूमे को ATS-अनुकूल बनाने के लिए कीवर्ड अनुकूलन सुझाव प्रदान करता है।",
       "jobs": "नौकरी सिफारिशें",
-      "jobsDesc": "कौशल और अनुभव के आधार पर प्रासंगिक नौकरी सूची से मेल खाता है।",
-      "admin": "व्यवस्थापक डैशबोर्ड",
-      "adminDesc": "नौकरी सूची प्रबंधन और विश्लेषण देखने के लिए व्यापक डैशबोर्ड।",
-      "responsive": "रिस्पॉन्सिव डिज़ाइन",
-      "responsiveDesc": "पूरी तरह से रिस्पॉन्सिव इंटरफ़ेस जो डेस्कटॉप, टैबलेट और मोबाइल पर निर्बाध रूप से काम करता है।"
+      "jobsDesc": "कौशल और अनुभव के आधार पर आपकी प्रोफ़ाइल को प्रासंगिक नौकरी सूची से मिलाता है।",
+      "admin": "एडमिन डैशबोर्ड",
+      "adminDesc": "नौकरी सूची प्रबंधन और एनालिटिक्स देखने के लिए व्यापक डैशबोर्ड।",
+      "responsive": "रेस्पॉन्सिव डिज़ाइन",
+      "responsiveDesc": "पूरी तरह से रेस्पॉन्सिव इंटरफ़ेस जो डेस्कटॉप, टैबलेट और मोबाइल पर काम करता है।"
     },
     "techStack": "प्रौद्योगिकी स्टैक",
     "tech": {
@@ -293,14 +326,131 @@
     },
     "academic": {
       "title": "BCA अंतिम वर्ष परियोजना",
-      "description": "यह परियोजना Bachelor of Computer Applications प्रोग्राम के दौरान सीखी गई वेब विकास, डेटाबेस प्रबंधन और कृत्रिम बुद्धिमत्ता अवधारणाओं के व्यावहारिक अनुप्रयोग को प्रदर्शित करती है।"
-    }
+      "description": "यह परियोजना BCA कार्यक्रम के दौरान सीखी गई वेब विकास, डेटाबेस प्रबंधन और AI अवधारणाओं के व्यावहारिक अनुप्रयोग को प्रदर्शित करती है।"
+    },
+    "heroHeading": "अपने करियर को बदलें",
+    "heroHighlight": "AI-संचालित",
+    "heroSuffix": "रिज्यूमे विश्लेषण",
+    "featuresLabel": "विशेषताएं",
+    "featuresSubtitle": "नौकरी खोज में आपको प्रतिस्पर्धी बढ़त देने के लिए शक्तिशाली विशेषताएं",
+    "technologyLabel": "प्रौद्योगिकी",
+    "techSubtitle": "सर्वोत्तम प्रदर्शन के लिए अत्याधुनिक प्रौद्योगिकियों के साथ निर्मित",
+    "statsResumesAnalyzed": "विश्लेषित रिज्यूमे",
+    "statsSuccessRate": "सफलता दर",
+    "statsCompanies": "कंपनियां",
+    "statsAISupport": "AI सहायता"
   },
   "language": {
     "select": "भाषा चुनें",
     "en": "English",
     "hi": "हिंदी",
     "te": "తెలుగు"
+  },
+  "softSkills": {
+    "title": "सॉफ्ट स्किल विश्लेषक",
+    "subtitle": "AI-संचालित सॉफ्ट स्किल्स और व्यक्तित्व विश्लेषण",
+    "analyze": "स्किल्स का विश्लेषण करें",
+    "analyzing": "विश्लेषण हो रहा है...",
+    "noResume": "कृपया पहले रिज्यूमे अपलोड करें",
+    "overallScore": "समग्र स्कोर",
+    "hiringSuitability": "नियुक्ति उपयुक्तता",
+    "personalityInsights": "व्यक्तित्व अंतर्दृष्टि",
+    "recommendations": "सिफारिशें",
+    "skills": {
+      "communication": "संवाद",
+      "teamwork": "टीमवर्क",
+      "leadership": "नेतृत्व",
+      "problemSolving": "समस्या समाधान",
+      "adaptability": "अनुकूलनशीलता",
+      "confidence": "आत्मविश्वास"
+    },
+    "badge": "AI-संचालित विश्लेषण",
+    "selectResume": "रिज्यूमे चुनें",
+    "noResumesUploaded": "कोई रिज्यूमे अपलोड नहीं किया",
+    "overallSoftSkillsScore": "समग्र सॉफ्ट स्किल्स स्कोर",
+    "skillsRadar": "स्किल्स रडार",
+    "skillsRadarDesc": "आपके सॉफ्ट स्किल्स का दृश्य प्रतिनिधित्व",
+    "primaryTraits": "प्राथमिक गुण",
+    "workStyle": "कार्य शैली",
+    "communicationStyle": "संवाद शैली",
+    "scoreBreakdown": "स्कोर विवरण",
+    "previousAnalyses": "पिछले विश्लेषण",
+    "skillBreakdown": "कौशल विश्लेषण",
+    "strengths": "ताकत",
+    "areasForGrowth": "विकास के क्षेत्र",
+    "currentLevel": "वर्तमान स्तर",
+    "suggestion": "सुझाव"
+  },
+  "ats": {
+    "title": "ATS संगतता सिम्युलेटर",
+    "subtitle": "देखें कि आपका रिज्यूमे कंपनी ATS सिस्टम के खिलाफ कैसा प्रदर्शन करता है",
+    "simulate": "ATS सिमुलेशन चलाएं",
+    "simulating": "सिमुलेट हो रहा है...",
+    "passed": "पास",
+    "failed": "फेल",
+    "overallScore": "समग्र ATS स्कोर",
+    "scoreBreakdown": "स्कोर विवरण",
+    "keywordRelevance": "कीवर्ड प्रासंगिकता",
+    "formatting": "फॉर्मेटिंग",
+    "skillMatching": "स्किल मिलान",
+    "missingKeywords": "गायब कीवर्ड",
+    "missingKeywordsDesc": "अपना स्कोर सुधारने के लिए ये कीवर्ड जोड़ें",
+    "suggestions": "अनुकूलन सुझाव",
+    "atsResult": "ATS परिणाम",
+    "passedMessage": "आपका रिज्यूमे इस कंपनी की ATS आवश्यकताओं को पूरा करता है!",
+    "failedMessage": "आपके रिज्यूमे को इस कंपनी की ATS पास करने के लिए अनुकूलन की आवश्यकता है।",
+    "selectResume": "कृपया पहले एक रिज्यूमे चुनें",
+    "notAnalyzed": "रिज्यूमे अभी तक विश्लेषित नहीं हुआ। कृपया प्रोसेसिंग की प्रतीक्षा करें।",
+    "simulationComplete": "ATS सिमुलेशन पूर्ण!",
+    "simulationFailed": "ATS सिमुलेट करने में विफल। कृपया पुनः प्रयास करें।",
+    "noResumesUploaded": "कोई रिज्यूमे अपलोड नहीं किया",
+    "previousSimulations": "पिछले सिमुलेशन",
+    "optimizationSuggestions": "अनुकूलन सुझाव",
+    "selectCompany": "कंपनी ATS चुनें",
+    "companies": {
+      "google": "Google",
+      "microsoft": "Microsoft",
+      "amazon": "Amazon",
+      "meta": "Meta",
+      "apple": "Apple",
+      "generic": "सामान्य ATS"
+    },
+    "noResume": "कृपया ATS सिमुलेशन चलाने के लिए पहले रिज्यूमे अपलोड करें"
+  },
+  "recruiter": {
+    "title": "भर्तीकर्ता डैशबोर्ड",
+    "subtitle": "उम्मीदवारों का प्रबंधन करें और शीर्ष प्रतिभा खोजें",
+    "candidates": "उम्मीदवार",
+    "filters": "फ़िल्टर",
+    "sortBy": "क्रमबद्ध करें",
+    "viewResume": "रिज्यूमे देखें",
+    "viewAnalysis": "विश्लेषण देखें",
+    "softSkillScore": "सॉफ्ट स्किल स्कोर",
+    "atsScore": "ATS स्कोर",
+    "hiringSuitability": "नियुक्ति उपयुक्तता",
+    "manageAndEvaluate": "उम्मीदवार प्रोफाइल का प्रबंधन और मूल्यांकन करें",
+    "compareCandidates": "उम्मीदवारों की तुलना करें",
+    "comparing": "तुलना कर रहे हैं",
+    "totalCandidates": "कुल उम्मीदवार",
+    "averageScore": "औसत स्कोर",
+    "atsPassRate": "ATS पास दर",
+    "activeJobs": "सक्रिय नौकरियां",
+    "analytics": "एनालिटिक्स",
+    "compare": "तुलना",
+    "searchCandidates": "उम्मीदवार खोजें...",
+    "scoreHighToLow": "स्कोर (उच्च से निम्न)",
+    "dateNewest": "तिथि (नवीनतम)",
+    "nameAZ": "नाम (A-Z)",
+    "candidate": "उम्मीदवार",
+    "resumeScore": "रिज्यूमे स्कोर",
+    "softSkills": "सॉफ्ट स्किल्स",
+    "atsStatus": "ATS स्थिति",
+    "uploaded": "अपलोड किया",
+    "actions": "कार्रवाई",
+    "notAnalyzed": "विश्लेषित नहीं",
+    "accessDenied": "पहुंच अस्वीकृत। भर्तीकर्ता भूमिका आवश्यक है।",
+    "failedToLoad": "उम्मीदवार डेटा लोड करने में विफल",
+    "maxCompare": "अधिकतम 3 उम्मीदवारों की तुलना की जा सकती है"
   },
   "mockInterview": {
     "title": "AI मॉक इंटरव्यू",
@@ -310,7 +460,7 @@
     "interviewType": "इंटरव्यू प्रकार",
     "skillLevel": "कौशल स्तर",
     "jobRole": "नौकरी भूमिका",
-    "jobRolePlaceholder": "उदा., सॉफ्टवेयर डेवलपर, प्रोडक्ट मैनेजर",
+    "jobRolePlaceholder": "जैसे, सॉफ्टवेयर डेवलपर, प्रोडक्ट मैनेजर",
     "types": {
       "hr": "HR इंटरव्यू",
       "technical": "तकनीकी इंटरव्यू",
@@ -324,26 +474,26 @@
     "preparing": "इंटरव्यू तैयार हो रहा है...",
     "startInterview": "इंटरव्यू शुरू करें",
     "features": {
-      "title": "इंटरव्यू सुविधाएं",
+      "title": "इंटरव्यू विशेषताएं",
       "voice": "वॉयस और टेक्स्ट इनपुट",
       "voiceDesc": "वॉयस या टाइपिंग से जवाब दें",
       "ai": "AI-संचालित प्रश्न",
-      "aiDesc": "आपकी प्रोफ़ाइल के आधार पर गतिशील प्रश्न",
+      "aiDesc": "आपकी प्रोफ़ाइल पर आधारित गतिशील प्रश्न",
       "feedback": "रीयल-टाइम फीडबैक",
-      "feedbackDesc": "अपनी प्रतिक्रियाओं का तुरंत विश्लेषण प्राप्त करें"
+      "feedbackDesc": "अपने उत्तरों का तुरंत विश्लेषण प्राप्त करें"
     },
     "room": {
       "question": "प्रश्न",
       "of": "में से",
       "timeRemaining": "शेष समय",
-      "yourAnswer": "आपका जवाब",
-      "answerPlaceholder": "यहां अपना जवाब टाइप करें या वॉयस इनपुट का उपयोग करें...",
-      "submit": "जवाब सबमिट करें",
+      "yourAnswer": "आपका उत्तर",
+      "answerPlaceholder": "यहां अपना उत्तर टाइप करें...",
+      "submit": "उत्तर जमा करें",
       "next": "अगला प्रश्न",
       "voiceInput": "वॉयस इनपुट",
       "textInput": "टेक्स्ट इनपुट"
     },
-    "pleaseProvideAnswer": "कृपया एक जवाब दें",
+    "pleaseProvideAnswer": "कृपया उत्तर दें",
     "feedback": {
       "title": "इंटरव्यू फीडबैक",
       "overallScore": "समग्र स्कोर",
@@ -351,46 +501,233 @@
       "confidence": "आत्मविश्वास",
       "relevance": "प्रासंगिकता",
       "clarity": "स्पष्टता",
-      "strengths": "ताकतें",
+      "strengths": "ताकत",
       "weakAreas": "सुधार के क्षेत्र",
       "recommendations": "सिफारिशें",
       "questionBreakdown": "प्रश्न-दर-प्रश्न विवरण",
-      "tryAgain": "एक और इंटरव्यू आज़माएं"
+      "tryAgain": "एक और इंटरव्यू आजमाएं"
     }
   },
   "hiringPredictor": {
-    "title": "हायरिंग प्रोबेबिलिटी प्रेडिक्टर",
-    "subtitle": "आपके हायरिंग चांसेस का AI-संचालित पूर्वानुमान",
-    "calculate": "प्रोबेबिलिटी कैलकुलेट करें",
+    "title": "हायरिंग संभावना प्रेडिक्टर",
+    "subtitle": "AI-संचालित हायरिंग संभावना भविष्यवाणी",
+    "calculate": "संभावना की गणना करें",
     "calculating": "आपकी प्रोफ़ाइल का विश्लेषण हो रहा है...",
-    "noData": "कृपया पहले रिज्यूमे विश्लेषण, सॉफ्ट स्किल्स आकलन और ATS सिमुलेशन पूरा करें",
-    "probability": "हायरिंग प्रोबेबिलिटी",
+    "noData": "कृपया पहले रिज्यूमे विश्लेषण, सॉफ्ट स्किल्स मूल्यांकन और ATS सिमुलेशन पूरा करें",
+    "probability": "हायरिंग संभावना",
     "factors": {
       "title": "सफलता कारक",
-      "resumeStrength": "रिज्यूमे ताकत",
-      "skillMatch": "स्किल मैच",
-      "atsScore": "ATS अनुकूलता",
+      "resumeStrength": "रिज्यूमे शक्ति",
+      "skillMatch": "कौशल मिलान",
+      "atsScore": "ATS संगतता",
       "softSkills": "सॉफ्ट स्किल्स",
-      "interviewReady": "इंटरव्यू तैयारी"
+      "interviewReady": "इंटरव्यू तैयारी",
+      "strongResume": "मजबूत रिज्यूमे स्कोर अच्छी सामग्री दर्शाता है",
+      "weakResume": "रिज्यूमे स्कोर में सुधार की जरूरत है",
+      "goodAts": "अच्छी ATS संगतता दृश्यता बढ़ाती है",
+      "poorAts": "ATS स्कोर में सुधार की आवश्यकता है",
+      "goodSoftSkills": "मजबूत सॉफ्ट स्किल्स उम्मीदवारी बढ़ाती हैं",
+      "improveSoftSkills": "सॉफ्ट स्किल्स में विकास की जरूरत है",
+      "skillsMatch": "कौशल बाजार मांगों से अच्छी तरह मेल खाते हैं",
+      "strongInterview": "इंटरव्यू तैयारी मजबूत है"
     },
     "insights": {
       "title": "AI अंतर्दृष्टि",
-      "increasing": "आपके चांसेस बढ़ाने वाले कारक",
-      "decreasing": "आपके चांसेस कम करने वाले कारक"
+      "increasing": "आपकी संभावना बढ़ाने वाले कारक",
+      "decreasing": "आपकी संभावना कम करने वाले कारक"
     },
     "recommendations": {
       "title": "सुधार सिफारिशें",
       "priority": "प्राथमिकता",
       "high": "उच्च",
       "medium": "मध्यम",
-      "low": "कम"
+      "low": "कम",
+      "addSkills": "अपने रिज्यूमे में अधिक मांग वाले कौशल जोड़ें",
+      "practiceInterview": "प्रदर्शन सुधारने के लिए अधिक मॉक इंटरव्यू का अभ्यास करें",
+      "improveResume": "मात्रात्मक उपलब्धियों के साथ रिज्यूमे सामग्री बढ़ाएं",
+      "optimizeAts": "ATS सिस्टम के लिए रिज्यूमे कीवर्ड अनुकूलित करें"
     },
     "levels": {
-      "low": "कम प्रोबेबिलिटी",
-      "medium": "मध्यम प्रोबेबिलिटी",
-      "high": "उच्च प्रोबेबिलिटी",
-      "veryHigh": "बहुत उच्च प्रोबेबिलिटी"
+      "low": "कम संभावना",
+      "medium": "मध्यम संभावना",
+      "high": "उच्च संभावना",
+      "veryHigh": "बहुत उच्च संभावना",
+      "excellent": "उत्कृष्ट",
+      "moderate": "मध्यम",
+      "veryLow": "बहुत कम"
     },
-    "recalculate": "अपडेट के बाद पुनः गणना करें"
+    "recalculate": "पुनः गणना करें",
+    "readyToPredict": "आपकी संभावनाओं की भविष्यवाणी के लिए तैयार",
+    "description": "हमारा AI आपके रिज्यूमे, ATS स्कोर, सॉफ्ट स्किल्स और इंटरव्यू प्रदर्शन का विश्लेषण करता है।",
+    "noDataTitle": "सीमित डेटा उपलब्ध",
+    "noDataDesc": "अधिक सटीक भविष्यवाणी के लिए, रिज्यूमे विश्लेषण, ATS सिमुलेशन और सॉफ्ट स्किल्स मूल्यांकन पूरा करें।",
+    "errorCalculating": "भविष्यवाणी गणना विफल। कृपया पुनः प्रयास करें।",
+    "yourProbability": "आपकी हायरिंग संभावना",
+    "probabilityDesc": "आपकी प्रोफ़ाइल के व्यापक विश्लेषण पर आधारित",
+    "categories": {
+      "resume": "रिज्यूमे",
+      "skills": "कौशल",
+      "ats": "ATS",
+      "softSkills": "सॉफ्ट स्किल्स",
+      "interview": "इंटरव्यू"
+    },
+    "basedOn": {
+      "resume": "रिज्यूमे विश्लेषण",
+      "resumeDesc": "सामग्री गुणवत्ता पर आधारित स्कोर",
+      "ats": "ATS संगतता",
+      "atsDesc": "आपका रिज्यूमे ATS कितनी अच्छी तरह पास करता है",
+      "skills": "कौशल मूल्यांकन",
+      "skillsDesc": "सॉफ्ट स्किल्स और तकनीकी मिलान"
+    },
+    "weight": "भार",
+    "contribution": "योगदान",
+    "scoreContribution": "स्कोर योगदान",
+    "probabilityBreakdown": "संभावना विवरण"
+  },
+  "settings": {
+    "title": "सेटिंग्स",
+    "subtitle": "अपनी खाता सेटिंग्स और प्राथमिकताएं प्रबंधित करें",
+    "tabs": {
+      "profile": "प्रोफ़ाइल",
+      "security": "सुरक्षा",
+      "appearance": "दिखावट",
+      "language": "भाषा",
+      "notifications": "सूचनाएं",
+      "privacy": "गोपनीयता"
+    },
+    "profile": {
+      "title": "प्रोफ़ाइल जानकारी",
+      "subtitle": "अपनी प्रोफ़ाइल जानकारी और अवतार अपडेट करें",
+      "clickAvatar": "नई फोटो अपलोड करने के लिए अवतार पर क्लिक करें",
+      "fullName": "पूरा नाम",
+      "fullNamePlaceholder": "अपना पूरा नाम दर्ज करें",
+      "email": "ईमेल",
+      "emailCannotChange": "ईमेल बदला नहीं जा सकता",
+      "saveChanges": "परिवर्तन सहेजें",
+      "saving": "सहेज रहा है...",
+      "updated": "प्रोफ़ाइल अपडेट हो गई",
+      "updatedDesc": "आपकी प्रोफ़ाइल सफलतापूर्वक अपडेट हो गई है।",
+      "error": "त्रुटि",
+      "failedUpdate": "प्रोफ़ाइल अपडेट करने में विफल"
+    },
+    "security": {
+      "title": "पासवर्ड बदलें",
+      "subtitle": "अपने खाते को सुरक्षित रखने के लिए पासवर्ड अपडेट करें",
+      "currentPassword": "वर्तमान पासवर्ड",
+      "currentPasswordPlaceholder": "वर्तमान पासवर्ड दर्ज करें",
+      "newPassword": "नया पासवर्ड",
+      "newPasswordPlaceholder": "नया पासवर्ड दर्ज करें",
+      "confirmPassword": "नए पासवर्ड की पुष्टि करें",
+      "confirmPasswordPlaceholder": "नए पासवर्ड की पुष्टि करें",
+      "updatePassword": "पासवर्ड अपडेट करें",
+      "updating": "अपडेट हो रहा है...",
+      "updated": "पासवर्ड अपडेट हो गया",
+      "updatedDesc": "आपका पासवर्ड सफलतापूर्वक अपडेट हो गया है।",
+      "mismatch": "नए पासवर्ड मेल नहीं खाते",
+      "tooShort": "पासवर्ड कम से कम 6 अक्षरों का होना चाहिए"
+    },
+    "appearance": {
+      "title": "थीम",
+      "subtitle": "एप्लिकेशन के लिए अपनी पसंदीदा थीम चुनें",
+      "light": "लाइट",
+      "lightDesc": "हल्की पृष्ठभूमि के साथ गहरा टेक्स्ट",
+      "dark": "डार्क",
+      "darkDesc": "गहरी पृष्ठभूमि के साथ हल्का टेक्स्ट",
+      "system": "सिस्टम",
+      "systemDesc": "सिस्टम प्राथमिकताओं का पालन करें"
+    },
+    "language": {
+      "title": "भाषा",
+      "subtitle": "इंटरफ़ेस के लिए अपनी पसंदीदा भाषा चुनें",
+      "changed": "भाषा बदली गई",
+      "changedDesc": "भाषा बदल दी गई है"
+    },
+    "notifications": {
+      "title": "सूचना प्राथमिकताएं",
+      "subtitle": "चुनें कि आप कौन सी सूचनाएं प्राप्त करना चाहते हैं",
+      "email": "ईमेल सूचनाएं",
+      "emailDesc": "अपने खाते की गतिविधि के बारे में ईमेल सूचनाएं प्राप्त करें",
+      "push": "पुश सूचनाएं",
+      "pushDesc": "अपने ब्राउज़र में पुश सूचनाएं प्राप्त करें",
+      "marketing": "मार्केटिंग ईमेल",
+      "marketingDesc": "नई सुविधाओं और अपडेट के बारे में ईमेल प्राप्त करें"
+    },
+    "privacy": {
+      "title": "गोपनीयता और डेटा",
+      "subtitle": "अपनी गोपनीयता सेटिंग्स और डेटा प्रबंधित करें",
+      "dataStorage": "डेटा संग्रहण",
+      "dataStorageDesc": "आपका डेटा सुरक्षित रूप से संग्रहीत और एन्क्रिप्टेड है।",
+      "resumeData": "रिज्यूमे डेटा",
+      "resumeDataDesc": "आपके अपलोड किए गए रिज्यूमे सुरक्षित रूप से संग्रहीत हैं।",
+      "deleteAccount": "खाता हटाएं",
+      "deleteAccountDesc": "अपना खाता और सभी संबंधित डेटा स्थायी रूप से हटाएं। यह कार्रवाई पूर्ववत नहीं की जा सकती।",
+      "deleteButton": "मेरा खाता हटाएं"
+    },
+    "avatar": {
+      "updated": "अवतार अपडेट हो गया",
+      "updatedDesc": "आपकी प्रोफ़ाइल तस्वीर अपडेट हो गई है।",
+      "uploading": "अपलोड हो रहा है..."
+    }
+  },
+  "footer": {
+    "description": "छात्रों और नौकरी खोजने वालों के लिए AI-संचालित रिज्यूमे विश्लेषण और नौकरी सिफारिशें।",
+    "platform": "प्लेटफॉर्म",
+    "resources": "संसाधन",
+    "connect": "जुड़ें",
+    "resumeTips": "रिज्यूमे टिप्स",
+    "careerGuide": "करियर गाइड",
+    "interviewPrep": "इंटरव्यू तैयारी"
+  },
+  "analysis": {
+    "title": "रिज्यूमे विश्लेषण परिणाम",
+    "subtitle": "आपके रिज्यूमे का विस्तृत AI विश्लेषण",
+    "notFound": "विश्लेषण नहीं मिला",
+    "notFoundDesc": "आप जो विश्लेषण खोज रहे हैं वह मौजूद नहीं है।",
+    "backToDashboard": "डैशबोर्ड पर वापस जाएं",
+    "overallScore": "समग्र स्कोर",
+    "atsCompatibility": "ATS संगतता",
+    "atsFriendly": "ATS अनुकूल",
+    "skillsDetected": "पहचाने गए कौशल",
+    "skillsFound": "कौशल मिले",
+    "suggestedToAdd": "जोड़ने के लिए सुझाव",
+    "skillsAnalysis": "कौशल विश्लेषण",
+    "skillsIdentified": "आपके रिज्यूमे में पहचाने गए कौशल",
+    "detectedSkills": "पहचाने गए कौशल",
+    "noSkillsDetected": "कोई कौशल नहीं मिला",
+    "suggestedSkills": "जोड़ने के लिए सुझाए गए कौशल",
+    "noSuggestions": "कोई सुझाव नहीं",
+    "improvementSuggestions": "सुधार सुझाव",
+    "improvementDesc": "रिज्यूमे सुधारने के लिए AI-संचालित सिफारिशें",
+    "noImprovements": "कोई सुधार सुझाव उपलब्ध नहीं",
+    "atsKeyword": "ATS कीवर्ड अनुकूलन",
+    "atsKeywordDesc": "बेहतर ATS संगतता के लिए कीवर्ड",
+    "keywordsFound": "कीवर्ड मिले",
+    "noKeywordsFound": "कोई कीवर्ड नहीं मिला",
+    "recommendedKeywords": "सुझाए गए कीवर्ड",
+    "noRecommendations": "कोई सिफारिशें नहीं",
+    "jobMatches": "नौकरी मिलान",
+    "jobMatchesDesc": "आपकी प्रोफ़ाइल से मेल खाने वाली नौकरियां",
+    "viewAllJobs": "सभी नौकरियां देखें",
+    "match": "मिलान",
+    "noJobMatches": "कोई नौकरी मिलान नहीं मिला",
+    "browseAllJobs": "सभी नौकरियां ब्राउज़ करें",
+    "uploadNewResume": "नया रिज्यूमे अपलोड करें",
+    "viewJobRecommendations": "नौकरी सिफारिशें देखें"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "उफ़! पृष्ठ नहीं मिला",
+    "backHome": "होम पर वापस जाएं"
+  },
+  "admin": {
+    "title": "एडमिन डैशबोर्ड",
+    "subtitle": "नौकरियां प्रबंधित करें, रिज्यूमे देखें और एनालिटिक्स ट्रैक करें",
+    "totalJobs": "कुल नौकरियां",
+    "resumesUploaded": "अपलोड किए गए रिज्यूमे",
+    "avgResumeScore": "औसत रिज्यूमे स्कोर",
+    "systemStatus": "सिस्टम स्थिति",
+    "jobs": "नौकरियां",
+    "resumes": "रिज्यूमे",
+    "analytics": "एनालिटिक्स"
   }
 }
