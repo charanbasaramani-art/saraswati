@@ -36,26 +36,26 @@ interface Resume {
 }
 
 const companies = [
-  { id: 'Google', name: 'Google', logo: 'https://logo.clearbit.com/google.com', initials: 'G', color: 'from-blue-500 to-green-500' },
-  { id: 'Amazon', name: 'Amazon', logo: 'https://logo.clearbit.com/amazon.com', initials: 'A', color: 'from-orange-500 to-yellow-500' },
-  { id: 'Microsoft', name: 'Microsoft', logo: 'https://logo.clearbit.com/microsoft.com', initials: 'MS', color: 'from-blue-600 to-cyan-500' },
-  { id: 'Meta', name: 'Meta', logo: 'https://logo.clearbit.com/meta.com', initials: 'M', color: 'from-blue-500 to-indigo-600' },
-  { id: 'Apple', name: 'Apple', logo: 'https://logo.clearbit.com/apple.com', initials: 'AP', color: 'from-gray-700 to-gray-500' },
-  { id: 'Infosys', name: 'Infosys', logo: 'https://logo.clearbit.com/infosys.com', initials: 'IN', color: 'from-blue-600 to-blue-400' },
-  { id: 'TCS', name: 'TCS', logo: 'https://logo.clearbit.com/tcs.com', initials: 'TCS', color: 'from-purple-600 to-pink-500' },
-  { id: 'Wipro', name: 'Wipro', logo: 'https://logo.clearbit.com/wipro.com', initials: 'W', color: 'from-green-600 to-teal-500' },
-  { id: 'Accenture', name: 'Accenture', logo: 'https://logo.clearbit.com/accenture.com', initials: 'AC', color: 'from-purple-500 to-violet-600' },
-  { id: 'IBM', name: 'IBM', logo: 'https://logo.clearbit.com/ibm.com', initials: 'IBM', color: 'from-blue-700 to-blue-500' },
-  { id: 'Cognizant', name: 'Cognizant', logo: 'https://logo.clearbit.com/cognizant.com', initials: 'CG', color: 'from-blue-500 to-cyan-400' },
-  { id: 'Oracle', name: 'Oracle', logo: 'https://logo.clearbit.com/oracle.com', initials: 'OR', color: 'from-red-600 to-red-400' },
-  { id: 'HeteroLabs', name: 'Hetero Labs', logo: 'https://logo.clearbit.com/heterodrugs.com', initials: 'HL', color: 'from-green-500 to-emerald-400' },
-  { id: '247AI', name: '24/7.ai', logo: 'https://logo.clearbit.com/247.ai', initials: '24', color: 'from-indigo-600 to-purple-500' },
-  { id: 'Acmegrade', name: 'Acmegrade', logo: 'https://logo.clearbit.com/acmegrade.com', initials: 'AG', color: 'from-teal-500 to-cyan-400' },
-  { id: 'WNS', name: 'WNS Global', logo: 'https://logo.clearbit.com/wns.com', initials: 'WNS', color: 'from-blue-800 to-blue-600' },
-  { id: 'Deloitte', name: 'Deloitte', logo: 'https://logo.clearbit.com/deloitte.com', initials: 'DL', color: 'from-green-700 to-green-500' },
-  { id: 'Capgemini', name: 'Capgemini', logo: 'https://logo.clearbit.com/capgemini.com', initials: 'CG', color: 'from-blue-700 to-indigo-500' },
-  { id: 'HCL', name: 'HCL Tech', logo: 'https://logo.clearbit.com/hcltech.com', initials: 'HCL', color: 'from-blue-500 to-sky-400' },
-  { id: 'TechMahindra', name: 'Tech Mahindra', logo: 'https://logo.clearbit.com/techmahindra.com', initials: 'TM', color: 'from-red-600 to-pink-500' },
+  { id: 'Google', name: 'Google', logo: 'https://www.google.com/s2/favicons?domain=google.com&sz=128', initials: 'G', color: 'from-blue-500 to-green-500' },
+  { id: 'Amazon', name: 'Amazon', logo: 'https://www.google.com/s2/favicons?domain=amazon.com&sz=128', initials: 'A', color: 'from-orange-500 to-yellow-500' },
+  { id: 'Microsoft', name: 'Microsoft', logo: 'https://www.google.com/s2/favicons?domain=microsoft.com&sz=128', initials: 'MS', color: 'from-blue-600 to-cyan-500' },
+  { id: 'Meta', name: 'Meta', logo: 'https://www.google.com/s2/favicons?domain=meta.com&sz=128', initials: 'M', color: 'from-blue-500 to-indigo-600' },
+  { id: 'Apple', name: 'Apple', logo: 'https://www.google.com/s2/favicons?domain=apple.com&sz=128', initials: 'AP', color: 'from-gray-700 to-gray-500' },
+  { id: 'Infosys', name: 'Infosys', logo: 'https://www.google.com/s2/favicons?domain=infosys.com&sz=128', initials: 'IN', color: 'from-blue-600 to-blue-400' },
+  { id: 'TCS', name: 'TCS', logo: 'https://www.google.com/s2/favicons?domain=tcs.com&sz=128', initials: 'TCS', color: 'from-purple-600 to-pink-500' },
+  { id: 'Wipro', name: 'Wipro', logo: 'https://www.google.com/s2/favicons?domain=wipro.com&sz=128', initials: 'W', color: 'from-green-600 to-teal-500' },
+  { id: 'Accenture', name: 'Accenture', logo: 'https://www.google.com/s2/favicons?domain=accenture.com&sz=128', initials: 'AC', color: 'from-purple-500 to-violet-600' },
+  { id: 'IBM', name: 'IBM', logo: 'https://www.google.com/s2/favicons?domain=ibm.com&sz=128', initials: 'IBM', color: 'from-blue-700 to-blue-500' },
+  { id: 'Cognizant', name: 'Cognizant', logo: 'https://www.google.com/s2/favicons?domain=cognizant.com&sz=128', initials: 'CG', color: 'from-blue-500 to-cyan-400' },
+  { id: 'Oracle', name: 'Oracle', logo: 'https://www.google.com/s2/favicons?domain=oracle.com&sz=128', initials: 'OR', color: 'from-red-600 to-red-400' },
+  { id: 'HeteroLabs', name: 'Hetero Labs', logo: 'https://www.google.com/s2/favicons?domain=heterodrugs.com&sz=128', initials: 'HL', color: 'from-green-500 to-emerald-400' },
+  { id: '247AI', name: '24/7.ai', logo: 'https://www.google.com/s2/favicons?domain=247.ai&sz=128', initials: '24', color: 'from-indigo-600 to-purple-500' },
+  { id: 'Acmegrade', name: 'Acmegrade', logo: 'https://www.google.com/s2/favicons?domain=acmegrade.com&sz=128', initials: 'AG', color: 'from-teal-500 to-cyan-400' },
+  { id: 'WNS', name: 'WNS Global', logo: 'https://www.google.com/s2/favicons?domain=wns.com&sz=128', initials: 'WNS', color: 'from-blue-800 to-blue-600' },
+  { id: 'Deloitte', name: 'Deloitte', logo: 'https://www.google.com/s2/favicons?domain=deloitte.com&sz=128', initials: 'DL', color: 'from-green-700 to-green-500' },
+  { id: 'Capgemini', name: 'Capgemini', logo: 'https://www.google.com/s2/favicons?domain=capgemini.com&sz=128', initials: 'CG', color: 'from-blue-700 to-indigo-500' },
+  { id: 'HCL', name: 'HCL Tech', logo: 'https://www.google.com/s2/favicons?domain=hcltech.com&sz=128', initials: 'HCL', color: 'from-blue-500 to-sky-400' },
+  { id: 'TechMahindra', name: 'Tech Mahindra', logo: 'https://www.google.com/s2/favicons?domain=techmahindra.com&sz=128', initials: 'TM', color: 'from-red-600 to-pink-500' },
 ];
 
 export default function ATSSimulator() {
@@ -208,23 +208,22 @@ export default function ATSSimulator() {
               style={{ animationDelay: `${index * 50}ms` }}
             >
               <div
-                className={`mb-2 h-12 w-12 rounded-lg ${company.logo ? 'bg-muted' : `bg-gradient-to-br ${company.color}`} flex items-center justify-center overflow-hidden p-1.5 transition-transform duration-300 group-hover:scale-110`}
+                className="mb-2 h-12 w-12 rounded-lg bg-white flex items-center justify-center overflow-hidden p-1 transition-transform duration-300 shadow-sm"
               >
-                {company.logo ? (
-                  <img
-                    src={company.logo}
-                    alt={company.name}
-                    loading="lazy"
-                    className="h-full w-full object-contain transition-transform duration-300 hover:scale-110"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.parentElement?.classList.remove('bg-muted');
-                      e.currentTarget.parentElement?.classList.add(`bg-gradient-to-br`, ...company.color.split(' '));
-                      e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                    }}
-                  />
-                ) : null}
-                <span className={`${company.logo ? 'hidden' : ''} text-foreground font-bold text-sm`}>
+                <img
+                  src={company.logo}
+                  alt={company.name}
+                  loading="lazy"
+                  className="h-full w-full object-contain transition-transform duration-300 hover:scale-110"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                    e.currentTarget.parentElement?.classList.remove('bg-white', 'shadow-sm');
+                    e.currentTarget.parentElement?.classList.add('bg-gradient-to-br', ...company.color.split(' '));
+                    const sibling = e.currentTarget.nextElementSibling as HTMLElement;
+                    if (sibling) sibling.classList.remove('hidden');
+                  }}
+                />
+                <span className="hidden text-white font-bold text-sm">
                   {company.initials}
                 </span>
               </div>
