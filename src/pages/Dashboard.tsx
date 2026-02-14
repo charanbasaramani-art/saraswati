@@ -23,6 +23,10 @@ import {
   Target,
   Users,
   Zap,
+  BarChart3,
+  Video,
+  ArrowUpRight,
+  Activity,
 } from 'lucide-react';
 import { ResumeUpload } from '@/components/dashboard/ResumeUpload';
 
@@ -90,7 +94,7 @@ export default function Dashboard() {
       <div className="min-h-screen flex items-center justify-center bg-background">
         <div className="text-center">
           <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
-          <p className="text-muted-foreground">Loading your dashboard...</p>
+          <p className="text-muted-foreground">{t('common.loadingDashboard')}</p>
         </div>
       </div>
     );
@@ -100,182 +104,174 @@ export default function Dashboard() {
 
   const latestResume = resumes[0];
   const latestAnalysis = analyses[0];
+  const overallScore = latestAnalysis?.overall_score || 0;
+  const skillsCount = latestAnalysis?.skill_analysis?.detected_skills?.length || 0;
 
-  const quickActions = [
-    { icon: Target, label: 'ATS Check', href: '/ats-simulator', color: 'from-blue-500 to-cyan-500' },
-    { icon: Brain, label: 'Soft Skills', href: '/soft-skills', color: 'from-purple-500 to-pink-500' },
-    { icon: Briefcase, label: 'Find Jobs', href: '/jobs', color: 'from-green-500 to-emerald-500' },
-    { icon: Zap, label: 'Improve', href: '/resume-improvements', color: 'from-orange-500 to-red-500' },
+  const tools = [
+    { icon: Target, label: t('dashboard.quickActions.atsCheck'), href: '/ats-simulator', desc: 'Test ATS compatibility', gradient: 'from-chart-1/20 to-chart-1/5' },
+    { icon: Brain, label: t('dashboard.quickActions.softSkills'), href: '/soft-skills', desc: 'Personality analysis', gradient: 'from-chart-2/20 to-chart-2/5' },
+    { icon: Video, label: t('nav.mockInterview'), href: '/mock-interview', desc: 'Practice interviews', gradient: 'from-chart-3/20 to-chart-3/5' },
+    { icon: TrendingUp, label: t('nav.hiringPredictor'), href: '/hiring-predictor', desc: 'Predict hiring chances', gradient: 'from-chart-4/20 to-chart-4/5' },
+    { icon: Zap, label: t('dashboard.quickActions.improve'), href: '/resume-improvements', desc: 'AI suggestions', gradient: 'from-accent-foreground/20 to-accent-foreground/5' },
+    { icon: Briefcase, label: t('dashboard.quickActions.findJobs'), href: '/jobs', desc: 'Browse opportunities', gradient: 'from-chart-5/20 to-chart-5/5' },
   ];
 
   return (
     <Layout showFooter={false}>
-      {/* Header Section */}
-      <section className="relative py-8 overflow-hidden">
-        <div className="absolute inset-0 gradient-bg opacity-50" />
-        <div className="container relative z-10">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            <div className="animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass text-sm font-medium mb-3 animate-fade-in-down">
-                <Sparkles className="h-4 w-4 text-primary animate-pulse" />
-                Welcome back!
-              </div>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground">{t('nav.dashboard')}</h1>
-              <p className="text-muted-foreground mt-1">{t('dashboard.uploadDesc')}</p>
+      <div className="container py-6 md:py-10 space-y-6">
+        {/* Greeting */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 animate-fade-in-up">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
+              <Activity className="h-3 w-3" />
+              {t('common.welcomeBack')}
             </div>
-            
-            {/* Quick Actions */}
-            <div className="flex gap-2 animate-fade-in-right">
-              {quickActions.map((action, index) => (
-                <Link key={index} to={action.href}>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="gap-2 glass hover:bg-primary/10 border-border/50 hover-scale transition-all duration-300"
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <action.icon className="h-4 w-4" />
-                    <span className="hidden sm:inline">{action.label}</span>
-                  </Button>
-                </Link>
-              ))}
-            </div>
+            <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+              {t('nav.dashboard')}
+            </h1>
+            <p className="text-muted-foreground mt-1 text-sm">{t('dashboard.uploadDesc')}</p>
           </div>
-        </div>
-      </section>
-
-      <div className="container py-6">
-        {/* Stats Cards */}
-        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4 mb-8">
-          <Card className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: '0.1s' }}>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <FileText className="h-7 w-7 text-primary" />
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-foreground number-animate">{resumes.length}</p>
-                  <p className="text-sm text-muted-foreground">{t('dashboard.stats.resumes')}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: '0.2s' }}>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Brain className="h-7 w-7 text-purple-500" />
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-foreground number-animate">{analyses.length}</p>
-                  <p className="text-sm text-muted-foreground">{t('dashboard.stats.analyses')}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: '0.3s' }}>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="h-7 w-7 text-green-500" />
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-foreground number-animate">
-                    {latestAnalysis?.overall_score || '--'}
-                    {latestAnalysis && <span className="text-lg text-muted-foreground">%</span>}
-                  </p>
-                  <p className="text-sm text-muted-foreground">{t('dashboard.stats.latestScore')}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: '0.4s' }}>
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Briefcase className="h-7 w-7 text-blue-500" />
-                </div>
-                <div>
-                  <Link to="/jobs" className="text-3xl font-bold text-foreground hover:text-primary transition-colors">
-                    View
-                  </Link>
-                  <p className="text-sm text-muted-foreground">{t('dashboard.stats.jobMatches')}</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <Link to="/interview-prep">
+            <Button variant="outline" className="gap-2 glass">
+              <FileText className="h-4 w-4" />
+              {t('nav.interview')}
+              <ArrowUpRight className="h-3 w-3" />
+            </Button>
+          </Link>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Upload Section */}
-          <ResumeUpload onUploadComplete={fetchData} />
+        {/* === BENTO GRID === */}
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 auto-rows-[minmax(120px,auto)]">
 
-          {/* Recent Activity */}
-          <Card className="glass-card">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Clock className="h-4 w-4 text-primary" />
+          {/* SCORE CARD — big, spans 4 cols */}
+          <Card className="glass-card md:col-span-3 lg:col-span-4 md:row-span-2 flex flex-col justify-between overflow-hidden relative group animate-fade-in-up">
+            <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-primary/10 blur-3xl group-hover:bg-primary/20 transition-all duration-700" />
+            <CardContent className="p-6 relative z-10 flex flex-col h-full justify-between">
+              <div>
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{t('common.overallScore')}</p>
+                <div className="flex items-end gap-2 mt-2">
+                  <span className="text-6xl md:text-7xl font-bold text-foreground leading-none">
+                    {overallScore || '--'}
+                  </span>
+                  {overallScore > 0 && <span className="text-2xl text-muted-foreground mb-1">/100</span>}
                 </div>
+              </div>
+              {overallScore > 0 && (
+                <div className="mt-6 space-y-2">
+                  <Progress value={overallScore} className="h-2" />
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>{t('common.skillsDetected')}: {skillsCount}</span>
+                    {latestAnalysis && (
+                      <Link to={`/analysis/${latestAnalysis.id}`} className="text-primary hover:underline flex items-center gap-1">
+                        {t('common.viewFullAnalysis')} <ArrowRight className="h-3 w-3" />
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              )}
+              {!overallScore && (
+                <p className="text-sm text-muted-foreground mt-4">{t('common.uploadFirstResume')}</p>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* STAT MINI CARDS */}
+          <StatCard
+            icon={FileText}
+            value={resumes.length}
+            label={t('dashboard.stats.resumes')}
+            className="lg:col-span-2 md:col-span-3 animate-fade-in-up stagger-1"
+          />
+          <StatCard
+            icon={Brain}
+            value={analyses.length}
+            label={t('dashboard.stats.analyses')}
+            className="lg:col-span-2 md:col-span-3 animate-fade-in-up stagger-2"
+          />
+          <StatCard
+            icon={BarChart3}
+            value={skillsCount}
+            label={t('common.skillsDetected')}
+            className="lg:col-span-2 md:col-span-3 animate-fade-in-up stagger-3"
+          />
+          <Link to="/jobs" className="lg:col-span-2 md:col-span-3 animate-fade-in-up stagger-4">
+            <Card className="glass-card h-full group cursor-pointer hover:border-primary/30 transition-all">
+              <CardContent className="p-5 flex flex-col justify-between h-full">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Briefcase className="h-5 w-5 text-primary" />
+                </div>
+                <div className="mt-3">
+                  <p className="text-2xl font-bold text-foreground">{t('common.view')}</p>
+                  <p className="text-xs text-muted-foreground">{t('dashboard.stats.jobMatches')}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* UPLOAD — spans wide */}
+          <div className="md:col-span-6 lg:col-span-7 animate-fade-in-up stagger-2">
+            <ResumeUpload onUploadComplete={fetchData} />
+          </div>
+
+          {/* RECENT RESUMES — tall narrow */}
+          <Card className="glass-card md:col-span-6 lg:col-span-5 animate-fade-in-up stagger-3">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-base flex items-center gap-2">
+                <Clock className="h-4 w-4 text-primary" />
                 {t('dashboard.recentActivity')}
               </CardTitle>
-              <CardDescription>{t('dashboard.latestAnalysis')}</CardDescription>
             </CardHeader>
             <CardContent>
               {isLoading ? (
-                <div className="flex flex-col items-center justify-center py-12">
-                  <Loader2 className="h-8 w-8 animate-spin text-primary mb-3" />
-                  <p className="text-sm text-muted-foreground">Loading your resumes...</p>
+                <div className="flex flex-col items-center justify-center py-8">
+                  <Loader2 className="h-6 w-6 animate-spin text-primary mb-2" />
+                  <p className="text-xs text-muted-foreground">{t('common.loadingResumes')}</p>
                 </div>
               ) : resumes.length === 0 ? (
-                <div className="text-center py-12">
-                  <div className="h-16 w-16 rounded-2xl bg-muted/50 flex items-center justify-center mx-auto mb-4">
-                    <FileText className="h-8 w-8 text-muted-foreground" />
+                <div className="text-center py-8">
+                  <div className="h-12 w-12 rounded-xl bg-muted/50 flex items-center justify-center mx-auto mb-3">
+                    <FileText className="h-6 w-6 text-muted-foreground" />
                   </div>
-                  <p className="font-medium text-foreground mb-1">No resumes uploaded yet</p>
-                  <p className="text-sm text-muted-foreground">Upload your first resume to get started</p>
+                  <p className="text-sm font-medium text-foreground">{t('common.noResumesYet')}</p>
+                  <p className="text-xs text-muted-foreground mt-1">{t('common.uploadFirstResume')}</p>
                 </div>
               ) : (
-                <div className="space-y-3">
-                  {resumes.slice(0, 3).map((resume, index) => {
+                <div className="space-y-2">
+                  {resumes.slice(0, 4).map((resume, index) => {
                     const analysis = analyses.find(a => a.resume_id === resume.id);
                     return (
                       <div
                         key={resume.id}
-                        className="flex items-center justify-between p-4 rounded-xl border border-border/50 bg-muted/30 hover:bg-muted/50 transition-all group animate-fade-in"
-                        style={{ animationDelay: `${index * 100}ms` }}
+                        className="flex items-center justify-between p-3 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/40 transition-all group"
                       >
-                        <div className="flex items-center gap-4">
-                          <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                            <FileText className="h-6 w-6 text-primary" />
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                            <FileText className="h-4 w-4 text-primary" />
                           </div>
-                          <div>
-                            <p className="font-medium text-foreground line-clamp-1">{resume.file_name}</p>
-                            <p className="text-xs text-muted-foreground">
+                          <div className="min-w-0">
+                            <p className="text-sm font-medium text-foreground truncate">{resume.file_name}</p>
+                            <p className="text-[11px] text-muted-foreground">
                               {new Date(resume.created_at).toLocaleDateString()}
                             </p>
                           </div>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-2 flex-shrink-0">
                           {analysis ? (
                             <>
-                              <Badge className="gap-1.5 bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30">
-                                <CheckCircle2 className="h-3.5 w-3.5" />
+                              <Badge variant="secondary" className="text-[11px] gap-1 bg-primary/10 text-primary border-none">
+                                <CheckCircle2 className="h-3 w-3" />
                                 {analysis.overall_score}%
                               </Badge>
                               <Link to={`/analysis/${analysis.id}`}>
-                                <Button variant="ghost" size="sm" className="gap-1">
-                                  View <ArrowRight className="h-4 w-4" />
+                                <Button variant="ghost" size="icon" className="h-7 w-7">
+                                  <ArrowRight className="h-3.5 w-3.5" />
                                 </Button>
                               </Link>
                             </>
                           ) : (
-                            <Badge variant="outline" className="gap-1.5 animate-pulse">
-                              <AlertCircle className="h-3.5 w-3.5" />
-                              Processing
+                            <Badge variant="outline" className="text-[11px] gap-1 animate-pulse">
+                              <AlertCircle className="h-3 w-3" />
+                              {t('common.processing')}
                             </Badge>
                           )}
                         </div>
@@ -286,69 +282,102 @@ export default function Dashboard() {
               )}
             </CardContent>
           </Card>
-        </div>
 
-        {/* Latest Analysis Preview */}
-        {latestAnalysis && (
-          <Card className="glass-card mt-8 animate-fade-in">
-            <CardHeader>
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-primary to-accent-foreground flex items-center justify-center">
-                    <TrendingUp className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <CardTitle>Latest Analysis</CardTitle>
-                    <CardDescription>Your most recent resume analysis results</CardDescription>
-                  </div>
-                </div>
-                <Link to={`/analysis/${latestAnalysis.id}`}>
-                  <Button className="btn-glow gap-2">
-                    View Full Analysis <ArrowRight className="h-4 w-4" />
-                  </Button>
+          {/* TOOLS GRID — full width bento row */}
+          <div className="md:col-span-6 lg:col-span-12 animate-fade-in-up stagger-4">
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Quick Tools</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+              {tools.map((tool, i) => (
+                <Link key={i} to={tool.href}>
+                  <Card className="glass-card h-full group cursor-pointer hover:border-primary/30 transition-all hover-lift">
+                    <CardContent className="p-4 flex flex-col gap-3">
+                      <div className={`h-10 w-10 rounded-xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                        <tool.icon className="h-5 w-5 text-foreground" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-foreground">{tool.label}</p>
+                        <p className="text-[11px] text-muted-foreground leading-tight mt-0.5">{tool.desc}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </Link>
-              </div>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-8 md:grid-cols-3">
-                <div className="space-y-3">
-                  <p className="text-sm font-medium text-muted-foreground">Overall Score</p>
-                  <div className="flex items-center gap-4">
-                    <div className="flex-1">
-                      <Progress value={latestAnalysis.overall_score} className="h-3" />
-                    </div>
-                    <span className="text-3xl font-bold bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
-                      {latestAnalysis.overall_score}%
-                    </span>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <p className="text-sm font-medium text-muted-foreground">Skills Detected</p>
+              ))}
+            </div>
+          </div>
+
+          {/* LATEST ANALYSIS — full width bottom card */}
+          {latestAnalysis && (
+            <Card className="glass-card md:col-span-6 lg:col-span-12 animate-fade-in-up stagger-5 overflow-hidden relative">
+              <div className="absolute top-0 right-0 h-40 w-40 bg-primary/5 rounded-full blur-3xl" />
+              <CardContent className="p-6 relative z-10">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="h-12 w-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
-                      <Brain className="h-6 w-6 text-purple-500" />
+                    <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Sparkles className="h-5 w-5 text-primary" />
                     </div>
-                    <p className="text-3xl font-bold text-foreground">
-                      {latestAnalysis.skill_analysis?.detected_skills?.length || 0}
-                    </p>
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <p className="text-sm font-medium text-muted-foreground">Analysis Date</p>
-                  <div className="flex items-center gap-3">
-                    <div className="h-12 w-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
-                      <Clock className="h-6 w-6 text-blue-500" />
+                    <div>
+                      <h3 className="text-lg font-bold text-foreground">{t('common.latestAnalysis')}</h3>
+                      <p className="text-xs text-muted-foreground">{t('common.latestAnalysisDesc')}</p>
                     </div>
-                    <p className="text-lg font-medium text-foreground">
-                      {new Date(latestAnalysis.created_at).toLocaleDateString()}
-                    </p>
                   </div>
+                  <Link to={`/analysis/${latestAnalysis.id}`}>
+                    <Button size="sm" className="gap-2">
+                      {t('common.viewFullAnalysis')} <ArrowRight className="h-3.5 w-3.5" />
+                    </Button>
+                  </Link>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-        )}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                  <AnalysisStat
+                    icon={<TrendingUp className="h-5 w-5 text-primary" />}
+                    label={t('common.overallScore')}
+                    value={`${latestAnalysis.overall_score}%`}
+                  />
+                  <AnalysisStat
+                    icon={<Brain className="h-5 w-5 text-chart-2" />}
+                    label={t('common.skillsDetected')}
+                    value={String(skillsCount)}
+                  />
+                  <AnalysisStat
+                    icon={<Clock className="h-5 w-5 text-chart-3" />}
+                    label={t('common.analysisDate')}
+                    value={new Date(latestAnalysis.created_at).toLocaleDateString()}
+                  />
+                </div>
+              </CardContent>
+            </Card>
+          )}
+        </div>
       </div>
     </Layout>
+  );
+}
+
+function StatCard({ icon: Icon, value, label, className = '' }: { icon: any; value: number | string; label: string; className?: string }) {
+  return (
+    <Card className={`glass-card group ${className}`}>
+      <CardContent className="p-5 flex flex-col justify-between h-full">
+        <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+          <Icon className="h-5 w-5 text-primary" />
+        </div>
+        <div className="mt-3">
+          <p className="text-2xl font-bold text-foreground">{value}</p>
+          <p className="text-xs text-muted-foreground">{label}</p>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function AnalysisStat({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 border border-border/30">
+      <div className="h-12 w-12 rounded-xl bg-background flex items-center justify-center flex-shrink-0">
+        {icon}
+      </div>
+      <div>
+        <p className="text-xs text-muted-foreground">{label}</p>
+        <p className="text-xl font-bold text-foreground">{value}</p>
+      </div>
+    </div>
   );
 }
