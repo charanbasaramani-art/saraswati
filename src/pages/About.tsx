@@ -47,7 +47,7 @@ export default function About() {
             </div>
             
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-6">
-              {t('about.title')} <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">ResumeAI</span>
+              {t('about.title')} <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">SRAI</span>
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
