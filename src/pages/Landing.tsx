@@ -3,8 +3,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Layout } from '@/components/layout/Layout';
 import { useTranslation } from 'react-i18next';
+import { SRAILogo } from '@/components/SRAILogo';
 import { 
-  FileText, 
   Brain, 
   Target, 
   Briefcase, 
@@ -14,7 +14,8 @@ import {
   ArrowRight,
   Zap,
   Shield,
-  Users
+  Users,
+  Sparkles
 } from 'lucide-react';
 
 export default function Landing() {
@@ -42,14 +43,24 @@ export default function Landing() {
         <div className="container py-20 md:py-32">
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-6 inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-sm animate-fade-in-down">
-              <Zap className="mr-2 h-4 w-4 text-primary animate-pulse" />
-              <span className="text-muted-foreground">{t('landing.hero.badge')}</span>
+              <Sparkles className="mr-2 h-4 w-4 text-primary animate-pulse" />
+              <span className="text-muted-foreground">Wisdom-Powered Resume Intelligence</span>
             </div>
-            <h1 className="mb-6 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              {t('landing.hero.title')}{' '}
-              <span className="gradient-text-animate">{t('landing.hero.titleHighlight')}</span>
+
+            <div className="flex justify-center mb-6 animate-fade-in-up">
+              <SRAILogo size="xl" showText={false} />
+            </div>
+
+            <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              SRAI –{' '}
+              <span className="gradient-text-animate">Saraswati Resume AI</span>
             </h1>
-            <p className="mb-8 text-lg text-muted-foreground md:text-xl animate-fade-in-up" style={{ animationDelay: '0.2s' }}>{t('landing.hero.description')}</p>
+            <p className="mb-4 text-xl font-medium text-primary animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
+              Wisdom-Powered Resume Intelligence
+            </p>
+            <p className="mb-8 text-base text-muted-foreground md:text-lg max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              SRAI helps users analyze resumes, detect skill gaps, improve ATS compatibility, and optimize their career profiles using AI — inspired by the wisdom of Saraswati.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <Link to="/auth?mode=signup">
                 <Button size="lg" className="w-full sm:w-auto text-lg px-8 btn-glow hover-scale">

@@ -123,9 +123,12 @@ export default function Dashboard() {
         {/* Greeting */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 animate-fade-in-up">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-3">
-              <Activity className="h-3 w-3" />
-              {t('common.welcomeBack')}
+            <div className="flex items-center gap-3 mb-3">
+              <SRAILogo size="sm" showText={false} />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
+                <Activity className="h-3 w-3" />
+                {t('common.welcomeBack')}
+              </div>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
               {t('nav.dashboard')}

@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FileText, Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Twitter } from 'lucide-react';
+import { SRAILogo } from '@/components/SRAILogo';
 
 export const Footer = forwardRef<HTMLElement>((props, ref) => {
   return (
@@ -8,12 +9,11 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2">
-              <FileText className="h-6 w-6 text-primary" />
-              <span className="text-xl font-bold text-foreground">ResumeAI</span>
+            <Link to="/" className="inline-block">
+              <SRAILogo size="md" />
             </Link>
             <p className="text-muted-foreground text-sm">
-              AI-powered resume analysis and job recommendations for students and job seekers.
+              Wisdom-powered resume intelligence. Analyze resumes, detect skill gaps, and optimize your career with AI.
             </p>
           </div>
 
@@ -52,7 +52,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2007 ResumeAI. a CHARAN'S vision</p>
+          <p>© 2007 SRAI – Saraswati Resume AI. a CHARAN'S vision</p>
         </div>
       </div>
     </footer>
