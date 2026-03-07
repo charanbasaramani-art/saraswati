@@ -29,6 +29,7 @@ import {
   Activity,
 } from 'lucide-react';
 import { ResumeUpload } from '@/components/dashboard/ResumeUpload';
+import { SRAILogo } from '@/components/SRAILogo';
 
 interface Resume {
   id: string;
