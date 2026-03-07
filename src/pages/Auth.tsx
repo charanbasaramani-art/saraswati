@@ -7,8 +7,10 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { useTranslation } from 'react-i18next';
-import { FileText, Loader2, AlertCircle, Eye, EyeOff, Sparkles, Shield, Brain, Zap } from 'lucide-react';
+import { Loader2, AlertCircle, Eye, EyeOff, Sparkles, Shield, Brain, Zap } from 'lucide-react';
 import { z } from 'zod';
+import { SRAILogo } from '@/components/SRAILogo';
+import sraiLogo from '@/assets/srai-logo.png';
 
 const emailSchema = z.string().email('Please enter a valid email address');
 const passwordSchema = z.string().min(6, 'Password must be at least 6 characters');
@@ -81,18 +83,19 @@ export default function Auth() {
         
         <div className="relative z-10 flex flex-col justify-center p-12 text-primary-foreground">
           <Link to="/" className="inline-flex items-center gap-3 mb-12">
-            <div className="h-12 w-12 rounded-xl bg-primary-foreground/20 flex items-center justify-center">
-              <FileText className="h-7 w-7" />
+            <img src={sraiLogo} alt="SRAI" className="h-14 w-14 object-contain brightness-0 invert" />
+            <div className="flex flex-col">
+              <span className="text-3xl font-bold">SRAI</span>
+              <span className="text-xs opacity-80 tracking-wider uppercase">Saraswati Resume AI</span>
             </div>
-            <span className="text-3xl font-bold">ResumeAI</span>
           </Link>
           
           <h1 className="text-4xl font-bold mb-4 leading-tight">
-            Transform Your Resume with AI-Powered Intelligence
+            Wisdom-Powered Resume Intelligence
           </h1>
           
           <p className="text-lg text-primary-foreground/80 mb-12 leading-relaxed">
-            Join thousands of job seekers who have improved their resumes and landed their dream jobs.
+            Join thousands of job seekers who have improved their resumes and landed their dream jobs with SRAI.
           </p>
           
           <div className="grid grid-cols-2 gap-4">
@@ -116,18 +119,15 @@ export default function Auth() {
         <div className="w-full max-w-md animate-fade-in">
           {/* Mobile Logo */}
           <div className="text-center mb-8 lg:hidden">
-            <Link to="/" className="inline-flex items-center gap-2 mb-6">
-              <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                <FileText className="h-6 w-6 text-primary" />
-              </div>
-              <span className="text-2xl font-bold text-foreground">ResumeAI</span>
+            <Link to="/" className="inline-block mb-6">
+              <SRAILogo size="lg" className="justify-center" />
             </Link>
           </div>
 
           <Card className="glass-card border-0 shadow-2xl">
             <CardHeader className="text-center pb-2">
-              <div className="mx-auto h-16 w-16 rounded-2xl bg-gradient-to-br from-primary to-accent-foreground flex items-center justify-center mb-4">
-                <FileText className="h-8 w-8 text-primary-foreground" />
+              <div className="mx-auto mb-4">
+                <img src={sraiLogo} alt="SRAI" className="h-16 w-16 object-contain mx-auto" />
               </div>
               <CardTitle className="text-2xl font-bold">
                 {isSignUp ? t('auth.createAccount') : t('auth.welcomeBack')}

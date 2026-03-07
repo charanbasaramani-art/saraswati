@@ -1,11 +1,12 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
-import { FileText, Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users, Video, TrendingUp, Settings } from 'lucide-react';
+import { Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users, Video, TrendingUp, Settings } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { LanguageSelector } from '@/components/LanguageSelector';
 import { useTranslation } from 'react-i18next';
+import { SRAILogo } from '@/components/SRAILogo';
 
 export function Navbar() {
   const { t } = useTranslation();
@@ -22,10 +23,7 @@ export function Navbar() {
     <nav className="sticky top-0 z-50 w-full glass-navbar theme-transition">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-            <FileText className="h-5 w-5 text-primary" />
-          </div>
-          <span className="text-xl font-bold text-foreground">ResumeAI</span>
+          <SRAILogo size="sm" />
         </Link>
 
         {/* Desktop Navigation */}

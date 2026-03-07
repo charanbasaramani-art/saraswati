@@ -39,7 +39,7 @@ export function ChatBot({ hasResume = false, resumeScore, userName }: ChatBotPro
         role: 'assistant',
         content: hasResume
           ? `Hi${userName ? ` ${userName}` : ''}! 👋 I see you've uploaded your resume${resumeScore ? ` and scored **${resumeScore}/100**` : ''}. How can I help you improve it or find matching jobs?`
-          : `Hi${userName ? ` ${userName}` : ''}! 👋 Welcome to **ResumeAI**! I'm **R-ATLAS**, your AI assistant. I can help you analyze your resume, find skill gaps, and discover job opportunities. Would you like to upload your resume to get started?`,
+          : `Hi${userName ? ` ${userName}` : ''}! 👋 Welcome to **SRAI**! I'm your AI assistant powered by Saraswati Resume AI. I can help you analyze your resume, find skill gaps, and discover job opportunities. Would you like to upload your resume to get started?`,
       };
       setMessages([welcomeMessage]);
     }
