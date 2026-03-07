@@ -197,9 +197,9 @@
     "clickAnalyze": "Click \"Analyze Resume\" to get improvement suggestions"
   },
   "chatbot": {
-    "title": "R-ATLAS",
+    "title": "SRAI Assistant",
     "placeholder": "Ask me anything...",
-    "welcome": "Hello! I'm your ResumeAI assistant. How can I help you today?",
+    "welcome": "Hello! I'm your SRAI assistant. How can I help you today?",
     "thinking": "Thinking...",
     "online": "Online • Ready to help",
     "errorGenerate": "I'm sorry, I couldn't generate a response. Please try again.",
