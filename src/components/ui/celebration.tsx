@@ -91,7 +91,7 @@ export function Celebration({
       return Math.random() * (max - min) + min;
     }
 
-    const interval: NodeJS.Timeout = setInterval(function() {
+    const interval: ReturnType<typeof setInterval> = setInterval(function() {
       const timeLeft = animationEnd - Date.now();
 
       if (timeLeft <= 0) {
@@ -230,7 +230,7 @@ export function useCelebration() {
     if (type === 'fireworks') {
       const duration = 2000;
       const animationEnd = Date.now() + duration;
-      const interval: NodeJS.Timeout = setInterval(function() {
+      const interval: ReturnType<typeof setInterval> = setInterval(function() {
         const timeLeft = animationEnd - Date.now();
         if (timeLeft <= 0) return clearInterval(interval);
         confetti({

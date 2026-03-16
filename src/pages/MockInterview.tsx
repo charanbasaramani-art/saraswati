@@ -94,7 +94,7 @@ export default function MockInterview() {
   
   // Voice state
   const [useVoiceInput, setUseVoiceInput] = useState(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const handleSubmitAnswerRef = useRef<() => void>(() => {});
   
   const { isListening, isSpeaking, isSupported, startListening, stopListening, speak, stopSpeaking } = useVoice({
