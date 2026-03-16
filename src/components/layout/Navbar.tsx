@@ -92,13 +92,11 @@ export function Navbar() {
             </>
           )}
 
-          <LanguageSelector />
           <ThemeToggle />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-2">
-          <LanguageSelector />
           <ThemeToggle />
           <button
             className="p-2"
