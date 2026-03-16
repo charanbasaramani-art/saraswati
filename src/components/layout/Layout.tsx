@@ -23,7 +23,6 @@ export const Layout = forwardRef<HTMLDivElement, LayoutProps>(
         </main>
         {showFooter && <Footer />}
         
-        {/* AI Chatbot */}
         <ChatBot />
       </div>
     );
