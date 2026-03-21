@@ -7,145 +7,166 @@
 
 @layer base {
   :root {
-    --background: 270 20% 98%;
-    --foreground: 240 10% 8%;
+    /* Parchment / Manuscript palette */
+    --background: 38 40% 95%;
+    --foreground: 20 30% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 8%;
+    --card: 38 35% 93%;
+    --card-foreground: 20 30% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 8%;
+    --popover: 38 30% 96%;
+    --popover-foreground: 20 30% 12%;
 
-    --primary: 270 60% 70%;
-    --primary-foreground: 270 100% 99%;
+    /* Deep maroon primary */
+    --primary: 0 55% 32%;
+    --primary-foreground: 38 40% 95%;
 
-    --secondary: 270 10% 95%;
-    --secondary-foreground: 270 5% 25%;
+    --secondary: 38 20% 88%;
+    --secondary-foreground: 20 25% 20%;
 
-    --muted: 270 8% 92%;
-    --muted-foreground: 270 5% 42%;
+    --muted: 38 15% 85%;
+    --muted-foreground: 20 10% 45%;
 
-    --accent: 270 40% 96%;
-    --accent-foreground: 270 70% 55%;
+    --accent: 38 30% 90%;
+    --accent-foreground: 0 55% 32%;
 
     --destructive: 0 72% 50%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 270 12% 88%;
-    --input: 270 12% 88%;
-    --ring: 270 60% 70%;
+    --border: 30 20% 80%;
+    --input: 30 20% 82%;
+    --ring: 0 55% 32%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Gold heritage accent */
-    --gold: 40 65% 55%;
-    --gold-light: 42 60% 80%;
-    --gold-muted: 40 30% 90%;
+    --gold: 40 70% 45%;
+    --gold-light: 42 60% 70%;
+    --gold-muted: 40 30% 85%;
+
+    /* Peacock blue accent */
+    --peacock: 195 70% 35%;
+    --peacock-light: 195 50% 60%;
+
+    /* Lotus pink */
+    --lotus: 340 55% 65%;
+    --lotus-light: 340 40% 80%;
+
+    /* Bronze */
+    --bronze: 30 45% 40%;
+    --bronze-light: 30 35% 60%;
 
     /* Glassmorphism tokens */
-    --glass-background: 0 0% 100% / 0.6;
-    --glass-border: 270 30% 90% / 0.5;
+    --glass-background: 38 35% 96% / 0.7;
+    --glass-border: 30 25% 80% / 0.5;
     --glass-blur: 16px;
-    --glass-shadow: 0 8px 32px 0 hsl(270 20% 10% / 0.06);
+    --glass-shadow: 0 8px 32px 0 hsl(20 30% 10% / 0.08);
 
-    /* Gradient backgrounds */
-    --gradient-start: 270 40% 97%;
-    --gradient-end: 270 50% 98%;
-    --gradient-accent: 270 60% 70%;
+    --gradient-start: 38 35% 94%;
+    --gradient-end: 38 40% 96%;
+    --gradient-accent: 0 55% 32%;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 240 10% 8%;
-    --sidebar-primary: 270 60% 70%;
-    --sidebar-primary-foreground: 270 100% 99%;
-    --sidebar-accent: 270 40% 96%;
-    --sidebar-accent-foreground: 270 70% 55%;
-    --sidebar-border: 270 12% 90%;
-    --sidebar-ring: 270 60% 70%;
+    --sidebar-background: 38 30% 94%;
+    --sidebar-foreground: 20 30% 12%;
+    --sidebar-primary: 0 55% 32%;
+    --sidebar-primary-foreground: 38 40% 95%;
+    --sidebar-accent: 38 30% 90%;
+    --sidebar-accent-foreground: 0 55% 32%;
+    --sidebar-border: 30 20% 82%;
+    --sidebar-ring: 0 55% 32%;
 
-    --chart-1: 270 65% 72%;
-    --chart-2: 280 60% 70%;
-    --chart-3: 260 55% 68%;
-    --chart-4: 270 60% 70%;
-    --chart-5: 40 65% 55%;
+    --chart-1: 0 55% 35%;
+    --chart-2: 195 70% 35%;
+    --chart-3: 340 55% 65%;
+    --chart-4: 40 70% 45%;
+    --chart-5: 30 45% 40%;
 
-    --sidebar: 0 0% 100%;
+    --sidebar: 38 30% 94%;
 
     --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
     --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
-    --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.03);
-    --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-    --shadow-sm: 0 2px 6px 0px hsl(0 0% 0% / 0.06);
-    --shadow: 0 4px 12px 0px hsl(0 0% 0% / 0.08);
-    --shadow-md: 0 6px 16px 0px hsl(0 0% 0% / 0.1);
-    --shadow-lg: 0 12px 24px 0px hsl(0 0% 0% / 0.12);
-    --shadow-xl: 0 20px 40px 0px hsl(0 0% 0% / 0.14);
-    --shadow-2xl: 0 24px 48px 0px hsl(0 0% 0% / 0.18);
+    --shadow-2xs: 0 1px 3px 0px hsl(20 20% 10% / 0.04);
+    --shadow-xs: 0 1px 3px 0px hsl(20 20% 10% / 0.06);
+    --shadow-sm: 0 2px 6px 0px hsl(20 20% 10% / 0.08);
+    --shadow: 0 4px 12px 0px hsl(20 20% 10% / 0.1);
+    --shadow-md: 0 6px 16px 0px hsl(20 20% 10% / 0.12);
+    --shadow-lg: 0 12px 24px 0px hsl(20 20% 10% / 0.14);
+    --shadow-xl: 0 20px 40px 0px hsl(20 20% 10% / 0.16);
+    --shadow-2xl: 0 24px 48px 0px hsl(20 20% 10% / 0.2);
 
     --tracking-normal: 0em;
     --spacing: 0.25rem;
   }
 
   .dark {
-    --background: 270 12% 6%;
-    --foreground: 0 0% 95%;
+    --background: 20 15% 8%;
+    --foreground: 38 20% 90%;
 
-    --card: 270 12% 11%;
-    --card-foreground: 0 0% 95%;
+    --card: 20 15% 12%;
+    --card-foreground: 38 20% 90%;
 
-    --popover: 270 12% 14%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 20 15% 14%;
+    --popover-foreground: 38 20% 90%;
 
-    --primary: 270 65% 75%;
-    --primary-foreground: 270 80% 12%;
+    --primary: 0 50% 55%;
+    --primary-foreground: 20 15% 8%;
 
-    --secondary: 270 10% 17%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 20 10% 18%;
+    --secondary-foreground: 38 15% 85%;
 
-    --muted: 270 8% 22%;
-    --muted-foreground: 270 8% 65%;
+    --muted: 20 10% 20%;
+    --muted-foreground: 30 10% 60%;
 
-    --accent: 270 30% 16%;
-    --accent-foreground: 270 70% 78%;
+    --accent: 20 15% 16%;
+    --accent-foreground: 0 50% 60%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 270 10% 20%;
-    --input: 270 10% 20%;
-    --ring: 270 65% 75%;
+    --border: 20 10% 22%;
+    --input: 20 10% 22%;
+    --ring: 0 50% 55%;
 
-    /* Gold heritage accent - dark */
     --gold: 40 55% 50%;
-    --gold-light: 42 45% 35%;
-    --gold-muted: 40 20% 18%;
+    --gold-light: 42 40% 35%;
+    --gold-muted: 40 15% 18%;
 
-    --glass-background: 270 12% 14% / 0.5;
-    --glass-border: 270 15% 25% / 0.4;
+    --peacock: 195 55% 45%;
+    --peacock-light: 195 40% 30%;
+
+    --lotus: 340 45% 55%;
+    --lotus-light: 340 30% 30%;
+
+    --bronze: 30 35% 45%;
+    --bronze-light: 30 25% 30%;
+
+    --glass-background: 20 15% 14% / 0.6;
+    --glass-border: 20 12% 25% / 0.4;
     --glass-blur: 16px;
     --glass-shadow: 0 8px 32px 0 hsl(0 0% 0% / 0.3);
 
-    --gradient-start: 270 12% 7%;
-    --gradient-end: 270 18% 10%;
-    --gradient-accent: 270 65% 75%;
+    --gradient-start: 20 15% 8%;
+    --gradient-end: 20 18% 11%;
+    --gradient-accent: 0 50% 55%;
 
-    --sidebar-background: 270 12% 9%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 270 65% 75%;
-    --sidebar-primary-foreground: 270 80% 12%;
-    --sidebar-accent: 270 30% 16%;
-    --sidebar-accent-foreground: 270 70% 78%;
-    --sidebar-border: 270 10% 20%;
-    --sidebar-ring: 270 65% 75%;
+    --sidebar-background: 20 15% 10%;
+    --sidebar-foreground: 38 20% 90%;
+    --sidebar-primary: 0 50% 55%;
+    --sidebar-primary-foreground: 20 15% 8%;
+    --sidebar-accent: 20 15% 16%;
+    --sidebar-accent-foreground: 0 50% 60%;
+    --sidebar-border: 20 10% 22%;
+    --sidebar-ring: 0 50% 55%;
 
-    --chart-1: 270 70% 80%;
-    --chart-2: 280 65% 78%;
-    --chart-3: 260 60% 76%;
-    --chart-4: 270 65% 75%;
-    --chart-5: 40 55% 60%;
+    --chart-1: 0 55% 60%;
+    --chart-2: 195 60% 50%;
+    --chart-3: 340 50% 60%;
+    --chart-4: 40 60% 55%;
+    --chart-5: 30 40% 50%;
 
-    --sidebar: 270 12% 9%;
+    --sidebar: 20 15% 10%;
 
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.1);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.15);
@@ -175,9 +196,25 @@
   }
 }
 
-/* ─── Heritage Design Elements ─── */
+/* ─── Heritage Manuscript Design ─── */
 @layer components {
-  /* Lotus SVG background pattern */
+  /* Parchment texture background */
+  .parchment-bg {
+    position: relative;
+    background-color: hsl(var(--background));
+  }
+  .parchment-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/src/assets/parchment-pattern.png');
+    background-size: 200px 200px;
+    opacity: 0.06;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Heritage lotus pattern */
   .heritage-pattern {
     position: relative;
   }
@@ -185,25 +222,60 @@
     content: '';
     position: absolute;
     inset: 0;
-    opacity: 0.03;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 20c-4 8-12 14-12 14s8 6 12 14c4-8 12-14 12-14s-8-6-12-14z' fill='%239b6dff' fill-opacity='0.5'/%3E%3Cpath d='M40 16c-2 6-8 10-8 10s6 4 8 10c2-6 8-10 8-10s-6-4-8-10z' fill='%239b6dff' fill-opacity='0.3'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23c9a84c' fill-opacity='0.4'/%3E%3C/svg%3E");
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 20c-4 8-12 14-12 14s8 6 12 14c4-8 12-14 12-14s-8-6-12-14z' fill='%23996633' fill-opacity='0.5'/%3E%3Cpath d='M40 16c-2 6-8 10-8 10s6 4 8 10c2-6 8-10 8-10s-6-4-8-10z' fill='%23996633' fill-opacity='0.3'/%3E%3Ccircle cx='40' cy='40' r='3' fill='%23c9a84c' fill-opacity='0.4'/%3E%3C/svg%3E");
     background-size: 80px 80px;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* Temple-style geometric border */
+  /* Temple-style double border */
   .temple-border {
-    border: 1px solid hsl(var(--border));
+    border: 2px solid hsl(var(--gold) / 0.3);
     position: relative;
   }
   .temple-border::before {
     content: '';
     position: absolute;
-    inset: 3px;
+    inset: 4px;
     border: 1px solid hsl(var(--gold) / 0.15);
     border-radius: inherit;
     pointer-events: none;
+  }
+
+  /* Royal plaque button */
+  .btn-plaque {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary)) 60%, hsl(20 40% 25%));
+    color: hsl(var(--gold-light));
+    border: 2px solid hsl(var(--gold) / 0.4);
+    position: relative;
+    overflow: hidden;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+  }
+  .btn-plaque::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid hsl(var(--gold) / 0.2);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  .btn-plaque::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.15), transparent);
+    transition: left 0.6s ease;
+  }
+  .btn-plaque:hover::after { left: 100%; }
+  .btn-plaque:hover {
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.3), inset 0 0 20px hsl(var(--gold) / 0.05);
   }
 
   /* Ornamental divider */
@@ -218,18 +290,18 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.4), hsl(var(--gold) / 0.6), hsl(var(--gold) / 0.4), transparent);
   }
   .ornamental-divider-icon {
     color: hsl(var(--gold));
-    opacity: 0.6;
+    opacity: 0.7;
   }
 
-  /* Manuscript-inspired card frame */
+  /* Manuscript card */
   .manuscript-card {
     position: relative;
     background: hsl(var(--card));
-    border: 1px solid hsl(var(--border));
+    border: 2px solid hsl(var(--gold) / 0.2);
     border-radius: var(--radius);
   }
   .manuscript-card::after {
@@ -244,7 +316,7 @@
     pointer-events: none;
   }
 
-  /* Corner ornament for cards */
+  /* Corner ornament */
   .corner-ornament {
     position: relative;
     overflow: hidden;
@@ -253,24 +325,64 @@
   .corner-ornament::after {
     content: '';
     position: absolute;
-    width: 24px;
-    height: 24px;
-    border-color: hsl(var(--gold) / 0.2);
+    width: 28px;
+    height: 28px;
+    border-color: hsl(var(--gold) / 0.35);
     border-style: solid;
     pointer-events: none;
     z-index: 1;
   }
   .corner-ornament::before {
-    top: 8px;
-    left: 8px;
+    top: 6px;
+    left: 6px;
     border-width: 2px 0 0 2px;
     border-radius: 4px 0 0 0;
   }
   .corner-ornament::after {
-    bottom: 8px;
-    right: 8px;
+    bottom: 6px;
+    right: 6px;
     border-width: 0 2px 2px 0;
     border-radius: 0 0 4px 0;
+  }
+
+  /* Scroll banner shape */
+  .scroll-banner {
+    position: relative;
+    background: linear-gradient(135deg, hsl(var(--gold-muted)), hsl(38 30% 88%));
+    border: 1px solid hsl(var(--gold) / 0.3);
+    padding: 0.75rem 2.5rem;
+    clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+  }
+
+  /* Engraved metal panel */
+  .metal-panel {
+    background: linear-gradient(145deg, hsl(var(--gold-muted)), hsl(30 25% 78%), hsl(var(--gold-muted)));
+    border: 2px solid hsl(var(--gold) / 0.4);
+    box-shadow: inset 0 2px 8px hsl(var(--gold) / 0.1), 0 4px 12px hsl(20 20% 10% / 0.1);
+    position: relative;
+  }
+  .metal-panel::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid hsl(var(--gold) / 0.2);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  /* Diya / oil lamp glow effect */
+  .diya-glow {
+    filter: drop-shadow(0 0 12px hsl(var(--gold) / 0.5)) drop-shadow(0 0 30px hsl(var(--gold) / 0.2));
+  }
+
+  @keyframes flameFlicker {
+    0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+    25% { transform: scaleY(1.06) scaleX(0.96); opacity: 0.9; }
+    50% { transform: scaleY(0.94) scaleX(1.04); opacity: 1; }
+    75% { transform: scaleY(1.03) scaleX(0.97); opacity: 0.95; }
+  }
+  .flame-flicker {
+    animation: flameFlicker 1.5s ease-in-out infinite;
   }
 
   /* Glassmorphism */
@@ -291,7 +403,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .glass-card:hover {
-    box-shadow: 0 12px 40px 0 hsl(var(--primary) / 0.12);
+    box-shadow: 0 12px 40px 0 hsl(var(--gold) / 0.12);
     transform: translateY(-2px);
   }
 
@@ -299,7 +411,7 @@
     background: hsl(var(--glass-background));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid hsl(var(--glass-border));
+    border-bottom: 1px solid hsl(var(--gold) / 0.15);
   }
 
   /* Gradient background */
@@ -316,7 +428,7 @@
     animation: float 10s ease-in-out infinite;
   }
   .gradient-orb-1 {
-    background: hsl(var(--primary) / 0.25);
+    background: hsl(var(--gold) / 0.25);
     width: 400px;
     height: 400px;
     top: -100px;
@@ -324,7 +436,7 @@
     animation-delay: 0s;
   }
   .gradient-orb-2 {
-    background: hsl(var(--gold) / 0.15);
+    background: hsl(var(--primary) / 0.15);
     width: 300px;
     height: 300px;
     bottom: -50px;
@@ -332,7 +444,7 @@
     animation-delay: -4s;
   }
   .gradient-orb-3 {
-    background: hsl(var(--accent-foreground) / 0.15);
+    background: hsl(var(--peacock) / 0.1);
     width: 250px;
     height: 250px;
     top: 50%;
@@ -373,8 +485,8 @@
     to { transform: translateY(0); opacity: 1; }
   }
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
-    50% { box-shadow: 0 0 20px 10px hsl(var(--primary) / 0.15); }
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--gold) / 0.4); }
+    50% { box-shadow: 0 0 20px 10px hsl(var(--gold) / 0.15); }
   }
   @keyframes shimmer {
     0% { background-position: -200% 0; }
@@ -414,7 +526,7 @@
 
   .animate-on-scroll { opacity: 0; }
 
-  /* Gradient text */
+  /* Gradient text - maroon to gold */
   .gradient-text-animate {
     background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--gold)), hsl(var(--primary)));
     background-size: 200% auto;
@@ -441,7 +553,7 @@
     transition: box-shadow 0.3s ease;
   }
   .hover-glow:hover {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.25);
+    box-shadow: 0 0 30px hsl(var(--gold) / 0.25);
   }
 
   /* Button glow */
@@ -456,7 +568,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, hsl(0 0% 100% / 0.2), transparent);
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.2), transparent);
     transition: left 0.5s ease;
   }
   .btn-glow:hover::before { left: 100%; }

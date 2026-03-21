@@ -52,6 +52,18 @@ export default {
   				light: 'hsl(var(--gold-light))',
   				muted: 'hsl(var(--gold-muted))'
   			},
+  			peacock: {
+  				DEFAULT: 'hsl(var(--peacock))',
+  				light: 'hsl(var(--peacock-light))'
+  			},
+  			lotus: {
+  				DEFAULT: 'hsl(var(--lotus))',
+  				light: 'hsl(var(--lotus-light))'
+  			},
+  			bronze: {
+  				DEFAULT: 'hsl(var(--bronze))',
+  				light: 'hsl(var(--bronze-light))'
+  			},
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
   				foreground: 'hsl(var(--sidebar-foreground))',
