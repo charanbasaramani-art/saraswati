@@ -11,7 +11,7 @@ interface LayoutProps {
 export const Layout = forwardRef<HTMLDivElement, LayoutProps>(
   ({ children, showFooter = true }, ref) => {
     return (
-      <div ref={ref} className="min-h-screen flex flex-col bg-background relative overflow-hidden theme-transition">
+      <div ref={ref} className="min-h-screen flex flex-col bg-background relative overflow-hidden theme-transition parchment-bg">
         {/* Animated gradient orbs */}
         <div className="gradient-orb gradient-orb-1" />
         <div className="gradient-orb gradient-orb-2" />
