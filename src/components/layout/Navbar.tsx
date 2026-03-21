@@ -1,11 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
-import { Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users, Video, TrendingUp, Settings } from 'lucide-react';
+import { Briefcase, LayoutDashboard, LogOut, User, Menu, X, Brain, Target, Users, Video, TrendingUp, Settings, Flame } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useTranslation } from 'react-i18next';
-import { SRAILogo } from '@/components/SRAILogo';
+import sraiLogo from '@/assets/srai-logo.png';
 
 export function Navbar() {
   const { t } = useTranslation();
@@ -21,12 +21,17 @@ export function Navbar() {
   return (
     <nav className="sticky top-0 z-50 w-full glass-navbar theme-transition">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group">
-          <SRAILogo size="sm" />
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <img src={sraiLogo} alt="SRAI" className="h-9 w-9 object-contain group-hover:scale-105 transition-transform" />
+          <div className="flex flex-col leading-tight">
+            <span className="text-base font-bold font-serif text-foreground tracking-wide">SRAI</span>
+            <span className="text-[10px] text-muted-foreground tracking-wider">Saraswati Resume AI</span>
+          </div>
+          <Flame className="h-3.5 w-3.5 text-gold flame-flicker ml-1 hidden sm:block" />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden md:flex items-center gap-5">
           <Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
             {t('nav.about')}
           </Link>
@@ -74,7 +79,7 @@ export function Navbar() {
                     <Settings className="h-4 w-4" />
                     {t('nav.settings')}
                   </Link>
-                  <Button variant="outline" onClick={handleSignOut} className="flex items-center gap-2 glass theme-transition text-sm">
+                  <Button variant="outline" onClick={handleSignOut} className="flex items-center gap-2 glass theme-transition text-sm border-gold/20">
                     <LogOut className="h-4 w-4" />
                     {t('nav.logout')}
                   </Button>
@@ -82,10 +87,10 @@ export function Navbar() {
               ) : (
                 <>
                   <Link to="/auth">
-                    <Button variant="outline" className="glass theme-transition">{t('nav.login')}</Button>
+                    <Button variant="outline" className="glass theme-transition border-gold/20">{t('nav.login')}</Button>
                   </Link>
                   <Link to="/auth?mode=signup">
-                    <Button className="btn-glow">{t('landing.cta')}</Button>
+                    <Button className="btn-plaque">{t('landing.cta')}</Button>
                   </Link>
                 </>
               )}
@@ -106,7 +111,7 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-border glass p-4 space-y-4 theme-transition">
+        <div className="md:hidden border-t border-gold/15 glass p-4 space-y-4 theme-transition">
           <Link to="/about" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>
             {t('nav.about')}
           </Link>
@@ -123,15 +128,15 @@ export function Navbar() {
               {isRecruiter && <Link to="/recruiter" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.recruiter')}</Link>}
               {isAdmin && <Link to="/admin" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>Admin</Link>}
               <Link to="/settings" className="block text-muted-foreground hover:text-foreground" onClick={() => setIsMobileMenuOpen(false)}>{t('nav.settings')}</Link>
-              <Button variant="outline" onClick={handleSignOut} className="w-full glass">{t('nav.logout')}</Button>
+              <Button variant="outline" onClick={handleSignOut} className="w-full glass border-gold/20">{t('nav.logout')}</Button>
             </>
           ) : (
             <div className="flex flex-col gap-2">
               <Link to="/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button variant="outline" className="w-full glass">{t('nav.login')}</Button>
+                <Button variant="outline" className="w-full glass border-gold/20">{t('nav.login')}</Button>
               </Link>
               <Link to="/auth?mode=signup" onClick={() => setIsMobileMenuOpen(false)}>
-                <Button className="w-full btn-glow">{t('landing.cta')}</Button>
+                <Button className="w-full btn-plaque">{t('landing.cta')}</Button>
               </Link>
             </div>
           )}

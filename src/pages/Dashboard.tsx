@@ -11,10 +11,10 @@ import { useTranslation } from 'react-i18next';
 import { OrnamentalDivider } from '@/components/OrnamentalDivider';
 import {
   Upload, FileText, Brain, Briefcase, TrendingUp, Clock, CheckCircle2, AlertCircle,
-  Loader2, ArrowRight, Sparkles, Target, Users, Zap, BarChart3, Video, ArrowUpRight, Activity, Flower2,
+  Loader2, ArrowRight, Sparkles, Target, Users, Zap, BarChart3, Video, ArrowUpRight, Activity, Flame,
 } from 'lucide-react';
 import { ResumeUpload } from '@/components/dashboard/ResumeUpload';
-import { SRAILogo } from '@/components/SRAILogo';
+import sraiLogo from '@/assets/srai-logo.png';
 
 interface Resume { id: string; file_name: string; created_at: string; parsed_data: unknown; }
 interface Analysis { id: string; resume_id: string; overall_score: number; skill_analysis: any; created_at: string; }
@@ -60,29 +60,24 @@ export default function Dashboard() {
   const skillsCount = latestAnalysis?.skill_analysis?.detected_skills?.length || 0;
 
   const tools = [
-    { icon: Target, label: t('dashboard.quickActions.atsCheck'), href: '/ats-simulator', desc: 'Test ATS compatibility', gradient: 'from-chart-1/20 to-chart-1/5' },
-    { icon: Brain, label: t('dashboard.quickActions.softSkills'), href: '/soft-skills', desc: 'Personality analysis', gradient: 'from-chart-2/20 to-chart-2/5' },
-    { icon: Video, label: t('nav.mockInterview'), href: '/mock-interview', desc: 'Practice interviews', gradient: 'from-chart-3/20 to-chart-3/5' },
-    { icon: TrendingUp, label: t('nav.hiringPredictor'), href: '/hiring-predictor', desc: 'Predict hiring chances', gradient: 'from-chart-4/20 to-chart-4/5' },
-    { icon: Zap, label: t('dashboard.quickActions.improve'), href: '/resume-improvements', desc: 'AI suggestions', gradient: 'from-accent-foreground/20 to-accent-foreground/5' },
-    { icon: Briefcase, label: t('dashboard.quickActions.findJobs'), href: '/jobs', desc: 'Browse opportunities', gradient: 'from-chart-5/20 to-chart-5/5' },
+    { icon: Target, label: t('dashboard.quickActions.atsCheck'), href: '/ats-simulator', desc: 'Test ATS compatibility', gradient: 'from-primary/20 to-primary/5' },
+    { icon: Brain, label: t('dashboard.quickActions.softSkills'), href: '/soft-skills', desc: 'Personality analysis', gradient: 'from-peacock/20 to-peacock/5' },
+    { icon: Video, label: t('nav.mockInterview'), href: '/mock-interview', desc: 'Practice interviews', gradient: 'from-lotus/20 to-lotus/5' },
+    { icon: TrendingUp, label: t('nav.hiringPredictor'), href: '/hiring-predictor', desc: 'Predict hiring chances', gradient: 'from-gold/20 to-gold/5' },
+    { icon: Zap, label: t('dashboard.quickActions.improve'), href: '/resume-improvements', desc: 'AI suggestions', gradient: 'from-bronze/20 to-bronze/5' },
+    { icon: Briefcase, label: t('dashboard.quickActions.findJobs'), href: '/jobs', desc: 'Browse opportunities', gradient: 'from-peacock/20 to-peacock/5' },
   ];
 
   return (
     <Layout showFooter={false}>
-      <div className="container py-6 md:py-10 space-y-6 relative">
-        {/* Subtle heritage lotus in background */}
-        <div className="absolute top-0 right-0 text-primary/3 pointer-events-none">
-          <Flower2 className="h-48 w-48" />
-        </div>
-
+      <div className="container py-6 md:py-10 space-y-6 relative parchment-bg min-h-screen">
         {/* Greeting */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 animate-fade-in-up relative z-10">
           <div>
             <div className="flex items-center gap-3 mb-3">
-              <SRAILogo size="sm" showText={false} />
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-semibold">
-                <Activity className="h-3 w-3" />
+              <img src={sraiLogo} alt="SRAI" className="h-8 w-8 object-contain" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-muted border border-gold/20 text-foreground text-xs font-semibold">
+                <Flame className="h-3 w-3 text-gold flame-flicker" />
                 {t('common.welcomeBack')}
               </div>
             </div>
@@ -92,7 +87,7 @@ export default function Dashboard() {
             <p className="text-muted-foreground mt-1 text-sm">{t('dashboard.uploadDesc')}</p>
           </div>
           <Link to="/interview-prep">
-            <Button variant="outline" className="gap-2 glass">
+            <Button variant="outline" className="gap-2 glass border-gold/20">
               <FileText className="h-4 w-4" />
               {t('nav.interview')}
               <ArrowUpRight className="h-3 w-3" />
@@ -103,11 +98,11 @@ export default function Dashboard() {
         <OrnamentalDivider className="animate-fade-in-up stagger-1" />
 
         {/* === BENTO GRID === */}
-        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 auto-rows-[minmax(120px,auto)]">
+        <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-4 auto-rows-[minmax(120px,auto)] relative z-10">
 
           {/* SCORE CARD */}
-          <Card className="glass-card manuscript-card md:col-span-3 lg:col-span-4 md:row-span-2 flex flex-col justify-between overflow-hidden relative group animate-fade-in-up">
-            <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-primary/8 blur-3xl group-hover:bg-primary/15 transition-all duration-700" />
+          <Card className="manuscript-card corner-ornament md:col-span-3 lg:col-span-4 md:row-span-2 flex flex-col justify-between overflow-hidden relative group animate-fade-in-up">
+            <div className="absolute -top-20 -right-20 h-56 w-56 rounded-full bg-gold/8 blur-3xl group-hover:bg-gold/15 transition-all duration-700" />
             <CardContent className="p-6 relative z-10 flex flex-col h-full justify-between">
               <div>
                 <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1">{t('common.overallScore')}</p>
@@ -138,9 +133,9 @@ export default function Dashboard() {
           <StatCard icon={Brain} value={analyses.length} label={t('dashboard.stats.analyses')} className="lg:col-span-2 md:col-span-3 animate-fade-in-up stagger-2" />
           <StatCard icon={BarChart3} value={skillsCount} label={t('common.skillsDetected')} className="lg:col-span-2 md:col-span-3 animate-fade-in-up stagger-3" />
           <Link to="/jobs" className="lg:col-span-2 md:col-span-3 animate-fade-in-up stagger-4">
-            <Card className="glass-card h-full group cursor-pointer hover:border-primary/30 transition-all">
+            <Card className="manuscript-card h-full group cursor-pointer hover:border-gold/40 transition-all">
               <CardContent className="p-5 flex flex-col justify-between h-full">
-                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10">
                   <Briefcase className="h-5 w-5 text-primary" />
                 </div>
                 <div className="mt-3">
@@ -157,10 +152,10 @@ export default function Dashboard() {
           </div>
 
           {/* RECENT RESUMES */}
-          <Card className="glass-card md:col-span-6 lg:col-span-5 animate-fade-in-up stagger-3">
+          <Card className="manuscript-card corner-ornament md:col-span-6 lg:col-span-5 animate-fade-in-up stagger-3">
             <CardHeader className="pb-3">
               <CardTitle className="text-base flex items-center gap-2 font-serif">
-                <Clock className="h-4 w-4 text-primary" />
+                <Clock className="h-4 w-4 text-gold" />
                 {t('dashboard.recentActivity')}
               </CardTitle>
             </CardHeader>
@@ -172,7 +167,7 @@ export default function Dashboard() {
                 </div>
               ) : resumes.length === 0 ? (
                 <div className="text-center py-8">
-                  <div className="h-12 w-12 rounded-xl bg-muted/50 flex items-center justify-center mx-auto mb-3">
+                  <div className="h-12 w-12 rounded-xl bg-muted/50 flex items-center justify-center mx-auto mb-3 border border-gold/10">
                     <FileText className="h-6 w-6 text-muted-foreground" />
                   </div>
                   <p className="text-sm font-medium text-foreground">{t('common.noResumesYet')}</p>
@@ -183,9 +178,9 @@ export default function Dashboard() {
                   {resumes.slice(0, 4).map((resume) => {
                     const analysis = analyses.find(a => a.resume_id === resume.id);
                     return (
-                      <div key={resume.id} className="flex items-center justify-between p-3 rounded-lg border border-border/50 bg-muted/20 hover:bg-muted/40 transition-all group">
+                      <div key={resume.id} className="flex items-center justify-between p-3 rounded-lg border border-gold/10 bg-muted/20 hover:bg-muted/40 transition-all group">
                         <div className="flex items-center gap-3 min-w-0">
-                          <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+                          <div className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform border border-gold/10">
                             <FileText className="h-4 w-4 text-primary" />
                           </div>
                           <div className="min-w-0">
@@ -204,7 +199,7 @@ export default function Dashboard() {
                               </Link>
                             </>
                           ) : (
-                            <Badge variant="outline" className="text-[11px] gap-1 animate-pulse">
+                            <Badge variant="outline" className="text-[11px] gap-1 animate-pulse border-gold/20">
                               <AlertCircle className="h-3 w-3" />{t('common.processing')}
                             </Badge>
                           )}
@@ -219,13 +214,13 @@ export default function Dashboard() {
 
           {/* TOOLS GRID */}
           <div className="md:col-span-6 lg:col-span-12 animate-fade-in-up stagger-4">
-            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">Quick Tools</p>
+            <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3 font-serif">Quick Tools</p>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
               {tools.map((tool, i) => (
                 <Link key={i} to={tool.href}>
-                  <Card className="glass-card h-full group cursor-pointer hover:border-primary/30 transition-all hover-lift corner-ornament">
+                  <Card className="manuscript-card h-full group cursor-pointer hover:border-gold/40 transition-all hover-lift corner-ornament">
                     <CardContent className="p-4 flex flex-col gap-3">
-                      <div className={`h-10 w-10 rounded-xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                      <div className={`h-10 w-10 rounded-xl bg-gradient-to-br ${tool.gradient} flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10`}>
                         <tool.icon className="h-5 w-5 text-foreground" />
                       </div>
                       <div>
@@ -241,13 +236,13 @@ export default function Dashboard() {
 
           {/* LATEST ANALYSIS */}
           {latestAnalysis && (
-            <Card className="glass-card manuscript-card md:col-span-6 lg:col-span-12 animate-fade-in-up stagger-5 overflow-hidden relative">
-              <div className="absolute top-0 right-0 h-40 w-40 bg-primary/5 rounded-full blur-3xl" />
+            <Card className="manuscript-card corner-ornament md:col-span-6 lg:col-span-12 animate-fade-in-up stagger-5 overflow-hidden relative">
+              <div className="absolute top-0 right-0 h-40 w-40 bg-gold/5 rounded-full blur-3xl" />
               <CardContent className="p-6 relative z-10">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                      <Sparkles className="h-5 w-5 text-primary" />
+                    <div className="h-10 w-10 rounded-xl bg-gold/10 flex items-center justify-center border border-gold/15">
+                      <Sparkles className="h-5 w-5 text-gold" />
                     </div>
                     <div>
                       <h3 className="text-lg font-bold text-foreground font-serif">{t('common.latestAnalysis')}</h3>
@@ -255,12 +250,12 @@ export default function Dashboard() {
                     </div>
                   </div>
                   <Link to={`/analysis/${latestAnalysis.id}`}>
-                    <Button size="sm" className="gap-2">{t('common.viewFullAnalysis')} <ArrowRight className="h-3.5 w-3.5" /></Button>
+                    <Button size="sm" className="gap-2 btn-plaque">{t('common.viewFullAnalysis')} <ArrowRight className="h-3.5 w-3.5" /></Button>
                   </Link>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                   <AnalysisStat icon={<TrendingUp className="h-5 w-5 text-primary" />} label={t('common.overallScore')} value={`${latestAnalysis.overall_score}%`} />
-                  <AnalysisStat icon={<Brain className="h-5 w-5 text-accent-foreground" />} label={t('common.skillsDetected')} value={String(skillsCount)} />
+                  <AnalysisStat icon={<Brain className="h-5 w-5 text-peacock" />} label={t('common.skillsDetected')} value={String(skillsCount)} />
                   <AnalysisStat icon={<Clock className="h-5 w-5 text-gold" />} label={t('common.analysisDate')} value={new Date(latestAnalysis.created_at).toLocaleDateString()} />
                 </div>
               </CardContent>
@@ -274,9 +269,9 @@ export default function Dashboard() {
 
 function StatCard({ icon: Icon, value, label, className = '' }: { icon: any; value: number | string; label: string; className?: string }) {
   return (
-    <Card className={`glass-card group ${className}`}>
+    <Card className={`manuscript-card group ${className}`}>
       <CardContent className="p-5 flex flex-col justify-between h-full">
-        <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+        <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10">
           <Icon className="h-5 w-5 text-primary" />
         </div>
         <div className="mt-3">
@@ -290,8 +285,8 @@ function StatCard({ icon: Icon, value, label, className = '' }: { icon: any; val
 
 function AnalysisStat({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
-    <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 border border-border/30">
-      <div className="h-12 w-12 rounded-xl bg-background flex items-center justify-center flex-shrink-0">{icon}</div>
+    <div className="flex items-center gap-4 p-4 rounded-xl bg-muted/30 border border-gold/10">
+      <div className="h-12 w-12 rounded-xl bg-background flex items-center justify-center flex-shrink-0 border border-gold/10">{icon}</div>
       <div>
         <p className="text-xs text-muted-foreground">{label}</p>
         <p className="text-xl font-bold text-foreground font-serif">{value}</p>
