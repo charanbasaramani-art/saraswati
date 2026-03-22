@@ -134,7 +134,7 @@ export default function Admin() {
             </CardContent>
           </Card>
 
-          <Card className="border-border">
+          <Card className="manuscript-card">
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
