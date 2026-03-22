@@ -136,7 +136,7 @@ export default function About() {
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
-              <Card key={index} className="glass-card hover-lift group">
+              <Card key={index} className="manuscript-card corner-ornament hover-lift group">
                 <CardHeader>
                   <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <feature.icon className="h-7 w-7 text-primary" />
