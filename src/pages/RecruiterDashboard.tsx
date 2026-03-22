@@ -297,7 +297,7 @@ export default function RecruiterDashboard() {
 
         {/* Stats Cards */}
         <div className="grid gap-4 md:grid-cols-4">
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Total Candidates</CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
@@ -306,7 +306,7 @@ export default function RecruiterDashboard() {
               <div className="text-2xl font-bold">{stats.totalCandidates}</div>
             </CardContent>
           </Card>
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Average Score</CardTitle>
               <TrendingUp className="h-4 w-4 text-muted-foreground" />
@@ -315,7 +315,7 @@ export default function RecruiterDashboard() {
               <div className="text-2xl font-bold">{stats.avgScore}/100</div>
             </CardContent>
           </Card>
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">ATS Pass Rate</CardTitle>
               <FileText className="h-4 w-4 text-muted-foreground" />
@@ -324,7 +324,7 @@ export default function RecruiterDashboard() {
               <div className="text-2xl font-bold">{stats.passRate}%</div>
             </CardContent>
           </Card>
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">Active Jobs</CardTitle>
               <Building2 className="h-4 w-4 text-muted-foreground" />
@@ -370,7 +370,7 @@ export default function RecruiterDashboard() {
             </div>
 
             {/* Candidates Table */}
-            <Card className="glass-card">
+            <Card className="manuscript-card">
               <CardContent className="p-0">
                 <Table>
                   <TableHeader>
@@ -514,7 +514,7 @@ export default function RecruiterDashboard() {
 
           <TabsContent value="analytics" className="space-y-6">
             <div className="grid gap-6 lg:grid-cols-2">
-              <Card className="glass-card">
+              <Card className="manuscript-card">
                 <CardHeader>
                   <CardTitle>Score Distribution</CardTitle>
                 </CardHeader>
@@ -539,7 +539,7 @@ export default function RecruiterDashboard() {
                 </CardContent>
               </Card>
 
-              <Card className="glass-card">
+              <Card className="manuscript-card">
                 <CardHeader>
                   <CardTitle>Top Performers</CardTitle>
                 </CardHeader>
@@ -573,7 +573,7 @@ export default function RecruiterDashboard() {
           <TabsContent value="compare" className="space-y-6">
             {compareList.length >= 2 && (
               <div className="grid gap-6">
-                <Card className="glass-card">
+                <Card className="manuscript-card">
                   <CardHeader>
                     <CardTitle>Candidate Comparison</CardTitle>
                     <CardDescription>Comparing {compareList.length} candidates</CardDescription>
@@ -611,7 +611,7 @@ export default function RecruiterDashboard() {
 
                 <div className="grid gap-4 md:grid-cols-3">
                   {compareList.map((candidate, i) => (
-                    <Card key={candidate.id} className="glass-card" style={{ borderColor: CHART_COLORS[i] }}>
+                    <Card key={candidate.id} className="manuscript-card" style={{ borderColor: CHART_COLORS[i] }}>
                       <CardHeader>
                         <CardTitle className="text-lg">{candidate.profile?.full_name || 'Unknown'}</CardTitle>
                         <CardDescription>{candidate.profile?.email}</CardDescription>

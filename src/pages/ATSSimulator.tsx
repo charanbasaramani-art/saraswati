@@ -273,7 +273,7 @@ export default function ATSSimulator() {
         {result && (
           <div className="grid gap-6 lg:grid-cols-3 animate-fade-in">
             {/* Main Score Card */}
-            <Card className="glass-card animate-scale-in transition-all duration-300 hover:shadow-xl">
+            <Card className="manuscript-card animate-scale-in transition-all duration-300 hover:shadow-xl">
               <CardHeader className="text-center">
                 <CardTitle className="flex items-center justify-center gap-2">
                   <Building2 className="h-5 w-5 text-primary animate-pulse" />
@@ -339,7 +339,7 @@ export default function ATSSimulator() {
             </Card>
 
             {/* Score Breakdown */}
-            <Card className="glass-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '100ms' }}>
+            <Card className="manuscript-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '100ms' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Target className="h-5 w-5 text-primary" />
@@ -374,7 +374,7 @@ export default function ATSSimulator() {
             </Card>
 
             {/* Missing Keywords */}
-            <Card className="glass-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '200ms' }}>
+            <Card className="manuscript-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '200ms' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Search className="h-5 w-5 text-primary" />
@@ -399,7 +399,7 @@ export default function ATSSimulator() {
             </Card>
 
             {/* Optimization Suggestions */}
-            <Card className="glass-card lg:col-span-3 animate-fade-in" style={{ animationDelay: '300ms' }}>
+            <Card className="manuscript-card lg:col-span-3 animate-fade-in" style={{ animationDelay: '300ms' }}>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5 text-primary" />
@@ -433,7 +433,7 @@ export default function ATSSimulator() {
         {/* Previous Results / Empty State */}
         {!result && (
           <div className="grid gap-6 lg:grid-cols-3 animate-fade-in">
-            <Card className="lg:col-span-2 glass-card animate-scale-in transition-all duration-300 hover:shadow-xl">
+            <Card className="lg:col-span-2 manuscript-card animate-scale-in transition-all duration-300 hover:shadow-xl">
               <CardContent className="flex flex-col items-center justify-center py-16">
                 <FileCheck className="h-16 w-16 text-muted-foreground mb-4 animate-pulse" />
                 <h3 className="text-xl font-semibold mb-2 animate-fade-in" style={{ animationDelay: '100ms' }}>Simulate ATS Screening</h3>
@@ -459,7 +459,7 @@ export default function ATSSimulator() {
               </CardContent>
             </Card>
 
-            <Card className="glass-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '100ms' }}>
+            <Card className="manuscript-card animate-scale-in transition-all duration-300 hover:shadow-xl" style={{ animationDelay: '100ms' }}>
               <CardHeader>
                 <CardTitle className="text-lg">Previous Simulations</CardTitle>
               </CardHeader>

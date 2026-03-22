@@ -210,7 +210,7 @@ export default function Settings() {
 
           {/* Profile Settings */}
           <TabsContent value="profile" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <User className="h-5 w-5 text-primary" />
@@ -260,7 +260,7 @@ export default function Settings() {
 
           {/* Security Settings */}
           <TabsContent value="security" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Lock className="h-5 w-5 text-primary" />
@@ -294,7 +294,7 @@ export default function Settings() {
 
           {/* Appearance Settings */}
           <TabsContent value="appearance" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Palette className="h-5 w-5 text-primary" />
@@ -333,7 +333,7 @@ export default function Settings() {
 
           {/* Language Settings */}
           <TabsContent value="language" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Languages className="h-5 w-5 text-primary" />
@@ -368,7 +368,7 @@ export default function Settings() {
 
           {/* Notifications Settings */}
           <TabsContent value="notifications" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Bell className="h-5 w-5 text-primary" />
@@ -406,7 +406,7 @@ export default function Settings() {
             )}
 
             {/* Privacy Mode Toggle */}
-            <Card className="glass-card hover-scale overflow-hidden relative">
+            <Card className="manuscript-card corner-ornament overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
               <CardHeader className="relative">
                 <CardTitle className="flex items-center gap-2">
@@ -448,7 +448,7 @@ export default function Settings() {
             </Card>
 
             {/* Auto-Delete Timer */}
-            <Card className="glass-card hover-scale overflow-hidden relative">
+            <Card className="manuscript-card corner-ornament overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 pointer-events-none" />
               <CardHeader className="relative">
                 <CardTitle className="flex items-center gap-2">
@@ -503,7 +503,7 @@ export default function Settings() {
             </Card>
 
             {/* Local Analysis Preference */}
-            <Card className="glass-card hover-scale overflow-hidden relative">
+            <Card className="manuscript-card corner-ornament overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
               <CardHeader className="relative">
                 <CardTitle className="flex items-center gap-2">
@@ -531,7 +531,7 @@ export default function Settings() {
             </Card>
 
             {/* Data Transparency Panel */}
-            <Card className="glass-card hover-scale overflow-hidden relative">
+            <Card className="manuscript-card corner-ornament overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-destructive/3 via-transparent to-destructive/3 pointer-events-none" />
               <CardHeader className="relative">
                 <CardTitle className="flex items-center gap-2">

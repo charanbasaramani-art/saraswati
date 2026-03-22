@@ -149,7 +149,7 @@ export default function Jobs() {
       <div className="container py-8">
         {/* Stats Bar */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 -mt-8 relative z-20">
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardContent className="py-4 flex items-center gap-3">
               <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
                 <Briefcase className="h-5 w-5 text-primary" />
@@ -160,7 +160,7 @@ export default function Jobs() {
               </div>
             </CardContent>
           </Card>
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardContent className="py-4 flex items-center gap-3">
               <div className="h-10 w-10 rounded-xl bg-green-500/10 flex items-center justify-center">
                 <TrendingUp className="h-5 w-5 text-green-500" />
@@ -171,7 +171,7 @@ export default function Jobs() {
               </div>
             </CardContent>
           </Card>
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardContent className="py-4 flex items-center gap-3">
               <div className="h-10 w-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
                 <MapPin className="h-5 w-5 text-blue-500" />
@@ -182,7 +182,7 @@ export default function Jobs() {
               </div>
             </CardContent>
           </Card>
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardContent className="py-4 flex items-center gap-3">
               <div className="h-10 w-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
                 <Users className="h-5 w-5 text-purple-500" />
@@ -196,7 +196,7 @@ export default function Jobs() {
         </div>
 
         {/* Filters */}
-        <Card className="glass-card mb-8">
+        <Card className="manuscript-card mb-8">
           <CardContent className="pt-6">
             <div className="grid gap-4 md:grid-cols-5">
               <div className="md:col-span-2 relative">
@@ -270,7 +270,7 @@ export default function Jobs() {
             <p className="text-muted-foreground">Loading opportunities...</p>
           </div>
         ) : filteredJobs.length === 0 ? (
-          <Card className="glass-card">
+          <Card className="manuscript-card">
             <CardContent className="py-20 text-center">
               <div className="h-20 w-20 rounded-2xl bg-muted/50 flex items-center justify-center mx-auto mb-6">
                 <Briefcase className="h-10 w-10 text-muted-foreground" />
@@ -291,7 +291,7 @@ export default function Jobs() {
             {filteredJobs.map((job, index) => (
               <Card 
                 key={job.id} 
-                className="glass-card hover-lift group animate-fade-in"
+                className="manuscript-card corner-ornament hover-lift group animate-fade-in"
                 style={{ animationDelay: `${index * 50}ms` }}
               >
                 <CardContent className="p-6">
