@@ -1,7 +1,8 @@
 import { Layout } from '@/components/layout/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { OrnamentalDivider } from '@/components/OrnamentalDivider';
 import { useTranslation } from 'react-i18next';
-import { Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket, Heart, Zap, Globe } from 'lucide-react';
+import { Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket, Heart, Zap, Globe, Flame } from 'lucide-react';
 
 export default function About() {
   const { t } = useTranslation();
