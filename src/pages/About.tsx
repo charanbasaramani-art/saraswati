@@ -64,7 +64,7 @@ export default function About() {
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((stat, index) => (
-              <Card key={index} className="glass-card text-center hover-lift">
+              <Card key={index} className="manuscript-card text-center hover-lift">
                 <CardContent className="pt-6 pb-4">
                   <stat.icon className="h-8 w-8 text-primary mx-auto mb-3" />
                   <p className="text-3xl font-bold bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">{stat.value}</p>
