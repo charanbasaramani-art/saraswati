@@ -185,14 +185,17 @@ export default function Settings() {
     <Layout>
       <div className="container py-8 animate-fade-in">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold gradient-text animate-fade-in-up">Settings</h1>
+          <div className="flex items-center gap-3">
+            <Shield className="h-7 w-7 text-gold diya-glow" />
+            <h1 className="text-3xl font-bold font-serif text-foreground animate-fade-in-up">Settings</h1>
+          </div>
           <p className="text-muted-foreground mt-2 animate-fade-in-up stagger-1">
             Manage your account settings and preferences
           </p>
         </div>
 
         <Tabs defaultValue="profile" className="space-y-6">
-          <TabsList className="glass-card p-1 h-auto flex-wrap gap-1 animate-fade-in-up stagger-2">
+          <TabsList className="manuscript-card p-1.5 h-auto flex-wrap gap-1 animate-fade-in-up stagger-2">
             {settingsTabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}

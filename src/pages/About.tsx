@@ -168,7 +168,7 @@ export default function About() {
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {technologies.map((tech, index) => (
-              <Card key={index} className="glass-card hover-lift text-center group">
+              <Card key={index} className="manuscript-card hover-lift text-center group">
                 <CardContent className="pt-8 pb-6">
                   <div className={`mx-auto h-20 w-20 rounded-2xl bg-gradient-to-br ${tech.color} p-0.5 mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <div className="h-full w-full rounded-2xl bg-card flex items-center justify-center">
