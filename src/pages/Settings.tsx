@@ -249,7 +249,7 @@ export default function Settings() {
                     <Input id="email" value={user?.email || ''} disabled className="glass opacity-60" />
                     <p className="text-xs text-muted-foreground">Email cannot be changed</p>
                   </div>
-                  <Button onClick={handleUpdateProfile} disabled={isUpdatingProfile} className="btn-glow">
+                  <Button onClick={handleUpdateProfile} disabled={isUpdatingProfile} className="btn-plaque">
                     <Save className="h-4 w-4 mr-2" />
                     {isUpdatingProfile ? 'Saving...' : 'Save Changes'}
                   </Button>
@@ -284,7 +284,7 @@ export default function Settings() {
                     </div>
                   </div>
                 ))}
-                <Button onClick={handleUpdatePassword} disabled={isUpdatingPassword || !newPassword || !confirmPassword} className="btn-glow">
+                <Button onClick={handleUpdatePassword} disabled={isUpdatingPassword || !newPassword || !confirmPassword} className="btn-plaque">
                   <Lock className="h-4 w-4 mr-2" />
                   {isUpdatingPassword ? 'Updating...' : 'Update Password'}
                 </Button>

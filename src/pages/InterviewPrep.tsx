@@ -186,7 +186,7 @@ export default function InterviewPrep() {
             size="lg"
             onClick={generateQuestions}
             disabled={loading || !hasResume}
-            className="btn-glow gap-2 hover-scale animate-pulse-glow"
+            className="btn-plaque gap-2 hover-scale animate-pulse-glow"
           >
             {loading ? (
               <>

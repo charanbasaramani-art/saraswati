@@ -169,7 +169,7 @@ export default function ResumeImprovements() {
             size="lg"
             onClick={analyzeResume}
             disabled={loading || !hasResume}
-            className="btn-glow gap-2"
+            className="btn-plaque gap-2"
           >
             {loading ? (
               <>

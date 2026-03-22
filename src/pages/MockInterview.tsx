@@ -465,7 +465,7 @@ export default function MockInterview() {
 
                   <Button 
                     onClick={startInterview} 
-                    className="w-full btn-glow"
+                    className="w-full btn-plaque"
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -605,7 +605,7 @@ export default function MockInterview() {
                     <div className="flex gap-3">
                       <Button
                         onClick={handleSubmitAnswer}
-                        className="flex-1 btn-glow"
+                        className="flex-1 btn-plaque"
                         disabled={!currentAnswer.trim()}
                       >
                         {currentQuestionIndex < questions.length - 1 ? (
@@ -805,7 +805,7 @@ export default function MockInterview() {
                   <RefreshCw className="mr-2 h-4 w-4" />
                   {t('mockInterview.tryAgain')}
                 </Button>
-                <Button onClick={() => navigate('/hiring-predictor')} className="btn-glow">
+                <Button onClick={() => navigate('/hiring-predictor')} className="btn-plaque">
                   <TrendingUp className="mr-2 h-4 w-4" />
                   {t('mockInterview.checkHiringChance')}
                 </Button>

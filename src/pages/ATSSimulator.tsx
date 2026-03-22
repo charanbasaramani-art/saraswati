@@ -253,7 +253,7 @@ export default function ATSSimulator() {
             onClick={simulateATS} 
             disabled={isSimulating || !selectedResume}
             size="lg"
-            className="btn-glow transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
+            className="btn-plaque transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95"
           >
             {isSimulating ? (
               <>

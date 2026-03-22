@@ -253,7 +253,7 @@ export default function SoftSkillAnalyzer() {
                   <Button 
                     onClick={analyzeSkills} 
                     disabled={isAnalyzing || !selectedResume}
-                    className="w-full h-12 text-base font-semibold btn-glow"
+                    className="w-full h-12 text-base font-semibold btn-plaque"
                     size="lg"
                   >
                     {isAnalyzing ? (
@@ -539,7 +539,7 @@ export default function SoftSkillAnalyzer() {
                   onClick={analyzeSkills} 
                   disabled={isAnalyzing || !selectedResume}
                   size="lg"
-                  className="btn-glow"
+                  className="btn-plaque"
                 >
                   <Sparkles className="mr-2 h-5 w-5" />
                   Start Analysis

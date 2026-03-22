@@ -359,7 +359,7 @@ export default function Jobs() {
                     
                     {/* Actions */}
                     <div className="flex flex-col gap-3 lg:items-end flex-shrink-0">
-                      <Button className="btn-glow gap-2">
+                      <Button className="btn-plaque gap-2">
                         {t('jobs.apply')}
                         <ExternalLink className="h-4 w-4" />
                       </Button>
