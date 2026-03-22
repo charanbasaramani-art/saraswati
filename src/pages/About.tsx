@@ -31,8 +31,8 @@ export default function About() {
 
   return (
     <Layout>
-      {/* Hero Section with Gradient */}
-      <section className="relative py-24 overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative py-24 overflow-hidden heritage-pattern">
         <div className="absolute inset-0 gradient-bg" />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="gradient-orb gradient-orb-1" />
@@ -42,12 +42,12 @@ export default function About() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-4xl text-center animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
-              <Heart className="h-4 w-4 text-primary animate-pulse" />
+              <Flame className="h-4 w-4 text-gold flame-flicker" />
               <span className="text-sm font-medium">{t('common.welcome')}</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-6">
-              {t('about.title')} <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">SRAI</span>
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-6 font-serif">
+              {t('about.title')} <span className="text-primary">SRAI</span>
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -56,6 +56,8 @@ export default function About() {
           </div>
         </div>
       </section>
+      
+      <div className="container"><OrnamentalDivider /></div>
 
       {/* Stats Section */}
       <section className="py-12 -mt-12 relative z-20">
