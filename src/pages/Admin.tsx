@@ -91,8 +91,8 @@ export default function Admin() {
       <div className="container py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
-            <LayoutDashboard className="h-8 w-8 text-primary" />
+          <h1 className="text-3xl font-bold text-foreground flex items-center gap-2 font-serif">
+            <LayoutDashboard className="h-8 w-8 text-gold" />
             Admin Dashboard
           </h1>
           <p className="text-muted-foreground mt-1">
