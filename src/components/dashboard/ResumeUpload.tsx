@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Upload, FileText, Loader2, CheckCircle2, AlertCircle, X } from 'lucide-react';
+import { Upload, FileText, Loader2, CheckCircle2, AlertCircle, X, ScrollText, Flame } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { extractResumeText } from '@/lib/extractResumeText';
 
@@ -81,12 +81,10 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
     setError(null);
 
     try {
-      // Simulate upload progress
       const progressInterval = setInterval(() => {
         setUploadProgress((prev) => Math.min(prev + 10, 90));
       }, 200);
 
-      // Upload to storage + extract text in parallel
       const fileExt = file.name.split('.').pop();
       const fileName = `${user.id}/${Date.now()}.${fileExt}`;
 
@@ -106,13 +104,12 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
 
       if (uploadError) throw uploadError;
 
-      // Create resume record with file path + extracted text
       const { data: resumeData, error: dbError } = await supabase
         .from('resumes')
         .insert({
           user_id: user.id,
           file_name: file.name,
-          file_url: fileName, // Store path; bucket is private
+          file_url: fileName,
           file_type: file.type,
           parsed_data: extractedText || null,
         })
@@ -121,7 +118,6 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
 
       if (dbError) throw dbError;
 
-      // Start AI analysis
       setIsAnalyzing(true);
       
       const { error: analysisError } = await supabase.functions.invoke('analyze-resume', {
@@ -154,14 +150,14 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
   };
 
   return (
-    <Card className="border-border">
+    <Card className="manuscript-card corner-ornament">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <Upload className="h-5 w-5 text-primary" />
-          Upload Resume
+          <ScrollText className="h-5 w-5 text-gold" />
+          Upload Your Scroll
         </CardTitle>
         <CardDescription>
-          Upload your resume in PDF or DOCX format for AI analysis
+          Submit your resume manuscript in PDF or DOCX format for AI analysis
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -178,11 +174,19 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             className={`
-              border-2 border-dashed rounded-lg p-8 text-center transition-colors cursor-pointer
-              ${isDragging ? 'border-primary bg-primary/5' : 'border-border hover:border-primary/50'}
+              relative border-2 border-dashed rounded-xl p-10 text-center transition-all duration-300 cursor-pointer
+              ${isDragging 
+                ? 'border-gold bg-gold-muted/30 shadow-[0_0_30px_hsl(var(--gold)/0.2)]' 
+                : 'border-gold/30 hover:border-gold/60 hover:bg-gold-muted/10'
+              }
             `}
             onClick={() => document.getElementById('file-upload')?.click()}
           >
+            {/* Decorative scroll-style top */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <Flame className="h-6 w-6 text-gold/60 flame-flicker" />
+            </div>
+            
             <input
               id="file-upload"
               type="file"
@@ -190,22 +194,22 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
               onChange={handleFileSelect}
               className="hidden"
             />
-            <Upload className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-            <p className="text-foreground font-medium mb-1">
-              Drag and drop your resume here
+            <ScrollText className="h-14 w-14 mx-auto text-gold/60 mb-4" />
+            <p className="text-foreground font-serif font-medium text-lg mb-1">
+              Place your manuscript here
             </p>
             <p className="text-sm text-muted-foreground mb-4">
-              or click to browse files
+              or click to browse your scrolls
             </p>
             <p className="text-xs text-muted-foreground">
-              Supported formats: PDF, DOCX (Max 10MB)
+              Accepted scrolls: PDF, DOCX (Max 10MB)
             </p>
           </div>
         ) : (
           <div className="space-y-4">
-            <div className="flex items-center justify-between p-4 rounded-lg border border-border bg-muted/50">
+            <div className="flex items-center justify-between p-4 rounded-xl border border-gold/20 bg-gold-muted/20">
               <div className="flex items-center gap-3">
-                <FileText className="h-8 w-8 text-primary" />
+                <FileText className="h-8 w-8 text-gold" />
                 <div>
                   <p className="font-medium text-foreground">{file.name}</p>
                   <p className="text-xs text-muted-foreground">
@@ -227,7 +231,7 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
                   <span className="text-muted-foreground">
-                    {isAnalyzing ? 'Analyzing with AI...' : 'Uploading...'}
+                    {isAnalyzing ? 'The sages are analyzing...' : 'Uploading scroll...'}
                   </span>
                   <span className="text-foreground font-medium">
                     {isAnalyzing ? '' : `${uploadProgress}%`}
@@ -236,9 +240,9 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
                 {!isAnalyzing && <Progress value={uploadProgress} className="h-2" />}
                 {isAnalyzing && (
                   <div className="flex items-center justify-center gap-2 py-4">
-                    <Loader2 className="h-5 w-5 animate-spin text-primary" />
-                    <span className="text-sm text-muted-foreground">
-                      AI is analyzing your resume...
+                    <Flame className="h-5 w-5 text-gold flame-flicker" />
+                    <span className="text-sm text-muted-foreground font-serif">
+                      AI wisdom is analyzing your resume...
                     </span>
                   </div>
                 )}
@@ -248,7 +252,7 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
             <Button
               onClick={uploadResume}
               disabled={isUploading || isAnalyzing}
-              className="w-full"
+              className="w-full btn-plaque"
             >
               {isUploading || isAnalyzing ? (
                 <>
@@ -258,7 +262,7 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
               ) : (
                 <>
                   <CheckCircle2 className="mr-2 h-4 w-4" />
-                  Upload & Analyze
+                  Submit for Analysis
                 </>
               )}
             </Button>

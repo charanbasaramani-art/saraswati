@@ -91,8 +91,8 @@ export default function Admin() {
       <div className="container py-8">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground flex items-center gap-2">
-            <LayoutDashboard className="h-8 w-8 text-primary" />
+          <h1 className="text-3xl font-bold text-foreground flex items-center gap-2 font-serif">
+            <LayoutDashboard className="h-8 w-8 text-gold" />
             Admin Dashboard
           </h1>
           <p className="text-muted-foreground mt-1">
@@ -102,7 +102,7 @@ export default function Admin() {
 
         {/* Stats Cards */}
         <div className="grid gap-4 md:grid-cols-4 mb-8">
-          <Card className="border-border">
+          <Card className="manuscript-card">
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -118,7 +118,7 @@ export default function Admin() {
             </CardContent>
           </Card>
 
-          <Card className="border-border">
+          <Card className="manuscript-card">
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -134,7 +134,7 @@ export default function Admin() {
             </CardContent>
           </Card>
 
-          <Card className="border-border">
+          <Card className="manuscript-card">
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -150,7 +150,7 @@ export default function Admin() {
             </CardContent>
           </Card>
 
-          <Card className="border-border">
+          <Card className="manuscript-card">
             <CardContent className="pt-6">
               <div className="flex items-center gap-4">
                 <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center">

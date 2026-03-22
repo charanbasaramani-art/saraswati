@@ -185,14 +185,17 @@ export default function Settings() {
     <Layout>
       <div className="container py-8 animate-fade-in">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold gradient-text animate-fade-in-up">Settings</h1>
+          <div className="flex items-center gap-3">
+            <Shield className="h-7 w-7 text-gold diya-glow" />
+            <h1 className="text-3xl font-bold font-serif text-foreground animate-fade-in-up">Settings</h1>
+          </div>
           <p className="text-muted-foreground mt-2 animate-fade-in-up stagger-1">
             Manage your account settings and preferences
           </p>
         </div>
 
         <Tabs defaultValue="profile" className="space-y-6">
-          <TabsList className="glass-card p-1 h-auto flex-wrap gap-1 animate-fade-in-up stagger-2">
+          <TabsList className="manuscript-card p-1.5 h-auto flex-wrap gap-1 animate-fade-in-up stagger-2">
             {settingsTabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
@@ -207,7 +210,7 @@ export default function Settings() {
 
           {/* Profile Settings */}
           <TabsContent value="profile" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <User className="h-5 w-5 text-primary" />
@@ -246,7 +249,7 @@ export default function Settings() {
                     <Input id="email" value={user?.email || ''} disabled className="glass opacity-60" />
                     <p className="text-xs text-muted-foreground">Email cannot be changed</p>
                   </div>
-                  <Button onClick={handleUpdateProfile} disabled={isUpdatingProfile} className="btn-glow">
+                  <Button onClick={handleUpdateProfile} disabled={isUpdatingProfile} className="btn-plaque">
                     <Save className="h-4 w-4 mr-2" />
                     {isUpdatingProfile ? 'Saving...' : 'Save Changes'}
                   </Button>
@@ -257,7 +260,7 @@ export default function Settings() {
 
           {/* Security Settings */}
           <TabsContent value="security" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Lock className="h-5 w-5 text-primary" />
@@ -281,7 +284,7 @@ export default function Settings() {
                     </div>
                   </div>
                 ))}
-                <Button onClick={handleUpdatePassword} disabled={isUpdatingPassword || !newPassword || !confirmPassword} className="btn-glow">
+                <Button onClick={handleUpdatePassword} disabled={isUpdatingPassword || !newPassword || !confirmPassword} className="btn-plaque">
                   <Lock className="h-4 w-4 mr-2" />
                   {isUpdatingPassword ? 'Updating...' : 'Update Password'}
                 </Button>
@@ -291,7 +294,7 @@ export default function Settings() {
 
           {/* Appearance Settings */}
           <TabsContent value="appearance" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Palette className="h-5 w-5 text-primary" />
@@ -330,7 +333,7 @@ export default function Settings() {
 
           {/* Language Settings */}
           <TabsContent value="language" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Languages className="h-5 w-5 text-primary" />
@@ -365,7 +368,7 @@ export default function Settings() {
 
           {/* Notifications Settings */}
           <TabsContent value="notifications" className="space-y-6 animate-fade-in-up">
-            <Card className="glass-card hover-scale">
+            <Card className="manuscript-card corner-ornament">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Bell className="h-5 w-5 text-primary" />
@@ -403,7 +406,7 @@ export default function Settings() {
             )}
 
             {/* Privacy Mode Toggle */}
-            <Card className="glass-card hover-scale overflow-hidden relative">
+            <Card className="manuscript-card corner-ornament overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
               <CardHeader className="relative">
                 <CardTitle className="flex items-center gap-2">
@@ -445,7 +448,7 @@ export default function Settings() {
             </Card>
 
             {/* Auto-Delete Timer */}
-            <Card className="glass-card hover-scale overflow-hidden relative">
+            <Card className="manuscript-card corner-ornament overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-accent/5 pointer-events-none" />
               <CardHeader className="relative">
                 <CardTitle className="flex items-center gap-2">
@@ -500,7 +503,7 @@ export default function Settings() {
             </Card>
 
             {/* Local Analysis Preference */}
-            <Card className="glass-card hover-scale overflow-hidden relative">
+            <Card className="manuscript-card corner-ornament overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
               <CardHeader className="relative">
                 <CardTitle className="flex items-center gap-2">
@@ -528,7 +531,7 @@ export default function Settings() {
             </Card>
 
             {/* Data Transparency Panel */}
-            <Card className="glass-card hover-scale overflow-hidden relative">
+            <Card className="manuscript-card corner-ornament overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-br from-destructive/3 via-transparent to-destructive/3 pointer-events-none" />
               <CardHeader className="relative">
                 <CardTitle className="flex items-center gap-2">

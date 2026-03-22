@@ -188,7 +188,7 @@ export default function HiringPredictor() {
             /* === INITIAL STATE === */
             <div className="max-w-3xl mx-auto space-y-8 animate-fade-in-up">
               {/* CTA Card */}
-              <Card className="glass-card overflow-hidden relative">
+              <Card className="manuscript-card overflow-hidden relative">
                 <div className="absolute -top-24 -right-24 h-64 w-64 rounded-full bg-primary/10 blur-3xl" />
                 <div className="absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-accent-foreground/10 blur-3xl" />
                 <CardContent className="p-8 md:p-12 text-center relative z-10">
@@ -223,7 +223,7 @@ export default function HiringPredictor() {
                   { icon: Target, title: t('hiringPredictor.basedOn.ats'), desc: t('hiringPredictor.basedOn.atsDesc') },
                   { icon: Brain, title: t('hiringPredictor.basedOn.skills'), desc: t('hiringPredictor.basedOn.skillsDesc') },
                 ].map((item, i) => (
-                  <Card key={i} className="glass-card">
+                  <Card key={i} className="manuscript-card">
                     <CardContent className="p-5">
                       <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
                         <item.icon className="h-5 w-5 text-primary" />
@@ -241,7 +241,7 @@ export default function HiringPredictor() {
               {/* Top: probability + breakdown grid */}
               <div className="grid lg:grid-cols-12 gap-6">
                 {/* Big probability display */}
-                <Card className={`glass-card lg:col-span-5 overflow-hidden relative ${getProbabilityLevel(prediction.hiringProbability).ring} ring-2`}>
+                <Card className={`manuscript-card lg:col-span-5 overflow-hidden relative ${getProbabilityLevel(prediction.hiringProbability).ring} ring-2`}>
                   <div className={`absolute -top-20 -right-20 h-56 w-56 rounded-full ${getProbabilityLevel(prediction.hiringProbability).bg}/10 blur-3xl`} />
                   <CardContent className="p-8 relative z-10 flex flex-col items-center justify-center min-h-[340px]">
                     <Badge className={getProbabilityLevel(prediction.hiringProbability).badgeBg + ' mb-6'}>
@@ -285,7 +285,7 @@ export default function HiringPredictor() {
                     const Icon = item.icon;
                     const scoreColor = item.score >= 75 ? 'text-emerald-500' : item.score >= 50 ? 'text-amber-500' : 'text-destructive';
                     return (
-                      <Card key={i} className="glass-card group hover:border-primary/20 transition-all">
+                      <Card key={i} className="manuscript-card group hover:border-primary/20 transition-all">
                         <CardContent className="p-5">
                           <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-2.5">
@@ -310,7 +310,7 @@ export default function HiringPredictor() {
                   })}
 
                   {/* Summary mini card */}
-                  <Card className="glass-card sm:col-span-2 border-primary/20">
+                  <Card className="manuscript-card sm:col-span-2 border-primary/20">
                     <CardContent className="p-5">
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -330,7 +330,7 @@ export default function HiringPredictor() {
 
               {/* Factors row */}
               <div className="grid md:grid-cols-2 gap-4">
-                <Card className="glass-card">
+                <Card className="manuscript-card">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
                       <div className="h-8 w-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
@@ -351,7 +351,7 @@ export default function HiringPredictor() {
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card">
+                <Card className="manuscript-card">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
                       <div className="h-8 w-8 rounded-lg bg-destructive/10 flex items-center justify-center">
@@ -375,7 +375,7 @@ export default function HiringPredictor() {
 
               {/* Recommendations */}
               {prediction.recommendations.length > 0 && (
-                <Card className="glass-card">
+                <Card className="manuscript-card">
                   <CardHeader className="pb-3">
                     <CardTitle className="text-base flex items-center gap-2">
                       <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">

@@ -228,7 +228,7 @@ export default function SoftSkillAnalyzer() {
               </p>
             </div>
             
-            <Card className="glass-card w-full lg:w-auto lg:min-w-[400px]">
+            <Card className="manuscript-card w-full lg:w-auto lg:min-w-[400px]">
               <CardContent className="pt-6">
                 <div className="space-y-4">
                   <div>
@@ -253,7 +253,7 @@ export default function SoftSkillAnalyzer() {
                   <Button 
                     onClick={analyzeSkills} 
                     disabled={isAnalyzing || !selectedResume}
-                    className="w-full h-12 text-base font-semibold btn-glow"
+                    className="w-full h-12 text-base font-semibold btn-plaque"
                     size="lg"
                   >
                     {isAnalyzing ? (
@@ -280,7 +280,7 @@ export default function SoftSkillAnalyzer() {
         {analysis ? (
           <div className="grid gap-6 lg:grid-cols-2 animate-fade-in">
             {/* Overall Score Card */}
-            <Card className="glass-card lg:col-span-2">
+            <Card className="manuscript-card lg:col-span-2">
               <CardContent className="pt-8">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                   <div className="flex items-center gap-8">
@@ -327,7 +327,7 @@ export default function SoftSkillAnalyzer() {
             </Card>
 
             {/* Radar Chart */}
-            <Card className="glass-card">
+            <Card className="manuscript-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -359,7 +359,7 @@ export default function SoftSkillAnalyzer() {
             </Card>
 
             {/* Personality Insights */}
-            <Card className="glass-card">
+            <Card className="manuscript-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
@@ -399,7 +399,7 @@ export default function SoftSkillAnalyzer() {
             </Card>
 
             {/* Bar Chart */}
-            <Card className="glass-card">
+            <Card className="manuscript-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-lg bg-green-500/10 flex items-center justify-center">
@@ -434,7 +434,7 @@ export default function SoftSkillAnalyzer() {
             </Card>
 
             {/* Recommendations */}
-            <Card className="glass-card">
+            <Card className="manuscript-card">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
@@ -460,7 +460,7 @@ export default function SoftSkillAnalyzer() {
             </Card>
 
             {/* Strengths & Growth Areas */}
-            <Card className="glass-card lg:col-span-2">
+            <Card className="manuscript-card lg:col-span-2">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -511,7 +511,7 @@ export default function SoftSkillAnalyzer() {
           /* Empty State */
           <div className="grid gap-6 lg:grid-cols-3 animate-fade-in">
             {skillInfo.map((skill, index) => (
-              <Card key={index} className="glass-card hover-lift">
+              <Card key={index} className="manuscript-card hover-lift">
                 <CardContent className="pt-8 text-center">
                   <div className={`h-16 w-16 rounded-2xl bg-gradient-to-br ${skill.color} p-0.5 mx-auto mb-4`}>
                     <div className="h-full w-full rounded-2xl bg-card flex items-center justify-center">
@@ -526,7 +526,7 @@ export default function SoftSkillAnalyzer() {
               </Card>
             ))}
 
-            <Card className="glass-card lg:col-span-3 mt-4">
+            <Card className="manuscript-card lg:col-span-3 mt-4">
               <CardContent className="py-16 text-center">
                 <div className="h-24 w-24 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto mb-6">
                   <FileText className="h-12 w-12 text-primary" />
@@ -539,7 +539,7 @@ export default function SoftSkillAnalyzer() {
                   onClick={analyzeSkills} 
                   disabled={isAnalyzing || !selectedResume}
                   size="lg"
-                  className="btn-glow"
+                  className="btn-plaque"
                 >
                   <Sparkles className="mr-2 h-5 w-5" />
                   Start Analysis
@@ -551,7 +551,7 @@ export default function SoftSkillAnalyzer() {
 
         {/* Previous Analyses */}
         {previousAnalyses.length > 0 && (
-          <Card className="glass-card mt-8">
+          <Card className="manuscript-card mt-8">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <div className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">

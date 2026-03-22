@@ -186,7 +186,7 @@ export default function InterviewPrep() {
             size="lg"
             onClick={generateQuestions}
             disabled={loading || !hasResume}
-            className="btn-glow gap-2 hover-scale animate-pulse-glow"
+            className="btn-plaque gap-2 hover-scale animate-pulse-glow"
           >
             {loading ? (
               <>
@@ -203,7 +203,7 @@ export default function InterviewPrep() {
         </div>
 
         {!hasResume && (
-          <Card className="glass-card max-w-md mx-auto mb-8 animate-fade-in-up">
+          <Card className="manuscript-card max-w-md mx-auto mb-8 animate-fade-in-up">
             <CardContent className="pt-6 text-center">
               <FileQuestion className="h-12 w-12 mx-auto mb-4 text-muted-foreground animate-bounce" />
               <p className="text-muted-foreground">{t('interview.noResume')}</p>
@@ -240,7 +240,7 @@ export default function InterviewPrep() {
         {/* Questions Grid */}
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {filteredQuestions.map((question, index) => (
-            <Card key={question.id} className="glass-card hover-lift animate-fade-in-up group" style={{ animationDelay: `${index * 0.1}s` }}>
+            <Card key={question.id} className="manuscript-card corner-ornament hover-lift animate-fade-in-up group" style={{ animationDelay: `${index * 0.1}s` }}>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between mb-2">
                   <Badge variant="outline" className="flex items-center gap-1 capitalize group-hover:bg-primary/10 transition-colors">

@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { OrnamentalDivider } from '@/components/OrnamentalDivider';
 import { 
   ArrowLeft,
   CheckCircle2,
@@ -18,7 +19,8 @@ import {
   Lightbulb,
   FileText,
   Briefcase,
-  Loader2
+  Loader2,
+  Flame
 } from 'lucide-react';
 
 interface AnalysisData {
@@ -90,7 +92,7 @@ export default function AnalysisResults() {
 
   if (authLoading || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="min-h-screen flex items-center justify-center bg-background parchment-bg">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
@@ -106,7 +108,7 @@ export default function AnalysisResults() {
             The analysis you're looking for doesn't exist or you don't have access to it.
           </p>
           <Link to="/dashboard">
-            <Button>
+            <Button className="btn-plaque">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Dashboard
             </Button>
@@ -118,80 +120,67 @@ export default function AnalysisResults() {
 
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-green-600';
-    if (score >= 60) return 'text-yellow-600';
-    return 'text-red-600';
+    if (score >= 60) return 'text-gold';
+    return 'text-destructive';
   };
 
   const getScoreBg = (score: number) => {
     if (score >= 80) return 'bg-green-500';
-    if (score >= 60) return 'bg-yellow-500';
-    return 'bg-red-500';
+    if (score >= 60) return 'bg-gold';
+    return 'bg-destructive';
   };
 
   return (
     <Layout showFooter={false}>
       <div className="container py-8">
         {/* Header */}
-        <div className="mb-8">
-          <Link to="/dashboard" className="inline-flex items-center text-muted-foreground hover:text-foreground mb-4">
+        <div className="mb-8 animate-fade-in-up">
+          <Link to="/dashboard" className="inline-flex items-center text-muted-foreground hover:text-primary mb-4 transition-colors">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Back to Dashboard
           </Link>
-          <h1 className="text-3xl font-bold text-foreground">Resume Analysis Results</h1>
+          <div className="flex items-center gap-3">
+            <Flame className="h-6 w-6 text-gold diya-glow" />
+            <h1 className="text-3xl font-bold text-foreground">Resume Analysis Results</h1>
+          </div>
           <p className="text-muted-foreground mt-1">
             Detailed AI analysis of your resume
           </p>
         </div>
 
+        <OrnamentalDivider />
+
         {/* Score Overview */}
         <div className="grid gap-6 md:grid-cols-3 mb-8">
-          <Card className="border-border">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground">Overall Score</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-4">
-                <div className={`text-5xl font-bold ${getScoreColor(analysis.overall_score)}`}>
-                  {analysis.overall_score}
+          {[
+            { label: 'Overall Score', score: analysis.overall_score, sub: 'out of 100' },
+            { label: 'ATS Compatibility', score: analysis.ats_score || 0, sub: 'ATS friendly' },
+          ].map((item, i) => (
+            <Card key={i} className="manuscript-card corner-ornament animate-fade-in-up" style={{ animationDelay: `${i * 0.1}s` }}>
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm text-muted-foreground">{item.label}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-center gap-4">
+                  <div className={`text-5xl font-bold font-serif ${getScoreColor(item.score)}`}>
+                    {item.score || '--'}
+                  </div>
+                  <div className="flex-1">
+                    <Progress value={item.score} className="h-3" />
+                    <p className="text-xs text-muted-foreground mt-1">{item.sub}</p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <Progress 
-                    value={analysis.overall_score} 
-                    className="h-3"
-                  />
-                  <p className="text-xs text-muted-foreground mt-1">out of 100</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          ))}
 
-          <Card className="border-border">
-            <CardHeader className="pb-2">
-              <CardTitle className="text-sm text-muted-foreground">ATS Compatibility</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-4">
-                <div className={`text-5xl font-bold ${getScoreColor(analysis.ats_score || 0)}`}>
-                  {analysis.ats_score || '--'}
-                </div>
-                <div className="flex-1">
-                  <Progress 
-                    value={analysis.ats_score || 0} 
-                    className="h-3"
-                  />
-                  <p className="text-xs text-muted-foreground mt-1">ATS friendly</p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="border-border">
+          <Card className="manuscript-card corner-ornament animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <CardHeader className="pb-2">
               <CardTitle className="text-sm text-muted-foreground">Skills Detected</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="flex items-center gap-4">
-                <div className="text-5xl font-bold text-primary">
+                <div className="text-5xl font-bold font-serif text-primary">
                   {analysis.skill_analysis?.detected_skills?.length || 0}
                 </div>
                 <div>
@@ -207,10 +196,10 @@ export default function AnalysisResults() {
 
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Skills Analysis */}
-          <Card className="border-border">
+          <Card className="manuscript-card corner-ornament animate-fade-in-up">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5 text-primary" />
+                <Target className="h-5 w-5 text-gold" />
                 Skills Analysis
               </CardTitle>
               <CardDescription>Skills identified in your resume</CardDescription>
@@ -224,7 +213,7 @@ export default function AnalysisResults() {
                 <div className="flex flex-wrap gap-2">
                   {analysis.skill_analysis?.detected_skills?.length ? (
                     analysis.skill_analysis.detected_skills.map((skill, index) => (
-                      <Badge key={index} variant="secondary">{skill}</Badge>
+                      <Badge key={index} variant="secondary" className="bg-gold-muted text-foreground border border-gold/20">{skill}</Badge>
                     ))
                   ) : (
                     <p className="text-sm text-muted-foreground">No skills detected</p>
@@ -232,17 +221,17 @@ export default function AnalysisResults() {
                 </div>
               </div>
 
-              <Separator />
+              <Separator className="bg-gold/20" />
 
               <div>
                 <h4 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
-                  <XCircle className="h-4 w-4 text-red-600" />
+                  <XCircle className="h-4 w-4 text-destructive" />
                   Suggested Skills to Add
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {analysis.skill_analysis?.missing_skills?.length ? (
                     analysis.skill_analysis.missing_skills.map((skill, index) => (
-                      <Badge key={index} variant="outline">{skill}</Badge>
+                      <Badge key={index} variant="outline" className="border-primary/30 text-primary">{skill}</Badge>
                     ))
                   ) : (
                     <p className="text-sm text-muted-foreground">No suggestions</p>
@@ -253,10 +242,10 @@ export default function AnalysisResults() {
           </Card>
 
           {/* Improvement Suggestions */}
-          <Card className="border-border">
+          <Card className="manuscript-card corner-ornament animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Lightbulb className="h-5 w-5 text-primary" />
+                <Lightbulb className="h-5 w-5 text-gold" />
                 Improvement Suggestions
               </CardTitle>
               <CardDescription>AI-powered recommendations to improve your resume</CardDescription>
@@ -265,8 +254,8 @@ export default function AnalysisResults() {
               <div className="space-y-4">
                 {analysis.improvement_suggestions?.suggestions?.length ? (
                   analysis.improvement_suggestions.suggestions.map((suggestion, index) => (
-                    <div key={index} className="flex gap-3 p-3 rounded-lg bg-muted/50">
-                      <TrendingUp className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div key={index} className="flex gap-3 p-3 rounded-lg bg-gold-muted/50 border border-gold/10">
+                      <TrendingUp className="h-5 w-5 text-gold flex-shrink-0 mt-0.5" />
                       <p className="text-sm text-foreground">{suggestion}</p>
                     </div>
                   ))
@@ -280,10 +269,10 @@ export default function AnalysisResults() {
           </Card>
 
           {/* Keyword Optimization */}
-          <Card className="border-border">
+          <Card className="manuscript-card corner-ornament animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <FileText className="h-5 w-5 text-primary" />
+                <FileText className="h-5 w-5 text-gold" />
                 ATS Keyword Optimization
               </CardTitle>
               <CardDescription>Keywords for better ATS compatibility</CardDescription>
@@ -294,7 +283,7 @@ export default function AnalysisResults() {
                 <div className="flex flex-wrap gap-2">
                   {analysis.keyword_optimization?.keywords_found?.length ? (
                     analysis.keyword_optimization.keywords_found.map((keyword, index) => (
-                      <Badge key={index} className="bg-green-100 text-green-800 hover:bg-green-200">
+                      <Badge key={index} className="bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/30 dark:text-green-400">
                         {keyword}
                       </Badge>
                     ))
@@ -304,7 +293,7 @@ export default function AnalysisResults() {
                 </div>
               </div>
 
-              <Separator />
+              <Separator className="bg-gold/20" />
 
               <div>
                 <h4 className="text-sm font-medium text-foreground mb-3">Recommended Keywords</h4>
@@ -323,19 +312,19 @@ export default function AnalysisResults() {
             </CardContent>
           </Card>
 
-          {/* Job Matches Preview */}
-          <Card className="border-border">
+          {/* Job Matches */}
+          <Card className="manuscript-card corner-ornament animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="flex items-center gap-2">
-                    <Briefcase className="h-5 w-5 text-primary" />
+                    <Briefcase className="h-5 w-5 text-gold" />
                     Job Matches
                   </CardTitle>
                   <CardDescription>Jobs matching your profile</CardDescription>
                 </div>
                 <Link to="/jobs">
-                  <Button variant="outline" size="sm">View All Jobs</Button>
+                  <Button variant="outline" size="sm" className="border-gold/30 hover:bg-gold-muted">View All Jobs</Button>
                 </Link>
               </div>
             </CardHeader>
@@ -343,7 +332,7 @@ export default function AnalysisResults() {
               <div className="space-y-3">
                 {analysis.job_matches?.matches?.length ? (
                   analysis.job_matches.matches.slice(0, 4).map((match, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 rounded-lg border border-border">
+                    <div key={index} className="flex items-center justify-between p-3 rounded-lg border border-gold/15 bg-gold-muted/30">
                       <div>
                         <p className="font-medium text-foreground">{match.job_title}</p>
                         <p className="text-sm text-muted-foreground">{match.company}</p>
@@ -368,15 +357,16 @@ export default function AnalysisResults() {
         </div>
 
         {/* Actions */}
-        <div className="mt-8 flex flex-wrap gap-4 justify-center">
+        <OrnamentalDivider className="my-8" />
+        <div className="flex flex-wrap gap-4 justify-center animate-fade-in-up">
           <Link to="/dashboard">
-            <Button variant="outline">
+            <Button variant="outline" className="border-gold/30 hover:bg-gold-muted">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Upload New Resume
             </Button>
           </Link>
           <Link to="/jobs">
-            <Button>
+            <Button className="btn-plaque">
               <Briefcase className="mr-2 h-4 w-4" />
               View Job Recommendations
             </Button>

@@ -413,7 +413,7 @@ export default function MockInterview() {
           {!isInterviewStarted && !isInterviewCompleted && (
             <div className="grid md:grid-cols-2 gap-8">
               {/* Configuration */}
-              <Card className="glass-card">
+              <Card className="manuscript-card">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Target className="h-5 w-5 text-primary" />
@@ -465,7 +465,7 @@ export default function MockInterview() {
 
                   <Button 
                     onClick={startInterview} 
-                    className="w-full btn-glow"
+                    className="w-full btn-plaque"
                     disabled={isLoading}
                   >
                     {isLoading ? (
@@ -484,7 +484,7 @@ export default function MockInterview() {
               </Card>
 
               {/* Tips */}
-              <Card className="glass-card">
+              <Card className="manuscript-card">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Sparkles className="h-5 w-5 text-primary" />
@@ -517,7 +517,7 @@ export default function MockInterview() {
           {isInterviewStarted && !isInterviewCompleted && questions.length > 0 && (
             <div className="max-w-4xl mx-auto space-y-6">
               {/* Progress */}
-              <Card className="glass-card">
+              <Card className="manuscript-card">
                 <CardContent className="py-4">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium">
@@ -538,7 +538,7 @@ export default function MockInterview() {
               </Card>
 
               {/* Question Card */}
-              <Card className="glass-card border-primary/20">
+              <Card className="manuscript-card border-primary/20">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
                     <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
@@ -605,7 +605,7 @@ export default function MockInterview() {
                     <div className="flex gap-3">
                       <Button
                         onClick={handleSubmitAnswer}
-                        className="flex-1 btn-glow"
+                        className="flex-1 btn-plaque"
                         disabled={!currentAnswer.trim()}
                       >
                         {currentQuestionIndex < questions.length - 1 ? (
@@ -631,7 +631,7 @@ export default function MockInterview() {
           {isInterviewCompleted && feedback && (
             <div className="space-y-8">
               {/* Overall Score */}
-              <Card className="glass-card border-primary/20">
+              <Card className="manuscript-card border-primary/20">
                 <CardContent className="p-8">
                   <div className="text-center mb-8">
                     <h2 className="text-2xl font-bold mb-4">{t('mockInterview.feedback.title')}</h2>
@@ -686,7 +686,7 @@ export default function MockInterview() {
 
               {/* Charts */}
               <div className="grid md:grid-cols-2 gap-6">
-                <Card className="glass-card">
+                <Card className="manuscript-card">
                   <CardHeader>
                     <CardTitle>{t('mockInterview.feedback.skillsRadar')}</CardTitle>
                   </CardHeader>
@@ -708,7 +708,7 @@ export default function MockInterview() {
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card">
+                <Card className="manuscript-card">
                   <CardHeader>
                     <CardTitle>{t('mockInterview.feedback.questionScores')}</CardTitle>
                   </CardHeader>
@@ -738,7 +738,7 @@ export default function MockInterview() {
 
               {/* Strengths & Weaknesses */}
               <div className="grid md:grid-cols-2 gap-6">
-                <Card className="glass-card border-emerald-500/20">
+                <Card className="manuscript-card border-emerald-500/20">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-emerald-500">
                       <CheckCircle2 className="h-5 w-5" />
@@ -757,7 +757,7 @@ export default function MockInterview() {
                   </CardContent>
                 </Card>
 
-                <Card className="glass-card border-amber-500/20">
+                <Card className="manuscript-card border-amber-500/20">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2 text-amber-500">
                       <XCircle className="h-5 w-5" />
@@ -778,7 +778,7 @@ export default function MockInterview() {
               </div>
 
               {/* Recommendations */}
-              <Card className="glass-card">
+              <Card className="manuscript-card">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Sparkles className="h-5 w-5 text-primary" />
@@ -805,7 +805,7 @@ export default function MockInterview() {
                   <RefreshCw className="mr-2 h-4 w-4" />
                   {t('mockInterview.tryAgain')}
                 </Button>
-                <Button onClick={() => navigate('/hiring-predictor')} className="btn-glow">
+                <Button onClick={() => navigate('/hiring-predictor')} className="btn-plaque">
                   <TrendingUp className="mr-2 h-4 w-4" />
                   {t('mockInterview.checkHiringChance')}
                 </Button>

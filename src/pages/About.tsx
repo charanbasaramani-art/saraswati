@@ -1,7 +1,8 @@
 import { Layout } from '@/components/layout/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { OrnamentalDivider } from '@/components/OrnamentalDivider';
 import { useTranslation } from 'react-i18next';
-import { Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket, Heart, Zap, Globe } from 'lucide-react';
+import { Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket, Heart, Zap, Globe, Flame } from 'lucide-react';
 
 export default function About() {
   const { t } = useTranslation();
@@ -31,8 +32,8 @@ export default function About() {
 
   return (
     <Layout>
-      {/* Hero Section with Gradient */}
-      <section className="relative py-24 overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative py-24 overflow-hidden heritage-pattern">
         <div className="absolute inset-0 gradient-bg" />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="gradient-orb gradient-orb-1" />
@@ -42,12 +43,12 @@ export default function About() {
         <div className="container relative z-10">
           <div className="mx-auto max-w-4xl text-center animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-6">
-              <Heart className="h-4 w-4 text-primary animate-pulse" />
+              <Flame className="h-4 w-4 text-gold flame-flicker" />
               <span className="text-sm font-medium">{t('common.welcome')}</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-6">
-              {t('about.title')} <span className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">SRAI</span>
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-6 font-serif">
+              {t('about.title')} <span className="text-primary">SRAI</span>
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
@@ -56,13 +57,15 @@ export default function About() {
           </div>
         </div>
       </section>
+      
+      <div className="container"><OrnamentalDivider /></div>
 
       {/* Stats Section */}
       <section className="py-12 -mt-12 relative z-20">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((stat, index) => (
-              <Card key={index} className="glass-card text-center hover-lift">
+              <Card key={index} className="manuscript-card text-center hover-lift">
                 <CardContent className="pt-6 pb-4">
                   <stat.icon className="h-8 w-8 text-primary mx-auto mb-3" />
                   <p className="text-3xl font-bold bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">{stat.value}</p>
@@ -134,7 +137,7 @@ export default function About() {
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {features.map((feature, index) => (
-              <Card key={index} className="glass-card hover-lift group">
+              <Card key={index} className="manuscript-card corner-ornament hover-lift group">
                 <CardHeader>
                   <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                     <feature.icon className="h-7 w-7 text-primary" />
@@ -166,7 +169,7 @@ export default function About() {
           
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {technologies.map((tech, index) => (
-              <Card key={index} className="glass-card hover-lift text-center group">
+              <Card key={index} className="manuscript-card hover-lift text-center group">
                 <CardContent className="pt-8 pb-6">
                   <div className={`mx-auto h-20 w-20 rounded-2xl bg-gradient-to-br ${tech.color} p-0.5 mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <div className="h-full w-full rounded-2xl bg-card flex items-center justify-center">

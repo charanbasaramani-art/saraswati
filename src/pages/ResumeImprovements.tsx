@@ -169,7 +169,7 @@ export default function ResumeImprovements() {
             size="lg"
             onClick={analyzeResume}
             disabled={loading || !hasResume}
-            className="btn-glow gap-2"
+            className="btn-plaque gap-2"
           >
             {loading ? (
               <>
@@ -232,7 +232,7 @@ export default function ResumeImprovements() {
               <TabsContent value="weak" className="mt-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   {improvements.weakSections.map((section, index) => (
-                    <Card key={index} className="glass-card hover-lift">
+                    <Card key={index} className="manuscript-card corner-ornament hover-lift">
                       <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                           <CardTitle className="text-lg">{section.section}</CardTitle>
@@ -253,7 +253,7 @@ export default function ResumeImprovements() {
               <TabsContent value="bullets" className="mt-6">
                 <div className="space-y-4">
                   {improvements.bulletPointImprovements.map((item, index) => (
-                    <Card key={index} className="glass-card hover-lift">
+                    <Card key={index} className="manuscript-card corner-ornament hover-lift">
                       <CardContent className="pt-6">
                         <div className="grid gap-4 md:grid-cols-2">
                           <div className="p-4 rounded-lg bg-red-500/10 border border-red-500/20">
@@ -284,7 +284,7 @@ export default function ResumeImprovements() {
                 <div className="space-y-4">
                   {improvements.grammarIssues.length > 0 ? (
                     improvements.grammarIssues.map((issue, index) => (
-                      <Card key={index} className="glass-card hover-lift">
+                      <Card key={index} className="manuscript-card corner-ornament hover-lift">
                         <CardContent className="pt-6">
                           <div className="flex items-center gap-3 mb-3">
                             <Badge variant="outline" className="capitalize">
@@ -318,7 +318,7 @@ export default function ResumeImprovements() {
               <TabsContent value="recommendations" className="mt-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   {improvements.recommendations.map((rec, index) => (
-                    <Card key={index} className="glass-card hover-lift">
+                    <Card key={index} className="manuscript-card corner-ornament hover-lift">
                       <CardHeader className="pb-2">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center gap-2">
