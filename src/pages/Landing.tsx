@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Layout } from '@/components/layout/Layout';
 import { useTranslation } from 'react-i18next';
 import { OrnamentalDivider } from '@/components/OrnamentalDivider';
-import saraswatiHero from '@/assets/saraswati-hero.png';
 import sraiLogo from '@/assets/srai-logo.png';
 import { 
   Brain, Target, Briefcase, Upload, BarChart3, CheckCircle2, ArrowRight,
@@ -55,11 +54,8 @@ export default function Landing() {
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground font-serif leading-tight animate-fade-in-up">
                 <span className="gradient-text-animate">SRAI</span>
               </h1>
-              <p className="text-xl md:text-2xl font-semibold text-primary/90 font-serif italic mt-2 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                Saraswati Resume
-              </p>
-              <p className="text-xl md:text-2xl font-semibold text-primary/90 font-serif italic animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                Artificial Intelligence
+              <p className="text-lg md:text-xl font-semibold text-primary/90 font-serif italic mt-2 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                Saraswati Resume Artificial Intelligence
               </p>
 
               <OrnamentalDivider className="max-w-xs mx-auto lg:mx-0 my-5 animate-fade-in-up" />
@@ -73,7 +69,7 @@ export default function Landing() {
                 <Link to="/auth?mode=signup">
                   <Button size="lg" className="btn-plaque px-8 py-6 text-base rounded-lg hover-scale">
                     <ScrollText className="mr-2 h-5 w-5" />
-                    Resume for AI Analysis
+                    START RESUME ANALYSIS (SRAI CHECK)
                   </Button>
                 </Link>
                 <Link to="/about">
@@ -84,20 +80,31 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* CENTER: Saraswati illustration */}
+            {/* CENTER: SRAI Logo in ornamental frame */}
             <div className="lg:col-span-4 flex justify-center order-1 lg:order-2 animate-fade-in-up">
-              <div className="relative">
-                {/* Diya glow at top */}
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-10">
+              <div className="relative flex items-center justify-center">
+                {/* Outer halo glow */}
+                <div className="absolute inset-0 rounded-full bg-gradient-radial from-gold/30 via-gold/10 to-transparent blur-3xl scale-150 animate-soft-glow" />
+                <div className="absolute inset-0 rounded-full bg-primary/10 blur-2xl scale-125" />
+
+                {/* Diya at top */}
+                <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-20">
                   <Lamp className="h-8 w-8 text-gold diya-glow flame-flicker" />
                 </div>
-                <img 
-                  src={saraswatiHero} 
-                  alt="Saraswati - Goddess of Knowledge" 
-                  className="w-72 md:w-80 lg:w-96 rounded-lg shadow-2xl hover:scale-[1.02] transition-transform duration-500 border-2 border-gold/20"
-                />
-                {/* Soft golden halo */}
-                <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-gold/10 via-transparent to-gold/5 pointer-events-none" />
+
+                {/* Ornamental frame */}
+                <div className="relative manuscript-card corner-ornament temple-border p-8 md:p-10 rounded-2xl bg-gradient-to-br from-gold-muted/40 via-card/80 to-gold-muted/30">
+                  <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center">
+                    {/* Inner golden ring */}
+                    <div className="absolute inset-0 rounded-full border-2 border-gold/30" />
+                    <div className="absolute inset-3 rounded-full border border-gold/20" />
+                    <img
+                      src={sraiLogo}
+                      alt="SRAI Logo"
+                      className="w-44 md:w-52 lg:w-60 object-contain drop-shadow-[0_0_30px_hsl(40_70%_50%/0.5)] hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
