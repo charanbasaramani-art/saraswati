@@ -60,7 +60,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© 2007 SRAI – Saraswati Resume AI. a CHARAN'S vision</p>
+          <p>© {new Date().getFullYear()} SRAI – Saraswati Resume Artificial Intelligence. Ancient Wisdom Empowering Modern Careers — A CHARAN's Vision.</p>
         </div>
       </div>
     </footer>
