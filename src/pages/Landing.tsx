@@ -66,7 +66,7 @@ export default function Landing() {
 
               {/* Scroll-style CTA */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                <Link to="/auth?mode=signup">
+                <Link to="/dashboard">
                   <Button size="lg" className="btn-plaque px-8 py-6 text-base rounded-lg hover-scale">
                     <ScrollText className="mr-2 h-5 w-5" />
                     START RESUME ANALYSIS (SRAI CHECK)
@@ -219,7 +219,7 @@ export default function Landing() {
             <Flame className="h-10 w-10 text-gold mx-auto mb-4 flame-flicker diya-glow" />
             <h2 className="text-3xl font-bold tracking-tight text-primary-foreground sm:text-4xl mb-4 font-serif">{t('landing.cta2.title')}</h2>
             <p className="text-lg text-primary-foreground/80 mb-10">{t('landing.cta2.subtitle')}</p>
-            <Link to="/auth?mode=signup">
+            <Link to="/dashboard">
               <Button size="lg" variant="secondary" className="text-lg px-10 py-6 hover-scale font-semibold shadow-xl border border-gold/30">
                 {t('landing.cta2.button')}
                 <ArrowRight className="ml-2 h-5 w-5" />
