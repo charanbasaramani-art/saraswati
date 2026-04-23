@@ -27,7 +27,6 @@ export default function Dashboard() {
   const [analyses, setAnalyses] = useState<Analysis[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => { if (!authLoading && !user) navigate('/auth'); }, [user, authLoading, navigate]);
   useEffect(() => { if (user) fetchData(); }, [user]);
 
   const fetchData = async () => {
