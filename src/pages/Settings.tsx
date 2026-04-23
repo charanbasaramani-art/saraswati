@@ -97,10 +97,6 @@ export default function Settings() {
     }
   };
 
-  const currentLanguage = languages.find(
-    (lang) => i18n.language?.startsWith(lang.code)
-  ) || languages[0];
-
   const handleUpdateProfile = async () => {
     if (!user) return;
     setIsUpdatingProfile(true);
@@ -159,16 +155,10 @@ export default function Settings() {
     }
   };
 
-  const handleLanguageChange = (code: string) => {
-    i18n.changeLanguage(code);
-    toast({ title: "Language changed", description: `Language has been changed to ${languages.find(l => l.code === code)?.name}` });
-  };
-
   const settingsTabs = [
     { value: 'profile', label: 'Profile', icon: User },
     { value: 'security', label: 'Security', icon: Lock },
     { value: 'appearance', label: 'Appearance', icon: Palette },
-    { value: 'language', label: 'Language', icon: Globe },
     { value: 'notifications', label: 'Notifications', icon: Bell },
     { value: 'privacy', label: 'Privacy', icon: Shield },
   ];
