@@ -1,18 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
-import { Separator } from '@/components/ui/separator';
 import { OrnamentalDivider } from '@/components/OrnamentalDivider';
-import { 
+import {
   ArrowLeft,
   CheckCircle2,
-  XCircle,
   AlertCircle,
   TrendingUp,
   Target,
@@ -20,7 +18,9 @@ import {
   FileText,
   Briefcase,
   Loader2,
-  Flame
+  Flame,
+  Award,
+  Sparkles,
 } from 'lucide-react';
 
 interface AnalysisData {
@@ -54,19 +54,12 @@ interface AnalysisData {
 
 export default function AnalysisResults() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const { user, isLoading: authLoading } = useAuth();
   const [analysis, setAnalysis] = useState<AnalysisData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!authLoading && !user) {
-      navigate('/auth');
-    }
-  }, [user, authLoading, navigate]);
-
-  useEffect(() => {
-    if (user && id) {
+    if (id) {
       fetchAnalysis();
     }
   }, [user, id]);
@@ -74,12 +67,12 @@ export default function AnalysisResults() {
   const fetchAnalysis = async () => {
     setIsLoading(true);
     try {
-      const { data, error } = await supabase
+      let query = supabase
         .from('resume_analyses')
         .select('*')
-        .eq('id', id)
-        .eq('user_id', user?.id)
-        .maybeSingle();
+        .eq('id', id);
+      if (user?.id) query = query.eq('user_id', user.id);
+      const { data, error } = await query.maybeSingle();
 
       if (error) throw error;
       setAnalysis(data as unknown as AnalysisData);
