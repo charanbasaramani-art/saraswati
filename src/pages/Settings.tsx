@@ -27,16 +27,10 @@ import { useTheme } from '@/components/ThemeProvider';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { 
-  User, Lock, Palette, Globe, Bell, Shield, Camera, Check, Moon, Sun, Monitor,
-  Languages, Save, Eye, EyeOff, ShieldCheck, Clock, Database, Trash2,
+  User, Lock, Palette, Bell, Shield, Camera, Check, Moon, Sun, Monitor,
+  Save, Eye, EyeOff, ShieldCheck, Clock, Database, Trash2,
   AlertTriangle, FileText, Fingerprint, HardDrive, CalendarDays, ShieldAlert, Zap
 } from 'lucide-react';
-
-const languages = [
-  { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸' },
-  { code: 'hi', name: 'Hindi', nativeName: 'हिंदी', flag: '🇮🇳' },
-  { code: 'te', name: 'Telugu', nativeName: 'తెలుగు', flag: '🇮🇳' },
-];
 
 export default function Settings() {
   const { t, i18n } = useTranslation();
