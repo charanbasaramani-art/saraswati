@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
@@ -22,12 +22,10 @@ interface Analysis { id: string; resume_id: string; overall_score: number; skill
 export default function Dashboard() {
   const { t } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
-  const navigate = useNavigate();
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [analyses, setAnalyses] = useState<Analysis[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => { if (!authLoading && !user) navigate('/auth'); }, [user, authLoading, navigate]);
   useEffect(() => { if (user) fetchData(); }, [user]);
 
   const fetchData = async () => {
@@ -70,29 +68,51 @@ export default function Dashboard() {
 
   return (
     <Layout showFooter={false}>
-      <div className="container py-6 md:py-10 space-y-6 relative parchment-bg min-h-screen">
-        {/* Greeting */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 animate-fade-in-up relative z-10">
-          <div>
-            <div className="flex items-center gap-3 mb-3">
-              <img src={sraiLogo} alt="SRAI" className="h-8 w-8 object-contain" />
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-muted border border-gold/20 text-foreground text-xs font-semibold">
-                <Flame className="h-3 w-3 text-gold flame-flicker" />
-                {t('common.welcomeBack')}
+      <div className="container py-6 md:py-10 space-y-8 relative parchment-bg min-h-screen">
+        {/* Hero Greeting */}
+        <div className="relative overflow-hidden rounded-3xl border border-gold/20 bg-gradient-to-br from-card/90 via-card/60 to-gold-muted/30 backdrop-blur-md p-6 md:p-10 animate-fade-in-up shadow-lg">
+          {/* decorative orbs */}
+          <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gold/15 blur-3xl animate-pulse" />
+          <div className="pointer-events-none absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div className="flex items-center gap-5">
+              <div className="relative shrink-0 group">
+                <div className="absolute inset-0 rounded-2xl bg-gold/30 blur-xl group-hover:bg-gold/50 transition-all duration-500" />
+                <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-2xl bg-background/70 border border-gold/30 flex items-center justify-center backdrop-blur-sm hover:scale-105 transition-transform duration-300">
+                  <img src={sraiLogo} alt="SRAI" className="h-12 w-12 md:h-14 md:w-14 object-contain" />
+                </div>
+              </div>
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-muted border border-gold/30 text-foreground text-xs font-semibold mb-2">
+                  <Flame className="h-3 w-3 text-gold flame-flicker" />
+                  Welcome to SRAI
+                </div>
+                <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight font-serif leading-tight">
+                  Your Resume Sanctuary
+                </h1>
+                <p className="text-muted-foreground mt-2 text-sm md:text-base max-w-xl">
+                  Analyze, refine and elevate your career manuscript with timeless wisdom and modern AI.
+                </p>
               </div>
             </div>
-            <h1 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight font-serif">
-              {t('nav.dashboard')}
-            </h1>
-            <p className="text-muted-foreground mt-1 text-sm">{t('dashboard.uploadDesc')}</p>
+
+            <div className="flex flex-col sm:flex-row gap-2 md:flex-col md:items-end">
+              <Link to="/interview-prep">
+                <Button variant="outline" className="gap-2 glass border-gold/30 hover:border-gold/60 hover-lift w-full sm:w-auto">
+                  <FileText className="h-4 w-4" />
+                  Interview Prep
+                  <ArrowUpRight className="h-3 w-3" />
+                </Button>
+              </Link>
+              <Link to="/ats-simulator">
+                <Button className="gap-2 btn-plaque hover-lift w-full sm:w-auto">
+                  <Target className="h-4 w-4" />
+                  Run ATS Check
+                </Button>
+              </Link>
+            </div>
           </div>
-          <Link to="/interview-prep">
-            <Button variant="outline" className="gap-2 glass border-gold/20">
-              <FileText className="h-4 w-4" />
-              {t('nav.interview')}
-              <ArrowUpRight className="h-3 w-3" />
-            </Button>
-          </Link>
         </div>
 
         <OrnamentalDivider className="animate-fade-in-up stagger-1" />

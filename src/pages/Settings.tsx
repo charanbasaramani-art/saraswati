@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Layout } from '@/components/layout/Layout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -27,19 +26,12 @@ import { useTheme } from '@/components/ThemeProvider';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { 
-  User, Lock, Palette, Globe, Bell, Shield, Camera, Check, Moon, Sun, Monitor,
-  Languages, Save, Eye, EyeOff, ShieldCheck, Clock, Database, Trash2,
+  User, Lock, Palette, Bell, Shield, Camera, Check, Moon, Sun, Monitor,
+  Save, Eye, EyeOff, ShieldCheck, Clock, Database, Trash2,
   AlertTriangle, FileText, Fingerprint, HardDrive, CalendarDays, ShieldAlert, Zap
 } from 'lucide-react';
 
-const languages = [
-  { code: 'en', name: 'English', nativeName: 'English', flag: '🇺🇸' },
-  { code: 'hi', name: 'Hindi', nativeName: 'हिंदी', flag: '🇮🇳' },
-  { code: 'te', name: 'Telugu', nativeName: 'తెలుగు', flag: '🇮🇳' },
-];
-
 export default function Settings() {
-  const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const { theme, setTheme } = useTheme();
   const { toast } = useToast();
@@ -105,10 +97,6 @@ export default function Settings() {
     }
   };
 
-  const currentLanguage = languages.find(
-    (lang) => i18n.language?.startsWith(lang.code)
-  ) || languages[0];
-
   const handleUpdateProfile = async () => {
     if (!user) return;
     setIsUpdatingProfile(true);
@@ -167,16 +155,10 @@ export default function Settings() {
     }
   };
 
-  const handleLanguageChange = (code: string) => {
-    i18n.changeLanguage(code);
-    toast({ title: "Language changed", description: `Language has been changed to ${languages.find(l => l.code === code)?.name}` });
-  };
-
   const settingsTabs = [
     { value: 'profile', label: 'Profile', icon: User },
     { value: 'security', label: 'Security', icon: Lock },
     { value: 'appearance', label: 'Appearance', icon: Palette },
-    { value: 'language', label: 'Language', icon: Globe },
     { value: 'notifications', label: 'Notifications', icon: Bell },
     { value: 'privacy', label: 'Privacy', icon: Shield },
   ];
@@ -324,41 +306,6 @@ export default function Settings() {
                       <themeOption.icon className={`h-8 w-8 mb-2 relative z-10 ${theme === themeOption.value ? 'text-primary' : 'text-muted-foreground'}`} />
                       <h4 className="font-medium relative z-10">{themeOption.label}</h4>
                       <p className="text-xs text-muted-foreground mt-1 relative z-10">{themeOption.description}</p>
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Language Settings */}
-          <TabsContent value="language" className="space-y-6 animate-fade-in-up">
-            <Card className="manuscript-card corner-ornament">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Languages className="h-5 w-5 text-primary" />
-                  Language
-                </CardTitle>
-                <CardDescription>Select your preferred language for the interface</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {languages.map((language) => (
-                    <button
-                      key={language.code}
-                      onClick={() => handleLanguageChange(language.code)}
-                      className={`relative p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
-                        currentLanguage.code === language.code ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/50 glass'
-                      }`}
-                    >
-                      {currentLanguage.code === language.code && (
-                        <div className="absolute top-2 right-2 h-5 w-5 bg-primary rounded-full flex items-center justify-center animate-bounce-in">
-                          <Check className="h-3 w-3 text-primary-foreground" />
-                        </div>
-                      )}
-                      <span className="text-3xl mb-2 block">{language.flag}</span>
-                      <h4 className="font-medium">{language.nativeName}</h4>
-                      <p className="text-xs text-muted-foreground mt-1">{language.name}</p>
                     </button>
                   ))}
                 </div>
