@@ -2,7 +2,10 @@ import { Layout } from '@/components/layout/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { OrnamentalDivider } from '@/components/OrnamentalDivider';
 import { useTranslation } from 'react-i18next';
-import { Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket, Heart, Zap, Globe, Flame } from 'lucide-react';
+import {
+  Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket,
+  Heart, Zap, Globe, Flame, FileText, ScanLine, BarChart3, Lightbulb, CheckCircle2,
+} from 'lucide-react';
 
 export default function About() {
   const { t } = useTranslation();
@@ -28,6 +31,45 @@ export default function About() {
     { value: '95%', label: 'Success Rate', icon: Target },
     { value: '50+', label: 'Companies', icon: Users },
     { value: '24/7', label: 'AI Support', icon: Zap },
+  ];
+
+  const roadmap = [
+    {
+      step: '01',
+      icon: FileText,
+      title: 'Resume Parsing',
+      desc: 'Your PDF or DOCX is parsed into structured text — sections, headings, dates, and bullet points are normalized for analysis.',
+    },
+    {
+      step: '02',
+      icon: ScanLine,
+      title: 'Skill Extraction',
+      desc: 'Our AI identifies hard skills, soft skills, tools, and frameworks, comparing them against industry-relevant skill libraries.',
+    },
+    {
+      step: '03',
+      icon: Target,
+      title: 'ATS Compatibility Check',
+      desc: 'We simulate Applicant Tracking Systems — checking formatting, keyword density, section order, and parse-ability.',
+    },
+    {
+      step: '04',
+      icon: BarChart3,
+      title: 'Scoring Engine',
+      desc: 'A weighted composite score (0–100) is computed: 40% skill match, 30% ATS readiness, 20% keyword relevance, 10% structure & clarity.',
+    },
+    {
+      step: '05',
+      icon: Lightbulb,
+      title: 'Improvement Suggestions',
+      desc: 'Gemini AI generates contextual recommendations: missing keywords, weak phrasing, sections to expand, and skills to add.',
+    },
+    {
+      step: '06',
+      icon: CheckCircle2,
+      title: 'Job Matching',
+      desc: 'Your profile is cross-referenced with our job database to surface roles where you have the strongest fit.',
+    },
   ];
 
   return (
