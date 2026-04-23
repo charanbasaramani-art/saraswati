@@ -8,41 +8,41 @@
 @layer base {
   :root {
     /* Parchment / Manuscript palette */
-    --background: 38 40% 95%;
-    --foreground: 20 30% 12%;
+    --background: 32 55% 94%;
+    --foreground: 22 45% 14%;
 
-    --card: 38 35% 93%;
-    --card-foreground: 20 30% 12%;
+    --card: 34 60% 92%;
+    --card-foreground: 22 45% 14%;
 
-    --popover: 38 30% 96%;
-    --popover-foreground: 20 30% 12%;
+    --popover: 34 55% 95%;
+    --popover-foreground: 22 45% 14%;
 
-    /* Deep maroon primary */
-    --primary: 0 55% 32%;
-    --primary-foreground: 38 40% 95%;
+    /* Heritage saffron / sanskrit orange primary */
+    --primary: 22 88% 48%;
+    --primary-foreground: 38 50% 97%;
 
-    --secondary: 38 20% 88%;
-    --secondary-foreground: 20 25% 20%;
+    --secondary: 30 50% 86%;
+    --secondary-foreground: 22 45% 18%;
 
-    --muted: 38 15% 85%;
-    --muted-foreground: 20 10% 45%;
+    --muted: 32 35% 86%;
+    --muted-foreground: 22 18% 38%;
 
-    --accent: 38 30% 90%;
-    --accent-foreground: 0 55% 32%;
+    --accent: 28 70% 88%;
+    --accent-foreground: 18 80% 35%;
 
-    --destructive: 0 72% 50%;
+    --destructive: 0 72% 45%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 30 20% 80%;
-    --input: 30 20% 82%;
-    --ring: 0 55% 32%;
+    --border: 28 45% 78%;
+    --input: 28 45% 80%;
+    --ring: 22 88% 48%;
 
     --radius: 0.5rem;
 
-    /* Gold heritage accent */
-    --gold: 40 70% 45%;
-    --gold-light: 42 60% 70%;
-    --gold-muted: 40 30% 85%;
+    /* Gold heritage accent (kept secondary to orange) */
+    --gold: 38 85% 50%;
+    --gold-light: 42 75% 65%;
+    --gold-muted: 36 60% 84%;
 
     /* Peacock blue accent */
     --peacock: 195 70% 35%;
@@ -57,28 +57,28 @@
     --bronze-light: 30 35% 60%;
 
     /* Glassmorphism tokens */
-    --glass-background: 38 35% 96% / 0.7;
-    --glass-border: 30 25% 80% / 0.5;
+    --glass-background: 32 55% 96% / 0.7;
+    --glass-border: 24 55% 70% / 0.45;
     --glass-blur: 16px;
-    --glass-shadow: 0 8px 32px 0 hsl(20 30% 10% / 0.08);
+    --glass-shadow: 0 8px 32px 0 hsl(22 60% 20% / 0.1);
 
-    --gradient-start: 38 35% 94%;
-    --gradient-end: 38 40% 96%;
-    --gradient-accent: 0 55% 32%;
+    --gradient-start: 30 70% 92%;
+    --gradient-end: 22 80% 88%;
+    --gradient-accent: 22 88% 48%;
 
-    --sidebar-background: 38 30% 94%;
-    --sidebar-foreground: 20 30% 12%;
-    --sidebar-primary: 0 55% 32%;
-    --sidebar-primary-foreground: 38 40% 95%;
-    --sidebar-accent: 38 30% 90%;
-    --sidebar-accent-foreground: 0 55% 32%;
-    --sidebar-border: 30 20% 82%;
-    --sidebar-ring: 0 55% 32%;
+    --sidebar-background: 32 55% 93%;
+    --sidebar-foreground: 22 45% 14%;
+    --sidebar-primary: 22 88% 48%;
+    --sidebar-primary-foreground: 38 50% 97%;
+    --sidebar-accent: 28 70% 88%;
+    --sidebar-accent-foreground: 18 80% 35%;
+    --sidebar-border: 28 45% 80%;
+    --sidebar-ring: 22 88% 48%;
 
-    --chart-1: 0 55% 35%;
-    --chart-2: 195 70% 35%;
-    --chart-3: 340 55% 65%;
-    --chart-4: 40 70% 45%;
+    --chart-1: 22 88% 48%;
+    --chart-2: 38 85% 50%;
+    --chart-3: 18 70% 40%;
+    --chart-4: 195 70% 35%;
     --chart-5: 30 45% 40%;
 
     --sidebar: 38 30% 94%;
@@ -101,37 +101,37 @@
   }
 
   .dark {
-    --background: 20 15% 8%;
-    --foreground: 38 20% 90%;
+    --background: 22 25% 8%;
+    --foreground: 32 40% 92%;
 
-    --card: 20 15% 12%;
-    --card-foreground: 38 20% 90%;
+    --card: 22 25% 12%;
+    --card-foreground: 32 40% 92%;
 
-    --popover: 20 15% 14%;
-    --popover-foreground: 38 20% 90%;
+    --popover: 22 25% 14%;
+    --popover-foreground: 32 40% 92%;
 
-    --primary: 0 50% 55%;
-    --primary-foreground: 20 15% 8%;
+    --primary: 22 90% 58%;
+    --primary-foreground: 22 25% 8%;
 
-    --secondary: 20 10% 18%;
-    --secondary-foreground: 38 15% 85%;
+    --secondary: 22 18% 18%;
+    --secondary-foreground: 32 30% 88%;
 
-    --muted: 20 10% 20%;
-    --muted-foreground: 30 10% 60%;
+    --muted: 22 18% 20%;
+    --muted-foreground: 30 18% 65%;
 
-    --accent: 20 15% 16%;
-    --accent-foreground: 0 50% 60%;
+    --accent: 22 30% 18%;
+    --accent-foreground: 22 90% 65%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 85% 97%;
 
-    --border: 20 10% 22%;
-    --input: 20 10% 22%;
-    --ring: 0 50% 55%;
+    --border: 22 22% 24%;
+    --input: 22 22% 24%;
+    --ring: 22 90% 58%;
 
-    --gold: 40 55% 50%;
-    --gold-light: 42 40% 35%;
-    --gold-muted: 40 15% 18%;
+    --gold: 38 80% 55%;
+    --gold-light: 42 60% 45%;
+    --gold-muted: 30 25% 20%;
 
     --peacock: 195 55% 45%;
     --peacock-light: 195 40% 30%;
@@ -147,23 +147,23 @@
     --glass-blur: 16px;
     --glass-shadow: 0 8px 32px 0 hsl(0 0% 0% / 0.3);
 
-    --gradient-start: 20 15% 8%;
-    --gradient-end: 20 18% 11%;
-    --gradient-accent: 0 50% 55%;
+    --gradient-start: 22 25% 8%;
+    --gradient-end: 22 28% 12%;
+    --gradient-accent: 22 90% 58%;
 
-    --sidebar-background: 20 15% 10%;
-    --sidebar-foreground: 38 20% 90%;
-    --sidebar-primary: 0 50% 55%;
-    --sidebar-primary-foreground: 20 15% 8%;
-    --sidebar-accent: 20 15% 16%;
-    --sidebar-accent-foreground: 0 50% 60%;
-    --sidebar-border: 20 10% 22%;
-    --sidebar-ring: 0 50% 55%;
+    --sidebar-background: 22 25% 10%;
+    --sidebar-foreground: 32 40% 92%;
+    --sidebar-primary: 22 90% 58%;
+    --sidebar-primary-foreground: 22 25% 8%;
+    --sidebar-accent: 22 30% 18%;
+    --sidebar-accent-foreground: 22 90% 65%;
+    --sidebar-border: 22 22% 24%;
+    --sidebar-ring: 22 90% 58%;
 
-    --chart-1: 0 55% 60%;
-    --chart-2: 195 60% 50%;
-    --chart-3: 340 50% 60%;
-    --chart-4: 40 60% 55%;
+    --chart-1: 22 90% 58%;
+    --chart-2: 38 80% 55%;
+    --chart-3: 18 70% 50%;
+    --chart-4: 195 60% 50%;
     --chart-5: 30 40% 50%;
 
     --sidebar: 20 15% 10%;
@@ -589,4 +589,94 @@
     opacity: 0;
   }
   .icon-bounce:hover { animation: scaleIn 0.3s ease-out; }
+}
+
+/* ─── Heritage Orange enhancements ─── */
+@layer components {
+  /* Saffron gradient backdrop (used on hero / dashboard) */
+  .heritage-gradient {
+    background:
+      radial-gradient(circle at 20% 0%, hsl(var(--primary) / 0.18), transparent 50%),
+      radial-gradient(circle at 80% 100%, hsl(var(--gold) / 0.18), transparent 55%),
+      linear-gradient(135deg, hsl(var(--gradient-start)) 0%, hsl(var(--gradient-end)) 100%);
+  }
+
+  /* Section pill — used to label analysis sections */
+  .section-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.15), hsl(var(--gold) / 0.18));
+    border: 1px solid hsl(var(--primary) / 0.3);
+    color: hsl(var(--primary));
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* Saffron divider */
+  .saffron-rule {
+    height: 3px;
+    background: linear-gradient(90deg,
+      transparent,
+      hsl(var(--primary) / 0.5),
+      hsl(var(--gold) / 0.6),
+      hsl(var(--primary) / 0.5),
+      transparent);
+    border-radius: 9999px;
+  }
+
+  /* Score ring container */
+  .score-ring {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .score-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(from 0deg, hsl(var(--primary)), hsl(var(--gold)), hsl(var(--primary)));
+    filter: blur(10px);
+    opacity: 0.5;
+    animation: spinSlow 8s linear infinite;
+  }
+  @keyframes spinSlow {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Floating subtle bob */
+  @keyframes floatBob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .float-bob { animation: floatBob 4s ease-in-out infinite; }
+
+  /* Tile reveal */
+  @keyframes tileReveal {
+    from { opacity: 0; transform: translateY(20px) scale(0.96); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+  }
+  .tile-reveal { animation: tileReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+  /* Saffron shimmer border */
+  @keyframes borderShimmer {
+    0%, 100% { border-color: hsl(var(--primary) / 0.3); }
+    50% { border-color: hsl(var(--gold) / 0.6); }
+  }
+  .saffron-border {
+    border: 1.5px solid hsl(var(--primary) / 0.3);
+    animation: borderShimmer 4s ease-in-out infinite;
+  }
+
+  /* Saffron glow on hover */
+  .saffron-glow:hover {
+    box-shadow: 0 0 0 1px hsl(var(--primary) / 0.4),
+                0 10px 40px -10px hsl(var(--primary) / 0.45);
+  }
 }
