@@ -58,12 +58,12 @@ export default function Dashboard() {
   const skillsCount = latestAnalysis?.skill_analysis?.detected_skills?.length || 0;
 
   const tools = [
-    { icon: Target, label: t('dashboard.quickActions.atsCheck'), href: '/ats-simulator', desc: 'Test ATS compatibility', gradient: 'from-primary/20 to-primary/5' },
-    { icon: Brain, label: t('dashboard.quickActions.softSkills'), href: '/soft-skills', desc: 'Personality analysis', gradient: 'from-peacock/20 to-peacock/5' },
-    { icon: Video, label: t('nav.mockInterview'), href: '/mock-interview', desc: 'Practice interviews', gradient: 'from-lotus/20 to-lotus/5' },
-    { icon: TrendingUp, label: t('nav.hiringPredictor'), href: '/hiring-predictor', desc: 'Predict hiring chances', gradient: 'from-gold/20 to-gold/5' },
-    { icon: Zap, label: t('dashboard.quickActions.improve'), href: '/resume-improvements', desc: 'AI suggestions', gradient: 'from-bronze/20 to-bronze/5' },
-    { icon: Briefcase, label: t('dashboard.quickActions.findJobs'), href: '/jobs', desc: 'Browse opportunities', gradient: 'from-peacock/20 to-peacock/5' },
+    { icon: Target, label: t('dashboard.quickActions.atsCheck'), href: '/ats-simulator', desc: 'Test ATS compatibility', gradient: 'from-primary/30 to-primary/5' },
+    { icon: Brain, label: t('dashboard.quickActions.softSkills'), href: '/soft-skills', desc: 'Personality analysis', gradient: 'from-primary/25 to-gold/10' },
+    { icon: Video, label: t('nav.mockInterview'), href: '/mock-interview', desc: 'Practice interviews', gradient: 'from-gold/25 to-primary/10' },
+    { icon: TrendingUp, label: t('nav.hiringPredictor'), href: '/hiring-predictor', desc: 'Predict hiring chances', gradient: 'from-primary/30 to-gold/15' },
+    { icon: Zap, label: t('dashboard.quickActions.improve'), href: '/resume-improvements', desc: 'AI suggestions', gradient: 'from-gold/30 to-primary/10' },
+    { icon: Briefcase, label: t('dashboard.quickActions.findJobs'), href: '/jobs', desc: 'Browse opportunities', gradient: 'from-primary/25 to-primary/5' },
   ];
 
   return (
@@ -289,9 +289,9 @@ export default function Dashboard() {
 
 function StatCard({ icon: Icon, value, label, className = '' }: { icon: any; value: number | string; label: string; className?: string }) {
   return (
-    <Card className={`manuscript-card group ${className}`}>
+    <Card className={`manuscript-card group hover-lift saffron-glow transition-all ${className}`}>
       <CardContent className="p-5 flex flex-col justify-between h-full">
-        <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/10">
+        <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary/25 to-gold/15 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all border border-primary/20">
           <Icon className="h-5 w-5 text-primary" />
         </div>
         <div className="mt-3">
