@@ -313,41 +313,6 @@ export default function Settings() {
             </Card>
           </TabsContent>
 
-          {/* Language Settings */}
-          <TabsContent value="language" className="space-y-6 animate-fade-in-up">
-            <Card className="manuscript-card corner-ornament">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Languages className="h-5 w-5 text-primary" />
-                  Language
-                </CardTitle>
-                <CardDescription>Select your preferred language for the interface</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  {languages.map((language) => (
-                    <button
-                      key={language.code}
-                      onClick={() => handleLanguageChange(language.code)}
-                      className={`relative p-4 rounded-xl border-2 transition-all duration-300 hover:scale-105 ${
-                        currentLanguage.code === language.code ? 'border-primary bg-primary/10' : 'border-border hover:border-primary/50 glass'
-                      }`}
-                    >
-                      {currentLanguage.code === language.code && (
-                        <div className="absolute top-2 right-2 h-5 w-5 bg-primary rounded-full flex items-center justify-center animate-bounce-in">
-                          <Check className="h-3 w-3 text-primary-foreground" />
-                        </div>
-                      )}
-                      <span className="text-3xl mb-2 block">{language.flag}</span>
-                      <h4 className="font-medium">{language.nativeName}</h4>
-                      <p className="text-xs text-muted-foreground mt-1">{language.name}</p>
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
           {/* Notifications Settings */}
           <TabsContent value="notifications" className="space-y-6 animate-fade-in-up">
             <Card className="manuscript-card corner-ornament">
