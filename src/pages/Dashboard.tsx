@@ -69,26 +69,26 @@ export default function Dashboard() {
   return (
     <Layout showFooter={false}>
       <div className="container py-6 md:py-10 space-y-8 relative parchment-bg min-h-screen">
-        {/* Hero Greeting */}
-        <div className="relative overflow-hidden rounded-3xl border border-gold/20 bg-gradient-to-br from-card/90 via-card/60 to-gold-muted/30 backdrop-blur-md p-6 md:p-10 animate-fade-in-up shadow-lg">
-          {/* decorative orbs */}
-          <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-gold/15 blur-3xl animate-pulse" />
-          <div className="pointer-events-none absolute -bottom-32 -left-20 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+        {/* Hero Greeting — saffron heritage */}
+        <div className="relative overflow-hidden rounded-3xl border-2 border-primary/30 heritage-gradient p-6 md:p-10 tile-reveal shadow-xl">
+          {/* layered animated orbs in saffron tones */}
+          <div className="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/30 blur-3xl animate-pulse" />
+          <div className="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-gold/25 blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
 
           <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="flex items-center gap-5">
-              <div className="relative shrink-0 group">
-                <div className="absolute inset-0 rounded-2xl bg-gold/30 blur-xl group-hover:bg-gold/50 transition-all duration-500" />
-                <div className="relative h-16 w-16 md:h-20 md:w-20 rounded-2xl bg-background/70 border border-gold/30 flex items-center justify-center backdrop-blur-sm hover:scale-105 transition-transform duration-300">
-                  <img src={sraiLogo} alt="SRAI" className="h-12 w-12 md:h-14 md:w-14 object-contain" />
+              <div className="relative shrink-0 group score-ring float-bob">
+                <div className="relative h-20 w-20 md:h-24 md:w-24 rounded-2xl bg-background/80 border-2 border-primary/40 flex items-center justify-center backdrop-blur-sm hover:scale-110 transition-transform duration-500">
+                  <img src={sraiLogo} alt="SRAI" className="h-14 w-14 md:h-16 md:w-16 object-contain" />
                 </div>
               </div>
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-muted border border-gold/30 text-foreground text-xs font-semibold mb-2">
-                  <Flame className="h-3 w-3 text-gold flame-flicker" />
+                <div className="section-pill mb-3">
+                  <Flame className="h-3 w-3 flame-flicker" />
                   Welcome to SRAI
                 </div>
-                <h1 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight font-serif leading-tight">
+                <h1 className="text-3xl md:text-5xl font-bold tracking-tight font-serif leading-tight gradient-text-animate">
                   Your Resume Sanctuary
                 </h1>
                 <p className="text-muted-foreground mt-2 text-sm md:text-base max-w-xl">
@@ -99,14 +99,14 @@ export default function Dashboard() {
 
             <div className="flex flex-col sm:flex-row gap-2 md:flex-col md:items-end">
               <Link to="/interview-prep">
-                <Button variant="outline" className="gap-2 glass border-gold/30 hover:border-gold/60 hover-lift w-full sm:w-auto">
+                <Button variant="outline" className="gap-2 border-primary/40 hover:border-primary hover:bg-primary/10 hover-lift w-full sm:w-auto">
                   <FileText className="h-4 w-4" />
                   Interview Prep
                   <ArrowUpRight className="h-3 w-3" />
                 </Button>
               </Link>
               <Link to="/ats-simulator">
-                <Button className="gap-2 btn-plaque hover-lift w-full sm:w-auto">
+                <Button className="gap-2 btn-plaque hover-lift saffron-glow w-full sm:w-auto">
                   <Target className="h-4 w-4" />
                   Run ATS Check
                 </Button>
