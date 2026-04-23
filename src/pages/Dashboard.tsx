@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { ResumeUpload } from '@/components/dashboard/ResumeUpload';
 import sraiLogo from '@/assets/srai-logo.png';
+import { Shimmer, ShimmerRow } from '@/components/ui/shimmer';
 
 interface Resume { id: string; file_name: string; created_at: string; parsed_data: unknown; }
 interface Analysis { id: string; resume_id: string; overall_score: number; skill_analysis: any; created_at: string; }
@@ -181,9 +182,10 @@ export default function Dashboard() {
             </CardHeader>
             <CardContent>
               {isLoading ? (
-                <div className="flex flex-col items-center justify-center py-8">
-                  <Loader2 className="h-6 w-6 animate-spin text-primary mb-2" />
-                  <p className="text-xs text-muted-foreground">{t('common.loadingResumes')}</p>
+                <div className="space-y-2 animate-fade-in-up">
+                  <ShimmerRow />
+                  <ShimmerRow />
+                  <ShimmerRow />
                 </div>
               ) : resumes.length === 0 ? (
                 <div className="text-center py-8">

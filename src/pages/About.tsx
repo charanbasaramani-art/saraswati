@@ -2,7 +2,10 @@ import { Layout } from '@/components/layout/Layout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { OrnamentalDivider } from '@/components/OrnamentalDivider';
 import { useTranslation } from 'react-i18next';
-import { Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket, Heart, Zap, Globe, Flame } from 'lucide-react';
+import {
+  Brain, Target, Users, GraduationCap, Code2, Database, Sparkles, Shield, Rocket,
+  Heart, Zap, Globe, Flame, FileText, ScanLine, BarChart3, Lightbulb, CheckCircle2,
+} from 'lucide-react';
 
 export default function About() {
   const { t } = useTranslation();
@@ -28,6 +31,45 @@ export default function About() {
     { value: '95%', label: 'Success Rate', icon: Target },
     { value: '50+', label: 'Companies', icon: Users },
     { value: '24/7', label: 'AI Support', icon: Zap },
+  ];
+
+  const roadmap = [
+    {
+      step: '01',
+      icon: FileText,
+      title: 'Resume Parsing',
+      desc: 'Your PDF or DOCX is parsed into structured text — sections, headings, dates, and bullet points are normalized for analysis.',
+    },
+    {
+      step: '02',
+      icon: ScanLine,
+      title: 'Skill Extraction',
+      desc: 'Our AI identifies hard skills, soft skills, tools, and frameworks, comparing them against industry-relevant skill libraries.',
+    },
+    {
+      step: '03',
+      icon: Target,
+      title: 'ATS Compatibility Check',
+      desc: 'We simulate Applicant Tracking Systems — checking formatting, keyword density, section order, and parse-ability.',
+    },
+    {
+      step: '04',
+      icon: BarChart3,
+      title: 'Scoring Engine',
+      desc: 'A weighted composite score (0–100) is computed: 40% skill match, 30% ATS readiness, 20% keyword relevance, 10% structure & clarity.',
+    },
+    {
+      step: '05',
+      icon: Lightbulb,
+      title: 'Improvement Suggestions',
+      desc: 'Gemini AI generates contextual recommendations: missing keywords, weak phrasing, sections to expand, and skills to add.',
+    },
+    {
+      step: '06',
+      icon: CheckCircle2,
+      title: 'Job Matching',
+      desc: 'Your profile is cross-referenced with our job database to surface roles where you have the strongest fit.',
+    },
   ];
 
   return (
@@ -149,6 +191,107 @@ export default function About() {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* === Analysis Roadmap === */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 heritage-gradient opacity-60" />
+        <div className="container relative z-10">
+          <div className="text-center mb-14">
+            <div className="section-pill mx-auto">
+              <BarChart3 className="h-3 w-3" />
+              How It Works
+            </div>
+            <h2 className="text-4xl font-bold text-foreground mt-4 mb-4 font-serif">
+              The Analysis Roadmap
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              From the moment you upload your resume to the final score — here's exactly how SRAI evaluates and elevates your profile.
+            </p>
+          </div>
+
+          {/* Roadmap timeline */}
+          <div className="relative max-w-5xl mx-auto">
+            {/* vertical saffron rail (desktop) */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[3px] -translate-x-1/2 bg-gradient-to-b from-primary/40 via-gold/50 to-primary/40 rounded-full" />
+
+            <div className="space-y-10 md:space-y-16">
+              {roadmap.map((item, index) => {
+                const isLeft = index % 2 === 0;
+                return (
+                  <div
+                    key={item.step}
+                    className="relative md:grid md:grid-cols-2 md:gap-10 items-center tile-reveal"
+                    style={{ animationDelay: `${index * 0.08}s` }}
+                  >
+                    {/* center dot (desktop) */}
+                    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 h-6 w-6 rounded-full bg-primary border-4 border-background shadow-lg shadow-primary/40 items-center justify-center z-10 animate-pulse-glow" />
+
+                    {/* card */}
+                    <div className={`${isLeft ? 'md:pr-10 md:text-right' : 'md:col-start-2 md:pl-10'}`}>
+                      <Card className="manuscript-card corner-ornament saffron-glow hover-lift transition-all">
+                        <CardContent className="p-6">
+                          <div className={`flex items-center gap-3 mb-3 ${isLeft ? 'md:justify-end' : ''}`}>
+                            <span className="section-pill">Step {item.step}</span>
+                            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-primary/25 to-gold/15 border border-primary/30 flex items-center justify-center">
+                              <item.icon className="h-5 w-5 text-primary" />
+                            </div>
+                          </div>
+                          <h3 className="text-xl font-bold font-serif text-foreground mb-2">{item.title}</h3>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Scoring formula card */}
+          <div className="max-w-3xl mx-auto mt-16">
+            <Card className="manuscript-card corner-ornament saffron-glow tile-reveal">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="h-12 w-12 rounded-xl bg-primary/15 border border-primary/30 flex items-center justify-center">
+                    <BarChart3 className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <span className="section-pill">Scoring Formula</span>
+                    <CardTitle className="text-2xl font-serif mt-1">How Your Score Is Calculated</CardTitle>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="saffron-rule mb-5" />
+                <div className="space-y-3">
+                  {[
+                    { label: 'Skill Match', weight: 40, desc: 'Alignment of your skills with target roles' },
+                    { label: 'ATS Readiness', weight: 30, desc: 'Formatting, parse-ability, section order' },
+                    { label: 'Keyword Relevance', weight: 20, desc: 'Industry & role-specific keyword coverage' },
+                    { label: 'Structure & Clarity', weight: 10, desc: 'Readability, conciseness, action verbs' },
+                  ].map((row) => (
+                    <div key={row.label} className="flex items-center gap-4">
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="text-sm font-semibold text-foreground">{row.label}</span>
+                          <span className="text-sm font-bold text-primary">{row.weight}%</span>
+                        </div>
+                        <div className="h-2 rounded-full bg-muted overflow-hidden">
+                          <div
+                            className="h-full bg-gradient-to-r from-primary to-gold transition-all duration-1000"
+                            style={{ width: `${row.weight * 2.5}%` }}
+                          />
+                        </div>
+                        <p className="text-xs text-muted-foreground mt-1">{row.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

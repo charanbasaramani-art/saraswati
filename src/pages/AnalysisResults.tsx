@@ -8,6 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { OrnamentalDivider } from '@/components/OrnamentalDivider';
+import { Shimmer, ShimmerPill } from '@/components/ui/shimmer';
 import {
   ArrowLeft,
   CheckCircle2,
@@ -85,9 +86,57 @@ export default function AnalysisResults() {
 
   if (authLoading || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background parchment-bg">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
+      <Layout showFooter={false}>
+        <div className="container py-8 animate-fade-in-up">
+          {/* Header skeleton */}
+          <div className="mb-8 space-y-3">
+            <Shimmer className="h-4 w-32" />
+            <Shimmer className="h-9 w-72" />
+            <Shimmer className="h-3 w-96" />
+          </div>
+
+          <OrnamentalDivider />
+
+          {/* Score row */}
+          <div className="grid gap-5 md:grid-cols-3 mt-6">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="manuscript-card p-5 space-y-3 tile-reveal"
+                style={{ animationDelay: `${i * 0.08}s` }}
+              >
+                <Shimmer className="h-3 w-24" />
+                <Shimmer className="h-12 w-20" />
+                <Shimmer className="h-2 w-full" />
+                <Shimmer className="h-3 w-1/2" />
+              </div>
+            ))}
+          </div>
+
+          {/* Section skeletons */}
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="manuscript-card mt-8 p-6 md:p-8 space-y-5 tile-reveal"
+              style={{ animationDelay: `${0.2 + i * 0.1}s` }}
+            >
+              <div className="flex items-center gap-3">
+                <Shimmer className="h-10 w-10 rounded-xl" />
+                <div className="space-y-2 flex-1">
+                  <Shimmer className="h-3 w-32" />
+                  <Shimmer className="h-5 w-64" />
+                </div>
+              </div>
+              <Shimmer className="h-[2px] w-full" />
+              <div className="flex flex-wrap gap-2">
+                {Array.from({ length: 8 }).map((_, j) => (
+                  <ShimmerPill key={j} className={`w-${[16, 20, 24, 28][j % 4]}`} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </Layout>
     );
   }
 
