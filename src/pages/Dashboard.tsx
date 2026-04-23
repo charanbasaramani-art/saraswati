@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
@@ -22,7 +22,6 @@ interface Analysis { id: string; resume_id: string; overall_score: number; skill
 export default function Dashboard() {
   const { t } = useTranslation();
   const { user, isLoading: authLoading } = useAuth();
-  const navigate = useNavigate();
   const [resumes, setResumes] = useState<Resume[]>([]);
   const [analyses, setAnalyses] = useState<Analysis[]>([]);
   const [isLoading, setIsLoading] = useState(true);
