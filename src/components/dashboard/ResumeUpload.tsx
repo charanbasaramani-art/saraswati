@@ -8,6 +8,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Upload, FileText, Loader2, CheckCircle2, AlertCircle, X, ScrollText, Flame } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { extractResumeText } from '@/lib/extractResumeText';
+import { ValidationFeedback, ScanningOverlay, type ValidationResult } from './ValidationFeedback';
 
 interface ResumeUploadProps {
   onUploadComplete: () => void;
@@ -22,6 +23,10 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isValidating, setIsValidating] = useState(false);
+  const [validationStage, setValidationStage] = useState('Reading your file…');
+  const [validation, setValidation] = useState<ValidationResult | null>(null);
+  const [extractedText, setExtractedText] = useState<string>('');
 
   const acceptedTypes = [
     'application/pdf',
@@ -71,10 +76,38 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
   const removeFile = () => {
     setFile(null);
     setError(null);
+    setValidation(null);
+    setExtractedText('');
   };
 
-  const uploadResume = async () => {
-    if (!file || !user) return;
+  const validateFile = async () => {
+    if (!file) return;
+    setIsValidating(true);
+    setValidation(null);
+    setError(null);
+    try {
+      setValidationStage('Extracting text content…');
+      const text = await extractResumeText(file);
+      setExtractedText(text);
+      setValidationStage('Classifying with AI…');
+      const { data, error: vErr } = await supabase.functions.invoke('validate-resume', {
+        body: { text, fileName: file.name },
+      });
+      if (vErr) throw vErr;
+      setValidation(data as ValidationResult);
+    } catch (err: any) {
+      console.error('Validation error', err);
+      setError(err.message || 'Could not analyze the file');
+    } finally {
+      setIsValidating(false);
+    }
+  };
+
+  const uploadResume = async (textOverride?: string) => {
+    if (!file || !user) {
+      if (!user) setError('Please sign in to upload your resume.');
+      return;
+    }
 
     setIsUploading(true);
     setUploadProgress(0);
@@ -88,16 +121,8 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
       const fileExt = file.name.split('.').pop();
       const fileName = `${user.id}/${Date.now()}.${fileExt}`;
 
-      const uploadPromise = supabase.storage
-        .from('resumes')
-        .upload(fileName, file);
-
-      const extractPromise = extractResumeText(file);
-
-      const [{ error: uploadError }, extractedText] = await Promise.all([
-        uploadPromise,
-        extractPromise,
-      ]);
+      const text = textOverride ?? extractedText ?? (await extractResumeText(file));
+      const { error: uploadError } = await supabase.storage.from('resumes').upload(fileName, file);
 
       clearInterval(progressInterval);
       setUploadProgress(100);
@@ -111,7 +136,7 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
           file_name: file.name,
           file_url: fileName,
           file_type: file.type,
-          parsed_data: extractedText || null,
+          parsed_data: text || null,
         })
         .select()
         .single();
@@ -138,6 +163,8 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
       }
 
       setFile(null);
+      setValidation(null);
+      setExtractedText('');
       onUploadComplete();
     } catch (err: any) {
       console.error('Upload error:', err);
@@ -221,11 +248,28 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
                 variant="ghost"
                 size="icon"
                 onClick={removeFile}
-                disabled={isUploading || isAnalyzing}
+              disabled={isUploading || isAnalyzing || isValidating}
               >
                 <X className="h-4 w-4" />
               </Button>
             </div>
+
+            {isValidating && <ScanningOverlay stage={validationStage} />}
+
+            {validation && !isUploading && !isAnalyzing && (
+              <ValidationFeedback
+                result={validation}
+                onReupload={() => {
+                  removeFile();
+                  setTimeout(() => document.getElementById('file-upload')?.click(), 50);
+                }}
+                onConvert={async () => {
+                  // Treat extracted text as base content; proceed with upload + analysis
+                  await uploadResume(extractedText);
+                }}
+                onProceedAnyway={() => uploadResume()}
+              />
+            )}
 
             {(isUploading || isAnalyzing) && (
               <div className="space-y-2">
@@ -249,23 +293,30 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
               </div>
             )}
 
-            <Button
-              onClick={uploadResume}
-              disabled={isUploading || isAnalyzing}
-              className="w-full btn-plaque"
-            >
-              {isUploading || isAnalyzing ? (
-                <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  {isAnalyzing ? 'Analyzing...' : 'Uploading...'}
-                </>
-              ) : (
-                <>
-                  <CheckCircle2 className="mr-2 h-4 w-4" />
-                  Submit for Analysis
-                </>
-              )}
-            </Button>
+            {!validation && !isValidating && (
+              <Button
+                onClick={validateFile}
+                disabled={isUploading || isAnalyzing}
+                className="w-full btn-plaque"
+              >
+                <Sparkles className="mr-2 h-4 w-4" />
+                Validate & Analyze with AI
+              </Button>
+            )}
+
+            {validation?.isResume && !isUploading && !isAnalyzing && (
+              <Button onClick={() => uploadResume()} className="w-full btn-plaque">
+                <CheckCircle2 className="mr-2 h-4 w-4" />
+                Submit for Full Analysis
+              </Button>
+            )}
+
+            {(isUploading || isAnalyzing) && (
+              <Button disabled className="w-full btn-plaque">
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                {isAnalyzing ? 'Analyzing...' : 'Uploading...'}
+              </Button>
+            )}
           </div>
         )}
       </CardContent>
