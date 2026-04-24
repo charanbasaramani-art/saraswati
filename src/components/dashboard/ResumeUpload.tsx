@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Upload, FileText, Loader2, CheckCircle2, AlertCircle, X, ScrollText, Flame } from 'lucide-react';
+import { Upload, FileText, Loader2, CheckCircle2, AlertCircle, X, ScrollText, Flame, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { extractResumeText } from '@/lib/extractResumeText';
 import { ValidationFeedback, ScanningOverlay, type ValidationResult } from './ValidationFeedback';
