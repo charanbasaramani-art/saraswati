@@ -9,6 +9,7 @@ import {
   Brain, Target, Briefcase, Upload, BarChart3, CheckCircle2, ArrowRight,
   Zap, Shield, Users, Star, TrendingUp, Award, Flame, ScrollText, Lamp
 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Landing() {
   const { t } = useTranslation();
@@ -23,112 +24,16 @@ export default function Landing() {
   ];
 
   const stats = [
-    { value: '10K+', label: t('landing.stats.resumes'), icon: TrendingUp },
-    { value: '95%', label: t('landing.stats.satisfaction'), icon: Star },
-    { value: '500+', label: t('landing.stats.matches'), icon: Award },
-    { value: '50+', label: t('landing.stats.companies'), icon: Briefcase },
+    { value: 10000, suffix: 'K+', display: '10K+', label: 'Resumes Analyzed', icon: TrendingUp },
+    { value: 95, suffix: '%', display: '95%', label: 'Accuracy Rate', icon: Star },
+    { value: 500, suffix: '+', display: '500+', label: 'Job Matches Daily', icon: Award },
+    { value: 50, suffix: '+', display: '50+', label: 'Partner Companies', icon: Briefcase },
   ];
 
   return (
     <Layout>
-      {/* ═══ HERO SECTION ═══ */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center parchment-bg">
-        {/* Warm golden ambient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gold-muted/40 via-background to-background" />
-        <div className="absolute top-10 left-1/4 w-96 h-96 rounded-full bg-gold/8 blur-[120px] animate-soft-glow" />
-        <div className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-primary/6 blur-[100px] animate-soft-glow" style={{ animationDelay: '1.5s' }} />
-
-        <div className="container relative z-10 py-12 md:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            {/* LEFT: Title & CTA */}
-            <div className="lg:col-span-5 text-center lg:text-left order-2 lg:order-1">
-              {/* Diya icon */}
-              <div className="flex justify-center lg:justify-start mb-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold-muted border border-gold/20">
-                  <Flame className="h-4 w-4 text-gold flame-flicker" />
-                  <span className="text-sm font-medium text-foreground/80">Wisdom-Powered Resume Intelligence</span>
-                </div>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground font-serif leading-tight animate-fade-in-up">
-                <span className="gradient-text-animate">SRAI</span>
-              </h1>
-              <p className="text-lg md:text-xl font-semibold text-primary/90 font-serif italic mt-2 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                Saraswati Resume Artificial Intelligence
-              </p>
-
-              <OrnamentalDivider className="max-w-xs mx-auto lg:mx-0 my-5 animate-fade-in-up" />
-
-              <p className="text-base text-muted-foreground max-w-md mx-auto lg:mx-0 leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                Ancient Wisdom Empowering Modern Careers — Analyze resumes, detect skill gaps, improve ATS compatibility, and optimize your career profile.
-              </p>
-
-              {/* Scroll-style CTA */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-                <Link to="/dashboard">
-                  <Button size="lg" className="btn-plaque px-8 py-6 text-base rounded-lg hover-scale">
-                    <ScrollText className="mr-2 h-5 w-5" />
-                    START RESUME ANALYSIS (SRAI CHECK)
-                  </Button>
-                </Link>
-                <Link to="/about">
-                  <Button size="lg" variant="outline" className="px-8 py-6 text-base border-gold/30 hover:border-gold/50 hover:bg-gold-muted/30 rounded-lg">
-                    {t('landing.learnMore')}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* CENTER: SRAI Logo in ornamental frame */}
-            <div className="lg:col-span-4 flex justify-center order-1 lg:order-2 animate-fade-in-up">
-              <div className="relative flex items-center justify-center">
-                {/* Outer halo glow */}
-                <div className="absolute inset-0 rounded-full bg-gradient-radial from-gold/30 via-gold/10 to-transparent blur-3xl scale-150 animate-soft-glow" />
-                <div className="absolute inset-0 rounded-full bg-primary/10 blur-2xl scale-125" />
-
-                {/* Diya at top */}
-                <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-20">
-                  <Lamp className="h-8 w-8 text-gold diya-glow flame-flicker" />
-                </div>
-
-                {/* Ornamental frame */}
-                <div className="relative manuscript-card corner-ornament temple-border p-8 md:p-10 rounded-2xl bg-gradient-to-br from-gold-muted/40 via-card/80 to-gold-muted/30">
-                  <div className="relative w-56 h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 flex items-center justify-center">
-                    {/* Inner golden ring */}
-                    <div className="absolute inset-0 rounded-full border-2 border-gold/30" />
-                    <div className="absolute inset-3 rounded-full border border-gold/20" />
-                    <img
-                      src={sraiLogo}
-                      alt="SRAI Logo"
-                      className="w-44 md:w-52 lg:w-60 object-contain drop-shadow-[0_0_30px_hsl(40_70%_50%/0.5)] hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* RIGHT: Stats metal panel */}
-            <div className="lg:col-span-3 order-3 animate-fade-in-right" style={{ animationDelay: '0.3s' }}>
-              <div className="metal-panel rounded-xl p-6 space-y-5">
-                <h3 className="text-sm font-bold text-foreground uppercase tracking-wider text-center font-serif">Platform Statistics</h3>
-                <OrnamentalDivider className="!py-2" />
-                {stats.map((stat, i) => (
-                  <div key={i} className="flex items-center gap-3 group">
-                    <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform border border-gold/15">
-                      <stat.icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-xl font-bold text-foreground font-serif">{stat.value}</p>
-                      <p className="text-xs text-muted-foreground">{stat.label}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ═══ FUTURISTIC AI HERO ═══ */}
+      <FuturisticHero stats={stats} />
 
       {/* ═══ FEATURES ═══ */}
       <section className="py-20 relative parchment-bg">
