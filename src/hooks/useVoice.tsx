@@ -24,6 +24,13 @@ export function useVoice(options: UseVoiceOptions = {}): UseVoiceReturn {
   
   const recognitionRef = useRef<any>(null);
   const synthesisRef = useRef<SpeechSynthesis | null>(null);
+  const onResultRef = useRef(onResult);
+  const onErrorRef = useRef(onError);
+
+  useEffect(() => {
+    onResultRef.current = onResult;
+    onErrorRef.current = onError;
+  }, [onResult, onError]);
 
   useEffect(() => {
     // Check for speech recognition support
@@ -38,13 +45,13 @@ export function useVoice(options: UseVoiceOptions = {}): UseVoiceReturn {
 
       recognitionRef.current.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
-        onResult?.(transcript);
+        onResultRef.current?.(transcript);
         setIsListening(false);
       };
 
       recognitionRef.current.onerror = (event) => {
         console.error('Speech recognition error:', event.error);
-        onError?.(event.error);
+        onErrorRef.current?.(event.error);
         setIsListening(false);
       };
 
@@ -59,11 +66,11 @@ export function useVoice(options: UseVoiceOptions = {}): UseVoiceReturn {
       recognitionRef.current?.abort();
       synthesisRef.current?.cancel();
     };
-  }, [language, onResult, onError]);
+  }, [language]);
 
   const startListening = useCallback(() => {
     if (!recognitionRef.current) {
-      onError?.('Speech recognition not supported');
+      onErrorRef.current?.('Speech recognition not supported');
       return;
     }
 
@@ -72,9 +79,9 @@ export function useVoice(options: UseVoiceOptions = {}): UseVoiceReturn {
       setIsListening(true);
     } catch (error) {
       console.error('Failed to start listening:', error);
-      onError?.('Failed to start voice recognition');
+      onErrorRef.current?.('Failed to start voice recognition');
     }
-  }, [onError]);
+  }, []);
 
   const stopListening = useCallback(() => {
     recognitionRef.current?.stop();
