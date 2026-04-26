@@ -89,7 +89,7 @@ export default function Dashboard() {
                   <Flame className="h-3 w-3 flame-flicker" />
                   Welcome to SRAI
                 </div>
-                <h1 className="text-3xl md:text-5xl font-bold tracking-tight font-serif leading-tight gradient-text-animate">
+                <h1 className="text-3xl md:text-5xl font-bold tracking-tight font-serif leading-tight gradient-text-static">
                   Your Resume Sanctuary
                 </h1>
                 <p className="text-muted-foreground mt-2 text-sm md:text-base max-w-xl">
