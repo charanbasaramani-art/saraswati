@@ -473,6 +473,29 @@
     },
     "preparing": "Preparing Interview...",
     "startInterview": "Start Interview",
+    "question": "Question",
+    "yourAnswer": "Your Answer",
+    "answerPlaceholder": "Type your answer here or use voice input...",
+    "useVoice": "Use Voice",
+    "stopRecording": "Stop Recording",
+    "nextQuestion": "Next Question",
+    "finishInterview": "Finish Interview",
+    "analyzing": "Analyzing your responses...",
+    "tryAgain": "Try Another Interview",
+    "checkHiringChance": "Check Hiring Chance",
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "tips": {
+      "title": "Interview Tips",
+      "tip1": "Use the STAR method (Situation, Task, Action, Result) for behavioral questions.",
+      "tip2": "Speak clearly and at a steady pace — quality over quantity.",
+      "tip3": "Back up claims with specific, measurable examples from your experience.",
+      "tip4": "Take a brief moment to think before answering complex questions.",
+      "tip5": "Stay positive and authentic — interviewers value honest reflection."
+    },
     "features": {
       "title": "Interview Features",
       "voice": "Voice & Text Input",
@@ -505,7 +528,10 @@
       "weakAreas": "Areas for Improvement",
       "recommendations": "Recommendations",
       "questionBreakdown": "Question-by-Question Breakdown",
-      "tryAgain": "Try Another Interview"
+      "tryAgain": "Try Another Interview",
+      "outOf100": "out of 100",
+      "skillsRadar": "Skills Radar",
+      "questionScores": "Per-Question Scores"
     }
   },
   "hiringPredictor": {
