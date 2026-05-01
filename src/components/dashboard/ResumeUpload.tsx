@@ -114,16 +114,23 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
       if (dbError) throw dbError;
 
       setIsAnalyzing(true);
-      
-      const { error: analysisError } = await supabase.functions.invoke('analyze-resume', {
+
+      // Race the analysis call against a 90s timeout so the UI never hangs forever
+      const analysisPromise = supabase.functions.invoke('analyze-resume', {
         body: { resumeId: resumeData.id }
       });
+      const timeoutPromise = new Promise<{ error: Error }>((resolve) =>
+        setTimeout(() => resolve({ error: new Error('Analysis is taking longer than expected') }), 90000)
+      );
+
+      const result: any = await Promise.race([analysisPromise, timeoutPromise]);
+      const analysisError = result?.error;
 
       if (analysisError) {
         console.error('Analysis error:', analysisError);
         toast({
-          title: 'Upload Successful',
-          description: 'Resume uploaded. Analysis will be available shortly.',
+          title: 'Resume Uploaded',
+          description: 'Your resume is saved. Analysis is still running in the background — refresh in a moment.',
         });
       } else {
         toast({
