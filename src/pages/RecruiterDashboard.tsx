@@ -101,37 +101,22 @@ export default function RecruiterDashboard() {
   const fetchData = async () => {
     setIsLoading(true);
     try {
-      // Fetch all resumes with profiles
-      const { data: resumes } = await supabase
-        .from('resumes')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      // Fetch all profiles
-      const { data: profiles } = await supabase
-        .from('profiles')
-        .select('user_id, full_name, email');
-
-      // Fetch all analyses
-      const { data: analyses } = await supabase
-        .from('resume_analyses')
-        .select('resume_id, overall_score, skill_analysis');
-
-      // Fetch soft skill analyses
-      const { data: softSkills } = await supabase
-        .from('soft_skill_analyses')
-        .select('*');
-
-      // Fetch ATS results
-      const { data: atsResults } = await supabase
-        .from('ats_results')
-        .select('*');
-
-      // Fetch jobs
-      const { data: jobsData } = await supabase
-        .from('jobs')
-        .select('id, title, company, domain')
-        .eq('is_active', true);
+      // Fetch everything in parallel for speed; cap rows to keep dashboard snappy
+      const [
+        { data: resumes },
+        { data: profiles },
+        { data: analyses },
+        { data: softSkills },
+        { data: atsResults },
+        { data: jobsData },
+      ] = await Promise.all([
+        supabase.from('resumes').select('id, user_id, file_name, file_type, parsed_data, created_at').order('created_at', { ascending: false }).limit(200),
+        supabase.from('profiles').select('user_id, full_name, email').limit(500),
+        supabase.from('resume_analyses').select('resume_id, overall_score, ats_score, skill_analysis').limit(500),
+        supabase.from('soft_skill_analyses').select('resume_id, communication_score, leadership_score, teamwork_score, problem_solving_score, confidence_score, adaptability_score').limit(500),
+        supabase.from('ats_results').select('resume_id, ats_score, passed, company').limit(500),
+        supabase.from('jobs').select('id, title, company, domain').eq('is_active', true).limit(100),
+      ]);
 
       if (jobsData) setJobs(jobsData);
 
