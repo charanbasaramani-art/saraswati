@@ -1,7 +1,6 @@
 import { ReactNode, forwardRef } from 'react';
 import { Navbar } from './Navbar';
 import { Footer } from './Footer';
-import { ChatBot } from '../chatbot/ChatBot';
 
 interface LayoutProps {
   children: ReactNode;
@@ -22,8 +21,6 @@ export const Layout = forwardRef<HTMLDivElement, LayoutProps>(
           {children}
         </main>
         {showFooter && <Footer />}
-        
-        <ChatBot />
       </div>
     );
   }
