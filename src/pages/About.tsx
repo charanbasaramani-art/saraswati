@@ -26,11 +26,11 @@ export default function About() {
     { title: t('about.features.responsive'), description: t('about.features.responsiveDesc'), icon: Globe },
   ];
 
-  const stats = [
-    { value: '10K+', label: 'Resumes Analyzed', icon: Sparkles },
-    { value: '95%', label: 'Success Rate', icon: Target },
-    { value: '50+', label: 'Companies', icon: Users },
-    { value: '24/7', label: 'AI Support', icon: Zap },
+  const highlights = [
+    { value: 'Student', label: 'Academic Project', icon: GraduationCap },
+    { value: 'AI-Powered', label: 'Gemini Models', icon: Brain },
+    { value: 'Open', label: 'Free to Use', icon: Heart },
+    { value: 'Always On', label: 'Cloud Hosted', icon: Zap },
   ];
 
   const roadmap = [
@@ -102,16 +102,16 @@ export default function About() {
       
       <div className="container"><OrnamentalDivider /></div>
 
-      {/* Stats Section */}
+      {/* Highlights Section */}
       <section className="py-12 -mt-12 relative z-20">
         <div className="container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {stats.map((stat, index) => (
+            {highlights.map((item, index) => (
               <Card key={index} className="manuscript-card text-center hover-lift">
                 <CardContent className="pt-6 pb-4">
-                  <stat.icon className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <p className="text-3xl font-bold bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">{stat.value}</p>
-                  <p className="text-sm text-muted-foreground mt-1">{stat.label}</p>
+                  <item.icon className="h-8 w-8 text-primary mx-auto mb-3" />
+                  <p className="text-2xl font-bold bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">{item.value}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{item.label}</p>
                 </CardContent>
               </Card>
             ))}
