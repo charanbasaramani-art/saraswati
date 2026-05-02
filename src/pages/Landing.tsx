@@ -7,7 +7,7 @@ import { OrnamentalDivider } from '@/components/OrnamentalDivider';
 import sraiLogo from '@/assets/srai-logo.png';
 import { 
   Brain, Target, Briefcase, Upload, BarChart3, CheckCircle2, ArrowRight,
-  Zap, Shield, Users, Star, TrendingUp, Award, Flame, ScrollText, Lamp
+  Zap, Shield, Users, Star, TrendingUp, Award, Flame, ScrollText, Lamp, GraduationCap
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -508,10 +508,10 @@ export default function Landing() {
   ];
 
   const stats = [
-    { value: 10000, suffix: 'K+', display: '10K+', label: 'Resumes Analyzed', icon: TrendingUp },
-    { value: 95, suffix: '%', display: '95%', label: 'Accuracy Rate', icon: Star },
-    { value: 500, suffix: '+', display: '500+', label: 'Job Matches Daily', icon: Award },
-    { value: 50, suffix: '+', display: '50+', label: 'Partner Companies', icon: Briefcase },
+    { value: 0, suffix: '', display: 'AI', label: 'Powered by Gemini', icon: Brain },
+    { value: 0, suffix: '', display: 'ATS', label: 'Compatibility Check', icon: Target },
+    { value: 0, suffix: '', display: 'Free', label: 'Student Project', icon: GraduationCap },
+    { value: 0, suffix: '', display: '24/7', label: 'Cloud Available', icon: Zap },
   ];
 
   return (
