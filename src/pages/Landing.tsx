@@ -7,7 +7,7 @@ import { OrnamentalDivider } from '@/components/OrnamentalDivider';
 import sraiLogo from '@/assets/srai-logo.png';
 import { 
   Brain, Target, Briefcase, Upload, BarChart3, CheckCircle2, ArrowRight,
-  Zap, Shield, Users, Star, TrendingUp, Award, Flame, ScrollText, Lamp
+  Zap, Shield, Users, Star, TrendingUp, Award, Flame, ScrollText, Lamp, GraduationCap
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
