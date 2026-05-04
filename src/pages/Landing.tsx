@@ -86,9 +86,9 @@ function FuturisticHero({ stats }: { stats: { value: number; display: string; la
       </div>
 
       <div className="container relative z-10 py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-items-center">
           {/* ═════ LEFT: Title + CTA ═════ */}
-          <div className={`lg:col-span-5 text-center lg:text-left order-2 lg:order-1 ${mounted ? 'srai-fade-in' : 'opacity-0'}`}>
+          <div className={`lg:col-span-6 text-center lg:text-left order-2 lg:order-1 ${mounted ? 'srai-fade-in' : 'opacity-0'}`}>
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full srai-chip mb-6">
               <Flame className="h-4 w-4 srai-flame" />
               <span className="text-xs font-medium tracking-wider uppercase srai-chip-text">
@@ -127,7 +127,7 @@ function FuturisticHero({ stats }: { stats: { value: number; display: string; la
           </div>
 
           {/* ═════ CENTER: AI Core Card ═════ */}
-          <div className={`lg:col-span-4 flex justify-center order-1 lg:order-2 ${mounted ? 'srai-scale-in' : 'opacity-0'}`}>
+          <div className={`lg:col-span-6 flex justify-center order-1 lg:order-2 ${mounted ? 'srai-scale-in' : 'opacity-0'}`}>
             <div className="srai-core-wrap">
               {/* radial under-glow */}
               <div className="srai-core-radial" />
@@ -158,21 +158,6 @@ function FuturisticHero({ stats }: { stats: { value: number; display: string; la
 
               {/* floor reflection */}
               <div className="srai-floor-reflect" />
-            </div>
-          </div>
-
-          {/* ═════ RIGHT: Stats Panel ═════ */}
-          <div className={`lg:col-span-3 order-3 ${mounted ? 'srai-slide-in' : 'opacity-0'}`}>
-            <div className="srai-stats-panel group">
-              <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-center srai-stats-title">
-                Platform Statistics
-              </h3>
-              <div className="srai-divider my-4" />
-              <div className="space-y-4">
-                {stats.map((s, i) => (
-                  <StatRow key={i} stat={s} delay={i * 200} mounted={mounted} />
-                ))}
-              </div>
             </div>
           </div>
         </div>
