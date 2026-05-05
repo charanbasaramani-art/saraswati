@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, Flower2 } from 'lucide-react';
+import { Mail, Flower2 } from 'lucide-react';
 import { SRAILogo } from '@/components/SRAILogo';
 
 export const Footer = forwardRef<HTMLElement>((props, ref) => {
@@ -45,16 +45,9 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
 
           <div>
             <h4 className="font-semibold text-foreground mb-4 font-serif">Connect</h4>
-            <div className="flex gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github className="h-5 w-5" />
-              </a>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Mail className="h-4 w-4 text-primary flex-shrink-0" />
+              <span>For queries mail us to <a href="mailto:charanbasaramani@gmail.com" className="text-primary hover:underline transition-colors">charanbasaramani@gmail.com</a></span>
             </div>
           </div>
         </div>
