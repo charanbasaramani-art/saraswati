@@ -7,21 +7,12 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useTranslation } from 'react-i18next';
-import { 
-  Search, 
-  MapPin, 
-  Briefcase, 
-  Building2, 
-  Clock,
-  Filter,
-  Loader2,
-  ExternalLink,
-  Sparkles,
-  TrendingUp,
-  Users,
-  DollarSign,
-  X
+import {
+  Search, MapPin, Briefcase, Building2, Clock, Filter, Loader2,
+  ExternalLink, Sparkles, TrendingUp, Users, DollarSign, X, Target
 } from 'lucide-react';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 
 interface Job {
   id: string;
@@ -38,23 +29,31 @@ interface Job {
   created_at: string;
 }
 
+interface ScoredJob extends Job {
+  matchScore: number;
+  matchedSkills: string[];
+}
+
 export default function Jobs() {
   const { t } = useTranslation();
   const [jobs, setJobs] = useState<Job[]>([]);
-  const [filteredJobs, setFilteredJobs] = useState<Job[]>([]);
+  const [filteredJobs, setFilteredJobs] = useState<ScoredJob[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedDomain, setSelectedDomain] = useState<string>('all');
   const [selectedLocation, setSelectedLocation] = useState<string>('all');
   const [selectedExperience, setSelectedExperience] = useState<string>('all');
+  const [resumeSkills, setResumeSkills] = useState<string[]>([]);
+  const [matchMode, setMatchMode] = useState<boolean>(false);
 
   useEffect(() => {
     fetchJobs();
+    fetchResumeSkills();
   }, []);
 
   useEffect(() => {
     filterJobs();
-  }, [jobs, searchQuery, selectedDomain, selectedLocation, selectedExperience]);
+  }, [jobs, searchQuery, selectedDomain, selectedLocation, selectedExperience, matchMode, resumeSkills]);
 
   const fetchJobs = async () => {
     setIsLoading(true);
@@ -74,8 +73,39 @@ export default function Jobs() {
     }
   };
 
+  const fetchResumeSkills = async () => {
+    try {
+      const { data: userRes } = await supabase.auth.getUser();
+      const uid = userRes?.user?.id;
+      if (!uid) return;
+      const { data } = await supabase
+        .from('resumes')
+        .select('parsed_data')
+        .eq('user_id', uid)
+        .order('created_at', { ascending: false })
+        .limit(1)
+        .maybeSingle();
+      const parsed = (data?.parsed_data ?? {}) as Record<string, unknown>;
+      const skills = Array.isArray((parsed as { skills?: unknown }).skills)
+        ? ((parsed as { skills: unknown[] }).skills.filter((s) => typeof s === 'string') as string[])
+        : [];
+      if (skills.length) setResumeSkills(skills.map((s) => s.toLowerCase()));
+    } catch (e) {
+      console.warn('No resume skills available', e);
+    }
+  };
+
+  const scoreJob = (job: Job): { matchScore: number; matchedSkills: string[] } => {
+    if (!resumeSkills.length) return { matchScore: 0, matchedSkills: [] };
+    const matched = job.skills_required.filter((s) =>
+      resumeSkills.some((rs) => rs.includes(s.toLowerCase()) || s.toLowerCase().includes(rs))
+    );
+    const score = Math.round((matched.length / Math.max(job.skills_required.length, 1)) * 100);
+    return { matchScore: score, matchedSkills: matched };
+  };
+
   const filterJobs = () => {
-    let filtered = [...jobs];
+    let filtered: ScoredJob[] = jobs.map((j) => ({ ...j, ...scoreJob(j) }));
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       filtered = filtered.filter(
@@ -88,6 +118,9 @@ export default function Jobs() {
     if (selectedDomain !== 'all') filtered = filtered.filter((job) => job.domain === selectedDomain);
     if (selectedLocation !== 'all') filtered = filtered.filter((job) => job.location.includes(selectedLocation));
     if (selectedExperience !== 'all') filtered = filtered.filter((job) => job.experience_level === selectedExperience);
+    if (matchMode && resumeSkills.length) {
+      filtered = filtered.filter((j) => j.matchScore > 0).sort((a, b) => b.matchScore - a.matchScore);
+    }
     setFilteredJobs(filtered);
   };
 
@@ -238,6 +271,15 @@ export default function Jobs() {
                 </SelectContent>
               </Select>
             </div>
+            {resumeSkills.length > 0 && (
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border/50">
+                <Target className="h-4 w-4 text-primary" />
+                <Label htmlFor="match-mode" className="text-sm font-medium cursor-pointer">
+                  Match jobs to my resume ({resumeSkills.length} skills detected)
+                </Label>
+                <Switch id="match-mode" checked={matchMode} onCheckedChange={setMatchMode} />
+              </div>
+            )}
           </CardContent>
         </Card>
 
@@ -313,6 +355,12 @@ export default function Jobs() {
                           <p className="text-primary font-medium">{job.company}</p>
                         </div>
                         <div className="flex gap-2">
+                          {matchMode && job.matchScore > 0 && (
+                            <Badge className="bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 border-emerald-500/30 gap-1">
+                              <Target className="h-3 w-3" />
+                              {job.matchScore}% match
+                            </Badge>
+                          )}
                           <Badge className={getExperienceBadgeColor(job.experience_level)}>
                             {job.experience_level.charAt(0).toUpperCase() + job.experience_level.slice(1)} {t('jobs.level')}
                           </Badge>
