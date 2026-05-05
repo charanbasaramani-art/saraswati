@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Twitter, Flower2 } from 'lucide-react';
+import { Mail, Flower2 } from 'lucide-react';
 import { SRAILogo } from '@/components/SRAILogo';
 
 export const Footer = forwardRef<HTMLElement>((props, ref) => {
