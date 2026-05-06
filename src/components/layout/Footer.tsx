@@ -53,7 +53,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} SRAI – Saraswati Resume Artificial Intelligence. Ancient Wisdom Empowering Modern Careers — A CHARAN's Vision.</p>
+          <p>© 2026 Charan. All rights reserved. Saraswati AI Resume Analyzer™</p>
         </div>
       </div>
     </footer>
