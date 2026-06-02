@@ -212,6 +212,16 @@ function computeAtsScore(parts: {
   return Math.max(0, Math.min(100, Math.round(weighted)));
 }
 
+async function fetchWithTimeout(url: string, options: RequestInit, timeoutMs: number): Promise<Response> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    return await fetch(url, { ...options, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
 interface ResumeAnalysis {
   overall_score: number;
   ats_score: number;
@@ -365,6 +375,8 @@ ANALYSIS REQUIREMENTS:
 
 Always respond with valid JSON only.`;
 
+    const aiResumeText = resumeText.length > 12000 ? resumeText.slice(0, 12000) : resumeText;
+
     const analysisPrompt = `Analyze this resume thoroughly:
 
 FILE: ${resume.file_name}
@@ -372,7 +384,7 @@ TYPE: ${resume.file_type}
 
 RESUME CONTENT:
 """
-${resumeText}
+${aiResumeText}
 """
 
 AVAILABLE JOBS FOR MATCHING:
@@ -416,7 +428,7 @@ IMPORTANT:
 
     console.log('Calling Lovable AI for qualitative analysis (suggestions only)...');
 
-    const aiResponse = await fetch('https://ai.gateway.lovable.dev/v1/chat/completions', {
+    const aiResponse = await fetchWithTimeout('https://ai.gateway.lovable.dev/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -430,7 +442,7 @@ IMPORTANT:
         ],
         temperature: 0.3, // Lower temperature for more consistent, factual responses
       }),
-    });
+    }, 20000);
 
     if (!aiResponse.ok) {
       const errorText = await aiResponse.text();
