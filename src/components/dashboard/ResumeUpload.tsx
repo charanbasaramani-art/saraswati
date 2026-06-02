@@ -158,6 +158,7 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
       console.error('Upload error:', err);
       setError(err.message || 'Failed to upload resume');
     } finally {
+      if (progressInterval) clearInterval(progressInterval);
       setIsUploading(false);
       setIsAnalyzing(false);
       setUploadProgress(0);
