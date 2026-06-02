@@ -1,4 +1,8 @@
 import mammoth from "mammoth";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf.mjs";
+import pdfWorkerUrl from "pdfjs-dist/legacy/build/pdf.worker.mjs?url";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
 // Sanitize text to remove null bytes and invalid Unicode characters that Postgres can't handle
 function sanitizeText(text: string): string {
@@ -9,8 +13,8 @@ function sanitizeText(text: string): string {
     .trim();
 }
 
-// Extract readable text from PDF binary
-function extractPdfText(arrayBuffer: ArrayBuffer): string {
+// Fast fallback for unusual PDFs where pdf.js cannot read text content.
+function extractRawPdfText(arrayBuffer: ArrayBuffer): string {
   const bytes = new Uint8Array(arrayBuffer);
   const text = new TextDecoder("utf-8", { fatal: false }).decode(bytes);
   
@@ -54,19 +58,47 @@ function extractPdfText(arrayBuffer: ArrayBuffer): string {
   return sanitizeText(uniqueParts.join(" "));
 }
 
+async function extractPdfText(arrayBuffer: ArrayBuffer): Promise<string> {
+  const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
+  const pdf = await loadingTask.promise;
+  const pages: string[] = [];
+
+  for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber++) {
+    const page = await pdf.getPage(pageNumber);
+    const content = await page.getTextContent();
+    const pageText = content.items
+      .map((item) => ("str" in item ? item.str : ""))
+      .join(" ");
+    pages.push(pageText);
+  }
+
+  const extractedText = sanitizeText(pages.join(" "));
+  return extractedText.length > 50 ? extractedText : extractRawPdfText(arrayBuffer);
+}
+
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number, fallback: T): Promise<T> {
+  return new Promise((resolve) => {
+    const timeout = window.setTimeout(() => resolve(fallback), timeoutMs);
+    promise
+      .then((value) => resolve(value))
+      .catch(() => resolve(fallback))
+      .finally(() => window.clearTimeout(timeout));
+  });
+}
+
 export async function extractResumeText(file: File): Promise<string> {
   try {
     const arrayBuffer = await file.arrayBuffer();
 
     if (file.type === "application/pdf") {
-      const extractedText = extractPdfText(arrayBuffer);
+      const fallbackText = `PDF Resume: ${file.name} (Text extraction limited - analysis will use available file details)`;
+      const extractedText = await withTimeout(extractPdfText(arrayBuffer), 15000, fallbackText);
       
       if (extractedText.length > 50) {
         return extractedText;
       }
       
-      // Fallback: return filename info with note
-      return `PDF Resume: ${file.name} (Text extraction limited - please upload DOCX for better analysis)`;
+      return fallbackText;
     }
 
     // DOCX - mammoth works well
