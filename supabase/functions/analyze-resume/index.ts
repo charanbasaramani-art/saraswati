@@ -428,56 +428,41 @@ IMPORTANT:
 
     console.log('Calling Lovable AI for qualitative analysis (suggestions only)...');
 
-    const aiResponse = await fetchWithTimeout('https://ai.gateway.lovable.dev/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${lovableApiKey}`,
-      },
-      body: JSON.stringify({
-        model: 'google/gemini-3-flash-preview',
-        messages: [
-          { role: 'system', content: systemPrompt },
-          { role: 'user', content: analysisPrompt },
-        ],
-        temperature: 0.3, // Lower temperature for more consistent, factual responses
-      }),
-    }, 20000);
-
-    if (!aiResponse.ok) {
-      const errorText = await aiResponse.text();
-      console.error('AI API error:', aiResponse.status, errorText);
-      
-      if (aiResponse.status === 429) {
-        return new Response(
-          JSON.stringify({ error: 'Rate limit exceeded. Please try again in a moment.' }),
-          { status: 429, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
-      if (aiResponse.status === 402) {
-        return new Response(
-          JSON.stringify({ error: 'AI service credits exhausted. Please try again later.' }),
-          { status: 402, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-        );
-      }
-      
-      throw new Error(`AI API error: ${aiResponse.status}`);
-    }
-
-    const aiData = await aiResponse.json();
-    const aiContent = aiData.choices?.[0]?.message?.content || '';
-    
-    console.log('AI Response received, length:', aiContent.length);
-
     let aiParsed: Partial<ResumeAnalysis> = {};
     try {
+      const aiResponse = await fetchWithTimeout('https://ai.gateway.lovable.dev/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${lovableApiKey}`,
+        },
+        body: JSON.stringify({
+          model: 'google/gemini-3-flash-preview',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: analysisPrompt },
+          ],
+          temperature: 0.3,
+        }),
+      }, 20000);
+
+      if (!aiResponse.ok) {
+        const errorText = await aiResponse.text();
+        console.error('AI API error, continuing with deterministic analysis:', aiResponse.status, errorText);
+        throw new Error(`AI API error: ${aiResponse.status}`);
+      }
+
+      const aiData = await aiResponse.json();
+      const aiContent = aiData.choices?.[0]?.message?.content || '';
+      console.log('AI Response received, length:', aiContent.length);
+
       let cleanedContent = aiContent.trim();
       cleanedContent = cleanedContent.replace(/^```(?:json)?\s*/i, '');
       cleanedContent = cleanedContent.replace(/\s*```$/i, '');
       cleanedContent = cleanedContent.trim();
       aiParsed = JSON.parse(cleanedContent);
-    } catch (parseError) {
-      console.error('Failed to parse AI response:', parseError);
+    } catch (aiError) {
+      console.error('AI qualitative analysis unavailable; saving deterministic score:', aiError);
       aiParsed = {};
     }
 
