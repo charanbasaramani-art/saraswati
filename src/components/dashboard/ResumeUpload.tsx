@@ -13,6 +13,13 @@ interface ResumeUploadProps {
   onUploadComplete: () => void;
 }
 
+function withTimeout<T>(promise: Promise<T>, timeoutMs: number, message: string): Promise<T> {
+  return Promise.race([
+    promise,
+    new Promise<never>((_, reject) => setTimeout(() => reject(new Error(message)), timeoutMs)),
+  ]);
+}
+
 export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
   const { user } = useAuth();
   const { toast } = useToast();
@@ -82,9 +89,10 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
     setIsUploading(true);
     setUploadProgress(0);
     setError(null);
+    let progressInterval: ReturnType<typeof setInterval> | undefined;
 
     try {
-      const progressInterval = setInterval(() => {
+      progressInterval = setInterval(() => {
         setUploadProgress((prev) => Math.min(prev + 10, 90));
       }, 200);
 
@@ -92,9 +100,13 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
       const fileName = `${user.id}/${Date.now()}.${fileExt}`;
 
       const text = await extractResumeText(file);
-      const { error: uploadError } = await supabase.storage.from('resumes').upload(fileName, file);
+      const { error: uploadError } = await withTimeout(
+        supabase.storage.from('resumes').upload(fileName, file),
+        30000,
+        'Upload timed out. Please check your connection and try again.'
+      );
 
-      clearInterval(progressInterval);
+      if (progressInterval) clearInterval(progressInterval);
       setUploadProgress(100);
 
       if (uploadError) throw uploadError;
@@ -109,7 +121,8 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
           parsed_data: text || null,
         })
         .select()
-        .single();
+        .single()
+        .then((result) => result);
 
       if (dbError) throw dbError;
 
@@ -145,6 +158,7 @@ export function ResumeUpload({ onUploadComplete }: ResumeUploadProps) {
       console.error('Upload error:', err);
       setError(err.message || 'Failed to upload resume');
     } finally {
+      if (progressInterval) clearInterval(progressInterval);
       setIsUploading(false);
       setIsAnalyzing(false);
       setUploadProgress(0);
